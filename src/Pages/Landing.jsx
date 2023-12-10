@@ -1,8 +1,8 @@
-import Heading from "../Components/Heading";
-import About from "../Components/About";
-import Courses from "../Components/Courses";
-import Team from "../Components/Team";
-import Contact from "../Components/Contact";
+import Heading from "../Containers/Heading";
+import About from "../Containers/About";
+import Courses from "../Containers/Courses";
+import Team from "../Containers/Team";
+import Contact from "../Containers/Contact";
 
 function Start() {
   return (
