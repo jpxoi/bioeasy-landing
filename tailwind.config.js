@@ -25,6 +25,7 @@ export default {
       orange: colors.orange,
       lime: colors.lime,
       'teal': {
+        50: '#f0fdfe',
         100: '#c5fffc',
         200: '#9fffe9',
         300: '#4afef7',
