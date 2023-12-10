@@ -8,8 +8,8 @@ function CourseCard(course) {
             <div className="course__card__image">
                 <img className="rounded-t-lg" src={image} alt={title}/>
             </div>
-            <div className="course__card__content p-5">
-                <span className="items-center rounded-md bg-yellow-50 px-2 py-1 text-xs font-medium text-yellow-800 ring-1 ring-inset ring-yellow-600/20">
+            <div className="text-center course__card__content p-5">
+                <span className="items-center rounded-md bg-teal-50 px-2 py-1 text-xs font-medium text-teal-800 ring-1 ring-inset ring-teal-600/20">
                     {tag}
                 </span>
                 <h5 className="mt-2 mb-2 text-2xl font-bold tracking-tight text-gray-900">
