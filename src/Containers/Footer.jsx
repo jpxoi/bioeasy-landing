@@ -1,4 +1,4 @@
-import logo from '.././assets/react.svg'
+import logo from '.././assets/logo.png'
 
 function Footer() {
     return (
@@ -12,10 +12,14 @@ function Footer() {
                     </div>
                     <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
                         <div>
-                            <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase">Resources</h2>
+                            <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase">
+                                Resources
+                            </h2>
                             <ul className="text-gray-500 font-medium">
                                 <li className="mb-4">
-                                    <a href="https://flowbite.com/" className="hover:underline">Flowbite</a>
+                                    <a href="https://flowbite.com/" className="hover:underline">
+                                        Flowbite
+                                    </a>
                                 </li>
                                 <li>
                                     <a href="https://tailwindcss.com/" className="hover:underline">Tailwind CSS</a>
@@ -23,13 +27,15 @@ function Footer() {
                             </ul>
                         </div>
                         <div>
-                            <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase">Follow us</h2>
+                            <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase">
+                                Síguenos
+                            </h2>
                             <ul className="text-gray-500 font-medium">
                                 <li className="mb-4">
-                                    <a href="https://github.com/themesberg/flowbite" className="hover:underline ">Github</a>
+                                    <a href="https://instagram.com/bioeasygalenos" target="_blank" rel="noreferrer" className="hover:underline ">Instagram</a>
                                 </li>
                                 <li>
-                                    <a href="https://discord.gg/4eeurUVvTy" className="hover:underline">Discord</a>
+                                    <a href="https://tiktok.com/@bioeasygalenos" target="_blank" rel="noreferrer" className="hover:underline">Facebook</a>
                                 </li>
                             </ul>
                         </div>
@@ -37,10 +43,14 @@ function Footer() {
                             <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase">Legal</h2>
                             <ul className="text-gray-500 font-medium">
                                 <li className="mb-4">
-                                    <a href="/#" className="hover:underline">Privacy Policy</a>
+                                    <a href="/#" className="hover:underline">
+                                        Política de Privacidad
+                                    </a>
                                 </li>
                                 <li>
-                                    <a href="/#" className="hover:underline">Terms &amp; Conditions</a>
+                                    <a href="/#" className="hover:underline">
+                                        Términos y Condiciones
+                                    </a>
                                 </li>
                             </ul>
                         </div>
