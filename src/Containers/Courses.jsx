@@ -100,7 +100,7 @@ function Courses() {
             <div className="courses__container">
                 <div className="courses__content">
                     <div className='courses__content__filter flex items-center justify-center py-4 md:py-8 flex-wrap'>
-                    <span className="courses__content__filter__item text-blue-700 hover:text-white border border-blue-600 bg-white hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-full text-base font-medium px-5 py-2.5 text-center me-3 mb-3" data-filter="all">Todos</span>
+                    <span className="courses__content__filter__item text-teal-700 hover:text-white border border-teal-600 bg-white hover:bg-teal-700 focus:ring-4 focus:outline-none focus:ring-teal-300 rounded-full text-base font-medium px-5 py-2.5 text-center me-3 mb-3" data-filter="all">Todos</span>
                         {courses_categories.map((category) => (
                             <button className="courses__content__filter__item text-gray-900 border border-white hover:border-gray-200 bg-white focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-full text-base font-medium px-5 py-2.5 text-center me-3 mb-3" data-filter={category.tag} key={category.tag}>{category.name}</button>
                         ))}
