@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import logo from '.././assets/react.svg'
+import logo from '.././assets/logo.png'
 
 function Header() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -11,7 +11,7 @@ function Header() {
                 <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
                     <div>
                         <a href="/#" className="flex items-center space-x-3 rtl:space-x-reverse">
-                            <span className="sr-only">Your Company</span>
+                            <span className="sr-only">Bioeast&Galenos</span>
                             <img className="h-8 w-auto" src={logo} alt="logo" />
                         </a>
                     </div>
