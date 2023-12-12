@@ -11,3 +11,17 @@ body {
 html {
   scroll-behavior: smooth
 }
+
+.mixitup-control-active {
+  @apply text-teal-700 hover:text-white border border-teal-600 bg-white hover:bg-teal-700 focus:ring-4 focus:outline-none focus:ring-transparent rounded-full text-base font-medium px-5 py-2.5 text-center me-3 mb-3
+}
+
+.active_link {
+  @apply text-white bg-teal-700 rounded md:bg-transparent md:text-teal-700 md:p-0
+}
+
+.section__heading {
+  background: url(https://images.unsplash.com/photo-1556480435-b7b37fd635d6?q=80&w=3432&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D) rgba(0, 207, 208, 0.798);
+  background-blend-mode: multiply;
+  background-size: cover;
+}
