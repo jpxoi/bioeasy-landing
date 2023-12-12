@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import mixitup from 'mixitup';
 import CourseCard from '../Components/CourseCard';
+import CourseFilter from '../Components/CourseFilter';
 
 function Courses() {
     useEffect(() => {
@@ -93,19 +94,16 @@ function Courses() {
     ]
 
     return (
-        <section className="section__courses bg-white mt-16 mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8" id="cursos">
+        <section className="section section__courses bg-white mt-8 mx-auto w-full max-w-screen-xl p-4 py-6 pt-24 lg:py-8 lg:pt-28" id="cursos">
             <h1 className="text-center mb-4 text-2xl font-extrabold tracking-tight leading-none text-gray-900 md:text-3xl lg:text-4xl">
                 Cursos
             </h1>
             <div className="courses__container">
                 <div className="courses__content">
-                    <div className='courses__content__filter flex items-center justify-center py-4 md:py-8 flex-wrap'>
-                    <span className="courses__content__filter__item text-teal-700 hover:text-white border border-teal-600 bg-white hover:bg-teal-700 focus:ring-4 focus:outline-none focus:ring-teal-300 rounded-full text-base font-medium px-5 py-2.5 text-center me-3 mb-3" data-filter="all">Todos</span>
-                        {courses_categories.map((category) => (
-                            <button className="courses__content__filter__item text-gray-900 border border-white hover:border-gray-200 bg-white focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-full text-base font-medium px-5 py-2.5 text-center me-3 mb-3" data-filter={category.tag} key={category.tag}>{category.name}</button>
-                        ))}
-                    </div>
-                    <div className="courses__content__grid grid grid-cols-2 md:grid-cols-3 gap-4">
+                    <CourseFilter
+                      data={courses_categories}
+                    />
+                    <div className="courses__content__grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 justify-items-center">
                         {courses_data.map((course) => (
                             <CourseCard
                                 key={course.id}
