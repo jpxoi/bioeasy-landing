@@ -3,7 +3,7 @@ import ContactForm from "../Components/ContactForm"
 
 function Contact() {
   return (
-    <section className="section__contact bg-white mt-16 mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8" id="contacto">
+    <section className="section section__contact bg-white mt-8 mx-auto w-full max-w-screen-xl p-4 py-6 pt-24 lg:py-8 lg:pt-28" id="contacto">
       <div className="contact__container grid md:grid-cols-2 gap-8">
         <div className="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
           <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-center text-gray-900">
