@@ -1,13 +1,35 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import logo from '.././assets/logo.png'
 import logo_sm from '.././assets/logo_sm.png'
 
 function Header() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
+    useEffect(() => {
+        const sections = document.querySelectorAll("section[id]")
+
+        function scrollActive() {
+            const scrollY = window.scrollY
+    
+            sections.forEach(current => {
+                const sectionHeight = current.offsetHeight
+                const sectionTop = current.offsetTop - 128
+                const sectionId = current.getAttribute("id")
+    
+                if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                    document.getElementById(`selector_${sectionId}`).classList.add("active_link")
+                } else {
+                    document.getElementById(`selector_${sectionId}`).classList.remove("active_link")
+                }
+            })
+        }
+    
+        window.addEventListener("scroll", scrollActive)
+    }, [])
+
     return (
-        <header className="bg-white">
-            <nav className="bg-white fixed w-full z-20 top-0 start-0 border-b border-gray-20">
+        <header className="bg-transparent">
+            <nav className="bg-white fixed w-full z-20 top-0 start-0 border-b border-gray-20 shadow-md">
                 <p className='bg-white'> {mobileMenuOpen}</p>
                 <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
                     <div>
@@ -29,22 +51,22 @@ function Header() {
                             </svg>
                         </button>
                     </div>
-                    <div className={`items-center justify-between${mobileMenuOpen ? ' ' : ' hidden '}w-full md:flex md:w-auto md:order-1`} id="navbar-sticky">
+                    <div className={`nav__menu items-center justify-between${mobileMenuOpen ? ' ' : ' hidden '}w-full md:flex md:w-auto md:order-1`} id="navbar-sticky">
                         <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white">
                             <li>
-                                <a href="/#" className="block py-2 px-3 text-white bg-teal-700 rounded md:bg-transparent md:text-teal-700 md:p-0" aria-current="page">Inicio</a>
+                                <a href="/#inicio" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-teal-700 md:p-0 active_link" id="selector_inicio">Inicio</a>
                             </li>
                             <li>
-                                <a href="/#nosotros" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-teal-700 md:p-0 ">Nosotros</a>
+                                <a href="/#nosotros" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-teal-700 md:p-0" id="selector_nosotros">Nosotros</a>
                             </li>
                             <li>
-                                <a href="/#cursos" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-teal-700 md:p-0">Cursos</a>
+                                <a href="/#cursos" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-teal-700 md:p-0" id="selector_cursos">Cursos</a>
                             </li>
                             <li>
-                                <a href="/#docentes" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-teal-700 md:p-0">Docentes</a>
+                                <a href="/#docentes" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-teal-700 md:p-0" id="selector_docentes">Docentes</a>
                             </li>
                             <li>
-                                <a href="/#contacto" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-teal-700 md:p-0">Contáctanos</a>
+                                <a href="/#contacto" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-teal-700 md:p-0" id="selector_contacto">Contáctanos</a>
                             </li>
                         </ul>
                     </div>
