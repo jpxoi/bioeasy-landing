@@ -1,3 +1,5 @@
+import logo from '.././assets/img/logo.png'
+
 function CourseCard(course) {
     const { id, title, description, image, tag, category, link } = course.course
 
@@ -6,7 +8,7 @@ function CourseCard(course) {
     return (
         <div className={class_name} id={id}>
             <div className="course__card__image">
-                <img className="rounded-t-lg" src={image} alt={title}/>
+                <img className="rounded-t-lg" src={image ? image : logo} alt={title}/>
             </div>
             <div className="text-center course__card__content p-5">
                 <span className="items-center rounded-md bg-teal-50 px-2 py-1 text-xs font-medium text-teal-800 ring-1 ring-inset ring-teal-600/20">

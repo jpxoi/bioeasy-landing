@@ -21,7 +21,7 @@ html {
 }
 
 .section__heading {
-  background-image: linear-gradient(180deg, rgba(0,207,208,0.79) 0%, rgba(0,76,92,0.8) 100%), url(https://link.storjshare.io/s/jwgrk6ktfi3ihck2ef22ugoq3q2a/jpxoi/CDN%20Upload/bioeasy-landing-image.png?wrap=0);
+  background-image: linear-gradient(180deg, rgba(0,207,208,0.79) 0%, rgba(0,76,92,0.8) 100%), url(src/assets/img/web_bg.webp);
   background-blend-mode: multiply;
   background-size: cover;
 

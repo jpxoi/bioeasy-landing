@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import logo from '.././assets/logo.png'
-import logo_sm from '.././assets/logo_sm.png'
+import logo from '.././assets/img/logo.png'
+import logo_sm from '.././assets/img/logo_sm.png'
 
 function Header() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)

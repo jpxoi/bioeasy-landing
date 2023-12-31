@@ -2,6 +2,8 @@ import { useEffect } from 'react'
 import mixitup from 'mixitup';
 import CourseCard from '../Components/CourseCard';
 import CourseFilter from '../Components/CourseFilter';
+import courses_categories from '../assets/db/courses_categories.json';
+import courses_data from '../assets/db/courses_data.json';
 
 function Courses() {
     useEffect(() => {
@@ -20,78 +22,6 @@ function Courses() {
             console.log(mixer)
         }
     }, [])
-
-    let courses_categories = [
-        {
-            tag: ".ciencias-basicas",
-            name: "Ciencias Básicas"
-        },
-        {
-            tag: ".ciencias-clinicas",
-            name: "Ciencias Clínicas"
-        },
-        {
-            tag: ".ciencias-quirurgicas",
-            name: "Ciencias Quirúrgicas"
-        }
-    ]
-
-    let courses_data = [
-        {
-            id: 1,
-            title: "Curso 1",
-            description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.",
-            image: "https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-            tag: "Ciclo I",
-            category: "ciencias-basicas",
-            link: "#"
-        },
-        {
-            id: 2,
-            title: "Curso 2",
-            description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.",
-            image: "https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-            tag: "Ciclo I",
-            category: "ciencias-basicas",
-            link: "#"
-        },
-        {
-            id: 3,
-            title: "Curso 3",
-            description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.",
-            image: "https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-            tag: "Ciclo I",
-            category: "ciencias-clinicas",
-            link: "#"
-        },
-        {
-            id: 4,
-            title: "Curso 4",
-            description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.",
-            image: "https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-            tag: "Ciclo I",
-            category: "ciencias-clinicas",
-            link: "#"
-        },
-        {
-            id: 5,
-            title: "Curso 5",
-            description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.",
-            image: "https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-            tag: "Ciclo I",
-            category: "ciencias-quirurgicas",
-            link: "#"
-        },
-        {
-            id: 6,
-            title: "Curso 6",
-            description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.",
-            image: "https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-            tag: "Ciclo I",
-            category: "ciencias-quirurgicas",
-            link: "#"
-        }
-    ]
 
     return (
         <section className="section section__courses bg-white mt-8 mx-auto w-full max-w-screen-xl p-4 py-6 pt-24 lg:py-8 lg:pt-28" id="cursos">
