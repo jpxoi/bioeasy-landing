@@ -277,23 +277,5 @@
         "tag": "X CICLO",
         "category": "ciencias-quirurgicas",
         "link": "#"
-    },
-    {
-        "id": "GINOB-131",
-        "title": "Ginecología y Obstetricia",
-        "description": "Estudia la salud reproductiva femenina, incluyendo el diagnóstico y tratamiento de condiciones ginecológicas y la atención prenatal, parto y postparto.",
-        "image": "src/assets/img/courses/GINOB-131.webp",
-        "tag": "XI CICLO",
-        "category": "ciencias-quirurgicas",
-        "link": "#"
-    },
-    {
-        "id": "PED-132",
-        "title": "Pediatría",
-        "description": "Se enfoca en la atención médica de niños y adolescentes, abordando el diagnóstico, prevención y tratamiento de enfermedades pediátricas y el desarrollo infantil.",
-        "image": "src/assets/img/courses/PED-132.webp",
-        "tag": "XII CICLO",
-        "category": "ciencias-quirurgicas",
-        "link": "#"
     }
 ]
