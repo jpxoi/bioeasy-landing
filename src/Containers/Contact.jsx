@@ -6,7 +6,7 @@ function Contact() {
     <section className="section section__contact bg-white mt-8 mx-auto w-full max-w-screen-xl p-4 py-6 pt-24 lg:py-8 lg:pt-28" id="contacto">
       <div className="contact__container grid md:grid-cols-2 gap-8">
         <div className="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
-          <h2 className="text-center mb-4 text-2xl font-extrabold tracking-tight leading-none text-gray-900 md:text-3xl lg:text-4xl">
+          <h2 className="text-center mb-4 text-2xl font-bold tracking-tight leading-none text-gray-900 md:text-3xl lg:text-4xl">
             Contáctanos
           </h2>
           <div className="flex md:flex-col md:space-y-4 md:space-x-0 md:flex-nowrap flex-row justify-around md:justify-center flex-wrap max-w-md">
@@ -42,7 +42,7 @@ function Contact() {
           
         </div>
         <div className="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
-          <h2 className="text-center mb-4 text-2xl font-extrabold tracking-tight leading-none text-gray-900 md:text-3xl lg:text-4xl">
+          <h2 className="text-center mb-4 text-2xl font-bold tracking-tight leading-none text-gray-900 md:text-3xl lg:text-4xl">
             ¿Aún tienes dudas?
           </h2>
           <p className="mb-8 lg:mb-16 font-light text-center text-gray-500">
