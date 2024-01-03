@@ -30,3 +30,9 @@ html {
   background-position: center;
   background-repeat: no-repeat;
 }
+
+@media screen and (max-width: 992px) {
+  .section__heading {
+      background-attachment: scroll;
+  }
+}
