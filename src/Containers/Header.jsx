@@ -25,7 +25,7 @@ function Header() {
         }
 
         document.getElementById("aulaVirtualButton").onclick = function () {
-            location.href = "https://campusvirtual.bgmedicina.com";
+            location.href = "https://bgmedicina.com/campusvirtual";
         };
     
         window.addEventListener("scroll", scrollActive)
