@@ -23,6 +23,10 @@ function Header() {
                 }
             })
         }
+
+        document.getElementById("aulaVirtualButton").onclick = function () {
+            location.href = "https://bgmedicina.com/campusvirtual";
+        };
     
         window.addEventListener("scroll", scrollActive)
     }, [])
@@ -40,8 +44,8 @@ function Header() {
                         </a>
                     </div>
                     <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-                        <button type="button" className="text-white bg-teal-700 hover:bg-teal-800 focus:ring-4 focus:outline-none focus:ring-teal-300 font-medium rounded-lg text-sm px-4 py-2 text-center">
-                            Aula Virtual
+                        <button type="button" id="aulaVirtualButton" className="text-white bg-teal-700 hover:bg-teal-800 focus:ring-4 focus:outline-none focus:ring-teal-300 font-medium rounded-lg text-sm px-4 py-2 text-center">
+                            Campus Virtual
                         </button>
 
                         <button data-collapse-toggle="navbar-sticky" type="button" className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200" aria-controls="navbar-sticky" aria-expanded="false" onClick={ () => setMobileMenuOpen(!mobileMenuOpen) }>
