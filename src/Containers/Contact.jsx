@@ -13,8 +13,8 @@ function Contact() {
             <ContactCard
               id="email"
               contact_title="Correo electrónico"
-              contact_info="bioeasygalenostrujillo@gmail.com"
-              contact_link="mailto:bioeasygalenostrujillo@gmail.com"
+              contact_info="informes@bgmedicina.com"
+              contact_link="mailto:informes@bgmedicina.com"
               contact_cta="Escríbenos"
             />
             <ContactCard
