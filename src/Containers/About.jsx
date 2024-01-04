@@ -25,7 +25,7 @@ function About() {
                 <img className="w-full rounded-md" src="img/web_bg_alt.webp" alt="about" />
             </div>
         </div>
-        <div className="about__container py-8 lg:pt-8 lg:pb-0 px-4 mx-auto max-w-screen-xl">
+        <div className="about__container py-8 lg:pt-16 lg:pb-0 px-4 mx-auto max-w-screen-xl">
           <h3 className="mb-4 lg:mb-8 font-bold text-center text-gray-900 text-2xl">
             ¿Por qué elegirnos?
           </h3>
