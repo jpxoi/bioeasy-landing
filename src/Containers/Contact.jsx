@@ -9,7 +9,7 @@ function Contact() {
           <h2 className="text-center mb-4 text-2xl font-bold tracking-tight leading-none text-gray-900 md:text-3xl lg:text-4xl">
             Contáctanos
           </h2>
-          <div className="flex md:flex-col md:space-y-4 md:space-x-0 md:flex-nowrap flex-row justify-around md:justify-center flex-wrap max-w-md">
+          <div className="grid sm:grid-cols-2 md:grid-cols-1 gap-4 justify-items-center">
             <ContactCard
               id="email"
               contact_title="Correo electrónico"

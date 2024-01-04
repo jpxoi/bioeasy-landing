@@ -3,7 +3,7 @@ function ContactCard(contact_data) {
     const { id, contact_title, contact_info, contact_link, contact_cta } = contact_data
 
     return (
-        <div className="text-center w-52 md:w-60 p-6 bg-white border border-gray-200 rounded-lg shadow" id={id}>
+        <div className="text-center w-60 md:w-60 p-6 bg-white border border-gray-200 rounded-lg shadow" id={id}>
             <a href={contact_link} target="_blank" rel="noreferrer">
                 <h5 className="text-xl font-semibold tracking-tight text-gray-900">
                     {contact_title}
