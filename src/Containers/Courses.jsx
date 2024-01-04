@@ -33,7 +33,7 @@ function Courses() {
                     <CourseFilter
                       data={courses_categories}
                     />
-                    <div className="courses__content__grid grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 justify-items-center">
+                    <div className="courses__content__grid grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 px-4 md:px-8 lg:px-16 justify-items-center max-w-screen-xl">
                         {courses_data.map((course) => (
                             <CourseCard
                                 key={course.id}
