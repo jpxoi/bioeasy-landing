@@ -45,7 +45,7 @@ export default function FetchCSVData(props) {
     }
 
     if (loading) {
-        console.log("Loading...");
+        console.log("Fetching data...");
     }
     else {
         return csvData;
