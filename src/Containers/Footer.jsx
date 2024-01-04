@@ -18,11 +18,11 @@ function Footer() {
                 <hr className="my-6 border-gray-200 sm:mx-auto lg:my-8" />
                 <div className="sm:flex sm:items-center sm:justify-between">
                     <span className="text-sm text-gray-500 sm:text-center">
-                        © 2023 <a href="/#" className="hover:underline">Bioeasy Galenos™</a>. Todos Los Derechos Reservados.
+                        © 2023 <a href="/#" className="hover:underline transition-all">Bioeasy Galenos™</a>. Todos Los Derechos Reservados.
                     </span>
                     <div className="flex mt-4 sm:justify-center sm:mt-0">
                         <span className="text-gray-500 text-sm">
-                            Desarrollado por <a href="https://jpxoi.com" target='_blank' rel="noreferrer" className="hover:underline">Jean Paul Fernandez</a></span>
+                            Desarrollado por <a href="https://jpxoi.com" target='_blank' rel="noreferrer" className="hover:underline transition-all">Jean Paul Fernandez</a></span>
                     </div>
                 </div>
             </div>
