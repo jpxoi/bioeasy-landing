@@ -3,7 +3,7 @@
         "id": "BIO-100",
         "title": "Biología",
         "description": "Explora las complejidades de las células y moléculas que conforman la vida. Desde el ADN hasta los procesos celulares, los estudiantes obtienen una comprensión profunda de la genética y las interacciones intracelulares. Con enfoque teórico y práctico, el curso abre puertas a avances en medicina e investigación científica.",
-        "image": "img/courses/BIO-100.webp",
+        "image": "/img/courses/BIO-100.webp",
         "tag": "I CICLO",
         "category": "ciencias-basicas",
         "link": "#"
