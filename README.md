@@ -1,6 +1,14 @@
-# Bioeasy&Galenos Landing Page
+# Bioeasy Galenos Landing Page
 
-This is the landing page for Bioeasy&Galenos. It is built with React and Vite. It is deployed to Netlify.
+This is the landing page for Bioeasy Galenos. It is built with React and Vite. It is deployed to Vercel.
+
+## Installation
+
+To install the dependencies, run:
+
+```bash
+npm install
+```
 
 ## Development
 
@@ -18,4 +26,6 @@ To deploy the site, run:
 npm run build
 ```
 
-This will create a `dist` folder with the static files. You can then deploy this folder to any static hosting service.
+This will create a `dist` folder with the static files. You can then deploy this folder to any static hosting service.  
+
+![Doctor dressed as a superhero, with a red mask and a cape.](/public/img/web_bg.webp)
