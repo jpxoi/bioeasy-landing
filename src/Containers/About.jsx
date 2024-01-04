@@ -1,3 +1,5 @@
+import WhyCard from "../Components/WhyCard"
+
 function About() {
   return (
     <section className="section section__about mt-8 bg-white mx-auto w-full max-w-screen-xl p-4 py-6 pt-24 lg:py-8 lg:pt-28" id="nosotros">
@@ -18,12 +20,34 @@ function About() {
                 <p className="mb-1 lg:mb-2 font-light text-justify text-gray-700">
                 Más de 1000 estudiantes de 1º a 12º ciclo de UPAO forman parte de la comunidad BG.
                 </p>
-
             </div>
             <div className="py-8 lg:pt-8 lg:pb-0 px-4 mx-auto max-w-screen-md">
                 <img className="w-full rounded-md" src="img/web_bg_alt.webp" alt="about" />
             </div>
-        </div>  
+        </div>
+        <div className="about__container py-8 lg:pt-8 lg:pb-0 px-4 mx-auto max-w-screen-xl">
+          <h3 className="mb-4 lg:mb-8 font-bold text-center text-gray-900 text-2xl">
+            ¿Por qué elegirnos?
+          </h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 justify-items-center">
+            <WhyCard
+              key="1"
+              why_description="Garantizamos el éxito de los estudiantes en sus desafíos académicos durante la universidad."
+            />
+            <WhyCard
+              key="2"
+              why_description="Elevamos la satisfacción de nuestros estudiantes al máximo en todos nuestros cursos."
+            />
+            <WhyCard
+              key="3"
+              why_description="Perseguimos la innovación constante en nuestro enfoque académico para destacar en todos los cursos."
+            />
+            <WhyCard
+              key="4"
+              why_description="Revolucionamos la enseñanza de la Medicina mediante métodos didácticos e innovadores."
+            />
+          </div>
+        </div>
     </section>
   )
 }
