@@ -1,4 +1,3 @@
-import './App.css'
 import Footer from './Containers/Footer'
 import Header from './Containers/Header'
 import Landing from './Pages/Landing'

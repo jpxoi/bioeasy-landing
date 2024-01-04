@@ -25,7 +25,7 @@ function ContactForm() {
 
       <input type="hidden" name="redirect" value="https://web3forms.com/success" />
 
-      <button type="submit" className="py-3 px-5 text-sm font-medium text-center text-white rounded-lg bg-teal-700 sm:w-fit hover:bg-teal-800 focus:ring-4 focus:outline-none focus:ring-teal-300">
+      <button type="submit" className="py-3 px-5 text-sm font-medium text-center text-white rounded-lg bg-teal-700 sm:w-fit hover:bg-teal-800 focus:ring-4 focus:outline-none focus:ring-teal-300 transition-all">
         Enviar Mensaje
       </button>
     </form>
