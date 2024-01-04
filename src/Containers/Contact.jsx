@@ -11,7 +11,7 @@ function Contact() {
           </h2>
           <div className="grid sm:grid-cols-2 md:grid-cols-1 gap-4 justify-items-center">
             <ContactCard
-              id="email"
+              id="email_contact"
               contact_title="Correo electrónico"
               contact_info="informes@bgmedicina.com"
               contact_link="mailto:informes@bgmedicina.com"

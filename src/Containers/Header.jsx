@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import logo from '.././assets/img/logo.png'
-import logo_sm from '.././assets/img/logo_sm.png'
+import logo from '.././assets/img/logo.webp'
+import logo_sm from '.././assets/img/logo_sm.webp'
 import NavMenu from '../Components/NavMenu';
 
 function Header() {
@@ -40,8 +40,8 @@ function Header() {
                     <div>
                         <a href="/#" className="flex items-center space-x-3 rtl:space-x-reverse">
                             <span className="sr-only">Bioeasy Galenos</span>
-                            <img className="hidden lg:block h-8 w-auto" src={logo} alt="logo" width="1299" height="262" />
-                            <img className='lg:hidden h-8 w-auto' src={logo_sm} alt='logo' width="262" height="262"/>
+                            <img className="hidden lg:block h-8 w-auto" src={logo} alt="Bioeasy Galenos Logo" width="1299" height="262" />
+                            <img className='lg:hidden h-8 w-auto' src={logo_sm} alt='Bioeasy Galenos Icon' width="262" height="262"/>
                         </a>
                     </div>
                     <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">

@@ -1,4 +1,4 @@
-import logo from '.././assets/img/logo.png'
+import logo from '.././assets/img/logo.webp'
 import FooterMenu from '../Components/FooterMenu';
 import FooterSocial from '../Components/FooterSocial';
 
@@ -8,8 +8,8 @@ function Footer() {
             <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
                 <div className="md:flex md:justify-between">
                     <div className="mb-6 md:mb-0">
-                        <a href="/#" className="flex items-center mb-7">
-                            <img src={logo} className="h-8 me-3" alt="" />
+                        <a href="/#" className="flex items-center mb-7" aria-label="Return to homepage.">
+                            <img src={logo} className="h-8 me-3" alt="Bioeasy Galenos Logo" />
                         </a>
                         <FooterSocial />
                     </div>

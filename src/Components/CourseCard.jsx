@@ -1,4 +1,4 @@
-import fallback from '.././assets/img/fallback_card.png'
+import fallback from '.././assets/img/fallback_card.webp'
 
 function CourseCard(course) {
     const { id, title, description, image, tag, category, link } = course.course
