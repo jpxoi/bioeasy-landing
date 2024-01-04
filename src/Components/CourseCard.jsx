@@ -18,9 +18,7 @@ function CourseCard(course) {
                     {title}
                 </h5>
                 <p className="mb-3 font-normal text-gray-700">
-                    {description.length > 100 ?
-                        `${description.substring(0, 100)}...` : description
-                    }
+                    {description}
                 </p>
                 <a href={link} className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-teal-700 rounded-lg hover:bg-teal-800 focus:ring-4 focus:outline-none focus:ring-teal-300 transition-all">
                     Inscríbete
@@ -29,6 +27,7 @@ function CourseCard(course) {
                     </svg>
                 </a>
             </div>
+            
         </div>
     )
 }
