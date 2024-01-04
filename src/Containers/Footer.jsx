@@ -9,7 +9,7 @@ function Footer() {
                 <div className="md:flex md:justify-between">
                     <div className="mb-6 md:mb-0">
                         <a href="/#" className="flex items-center mb-7" aria-label="Return to homepage.">
-                            <img src={logo} className="h-8 me-3" alt="Bioeasy Galenos Logo" />
+                            <img src={logo} className="h-8 me-3" alt="Bioeasy Galenos Logo" width="1299" height="262" />
                         </a>
                         <FooterSocial />
                     </div>
