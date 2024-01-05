@@ -46,7 +46,7 @@ function Contact() {
             ¿Aún tienes dudas?
           </h2>
           <p className="mb-8 font-light text-center text-gray-500">
-            Escríbenos y nosotros te contactaremos. Te asesoramos para que incies con el pie derecho.
+            Escríbenos y nosotros te contactaremos. Te asesoramos para que inicies con el pie derecho.
           </p>
           <ContactForm />
         </div>

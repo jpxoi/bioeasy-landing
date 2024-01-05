@@ -9,7 +9,7 @@ function CourseCard(course) {
     return (
         <div className={class_name} id={id}>
             <div className="course__card__image">
-                <img className="rounded-t-lg" loading="lazy" src={image ? image : fallback} alt={title} width="800" height="1000"/>
+                <img className="rounded-t-lg" loading="lazy" src={image || fallback} alt={title} width="800" height="1000"/>
             </div>
             <div className="text-center course__card__content p-5">
                 <span className="items-center rounded-md bg-teal-50 px-2 py-1 text-xs font-medium text-teal-800 ring-1 ring-inset ring-teal-600/20">
