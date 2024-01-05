@@ -45,7 +45,7 @@ function Contact() {
           <h2 className="text-center mb-4 text-2xl font-bold tracking-tight leading-none text-gray-900 md:text-3xl lg:text-4xl">
             ¿Aún tienes dudas?
           </h2>
-          <p className="mb-8 lg:mb-16 font-light text-center text-gray-500">
+          <p className="mb-8 font-light text-center text-gray-500">
             Escríbenos y nosotros te contactaremos. Te asesoramos para que incies con el pie derecho.
           </p>
           <ContactForm />
