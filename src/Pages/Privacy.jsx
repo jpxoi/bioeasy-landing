@@ -1,17 +1,17 @@
 import Header from "../Containers/Header";
 import Footer from "../Containers/Footer";
-import Error404Message from "../Components/Error404Message";
+import PrivacyText from "../Containers/PrivacyText";
 
-function Error404() {
+function Privacy() {
   return (
     <>
       <Header/>
       <main className="main Landing">
-        <Error404Message />
+        <PrivacyText />
       </main>
       <Footer/>
     </>
   );
 }
   
-export default Error404;
+export default Privacy;
