@@ -2,7 +2,7 @@ function ContactForm() {
   return (
     <form action="https://api.web3forms.com/submit" method="POST" className="space-y-8">
       <div>
-        <input type="hidden" name="access_key" value="4d0dee30-05a1-4791-8193-ae029ab40c14" />
+        <input type="hidden" name="access_key" value="cfd4f031-74bc-4e52-a430-cc1040f5d906" />
         <input type="hidden" name="from_name" value="Bioeasy Galenos - Formulario de Contacto" />
 
         <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900">

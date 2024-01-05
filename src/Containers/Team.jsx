@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import TeamCard from "../Components/TeamCard"
 import FetchCSVData from "../Handlers/FetchCSVData";
-import Loader from "../Components/Loader";
+import TeamCardSkeleton from "../Components/TeamCardSkeleton";
 
 function Team() {
   const [teamMounted, setTeamMounted] = useState(false);
@@ -21,8 +21,8 @@ function Team() {
             Docentes
         </h1>
         <div className="team__container">
-          {teamMounted ? "" : <Loader />}
-          <div className="team__content__grid grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 justify-items-center">
+          <div className="team__content__grid grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 pt-8 justify-items-center">
+            {teamMounted ? "" : <TeamCardSkeleton cards={16} />}
             {team_data ? team_data.map((team_member) => (
                   <TeamCard
                       key={team_member.id}

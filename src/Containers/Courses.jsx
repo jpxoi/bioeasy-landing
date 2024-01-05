@@ -3,7 +3,8 @@ import mixitup from 'mixitup';
 import CourseCard from '../Components/CourseCard';
 import CourseFilter from '../Components/CourseFilter';
 import FetchCSVData from '../Handlers/FetchCSVData';
-import Loader from '../Components/Loader';
+import CourseCardSkeleton from '../Components/CourseCardSkeleton';
+import CourseFilterSkeleton from '../Components/CourseFilterSkeleton';
 
 function Courses() {
     const [coursesMounted, setCoursesMounted] = useState(false);
@@ -53,12 +54,14 @@ function Courses() {
             </h1>
             <div className="courses__container">
                 <div className="courses__content">
+                    {courses_categories ? "" : <CourseFilterSkeleton />}
                     {courses_categories ? 
                     <CourseFilter
                       data={courses_categories}
                     /> : console.log("Loading Courses Categories...")}
-                    {coursesMounted ? "" : <Loader />}
+                    
                     <div className="courses__content__grid grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 px-4 md:px-8 lg:px-16 justify-items-center max-w-screen-xl">
+                        {coursesMounted ? "" : <CourseCardSkeleton cards={31} />}
                         {courses_data ? courses_data.map((course) => (
                             <CourseCard
                                 key={course.id}
