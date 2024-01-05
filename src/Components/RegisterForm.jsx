@@ -11,7 +11,7 @@ function RegisterForm() {
                     </svg>
                     <span className="sr-only">Info</span>
                     <div>
-                        <span className="font-medium">¡Importante!</span> Este formulario se encuentra en mantenimiento. Todos los datos enviados por aquí no serán recibidos. Si desea inscribirse, use el formulario temporal dando click <a href="">aquí</a>.
+                        <span className="font-bold">¡IMPORTANTE!</span> Este formulario se encuentra en mantenimiento. Todos los datos enviados por aquí no serán recibidos. Si desea inscribirse, use el formulario temporal dando click <a href="">aquí</a>.
                     </div>
                 </div>
             </div>
@@ -25,7 +25,7 @@ function RegisterForm() {
                             <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-first-name">
                                 Nombres
                             </label>
-                            <input required className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-teal-700" id="grid-first-name" type="text" placeholder="Fabio Alonso" />
+                            <input required className="appearance-auto block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-teal-700" id="grid-first-name" type="text" placeholder="Fabio Alonso" />
                             <p className="text-gray-600 text-xs italic">Nombre completo</p>
                         </div>
                         <div className="w-full md:w-1/2 px-3">
