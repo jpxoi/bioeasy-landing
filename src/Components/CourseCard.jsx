@@ -1,4 +1,5 @@
 import fallback from '.././assets/img/fallback_card.webp'
+import 'react-loading-skeleton/dist/skeleton.css'
 
 function CourseCard(course) {
     const { id, title, description, image, tag, category, link } = course.course
