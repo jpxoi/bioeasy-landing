@@ -1,17 +1,17 @@
 import Header from "../Containers/Header";
 import Footer from "../Containers/Footer";
-import Error404Message from "../Components/Error404Message";
+import RegisterForm from "../Components/RegisterForm";
 
-function Error404() {
+function Inscripcion() {
   return (
     <>
       <Header/>
       <main className="main Landing">
-        <Error404Message />
+        <RegisterForm />
       </main>
       <Footer/>
     </>
   );
 }
-  
-export default Error404;
+
+export default Inscripcion;
