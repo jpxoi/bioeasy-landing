@@ -143,7 +143,7 @@ function RegisterForm() {
                                         <span>
                                             Transferencia Bancaria
                                         </span>
-                                        <img src='../../public/img/payment/transferencia-icon.svg' />
+                                        <img src='/img/payment/transferencia-icon.svg' />
                                     </label>
                                 </div>
                                 <div className="w-full my-1">
@@ -152,7 +152,7 @@ function RegisterForm() {
                                         <span>
                                             Yape
                                         </span>
-                                        <img src='../../public/img/payment/yape-icon.svg' />
+                                        <img src='/img/payment/yape-icon.svg' />
                                     </label>
                                 </div>
                                 <div className="w-full my-1">
@@ -161,7 +161,7 @@ function RegisterForm() {
                                         <span>
                                             Plin
                                         </span>
-                                        <img src='../../public/img/payment/plin-icon.svg' />
+                                        <img src='/img/payment/plin-icon.svg' />
                                     </label>
                                 </div>
                             </div>
