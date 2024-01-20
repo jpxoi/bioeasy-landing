@@ -1,13 +1,13 @@
 import Header from "../Containers/Header";
 import Footer from "../Containers/Footer";
-import RegisterForm from "../Components/RegisterForm";
+import Register from "../Containers/Register";
 
 function Inscripcion() {
   return (
     <>
       <Header/>
       <main className="main Landing">
-        <RegisterForm />
+        <Register />
       </main>
       <Footer/>
     </>
