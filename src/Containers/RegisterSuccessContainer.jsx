@@ -19,7 +19,7 @@ function RegisterSuccessContainer() {
             </div>
             <p className="text-gray-600 text-xs italic mt-1 mb-2">Guarde este identificador para futuras referencias.</p>
 
-            <a href="/" className="mt-2 px-8 py-3 bg-teal-700 text-white font-medium rounded-lg hover:bg-teal-800 transition-all">Volver al inicio</a>
+            <a href="/" className="mt-4 px-8 py-3 bg-teal-700 text-white font-medium rounded-lg hover:bg-teal-800 transition-all">Volver al inicio</a>
         </div>
     )
 }
