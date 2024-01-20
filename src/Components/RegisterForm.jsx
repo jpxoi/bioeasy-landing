@@ -146,6 +146,7 @@ function RegisterForm() {
         }
 
         function formatPrice(price) {
+            // Function to format the price of the course
             return "S/ " + price + ".00";
         }
     }, [coursesMounted, courses_data, course_selected]);
@@ -212,14 +213,14 @@ function RegisterForm() {
                     <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-first-name">
                         Nombres
                     </label>
-                    <input required className="appearance-auto block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-teal-700" id="grid-first-name" type="text" name="first_name" placeholder="Fabio Alonso" />
-                    <p className="text-gray-600 text-xs italic">Nombre completo</p>
+                    <input required className="appearance-auto block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-2 leading-tight focus:outline-none focus:bg-white focus:border-teal-700" id="grid-first-name" type="text" name="first_name" placeholder="Juan Jesus" />
+                    <p className="text-gray-600 text-xs italic">Tal y como aparece en tu documento de identidad</p>
                 </div>
                 <div className="w-full md:w-1/2 px-3">
                     <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-last-name">
                         Apellidos
                     </label>
-                    <input required className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-teal-700 mb-3" id="grid-last-name" type="text" name="last_name" placeholder="Rodriguez Anticona" />
+                    <input required className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-teal-700 mb-2" id="grid-last-name" type="text" name="last_name" placeholder="Perez Rodriguez" />
                     <p className="text-gray-600 text-xs italic">Apellido paterno y apellido materno</p>
                 </div>
             </div>
@@ -232,14 +233,14 @@ function RegisterForm() {
                         <option value="empty" disabled="disabled">Seleccione</option>
                         <option value="dni">DNI</option>
                         <option value="pasaporte">Pasaporte</option>
-                        <option value="carnet_extranjeria">Carnet Extranjería</option>
+                        <option value="carnet_extranjeria">Carnet de Extranjería</option>
                     </select>
                 </div>
                 <div className="w-full md:w-1/2 px-3">
                     <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-document-number">
                         Número de Documento de Identidad
                     </label>
-                    <input required className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-teal-700" id="grid-document-number" name="document_number" type="tel" placeholder="Numero de Documento" />
+                    <input required className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-teal-700" id="grid-document-number" name="document_number" type="tel" placeholder="Número de Documento" />
                 </div>
             </div>
             <div className="flex flex-wrap -mx-3 mb-6">
@@ -253,7 +254,7 @@ function RegisterForm() {
                     <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-phone-number">
                         Número de Celular
                     </label>
-                    <div className="appearance-none flex w-full bg-gray-200 text-gray-700 border border-gray-200 rounded px-4 leading-tight focus:outline-none focus-within:bg-white focus-within:border-teal-700 pointer-events-none mb-3">
+                    <div className="appearance-none flex w-full bg-gray-200 text-gray-700 border border-gray-200 rounded px-4 leading-tight focus:outline-none focus-within:bg-white focus-within:border-teal-700 pointer-events-none mb-2">
                         <div className="flex items-center">
                             <svg
                                 width="18"
@@ -275,7 +276,7 @@ function RegisterForm() {
                     <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-email">
                         Correo Electrónico
                     </label>
-                    <input required className="peer appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 pr-8 leading-tight focus:outline-none focus:bg-white focus:border-teal-700 mb-3" id="grid-email" type="email" name="email" placeholder="Correo electrónico" pattern=".+@.+edu\.pe" />
+                    <input required className="peer appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 pr-8 leading-tight focus:outline-none focus:bg-white focus:border-teal-700 mb-2" id="grid-email" type="email" name="email" placeholder="alumno@tuuniversidad.edu.pe" pattern=".+@.+edu\.pe" />
                     <p className="text-gray-600 text-xs italic">Usa tu correo institucional .edu.pe</p>
                 </div>
                 <div className="w-full md:w-1/2 px-3">
@@ -302,13 +303,14 @@ function RegisterForm() {
                     <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-course-select">
                         Curso Académico
                     </label>
-                    {courses_data ? "" : <Skeleton height={46} />}
-                    {courses_data ? <select className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-teal-700" id="grid-course-select" name="course" defaultValue={course_selected ? course_selected : "empty"}>
+                    {courses_data ? "" : <Skeleton className="mb-2" height={46} />}
+                    {courses_data ? <select className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-teal-700 mb-2" id="grid-course-select" name="course" defaultValue={course_selected ? course_selected : "empty"}>
                         <option value="empty" disabled="disabled">Seleccione</option>
                         {courses_data ? courses_data.map((course, index) => {
                             return <option key={index} category={course.cycle} value={course.id}>{course.name}</option>
                         }) : console.log("Loading Courses Data...")}
                     </select> : "" }
+                    <p className="text-gray-600 text-xs italic">Los cursos disponibles pueden variar según el ciclo de estudios seleccionado.</p>
                 </div>
             </div>
             <div className="flex flex-wrap -mx-3 mb-6">
@@ -316,7 +318,7 @@ function RegisterForm() {
                     <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-course-price">
                         Precio del Curso
                     </label>
-                    <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-teal-700 mb-3" id="grid-course-price" name="price" type="tel" disabled={true} placeholder="S/ 0.00" />
+                    <input className="appearance-none block w-full bg-gray-200 placeholder:font-normal font-bold text-teal-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-teal-700 mb-2" id="grid-course-price" name="price" type="tel" disabled={true} placeholder="S/ 0.00" />
                     <p className="text-gray-600 text-xs italic">El precio del curso se calcula automáticamente según el curso seleccionado.</p>
                 </div>
             </div>
