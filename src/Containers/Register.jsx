@@ -39,7 +39,7 @@ function Register() {
                     </svg>
                     <span className="sr-only">Info</span>
                     <div>
-                        <span className="font-bold">¡IMPORTANTE!</span> Este formulario se encuentra en mantenimiento. Todos los datos enviados por aquí no serán recibidos. Si desea inscribirse, use el formulario temporal dando click <a href="">aquí</a>.
+                        <span className="font-bold">¡IMPORTANTE!</span> Este formulario se encuentra en mantenimiento. Todos los datos enviados por aquí no serán recibidos. Si desea inscribirse, use el formulario temporal dando click <a href="https://forms.gle/EZh7TBknYWh2YRrJ7" rel="noreferrer" target="_blank">aquí</a>.
                     </div>
                 </div>
             </div>
