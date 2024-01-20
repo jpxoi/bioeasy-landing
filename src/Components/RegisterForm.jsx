@@ -6,9 +6,10 @@ function RegisterForm() {
     const [coursesMounted, setCoursesMounted] = useState(false);
     const cycle_selected =  new URLSearchParams(window.location.search).get("ciclo");
     const course_selected =  new URLSearchParams(window.location.search).get('course');
-    console.log(cycle_selected)
-    console.log(course_selected)
 
+    const courses_data_url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTcfAfqGVUgswCgCf-2fhQ0SevD4S7b6HBI0nDyUzdLjSDZxjcAv7aoBoer9FJANFYDuBj6Dr3CLN0-/pub?gid=1954633847&single=true&output=csv";
+    const courses_data = FetchCSVData(courses_data_url);
+    
     // Function to calculate max date for date of birth input field (16 years old)
     function calculateMaxDate() {
         const maxAge = 16; // Max age allowed to register
@@ -22,90 +23,35 @@ function RegisterForm() {
 
     const maxDate = calculateMaxDate();
 
-    useEffect(() => {
-        const input = document.getElementById('dropzone-file');
-        const preview = document.getElementById('preview');
-        const dropzone = document.getElementById('dropzone_zone_box');
-
-        const fileTypes = [
-            "image/apng",
-            "image/bmp",
-            "image/gif",
-            "image/jpeg",
-            "image/pjpeg",
-            "image/png",
-            "image/svg+xml",
-            "image/tiff",
-            "image/webp",
-            "image/x-icon",
-        ];
-
-        input.addEventListener("change", updateImageDisplay);
-
-        function updateImageDisplay() {
-            while (preview.firstChild) {
-                preview.removeChild(preview.firstChild);
-            }
-    
-            const curFiles = input.files;
-    
-            if (curFiles.length === 0) {
-                const para = document.createElement("p");
-                para.textContent = "No hay archivos seleccionados para cargar";
-                para.className = "text-sm mt-4 font-semibold text-gray-500";
-                preview.appendChild(para);
-
-            } else {
-                for (const file of curFiles) {
-                    const para = document.createElement("p");
-                    if (validFileType(file)) {
-                        dropzone.style.display = "none";
-                        para.textContent = file.name;
-                        para.className = "text-sm font-semibold mt-2 text-gray-500";
-    
-                        const image = document.createElement("img");
-                        image.className = "mt-2 max-h-[800px] object-cover rounded-lg";
-                        image.src = URL.createObjectURL(file);
-                        image.alt = image.title = file.name;
-
-                        const remove_button = document.createElement("button");
-                        remove_button.className = "flex items-center justify-center w-full md:w-40 h-10 text-sm font-semibold text-red-500 border border-red-200 rounded-lg hover:bg-red-100";
-                        remove_button.textContent = "Quitar Archivo";
-                        remove_button.addEventListener("click", removeFile);
-                        
-                        preview.appendChild(remove_button)
-                        preview.appendChild(image);
-                        preview.appendChild(para);
-                    } else {
-                        para.textContent = "No es un tipo de archivo válido. Actualice su selección.";
-                        para.className = "text-sm font-semibold text-red-500";
-                        preview.appendChild(para);
-                    } 
-                }
-            }
-        }
-      
-        function validFileType(file) {
-            return fileTypes.includes(file.type);
-        }
-
-        function removeFile() {
-            input.value = "";
-            updateImageDisplay();
-            dropzone.style.display = "block";
-        }
-    
-    }, []);
-
-    const courses_data_url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTcfAfqGVUgswCgCf-2fhQ0SevD4S7b6HBI0nDyUzdLjSDZxjcAv7aoBoer9FJANFYDuBj6Dr3CLN0-/pub?gid=1954633847&single=true&output=csv";
-    const courses_data = FetchCSVData(courses_data_url);
-
+    // Check if the courses data has been loaded
     useEffect(() => {
         if (courses_data) {
             setCoursesMounted(true);
         }
     }, [courses_data]);
 
+    // Order Identifier useEffect
+    useEffect(() => {
+        const identifier = document.getElementById("order_identifier")
+        const order_identifier = identifier.innerHTML;
+        console.log(order_identifier);
+        const form_order_identifier = document.getElementById("grid-order-identifier");
+
+        form_order_identifier.value = order_identifier;
+    }, [coursesMounted]);
+
+    // Add invalid class to input elements with invalid data when the form input is selected
+    useEffect(() => {
+        const inputs = document.querySelectorAll("input, select, textarea");
+        inputs.forEach(input => {
+            input.addEventListener("click", function() {
+                input.classList.add("invalid:bg-red-50");
+                input.classList.add("invalid:border-red-500");
+            })
+        })
+    }, []);
+
+    // Price Calculation and Course Select useEffect
     useEffect(() => {
         const course_select = document.getElementById('grid-course-select');
         const course_price = document.getElementById('grid-course-price');
@@ -139,19 +85,38 @@ function RegisterForm() {
             } else {
                 for (let i = 0; i < courses_data.length; i++) {
                     if (courses_data[i].id == course_select.value) {
-                        course_price.value = formatPrice(courses_data[i].price);
+                        course_price.value = formatPrice(courses_data[i].price, 'PEN');
                     }
                 }
             }
         }
 
-        function formatPrice(price) {
-            return "S/ " + price + ".00";
+        function formatPrice(price, currency) {
+            // Function to format the price of the course
+
+            let PeruvianSol = new Intl.NumberFormat('es-PE', {
+                style: 'currency',
+                currency: currency,
+            });
+
+            let USDollar = new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: 'USD',
+            });
+
+
+            if (currency === 'PEN') {
+                return PeruvianSol.format(price);
+            }
+
+            if (currency === 'USD') {
+                return USDollar.format(price);
+            }
         }
     }, [coursesMounted, courses_data, course_selected]);
 
+    // Payment Method Select useEffect
     useEffect(() => {
-        // Function to show the bank details when the bank transfer option is selected, and hide the other details with a transition
         const bank_transfer = document.getElementById('bank_transfer');
         const yape = document.getElementById('yape');
         const plin = document.getElementById('plin');
@@ -184,42 +149,101 @@ function RegisterForm() {
         }
     }, []);
 
+    // File upload preview and validation
     useEffect(() => {
-        const identifier = document.getElementById("order_identifier")
-        const order_identifier = identifier.innerHTML;
-        console.log(order_identifier);
-        const form_order_identifier = document.getElementById("grid-order-identifier");
+        const input = document.getElementById('dropzone-file');
+        const preview = document.getElementById('preview');
+        const dropzone = document.getElementById('dropzone_zone_box');
 
-        form_order_identifier.value = order_identifier;
-    }, [coursesMounted]);
+        const fileTypes = [
+            "image/apng",
+            "image/bmp",
+            "image/gif",
+            "image/jpeg",
+            "image/pjpeg",
+            "image/png",
+            "image/svg+xml",
+            "image/tiff",
+            "image/webp",
+            "image/x-icon",
+        ];
 
-    useEffect(() => {
-        // Function to add className "invalid:border-red-500" to the input elements with invalid data when the form input is selected"
-        const inputs = document.querySelectorAll("input, select, textarea");
-        inputs.forEach(input => {
-            input.addEventListener("click", function() {
-                input.classList.add("invalid:bg-red-50");
-                input.classList.add("invalid:border-red-500");
-            })
-        })
+        input.addEventListener("change", updateImageDisplay);
+
+        // Function to display the image preview and the file name
+        function updateImageDisplay() {
+            while (preview.firstChild) {
+                preview.removeChild(preview.firstChild);
+            }
+    
+            const curFiles = input.files;
+    
+            if (curFiles.length === 0) {
+                const para = document.createElement("p");
+                para.textContent = "No hay archivos seleccionados para cargar";
+                para.className = "text-sm mt-4 font-semibold text-gray-500";
+                preview.appendChild(para);
+
+            } else {
+                for (const file of curFiles) {
+                    const para = document.createElement("p");
+                    if (validFileType(file)) {
+                        dropzone.style.display = "none";
+                        para.textContent = file.name;
+                        para.className = "text-sm font-semibold mt-2 text-gray-500";
+    
+                        const image = document.createElement("img");
+                        image.className = "mt-2 max-h-[800px] drop-shadow-lg object-cover rounded-lg";
+                        image.src = URL.createObjectURL(file);
+                        image.alt = image.title = file.name;
+
+                        const remove_button = document.createElement("button");
+                        remove_button.className = "flex items-center justify-center w-full md:w-40 h-10 text-sm font-semibold text-red-500 border border-red-200 rounded-lg hover:bg-red-100";
+                        remove_button.textContent = "Quitar Archivo";
+                        remove_button.addEventListener("click", removeFile);
+                        
+                        preview.appendChild(remove_button)
+                        preview.appendChild(image);
+                        preview.appendChild(para);
+                    } else {
+                        para.textContent = "No es un tipo de archivo válido. Actualice su selección.";
+                        para.className = "text-sm font-semibold text-red-500";
+                        preview.appendChild(para);
+                    } 
+                }
+            }
+        }
+        
+        // Function to check if the file type is valid
+        function validFileType(file) {
+            return fileTypes.includes(file.type);
+        }
+
+        // Function to remove the file from the input field
+        function removeFile() {
+            input.value = "";
+            updateImageDisplay();
+            dropzone.style.display = "block";
+        }
+    
     }, []);
 
     return (
-        <form className="w-full max-w-xl mt-8" acceptCharset="UTF-8" action="https://www.formbackend.com/f/0ee0a3855d98800f" method="POST" encType="multipart/form-data">
+        <form className="w-full max-w-xl mt-8" acceptCharset="UTF-8" action="https://formcarry.com/s/bDFZ1VtyzB0" method="POST" encType="multipart/form-data">
             <input type="hidden" name="order_identifier" id="grid-order-identifier" />
             <div className="flex flex-wrap -mx-3 mb-6">
                 <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                     <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-first-name">
                         Nombres
                     </label>
-                    <input required className="appearance-auto block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-teal-700" id="grid-first-name" type="text" name="first_name" placeholder="Fabio Alonso" />
-                    <p className="text-gray-600 text-xs italic">Nombre completo</p>
+                    <input required className="appearance-auto block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-2 leading-tight focus:outline-none focus:bg-white focus:border-teal-700" id="grid-first-name" type="text" name="first_name" placeholder="Juan Jesus" autoComplete="given-name" />
+                    <p className="text-gray-600 text-xs italic">Tal y como aparece en tu documento de identidad</p>
                 </div>
                 <div className="w-full md:w-1/2 px-3">
                     <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-last-name">
                         Apellidos
                     </label>
-                    <input required className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-teal-700 mb-3" id="grid-last-name" type="text" name="last_name" placeholder="Rodriguez Anticona" />
+                    <input required className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-teal-700 mb-2" id="grid-last-name" type="text" name="last_name" placeholder="Perez Rodriguez" autoComplete="family-name" />
                     <p className="text-gray-600 text-xs italic">Apellido paterno y apellido materno</p>
                 </div>
             </div>
@@ -232,14 +256,14 @@ function RegisterForm() {
                         <option value="empty" disabled="disabled">Seleccione</option>
                         <option value="dni">DNI</option>
                         <option value="pasaporte">Pasaporte</option>
-                        <option value="carnet_extranjeria">Carnet Extranjería</option>
+                        <option value="carnet_extranjeria">Carnet de Extranjería</option>
                     </select>
                 </div>
                 <div className="w-full md:w-1/2 px-3">
                     <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-document-number">
                         Número de Documento de Identidad
                     </label>
-                    <input required className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-teal-700" id="grid-document-number" name="document_number" type="tel" placeholder="Numero de Documento" />
+                    <input required className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-teal-700" id="grid-document-number" name="document_number" type="tel" placeholder="Número de Documento" />
                 </div>
             </div>
             <div className="flex flex-wrap -mx-3 mb-6">
@@ -247,13 +271,13 @@ function RegisterForm() {
                     <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-date-of-birth">
                         Fecha de Nacimiento
                     </label>
-                    <input required className="appearance-none block w-full h-[46px] bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 pr-8 leading-tight focus:outline-none focus:bg-white focus:border-teal-700" max={maxDate} id="grid-date-of-birth" name="date_of_birth" type="date" placeholder="Fecha de Nacimiento"/>
+                    <input required className="appearance-none block w-full h-[46px] bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 pr-8 leading-tight focus:outline-none focus:bg-white focus:border-teal-700" max={maxDate} id="grid-date-of-birth" name="date_of_birth" type="date" placeholder="Fecha de Nacimiento" autoComplete="bday" />
                 </div>
                 <div className="w-full md:w-1/2 px-3">
                     <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-phone-number">
                         Número de Celular
                     </label>
-                    <div className="appearance-none flex w-full bg-gray-200 text-gray-700 border border-gray-200 rounded px-4 leading-tight focus:outline-none focus-within:bg-white focus-within:border-teal-700 pointer-events-none mb-3">
+                    <div className="appearance-none flex w-full bg-gray-200 text-gray-700 border border-gray-200 rounded px-4 leading-tight focus:outline-none focus-within:bg-white focus-within:border-teal-700 pointer-events-none mb-2">
                         <div className="flex items-center">
                             <svg
                                 width="18"
@@ -265,7 +289,7 @@ function RegisterForm() {
                             </svg> 
                         </div>
                         <div className="flex items-center ml-2">+51</div>   
-                        <input required className="peer appearance-none ml-2 bg-gray-200 text-gray-700 leading-tight py-3 focus:bg-white focus:outline-none focus:border-none pointer-events-auto w-full" id="grid-phone-number" name="phone_number" type="tel" placeholder="912 345 678" pattern="^\d{9}$" />
+                        <input required className="peer appearance-none ml-2 bg-gray-200 text-gray-700 leading-tight py-3 focus:bg-white focus:outline-none focus:border-none pointer-events-auto w-full" id="grid-phone-number" name="phone_number" type="tel" placeholder="912 345 678" pattern="^\d{9}$" autoComplete="tel"/>
                     </div>
                     <p className="text-gray-600 text-xs italic">El número debe contar con WhatsApp.</p>
                 </div>
@@ -275,7 +299,7 @@ function RegisterForm() {
                     <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-email">
                         Correo Electrónico
                     </label>
-                    <input required className="peer appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 pr-8 leading-tight focus:outline-none focus:bg-white focus:border-teal-700 mb-3" id="grid-email" type="email" name="email" placeholder="Correo electrónico" pattern=".+@.+edu\.pe" />
+                    <input required className="peer appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 pr-8 leading-tight focus:outline-none focus:bg-white focus:border-teal-700 mb-2" id="grid-email" type="email" name="email" placeholder="alumno@tuuniversidad.edu.pe" pattern=".+@.+edu\.pe" autoComplete="email" />
                     <p className="text-gray-600 text-xs italic">Usa tu correo institucional .edu.pe</p>
                 </div>
                 <div className="w-full md:w-1/2 px-3">
@@ -302,13 +326,14 @@ function RegisterForm() {
                     <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-course-select">
                         Curso Académico
                     </label>
-                    {courses_data ? "" : <Skeleton height={46} />}
-                    {courses_data ? <select className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-teal-700" id="grid-course-select" name="course" defaultValue={course_selected ? course_selected : "empty"}>
+                    {courses_data ? "" : <Skeleton className="mb-2" height={46} />}
+                    {courses_data ? <select className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-teal-700 mb-2" id="grid-course-select" name="course" defaultValue={course_selected ? course_selected : "empty"}>
                         <option value="empty" disabled="disabled">Seleccione</option>
                         {courses_data ? courses_data.map((course, index) => {
                             return <option key={index} category={course.cycle} value={course.id}>{course.name}</option>
                         }) : console.log("Loading Courses Data...")}
                     </select> : "" }
+                    <p className="text-gray-600 text-xs italic">Los cursos disponibles pueden variar según el ciclo de estudios seleccionado.</p>
                 </div>
             </div>
             <div className="flex flex-wrap -mx-3 mb-6">
@@ -316,7 +341,7 @@ function RegisterForm() {
                     <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-course-price">
                         Precio del Curso
                     </label>
-                    <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-teal-700 mb-3" id="grid-course-price" name="price" type="tel" disabled={true} placeholder="S/ 0.00" />
+                    <input className="appearance-none block w-full bg-gray-200 placeholder:font-normal font-bold text-teal-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-gray-200 focus:border-gray-200 mb-2" id="grid-course-price" name="price" type="text" readOnly placeholder="S/ 0.00" />
                     <p className="text-gray-600 text-xs italic">El precio del curso se calcula automáticamente según el curso seleccionado.</p>
                 </div>
             </div>
@@ -450,7 +475,7 @@ function RegisterForm() {
                 Considerando la vigencia del Decreto Legislativo Nº 1390 (Restricciones a la difusión de publicidad masiva) y, siendo <strong>Bioeasy Galenos</strong> respetuoso del ordenamiento jurídico vigente, le solicitamos nos brinde su consentimiento para mantenerlo informado acerca de nuestros diferentes servicios a través del envío de nuestra publicidad. La información brindada se utilizará exclusivamente para el envío de publicidad, por lo que se encontrará protegida por la Ley Nº 29733 - Ley de Protección de datos personales.
             </p>
 
-            <input className="bg-teal-700 hover:bg-teal-800 text-white font-bold py-3 px-6 rounded focus:outline-none focus:shadow-outline disabled:bg-red-600 disabled:hover:bg-red-800" type="submit" value="Enviar Ficha de Inscripción" />
+            <input className="bg-teal-700 hover:bg-teal-800 text-white font-bold py-3 px-6 rounded focus:outline-none focus:shadow-outline disabled:bg-red-600 disabled:hover:bg-red-800 cursor-pointer" type="submit" value="Enviar Ficha de Inscripción" />
         </form>
     )
 }
