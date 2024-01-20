@@ -4,6 +4,23 @@ import Skeleton from 'react-loading-skeleton'
 
 function RegisterForm() {
     const [coursesMounted, setCoursesMounted] = useState(false);
+    const cycle_selected =  new URLSearchParams(window.location.search).get("ciclo");
+    const course_selected =  new URLSearchParams(window.location.search).get('course');
+    console.log(cycle_selected)
+    console.log(course_selected)
+
+    // Function to calculate max date for date of birth input field (16 years old)
+    function calculateMaxDate() {
+        const maxAge = 16; // Max age allowed to register
+        const today = new Date();
+        const dd = String(today.getDate()).padStart(2, '0');
+        const mm = String(today.getMonth()+1).padStart(2, '0');
+        const yyyy = today.getFullYear() - maxAge;
+        const maxDate = yyyy + '-' + mm + '-' + dd;
+        return maxDate;
+    }
+
+    const maxDate = calculateMaxDate();
 
     useEffect(() => {
         const input = document.getElementById('dropzone-file');
@@ -94,6 +111,10 @@ function RegisterForm() {
         const course_price = document.getElementById('grid-course-price');
         const cycle_select = document.getElementById('grid-cycle-select');
 
+        if (course_selected && coursesMounted) {
+            calculatePrice();
+        }
+
         if (course_select) {
             course_select.addEventListener("change", calculatePrice);
         }
@@ -127,7 +148,7 @@ function RegisterForm() {
         function formatPrice(price) {
             return "S/ " + price + ".00";
         }
-    }, [coursesMounted, courses_data]);
+    }, [coursesMounted, courses_data, course_selected]);
 
     useEffect(() => {
         // Function to show the bank details when the bank transfer option is selected, and hide the other details with a transition
@@ -172,6 +193,17 @@ function RegisterForm() {
         form_order_identifier.value = order_identifier;
     }, [coursesMounted]);
 
+    useEffect(() => {
+        // Function to add className "invalid:border-red-500" to the input elements with invalid data when the form input is selected"
+        const inputs = document.querySelectorAll("input, select, textarea");
+        inputs.forEach(input => {
+            input.addEventListener("click", function() {
+                input.classList.add("invalid:bg-red-50");
+                input.classList.add("invalid:border-red-500");
+            })
+        })
+    }, []);
+
     return (
         <form className="w-full max-w-xl mt-8" acceptCharset="UTF-8" action="https://www.formbackend.com/f/0ee0a3855d98800f" method="POST" encType="multipart/form-data">
             <input type="hidden" name="order_identifier" id="grid-order-identifier" />
@@ -215,7 +247,7 @@ function RegisterForm() {
                     <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-date-of-birth">
                         Fecha de Nacimiento
                     </label>
-                    <input required className="appearance-none block w-full h-[46px] bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 pr-8 leading-tight focus:outline-none focus:bg-white focus:border-teal-700" id="grid-date-of-birth" name="date_of_birth" type="date" placeholder="Fecha de Nacimiento"/>
+                    <input required className="appearance-none block w-full h-[46px] bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 pr-8 leading-tight focus:outline-none focus:bg-white focus:border-teal-700" max={maxDate} id="grid-date-of-birth" name="date_of_birth" type="date" placeholder="Fecha de Nacimiento"/>
                 </div>
                 <div className="w-full md:w-1/2 px-3">
                     <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-phone-number">
@@ -233,7 +265,7 @@ function RegisterForm() {
                             </svg> 
                         </div>
                         <div className="flex items-center ml-2">+51</div>   
-                        <input required className="appearance-none ml-2 bg-gray-200 text-gray-700 leading-tight py-3 focus:bg-white focus:outline-none focus:border-none pointer-events-auto w-full" id="grid-phone-number" name="phone_number" type="tel" placeholder="912 345 678" pattern="^\d{9}$" />
+                        <input required className="peer appearance-none ml-2 bg-gray-200 text-gray-700 leading-tight py-3 focus:bg-white focus:outline-none focus:border-none pointer-events-auto w-full" id="grid-phone-number" name="phone_number" type="tel" placeholder="912 345 678" pattern="^\d{9}$" />
                     </div>
                     <p className="text-gray-600 text-xs italic">El número debe contar con WhatsApp.</p>
                 </div>
@@ -243,14 +275,14 @@ function RegisterForm() {
                     <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-email">
                         Correo Electrónico
                     </label>
-                    <input required className="peer appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 pr-8 leading-tight focus:outline-none focus:bg-white focus:border-teal-700 mb-3" id="grid-email" type="email" name="email" placeholder="Correo electrónico" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.edu\.pe$" />
+                    <input required className="peer appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 pr-8 leading-tight focus:outline-none focus:bg-white focus:border-teal-700 mb-3" id="grid-email" type="email" name="email" placeholder="Correo electrónico" pattern=".+@.+edu\.pe" />
                     <p className="text-gray-600 text-xs italic">Usa tu correo institucional .edu.pe</p>
                 </div>
                 <div className="w-full md:w-1/2 px-3">
                     <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-cycle-select">
                         Ciclo de Estudios
                     </label>
-                    <select className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-teal-700" id="grid-cycle-select" name="cycle" defaultValue="empty">
+                    <select className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-teal-700" id="grid-cycle-select" name="cycle" defaultValue={cycle_selected ? cycle_selected : "empty"}>
                         <option value="empty" disabled="disabled">Seleccione</option>
                         <option value="1">Ciclo I</option>
                         <option value="2">Ciclo II</option>
@@ -271,7 +303,7 @@ function RegisterForm() {
                         Curso Académico
                     </label>
                     {courses_data ? "" : <Skeleton height={46} />}
-                    {courses_data ? <select className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-teal-700" id="grid-course-select" name="course" defaultValue="empty">
+                    {courses_data ? <select className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-teal-700" id="grid-course-select" name="course" defaultValue={course_selected ? course_selected : "empty"}>
                         <option value="empty" disabled="disabled">Seleccione</option>
                         {courses_data ? courses_data.map((course, index) => {
                             return <option key={index} category={course.cycle} value={course.id}>{course.name}</option>
@@ -414,7 +446,11 @@ function RegisterForm() {
                 </div>
             </div>
 
-            <input className="bg-teal-700 hover:bg-teal-800 text-white font-bold py-3 px-6 rounded focus:outline-none focus:shadow-outline disabled:bg-red-600 disabled:hover:bg-red-800" type="submit" value="Enviar"/>
+            <p className="mb-8 text-xs font-light text-justify text-gray-500">
+                Considerando la vigencia del Decreto Legislativo Nº 1390 (Restricciones a la difusión de publicidad masiva) y, siendo <strong>Bioeasy Galenos</strong> respetuoso del ordenamiento jurídico vigente, le solicitamos nos brinde su consentimiento para mantenerlo informado acerca de nuestros diferentes servicios a través del envío de nuestra publicidad. La información brindada se utilizará exclusivamente para el envío de publicidad, por lo que se encontrará protegida por la Ley Nº 29733 - Ley de Protección de datos personales.
+            </p>
+
+            <input className="bg-teal-700 hover:bg-teal-800 text-white font-bold py-3 px-6 rounded focus:outline-none focus:shadow-outline disabled:bg-red-600 disabled:hover:bg-red-800" type="submit" value="Enviar Ficha de Inscripción" />
         </form>
     )
 }
