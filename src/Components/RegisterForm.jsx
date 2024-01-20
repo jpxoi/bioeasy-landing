@@ -85,15 +85,33 @@ function RegisterForm() {
             } else {
                 for (let i = 0; i < courses_data.length; i++) {
                     if (courses_data[i].id == course_select.value) {
-                        course_price.value = formatPrice(courses_data[i].price);
+                        course_price.value = formatPrice(courses_data[i].price, 'PEN');
                     }
                 }
             }
         }
 
-        function formatPrice(price) {
+        function formatPrice(price, currency) {
             // Function to format the price of the course
-            return "S/ " + price + ".00";
+
+            let PeruvianSol = new Intl.NumberFormat('es-PE', {
+                style: 'currency',
+                currency: currency,
+            });
+
+            let USDollar = new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: 'USD',
+            });
+
+
+            if (currency === 'PEN') {
+                return PeruvianSol.format(price);
+            }
+
+            if (currency === 'USD') {
+                return USDollar.format(price);
+            }
         }
     }, [coursesMounted, courses_data, course_selected]);
 
@@ -175,7 +193,7 @@ function RegisterForm() {
                         para.className = "text-sm font-semibold mt-2 text-gray-500";
     
                         const image = document.createElement("img");
-                        image.className = "mt-2 max-h-[800px] object-cover rounded-lg";
+                        image.className = "mt-2 max-h-[800px] drop-shadow-lg object-cover rounded-lg";
                         image.src = URL.createObjectURL(file);
                         image.alt = image.title = file.name;
 
@@ -323,7 +341,7 @@ function RegisterForm() {
                     <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-course-price">
                         Precio del Curso
                     </label>
-                    <input className="appearance-none block w-full bg-gray-200 placeholder:font-normal font-bold text-teal-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-teal-700 mb-2" id="grid-course-price" name="price" type="tel" disabled={true} placeholder="S/ 0.00" />
+                    <input className="appearance-none block w-full bg-gray-200 placeholder:font-normal font-bold text-teal-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-gray-200 focus:border-gray-200 mb-2" id="grid-course-price" name="price" type="text" readOnly placeholder="S/ 0.00" />
                     <p className="text-gray-600 text-xs italic">El precio del curso se calcula automáticamente según el curso seleccionado.</p>
                 </div>
             </div>
