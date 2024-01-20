@@ -172,6 +172,17 @@ function RegisterForm() {
         form_order_identifier.value = order_identifier;
     }, [coursesMounted]);
 
+    useEffect(() => {
+        // Function to add className "invalid:border-red-500" to the input elements with invalid data when the form input is selected"
+        const inputs = document.querySelectorAll("input, select, textarea");
+        inputs.forEach(input => {
+            input.addEventListener("click", function() {
+                input.classList.add("invalid:bg-red-50");
+                input.classList.add("invalid:border-red-500");
+            })
+        })
+    }, []);
+
     return (
         <form className="w-full max-w-xl mt-8" acceptCharset="UTF-8" action="https://www.formbackend.com/f/0ee0a3855d98800f" method="POST" encType="multipart/form-data">
             <input type="hidden" name="order_identifier" id="grid-order-identifier" />
@@ -233,7 +244,7 @@ function RegisterForm() {
                             </svg> 
                         </div>
                         <div className="flex items-center ml-2">+51</div>   
-                        <input required className="appearance-none ml-2 bg-gray-200 text-gray-700 leading-tight py-3 focus:bg-white focus:outline-none focus:border-none pointer-events-auto w-full" id="grid-phone-number" name="phone_number" type="tel" placeholder="912 345 678" pattern="^\d{9}$" />
+                        <input required className="peer appearance-none ml-2 bg-gray-200 text-gray-700 leading-tight py-3 focus:bg-white focus:outline-none focus:border-none pointer-events-auto w-full" id="grid-phone-number" name="phone_number" type="tel" placeholder="912 345 678" pattern="^\d{9}$" />
                     </div>
                     <p className="text-gray-600 text-xs italic">El número debe contar con WhatsApp.</p>
                 </div>
@@ -414,7 +425,11 @@ function RegisterForm() {
                 </div>
             </div>
 
-            <input className="bg-teal-700 hover:bg-teal-800 text-white font-bold py-3 px-6 rounded focus:outline-none focus:shadow-outline disabled:bg-red-600 disabled:hover:bg-red-800" type="submit" value="Enviar"/>
+            <p className="mb-8 text-xs font-light text-justify text-gray-500">
+                Considerando la vigencia del Decreto Legislativo Nº 1390 (Restricciones a la difusión de publicidad masiva) y, siendo <strong>Bioeasy Galenos</strong> respetuoso del ordenamiento jurídico vigente, le solicitamos nos brinde su consentimiento para mantenerlo informado acerca de nuestros diferentes servicios a través del envío de nuestra publicidad. La información brindada se utilizará exclusivamente para el envío de publicidad, por lo que se encontrará protegida por la Ley Nº 29733 - Ley de Protección de datos personales.
+            </p>
+
+            <input className="bg-teal-700 hover:bg-teal-800 text-white font-bold py-3 px-6 rounded focus:outline-none focus:shadow-outline disabled:bg-red-600 disabled:hover:bg-red-800" type="submit" value="Enviar Inscripción" />
         </form>
     )
 }
