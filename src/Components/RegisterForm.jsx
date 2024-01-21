@@ -371,7 +371,7 @@ function RegisterForm() {
                                         <div className="flex items-center justify-center max-w-8 mx-1">
                                             <img src='/img/payment/bcp-icon.svg' />
                                         </div>
-                                        <div id="separator" className="w-px h-8 bg-gray-300 mx-1"></div>
+                                        <div id="separator" className="w-px bg-gray-300 mx-1"></div>
                                         <div className="flex flex-col justify-center mx-1">
                                             <p className="text-xs text-gray-500">Número de Cuenta: 570-07421883-0-05</p>
                                             <p className="text-xs text-gray-500">CCI: 002-5701074218830-0-501</p>
@@ -384,7 +384,7 @@ function RegisterForm() {
                                         <div className="flex items-center justify-center max-w-8 mx-1">
                                             <img src='/img/payment/bbva-icon.svg' />
                                         </div>
-                                        <div id="separator" className="w-px h-8 bg-gray-300 mx-1"></div>
+                                        <div id="separator" className="w-px bg-gray-300 mx-1"></div>
                                         <div className="flex flex-col justify-center mx-1">
                                             <p className="text-xs text-gray-500">Número de Cuenta: 0011-0918-0200306237</p>
                                             <p className="text-xs text-gray-500">CCI: 011-918-00020030623705</p>
