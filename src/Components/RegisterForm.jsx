@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import FetchCSVData from '../Handlers/FetchCSVData';
-import Skeleton from 'react-loading-skeleton'
+import Skeleton from 'react-loading-skeleton';
 
 function RegisterForm() {
     const [coursesMounted, setCoursesMounted] = useState(false);
@@ -63,32 +63,58 @@ function RegisterForm() {
 
         if (course_select) {
             course_select.addEventListener("change", calculatePrice);
+            course_select.addEventListener("change", hideShowPayment);
         }
 
-        if (cycle_select) {
-            cycle_select.addEventListener("change", function() {
-                const categoryId = cycle_select.value;
+        if (cycle_select && course_select) {
+            if (cycle_selected) {
+                filterCourses();
+                course_select.value = course_selected;
+                calculatePrice();
+            }
+            cycle_select.addEventListener("change", filterCourses);
+        }
 
-                for (let i = 0; i < courses_data.length; i++) {
-                    if (courses_data[i].cycle == categoryId) {
-                        course_select.querySelector(`option[value="${courses_data[i].id}"]`).style.display = "block";
-                    } else {
-                        course_select.querySelector(`option[value="${courses_data[i].id}"]`).style.display = "none";
-                    }
+        function filterCourses() {
+            const categoryId = cycle_select.value;
+
+            for (let i = 0; i < courses_data.length; i++) {
+                if (courses_data[i].cycle == categoryId && courses_data[i].available == 'TRUE') {
+                    course_select.querySelector(`option[value="${courses_data[i].id}"]`).disabled = false;
+                    course_select.querySelector(`option[value="${courses_data[i].id}"]`).classList.remove("hidden");
+                } else if (courses_data[i].cycle != categoryId && courses_data[i].available == 'TRUE') {
+                    course_select.querySelector(`option[value="${courses_data[i].id}"]`).disabled = true;
+                    course_select.querySelector(`option[value="${courses_data[i].id}"]`).classList.add("hidden");
                 }
-            })
+            }
+
+            course_select.value = "empty";
+            resetPrice();
         }
 
         function calculatePrice() {
             if (course_select.value === "empty") {
-                course_price.value = "S/ 0.00";
+                course_price.value = "";
             } else {
                 for (let i = 0; i < courses_data.length; i++) {
                     if (courses_data[i].id == course_select.value) {
-                        course_price.value = formatPrice(courses_data[i].price, 'PEN');
+                        if (courses_data[i].available == 'FALSE') {
+                            course_price.value = "CURSO NO DISPONIBLE"
+                        } else if (courses_data[i].price == '0' || courses_data[i].price == 'GRATUITO' || courses_data[i].price == 'GRATIS') {
+                            course_price.value = "GRATUITO"
+                            
+                        } else if (courses_data[i].price == 'CONSULTAR') {
+                            course_price.value = "CONSULTAR CON UN ASESOR"
+                        } else {
+                            course_price.value = formatPrice(courses_data[i].price, 'PEN');
+                        }
                     }
                 }
             }
+        }
+
+        function resetPrice() {
+            course_price.value = "";
         }
 
         function formatPrice(price, currency) {
@@ -113,7 +139,19 @@ function RegisterForm() {
                 return USDollar.format(price);
             }
         }
-    }, [coursesMounted, courses_data, course_selected]);
+
+        function hideShowPayment() {
+            if (course_price.value === "GRATUITO" || course_price.value === "CURSO NO DISPONIBLE" || course_price.value === "CONSULTAR CON UN ASESOR") {
+                document.getElementById('payment-method-section').style.display = "none";
+                document.getElementById('payment-evidence-section').style.display = "none";
+            } else {
+                document.getElementById('payment-method-section').style.display = "block";
+                document.getElementById('payment-evidence-section').style.display = "block";
+            }
+        }
+
+
+    }, [coursesMounted, courses_data, course_selected, cycle_selected]);
 
     // Payment Method Select useEffect
     useEffect(() => {
@@ -330,7 +368,9 @@ function RegisterForm() {
                     {courses_data ? <select className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-teal-700 mb-2" id="grid-course-select" name="course" defaultValue={course_selected ? course_selected : "empty"}>
                         <option value="empty" disabled="disabled">Seleccione</option>
                         {courses_data ? courses_data.map((course, index) => {
-                            return <option key={index} category={course.cycle} value={course.id}>{course.name}</option>
+                            if (course.available == "TRUE") {
+                                return <option key={index} category={course.cycle} value={course.id}>{course.name}</option>
+                            }
                         }) : console.log("Loading Courses Data...")}
                     </select> : "" }
                     <p className="text-gray-600 text-xs italic">Los cursos disponibles pueden variar según el ciclo de estudios seleccionado.</p>
@@ -345,7 +385,7 @@ function RegisterForm() {
                     <p className="text-gray-600 text-xs italic">El precio del curso se calcula automáticamente según el curso seleccionado.</p>
                 </div>
             </div>
-            <div className="flex flex-wrap -mx-3 mb-6">
+            <div id="payment-method-section" className="flex flex-wrap -mx-3 mb-6">
                 <div className="w-full px-3">
                     <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="payment-method">
                         Método de Pago
@@ -448,7 +488,7 @@ function RegisterForm() {
                     </div>
                 </div>
             </div>
-            <div className="flex flex-wrap -mx-3 mb-6">
+            <div id="payment-evidence-section" className="flex flex-wrap -mx-3 mb-6">
                 <div className="w-full px-3">
                     <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="dropzone-file">
                         Evidencia de Pago
@@ -467,6 +507,20 @@ function RegisterForm() {
                     </div> 
                     <div className="flex flex-col items-center md:items-start justify-center w-full border-dashed rounded-lg" id="preview">
                         <p className="text-sm mt-4 font-semibold text-gray-500">No hay archivos seleccionados para cargar</p>
+                    </div>
+                </div>
+            </div>
+
+            <div className="flex flex-wrap -mx-3 mb-6">
+                <div className="w-full px-3">
+                    <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-terms-and-conditions">
+                        Términos y Condiciones
+                    </label>
+                    <div id="checkbox-container" className="flex items-center">
+                        <input required className="peer appearance-none inline-block min-w-[1rem] w-4 h-4 bg-gray-200 border border-gray-200 rounded leading-tight focus:outline-none focus:bg-white focus:border-teal-700 mr-2 checked:bg-teal-700 checked:focus:bg-teal-600" id="grid-terms-and-conditions" name="terms_and_conditions" type="checkbox" />
+                        <label className="text-xs text-gray-500" htmlFor="grid-terms-and-conditions">
+                            Acepto los <a className="text-teal-700 hover:text-teal-800" href="/terminos-y-condiciones" target="_blank">Términos y Condiciones</a> de Bioeasy Galenos.
+                        </label>
                     </div>
                 </div>
             </div>

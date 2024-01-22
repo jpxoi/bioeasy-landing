@@ -36,3 +36,24 @@ html {
       background-attachment: scroll;
   }
 }
+
+/* Custom checkbox */
+
+input#grid-terms-and-conditions::after {
+  content: "";
+  position: relative;
+  display: none;
+}
+
+#checkbox-container input#grid-terms-and-conditions::after {
+  left: 0.1375rem;
+  top: 0.1375rem;
+  background-image: url('https://img.icons8.com/external-tal-revivo-bold-tal-revivo/96/FFFFFF/external-checkmark-sign-with-outline-effect-isolated-on-white-background-votes-bold-tal-revivo.png');
+  background-size: 0.6rem 0.6rem;
+  width: 0.6rem;
+  height: 0.6rem;
+}
+
+input#grid-terms-and-conditions:checked::after {
+  display: block;
+}
