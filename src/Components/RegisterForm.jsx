@@ -42,12 +42,16 @@ function RegisterForm() {
 
     // Add invalid class to input elements with invalid data when the form input is selected
     useEffect(() => {
+        const phoneNumberContainer = document.getElementById("phone-number-container");
         const inputs = document.querySelectorAll("input, select, textarea");
         inputs.forEach(input => {
             input.addEventListener("click", function() {
-                input.classList.add("invalid:bg-red-50");
                 input.classList.add("invalid:border-red-500");
             })
+        })
+
+        phoneNumberContainer.addEventListener("click", function() {
+            phoneNumberContainer.classList.add("has-[:invalid]:border-red-500");
         })
     }, []);
 
@@ -88,12 +92,12 @@ function RegisterForm() {
                 }
             }
 
-            course_select.value = "empty";
+            course_select.value = "";
             resetPrice();
         }
 
         function calculatePrice() {
-            if (course_select.value === "empty") {
+            if (course_select.value === "") {
                 course_price.value = "";
             } else {
                 for (let i = 0; i < courses_data.length; i++) {
@@ -274,14 +278,14 @@ function RegisterForm() {
                     <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-first-name">
                         Nombres
                     </label>
-                    <input required className="appearance-auto block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-2 leading-tight focus:outline-none focus:bg-white focus:border-teal-700" id="grid-first-name" type="text" name="first_name" placeholder="Juan Jesus" autoComplete="given-name" />
+                    <input required className="appearance-auto block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-2 leading-tight focus:outline-none focus:bg-white focus:border-teal-700 focus-visible:invalid:bg-red-50 focus-visible:invalid:border-red-500 focus-visible:valid:bg-green-50 focus-visible:valid:border-green-500" id="grid-first-name" type="text" name="first_name" placeholder="Juan Jesus" autoComplete="given-name" />
                     <p className="text-gray-600 text-xs italic">Tal y como aparece en tu documento de identidad</p>
                 </div>
                 <div className="w-full md:w-1/2 px-3">
                     <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-last-name">
                         Apellidos
                     </label>
-                    <input required className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-teal-700 mb-2" id="grid-last-name" type="text" name="last_name" placeholder="Perez Rodriguez" autoComplete="family-name" />
+                    <input required className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-teal-700 mb-2 focus-visible:invalid:bg-red-50 focus-visible:invalid:border-red-500 focus-visible:valid:bg-green-50 focus-visible:valid:border-green-500" id="grid-last-name" type="text" name="last_name" placeholder="Perez Rodriguez" autoComplete="family-name" />
                     <p className="text-gray-600 text-xs italic">Apellido paterno y apellido materno</p>
                 </div>
             </div>
@@ -290,8 +294,8 @@ function RegisterForm() {
                     <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-document-type">
                         Tipo de Documento de Identidad
                     </label>
-                    <select className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-teal-700" id="grid-document-type" name="document_type" defaultValue="empty">
-                        <option value="empty" disabled="disabled">Seleccione</option>
+                    <select className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-teal-700 focus-visible:invalid:bg-red-50 focus-visible:invalid:border-red-500 focus-visible:valid:bg-green-50 focus-visible:valid:border-green-500" required id="grid-document-type" name="document_type" defaultValue="">
+                        <option value="" disabled="disabled">Seleccione</option>
                         <option value="dni">DNI</option>
                         <option value="pasaporte">Pasaporte</option>
                         <option value="carnet_extranjeria">Carnet de Extranjería</option>
@@ -301,7 +305,7 @@ function RegisterForm() {
                     <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-document-number">
                         Número de Documento de Identidad
                     </label>
-                    <input required className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-teal-700" id="grid-document-number" name="document_number" type="tel" placeholder="Número de Documento" />
+                    <input required className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-teal-700 focus-visible:invalid:bg-red-50 focus-visible:invalid:border-red-500 focus-visible:valid:bg-green-50 focus-visible:valid:border-green-500" id="grid-document-number" name="document_number" type="tel" minLength="8" placeholder="Número de Documento" />
                 </div>
             </div>
             <div className="flex flex-wrap -mx-3 mb-6">
@@ -309,13 +313,13 @@ function RegisterForm() {
                     <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-date-of-birth">
                         Fecha de Nacimiento
                     </label>
-                    <input required className="appearance-none block w-full h-[46px] bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 pr-8 leading-tight focus:outline-none focus:bg-white focus:border-teal-700" max={maxDate} id="grid-date-of-birth" name="date_of_birth" type="date" placeholder="Fecha de Nacimiento" autoComplete="bday" />
+                    <input required className="appearance-none block w-full h-[46px] bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 pr-8 leading-tight focus:outline-none focus:bg-white focus:border-teal-700 focus-visible:invalid:bg-red-50 focus-visible:invalid:border-red-500 focus-visible:valid:bg-green-50 focus-visible:valid:border-green-500" max={maxDate} id="grid-date-of-birth" name="date_of_birth" type="date" placeholder="Fecha de Nacimiento" autoComplete="bday" />
                 </div>
                 <div className="w-full md:w-1/2 px-3">
                     <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-phone-number">
                         Número de Celular
                     </label>
-                    <div className="appearance-none flex w-full bg-gray-200 text-gray-700 border border-gray-200 rounded px-4 leading-tight focus:outline-none focus-within:bg-white focus-within:border-teal-700 pointer-events-none mb-2">
+                    <div id="phone-number-container" className="appearance-none flex w-full bg-gray-200 text-gray-700 border border-gray-200 rounded px-4 leading-tight focus:outline-none focus-within:bg-white focus-within:border-teal-700 pointer-events-none mb-2 has-[:focus:invalid]:bg-red-50 has-[:focus:invalid]:border-red-500 has-[:focus:valid]:bg-green-50 has-[:focus:valid]:border-green-500">
                         <div className="flex items-center">
                             <svg
                                 width="18"
@@ -327,7 +331,7 @@ function RegisterForm() {
                             </svg> 
                         </div>
                         <div className="flex items-center ml-2">+51</div>   
-                        <input required className="peer appearance-none ml-2 bg-gray-200 text-gray-700 leading-tight py-3 focus:bg-white focus:outline-none focus:border-none pointer-events-auto w-full" id="grid-phone-number" name="phone_number" type="tel" placeholder="912 345 678" pattern="^\d{9}$" autoComplete="tel"/>
+                        <input required className="peer appearance-none ml-2 bg-gray-200 text-gray-700 leading-tight py-3 focus:bg-white focus:outline-none focus:border-none pointer-events-auto w-full focus-visible:invalid:bg-red-50 focus-visible:valid:bg-green-50" id="grid-phone-number" name="phone_number" type="tel" placeholder="912 345 678" pattern="^\d{9}$" autoComplete="tel"/>
                     </div>
                     <p className="text-gray-600 text-xs italic">El número debe contar con WhatsApp.</p>
                 </div>
@@ -337,15 +341,15 @@ function RegisterForm() {
                     <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-email">
                         Correo Electrónico
                     </label>
-                    <input required className="peer appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 pr-8 leading-tight focus:outline-none focus:bg-white focus:border-teal-700 mb-2" id="grid-email" type="email" name="email" placeholder="alumno@tuuniversidad.edu.pe" pattern=".+@.+edu\.pe" autoComplete="email" />
-                    <p className="text-gray-600 text-xs italic">Usa tu correo institucional .edu.pe</p>
+                    <input required className="peer appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 pr-8 leading-tight focus:outline-none focus:bg-white focus:border-teal-700 mb-2 focus-visible:invalid:bg-red-50 focus-visible:invalid:border-red-500 focus-visible:valid:bg-green-50 focus-visible:valid:border-green-500" id="grid-email" type="email" name="email" placeholder="alumno@tuuniversidad.edu.pe" pattern=".+@.+edu\.pe" autoComplete="email" />
+                    <p className="text-gray-600 text-xs italic peer-focus:peer-invalid:text-red-500 peer-valid:text-green-600">Usa tu correo institucional .edu.pe</p>
                 </div>
                 <div className="w-full md:w-1/2 px-3">
                     <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-cycle-select">
                         Ciclo de Estudios
                     </label>
-                    <select className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-teal-700" id="grid-cycle-select" name="cycle" defaultValue={cycle_selected ? cycle_selected : "empty"}>
-                        <option value="empty" disabled="disabled">Seleccione</option>
+                    <select className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-teal-700 focus-visible:invalid:bg-red-50 focus-visible:invalid:border-red-500 focus-visible:valid:bg-green-50 focus-visible:valid:border-green-500" required id="grid-cycle-select" name="cycle" defaultValue={cycle_selected ? cycle_selected : ""}>
+                        <option value="" disabled="disabled">Seleccione</option>
                         <option value="1">Ciclo I</option>
                         <option value="2">Ciclo II</option>
                         <option value="3">Ciclo III</option>
@@ -365,8 +369,8 @@ function RegisterForm() {
                         Curso Académico
                     </label>
                     {courses_data ? "" : <Skeleton className="mb-2" height={46} />}
-                    {courses_data ? <select className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-teal-700 mb-2" id="grid-course-select" name="course" defaultValue={course_selected ? course_selected : "empty"}>
-                        <option value="empty" disabled="disabled">Seleccione</option>
+                    {courses_data ? <select className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-teal-700 mb-2 focus-visible:invalid:bg-red-50 focus-visible:invalid:border-red-500 focus-visible:valid:bg-green-50 focus-visible:valid:border-green-500" required id="grid-course-select" name="course" defaultValue={course_selected ? course_selected : ""}>
+                        <option value="" disabled="disabled">Seleccione</option>
                         {courses_data ? courses_data.map((course, index) => {
                             if (course.available == "TRUE") {
                                 return <option key={index} category={course.cycle} value={course.id}>{course.name}</option>
