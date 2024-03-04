@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import logo from '.././assets/img/logo.webp'
 import logo_sm from '.././assets/img/logo_sm.webp'
 import NavMenu from '../Components/NavMenu';
@@ -34,11 +35,11 @@ function Header() {
                 <p className='bg-white'> {mobileMenuOpen}</p>
                 <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
                     <div>
-                        <a href="/#" className="flex items-center space-x-3 rtl:space-x-reverse">
+                        <Link to ="/" className="flex items-center space-x-3 rtl:space-x-reverse">
                             <span className="sr-only">Bioeasy Galenos</span>
                             <img className="hidden lg:block h-8 w-auto" src={logo} alt="Bioeasy Galenos Logo" width="1299" height="262" />
                             <img className='lg:hidden h-8 w-auto' src={logo_sm} alt='Bioeasy Galenos Icon' width="262" height="262"/>
-                        </a>
+                        </Link>
                     </div>
                     <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
                         <a href="https://bgmedicina.com/campusvirtual" target="_blank" rel="noreferrer" id="aulaVirtualButton" className="text-white bg-teal-700 hover:bg-teal-800 focus:ring-4 focus:outline-none focus:ring-teal-300 font-medium rounded-lg text-sm px-4 py-2 text-center cursor-pointer transition-all">
