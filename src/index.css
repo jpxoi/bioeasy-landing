@@ -9,19 +9,24 @@ body {
 }
 
 html {
-  scroll-behavior: smooth
+  scroll-behavior: smooth;
 }
 
 .mixitup-control-active {
-  @apply text-teal-700 hover:text-white border border-teal-600 bg-white hover:bg-teal-700 focus:ring-4 focus:outline-none focus:ring-transparent rounded-full text-base font-medium px-5 py-2.5 text-center me-3 mb-3
+  @apply text-teal-700 hover:text-white border border-teal-600 bg-white hover:bg-teal-700 focus:ring-4 focus:outline-none focus:ring-transparent rounded-full text-base font-medium px-5 py-2.5 text-center me-3 mb-3;
 }
 
 .active_link {
-  @apply text-white bg-teal-700 rounded md:bg-transparent md:text-teal-700 md:p-0
+  @apply text-white bg-teal-700 rounded md:bg-transparent md:text-teal-700 md:p-0;
 }
 
 .section__heading {
-  background-image: linear-gradient(180deg, rgba(0,207,208,0.79) 0%, rgba(0,76,92,0.8) 100%), url(https://bgmedicina.com/img/web_bg.webp);
+  background-image: linear-gradient(
+      180deg,
+      rgba(0, 207, 208, 0.79) 0%,
+      rgba(0, 76, 92, 0.8) 100%
+    ),
+    url(https://bgmedicina.com/img/web_bg.webp);
   background-blend-mode: multiply;
   background-size: cover;
 
@@ -33,7 +38,7 @@ html {
 
 @media screen and (max-width: 992px) {
   .section__heading {
-      background-attachment: scroll;
+    background-attachment: scroll;
   }
 }
 
@@ -48,7 +53,7 @@ input#grid-terms-and-conditions::after {
 #checkbox-container input#grid-terms-and-conditions::after {
   left: 0.1375rem;
   top: 0.1375rem;
-  background-image: url('https://img.icons8.com/external-tal-revivo-bold-tal-revivo/96/FFFFFF/external-checkmark-sign-with-outline-effect-isolated-on-white-background-votes-bold-tal-revivo.png');
+  background-image: url("https://img.icons8.com/external-tal-revivo-bold-tal-revivo/96/FFFFFF/external-checkmark-sign-with-outline-effect-isolated-on-white-background-votes-bold-tal-revivo.png");
   background-size: 0.6rem 0.6rem;
   width: 0.6rem;
   height: 0.6rem;
@@ -56,4 +61,18 @@ input#grid-terms-and-conditions::after {
 
 input#grid-terms-and-conditions:checked::after {
   display: block;
+}
+
+@media only screen and (min-width: 650px) {
+  #browser-check {
+    width: 650px;
+    height: 330px;
+    border: 0;
+  }
+}
+@media only screen and (max-width: 649px) {
+  #browser-check {
+    height: 100dvh;
+    width: 95vw;
+  }
 }
