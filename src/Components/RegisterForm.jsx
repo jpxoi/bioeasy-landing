@@ -451,7 +451,7 @@ function RegisterForm() {
                                 <div className="w-full">
                                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-4">
                                         <div id="yape-qr" className="">
-                                            <img className="mb-2 rounded-lg w-[300px] mt-1" src='https://chart.googleapis.com/chart?cht=qr&chs=300x300&chl=0002010102113944tCbPTJlWuwEOr5wNf9IVBggu45tPaDbjLT50DtkjUSM=5204561153036045802PE5906YAPERO6004Lima63045B3F' />
+                                            <img className="mb-2 rounded-lg w-[300px] mt-1" src='https://quickchart.io/qr?text=0002010102113944tCbPTJlWuwEOr5wNf9IVBggu45tPaDbjLT50DtkjUSM=5204561153036045802PE5906YAPERO6004Lima63045B3F&size=300' />
                                         </div>
                                         <div id="yape-data" className="flex flex-col align-center px-2 rounded-md mt-1">
                                             <p className="text-sm font-semibold text-gray-600 mb-1">¿Cómo pagar via Yape?</p>
@@ -477,7 +477,7 @@ function RegisterForm() {
                                 <div className="w-full">
                                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-4">
                                         <div id="plin-qr" className="">
-                                            <img className="mb-2 rounded-lg w-[300px] mt-1" src='https://chart.googleapis.com/chart?cht=qr&chs=300x300&chl=0002010102113944tCbPTJlWuwEOr5wNf9IVBggu45tPaDbjLT50DtkjUSM=5204561153036045802PE5906YAPERO6004Lima63045B3F' />
+                                            <img className="mb-2 rounded-lg w-[300px] mt-1" src='https://quickchart.io/qr?text=0002015802PE2656003253e98febe51047ffbb029d72237132cb0116Plin%20Network%20P2P0102115204482953036045912P2P%20Transfer6004Lima63048DB9&size=300' />
                                         </div>
                                         <div id="plin-data" className="flex flex-col align-center px-2 rounded-md mt-1">
                                             <p className="text-sm font-semibold text-gray-600 mb-1">¿Cómo pagar via Plin?</p>
