@@ -36,7 +36,7 @@ html {
   background-repeat: no-repeat;
 }
 
-@media screen and (max-width: 992px) {
+@media screen and (max-width: 1366px) {
   .section__heading {
     background-attachment: scroll;
   }
