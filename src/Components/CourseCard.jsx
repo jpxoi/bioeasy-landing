@@ -3,13 +3,18 @@ import 'react-loading-skeleton/dist/skeleton.css'
 
 function CourseCard(course) {
     const { id, title, description, image, tag, category, link } = course.course
+    const imageavif = image ? image.replace("webp", "avif") : null
 
     const class_name = `course__card mix ${category} max-w-sm bg-white border border-gray-200 rounded-lg shadow`
     
     return (
         <div className={class_name} id={id}>
             <div className="course__card__image">
-                <img className="rounded-t-lg" loading="lazy" src={image || fallback} alt={title} width="800" height="1000"/>
+                <picture className="rounded-t-lg">
+                    <source srcSet={ imageavif ? imageavif : fallback } type="image/avif" />
+                    <source srcSet={ image ? image : fallback } type="image/webp" />
+                    <img className="rounded-t-lg" loading="lazy" src={ image ? image : fallback } alt={ title } width="800" height="1000"/>
+                </picture>
             </div>
             <div className="text-center course__card__content p-5">
                 <span className="items-center rounded-md bg-teal-50 px-2 py-1 text-xs font-medium text-teal-800 ring-1 ring-inset ring-teal-600/20">

@@ -22,7 +22,11 @@ function About() {
                 </p>
             </div>
             <div className="py-8 lg:pt-8 lg:pb-0 px-4 mx-auto max-w-screen-md">
-                <img className="w-full rounded-md" src="img/web_bg_alt.webp" alt="about" width="1600" height="900" />
+              <picture className="w-full rounded-md">
+                <source srcSet="img/web_bg_alt.avif" type="image/avif" />
+                <source srcSet="img/web_bg_alt.webp" type="image/webp" />
+                <img className="w-full rounded-md" src="img/web_bg_alt.webp" alt="about" width="1600" height="900" loading="lazy" decoding="async" />
+              </picture>
             </div>
         </div>
         <div className="about__container py-8 lg:pt-16 lg:pb-0 px-4 mx-auto max-w-screen-xl">
