@@ -1,14 +1,22 @@
 import { useEffect, useState } from "react";
+import { FileUploaderMinimal } from '@uploadcare/react-uploader';
+import '@uploadcare/react-uploader/core.css';
 import FetchCSVData from '../Handlers/FetchCSVData';
 import Skeleton from 'react-loading-skeleton';
 
 function RegisterForm() {
     const [coursesMounted, setCoursesMounted] = useState(false);
+    const [files, setFiles] = useState([]);
     const cycle_selected =  new URLSearchParams(window.location.search).get("ciclo");
     const course_selected =  new URLSearchParams(window.location.search).get('course');
 
     const courses_data_url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTcfAfqGVUgswCgCf-2fhQ0SevD4S7b6HBI0nDyUzdLjSDZxjcAv7aoBoer9FJANFYDuBj6Dr3CLN0-/pub?gid=1954633847&single=true&output=csv";
     const courses_data = FetchCSVData(courses_data_url);
+
+    // Function to handle the file upload
+    const handleEvidenceUpload = (items) => {
+        setFiles([...items.allEntries.filter((file) => file.status === 'success')]);
+    };
     
     // Function to calculate max date for date of birth input field (16 years old)
     function calculateMaxDate() {
@@ -36,8 +44,10 @@ function RegisterForm() {
         const order_identifier = identifier.innerHTML;
         console.log(order_identifier);
         const form_order_identifier = document.getElementById("grid-order-identifier");
+        const redirect_url = document.getElementById("redirect_url_input");
 
         form_order_identifier.value = order_identifier;
+        redirect_url.value = `https://bgmedicina.com/success?type=register&id=${order_identifier}`;
     }, [coursesMounted]);
 
     // Add invalid class to input elements with invalid data when the form input is selected
@@ -191,87 +201,15 @@ function RegisterForm() {
         }
     }, []);
 
-    // File upload preview and validation
-    useEffect(() => {
-        const input = document.getElementById('dropzone-file');
-        const preview = document.getElementById('preview');
-        const dropzone = document.getElementById('dropzone_zone_box');
-
-        const fileTypes = [
-            "image/apng",
-            "image/bmp",
-            "image/gif",
-            "image/jpeg",
-            "image/pjpeg",
-            "image/png",
-            "image/svg+xml",
-            "image/tiff",
-            "image/webp",
-            "image/x-icon",
-        ];
-
-        input.addEventListener("change", updateImageDisplay);
-
-        // Function to display the image preview and the file name
-        function updateImageDisplay() {
-            while (preview.firstChild) {
-                preview.removeChild(preview.firstChild);
-            }
-    
-            const curFiles = input.files;
-    
-            if (curFiles.length === 0) {
-                const para = document.createElement("p");
-                para.textContent = "No hay archivos seleccionados para cargar";
-                para.className = "text-sm mt-4 font-semibold text-gray-500";
-                preview.appendChild(para);
-
-            } else {
-                for (const file of curFiles) {
-                    const para = document.createElement("p");
-                    if (validFileType(file)) {
-                        dropzone.style.display = "none";
-                        para.textContent = file.name;
-                        para.className = "text-sm font-semibold mt-2 text-gray-500";
-    
-                        const image = document.createElement("img");
-                        image.className = "mt-2 max-h-[800px] drop-shadow-lg object-cover rounded-lg";
-                        image.src = URL.createObjectURL(file);
-                        image.alt = image.title = file.name;
-
-                        const remove_button = document.createElement("button");
-                        remove_button.className = "flex items-center justify-center w-full md:w-40 h-10 text-sm font-semibold text-red-500 border border-red-200 rounded-lg hover:bg-red-100";
-                        remove_button.textContent = "Quitar Archivo";
-                        remove_button.addEventListener("click", removeFile);
-                        
-                        preview.appendChild(remove_button)
-                        preview.appendChild(image);
-                        preview.appendChild(para);
-                    } else {
-                        para.textContent = "No es un tipo de archivo válido. Actualice su selección.";
-                        para.className = "text-sm font-semibold text-red-500";
-                        preview.appendChild(para);
-                    } 
-                }
-            }
-        }
-        
-        // Function to check if the file type is valid
-        function validFileType(file) {
-            return fileTypes.includes(file.type);
-        }
-
-        // Function to remove the file from the input field
-        function removeFile() {
-            input.value = "";
-            updateImageDisplay();
-            dropzone.style.display = "block";
-        }
-    
-    }, []);
-
     return (
-        <form className="w-full max-w-xl mt-8" acceptCharset="UTF-8" action="https://www.formbackend.com/f/0ee0a3855d98800f" method="POST" encType="multipart/form-data">
+        <form className="w-full max-w-xl mt-8" acceptCharset="UTF-8" action="https://submit-form.com/XdEPgIgpT" method="POST" encType="multipart/form-data">
+            <input type="hidden" name="_redirect" id="redirect_url_input"/>
+            <input type="hidden" name="_append" value="false" />
+
+            <input type="hidden" name="_email.subject" value="Se ha inscrito un nuevo alumno" />
+            <input type="hidden" name="_email.from" value="Sistema de Matrículas BG Medicina" />
+
+
             <input type="hidden" name="order_identifier" id="grid-order-identifier" />
             <div className="flex flex-wrap -mx-3 mb-6">
                 <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
@@ -497,21 +435,20 @@ function RegisterForm() {
                     <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="dropzone-file">
                         Evidencia de Pago
                     </label>
-                    <div id="dropzone_zone_box" className="flex items-center justify-center w-full">
-                        <label htmlFor="dropzone-file" className="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100 file-whithin:bg-red-500">
-                            <div className="flex flex-col items-center justify-center pt-5 pb-6">
-                                <svg className="w-8 h-8 mb-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
-                                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
-                                </svg>
-                                <p className="mb-2 text-sm text-gray-500"><span className="font-semibold">Haga clic para cargar</span> o arrastre y suelte</p>
-                                <p className="text-xs text-gray-500">SVG, PNG, JPG o GIF</p>
-                            </div>
-                            <input id="dropzone-file" type="file" name="proof_of_payment" className="text-sm text-gray-500 hidden file:hidden" accept="image/*" required/>
-                        </label>
-                    </div> 
-                    <div className="flex flex-col items-center md:items-start justify-center w-full border-dashed rounded-lg" id="preview">
-                        <p className="text-sm mt-4 font-semibold text-gray-500">No hay archivos seleccionados para cargar</p>
-                    </div>
+                    <input
+                        type="hidden"
+                        name="proof_of_payment"
+                        id="proof_of_payment"
+                        value={files.length > 0 ? files[0].cdnUrl : ""}
+                    />
+                    <FileUploaderMinimal
+                        pubkey="dacf95a2145ad757e200"
+                        onChange={handleEvidenceUpload}
+                        maxLocalFileSizeBytes={2000000}
+                        multiple={false}
+                        imgOnly={true}
+                    />
+                    <p className="text-gray-600 text-xs italic">Sube una foto o captura de pantalla de tu comprobante de pago. Solo se aceptan archivos de imagen (JPG, PNG, GIF) de máximo 2MB.</p>
                 </div>
             </div>
 
