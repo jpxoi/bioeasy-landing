@@ -44,7 +44,7 @@ function RegisterForm() {
         const order_identifier = identifier.innerHTML;
         console.log(order_identifier);
         const form_order_identifier = document.getElementById("grid-order-identifier");
-        const redirect_url = document.getElementById("redirect_url_input");
+        const redirect_url = document.querySelector('input[name="_redirect"]');
 
         form_order_identifier.value = order_identifier;
         redirect_url.value = `https://bgmedicina.com/success?type=register&id=${order_identifier}`;
@@ -202,15 +202,9 @@ function RegisterForm() {
     }, []);
 
     return (
-        <form className="w-full max-w-xl mt-8" acceptCharset="UTF-8" action="https://submit-form.com/XdEPgIgpT" method="POST" encType="multipart/form-data">
-            <input type="hidden" name="_redirect" id="redirect_url_input"/>
+        <form className="w-full max-w-xl mt-8" action="https://submit-form.com/XdEPgIgpT" method="POST">
+            <input type="hidden" name="_redirect"/>
             <input type="hidden" name="_append" value="false" />
-            <input type="hidden" name="_feedback.language" value="es" />
-            <input type="hidden" name="_feedback.success.title" value="¡Tu inscripción se ha registrado con éxito!" />
-            <input type="hidden" name="_feedback.success.message" value="Estamos validando tus datos. En breve recibirás un correo electrónico con la información de tu inscripción." />
-            <input type="hidden" name="_feedback.error.title" value="¡Ups! Algo salió mal." />
-            <input type="hidden" name="_feedback.error.message" value="Por favor, intenta nuevamente o comunícate con nosotros a través de nuestro WhatsApp." />
-
             <input type="hidden" name="_email.subject" value="Se ha inscrito un nuevo alumno" />
             <input type="hidden" name="_email.from" value="Sistema de Matrículas BG Medicina" />
 
@@ -475,7 +469,7 @@ function RegisterForm() {
                 Considerando la vigencia del Decreto Legislativo Nº 1390 (Restricciones a la difusión de publicidad masiva) y, siendo <strong>Bioeasy Galenos</strong> respetuoso del ordenamiento jurídico vigente, le solicitamos nos brinde su consentimiento para mantenerlo informado acerca de nuestros diferentes servicios a través del envío de nuestra publicidad. La información brindada se utilizará exclusivamente para el envío de publicidad, por lo que se encontrará protegida por la Ley Nº 29733 - Ley de Protección de datos personales.
             </p>
 
-            <button className="bg-teal-700 hover:bg-teal-800 text-white font-bold py-3 px-6 rounded focus:outline-none focus:shadow-outline disabled:bg-red-600 disabled:hover:bg-red-800 cursor-pointer" type="submit" value="Enviar Ficha de Inscripción" />
+            <input className="bg-teal-700 hover:bg-teal-800 text-white font-bold py-3 px-6 rounded focus:outline-none focus:shadow-outline disabled:bg-red-600 disabled:hover:bg-red-800 cursor-pointer" type="submit" value="Enviar Ficha de Inscripción" />
         </form>
     )
 }
