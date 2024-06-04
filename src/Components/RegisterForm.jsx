@@ -271,7 +271,7 @@ function RegisterForm() {
     }, []);
 
     return (
-        <form className="w-full max-w-xl mt-8" acceptCharset="UTF-8" action="https://formcarry.com/s/bDFZ1VtyzB0" method="POST" encType="multipart/form-data">
+        <form className="w-full max-w-xl mt-8" acceptCharset="UTF-8" action="https://www.formbackend.com/f/0ee0a3855d98800f" method="POST" encType="multipart/form-data">
             <input type="hidden" name="order_identifier" id="grid-order-identifier" />
             <div className="flex flex-wrap -mx-3 mb-6">
                 <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
