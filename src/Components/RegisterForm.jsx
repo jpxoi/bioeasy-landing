@@ -26,7 +26,7 @@ function RegisterForm({ orderIdentifier }) {
     };
 
     const handleSubmission = (e) => {
-        if (files.length === 0 && !paymentNeeded) {
+        if (files.length === 0 && paymentNeeded) {
             e.preventDefault();
             evidenceErrorMessage.classList.remove("hidden");
             alert("Por favor, sube una imagen de tu comprobante de pago.");
