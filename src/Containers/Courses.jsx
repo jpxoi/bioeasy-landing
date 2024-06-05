@@ -29,10 +29,10 @@ function Courses() {
         }
     }, [coursesMounted, filtersMounted]);
 
-    const courses_data_url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTcfAfqGVUgswCgCf-2fhQ0SevD4S7b6HBI0nDyUzdLjSDZxjcAv7aoBoer9FJANFYDuBj6Dr3CLN0-/pub?gid=0&single=true&output=csv";
+    const courses_data_url = import.meta.env.VITE_COURSES_DATA_URL;
     const courses_data = FetchCSVData(courses_data_url);
 
-    const courses_categories_url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTcfAfqGVUgswCgCf-2fhQ0SevD4S7b6HBI0nDyUzdLjSDZxjcAv7aoBoer9FJANFYDuBj6Dr3CLN0-/pub?gid=912232149&single=true&output=csv"
+    const courses_categories_url = import.meta.env.VITE_COURSES_CATEGORIES_URL;
     const courses_categories = FetchCSVData(courses_categories_url);
 
     useEffect(() => {

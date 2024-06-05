@@ -6,7 +6,7 @@ import TeamCardSkeleton from "../Components/TeamCardSkeleton";
 function Team() {
   const [teamMounted, setTeamMounted] = useState(false);
 
-  const team_data_url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTcfAfqGVUgswCgCf-2fhQ0SevD4S7b6HBI0nDyUzdLjSDZxjcAv7aoBoer9FJANFYDuBj6Dr3CLN0-/pub?gid=287626347&single=true&output=csv";
+  const team_data_url = import.meta.env.VITE_TEAM_DATA_URL;
   const team_data = FetchCSVData(team_data_url);
 
   useEffect(() => {
