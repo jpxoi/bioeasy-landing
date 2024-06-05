@@ -4,7 +4,8 @@ import '@uploadcare/react-uploader/core.css';
 import FetchCSVData from '../Handlers/FetchCSVData';
 import Skeleton from 'react-loading-skeleton';
 
-function RegisterForm() {
+// eslint-disable-next-line react/prop-types
+function RegisterForm({ orderIdentifier }) {
     const [coursesMounted, setCoursesMounted] = useState(false);
     const [files, setFiles] = useState([]);
     const cycle_selected =  new URLSearchParams(window.location.search).get("ciclo");
@@ -20,11 +21,11 @@ function RegisterForm() {
     
     // Function to calculate max date for date of birth input field (16 years old)
     function calculateMaxDate() {
-        const maxAge = 16; // Max age allowed to register
+        const minAge = 16; // Min age allowed to register
         const today = new Date();
         const dd = String(today.getDate()).padStart(2, '0');
         const mm = String(today.getMonth()+1).padStart(2, '0');
-        const yyyy = today.getFullYear() - maxAge;
+        const yyyy = today.getFullYear() - minAge;
         const maxDate = yyyy + '-' + mm + '-' + dd;
         return maxDate;
     }
@@ -37,18 +38,6 @@ function RegisterForm() {
             setCoursesMounted(true);
         }
     }, [courses_data]);
-
-    // Order Identifier useEffect
-    useEffect(() => {
-        const identifier = document.getElementById("order_identifier")
-        const order_identifier = identifier.innerHTML;
-        console.log(order_identifier);
-        const form_order_identifier = document.getElementById("grid-order-identifier");
-        const redirect_url = document.querySelector('input[name="_redirect"]');
-
-        form_order_identifier.value = order_identifier;
-        redirect_url.value = `https://bgmedicina.com/success?type=register&id=${order_identifier}`;
-    }, [coursesMounted]);
 
     // Add invalid class to input elements with invalid data when the form input is selected
     useEffect(() => {
@@ -215,13 +204,13 @@ function RegisterForm() {
 
     return (
         <form className="w-full max-w-xl mt-8" action="https://submit-form.com/XdEPgIgpT" method="POST">
-            <input type="hidden" name="_redirect"/>
+            <input type="hidden" name="_redirect" value={`https://bgmedicina.com/success?type=register&id=${orderIdentifier}`} />
             <input type="hidden" name="_append" value="false" />
             <input type="hidden" name="_email.subject" value="Se ha inscrito un nuevo alumno" />
             <input type="hidden" name="_email.from" value="Sistema de Matrículas BG Medicina" />
 
+            <input type="hidden" name="order_identifier" id="grid-order-identifier" value={orderIdentifier} />
 
-            <input type="hidden" name="order_identifier" id="grid-order-identifier" />
             <div className="flex flex-wrap -mx-3 mb-6">
                 <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                     <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-first-name">
