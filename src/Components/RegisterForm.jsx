@@ -106,6 +106,9 @@ function RegisterForm() {
             resetPrice();
         }
 
+        const submitButton = document.getElementById("submit-button");
+        const consultDisclaimer = document.getElementById("consult-disclaimer");
+
         function calculatePrice() {
             if (course_select.value === "") {
                 course_price.value = "";
@@ -114,13 +117,22 @@ function RegisterForm() {
                     if (courses_data[i].id == course_select.value) {
                         if (courses_data[i].available == 'FALSE') {
                             course_price.value = "CURSO NO DISPONIBLE"
+                            submitButton.disabled = true;
+                            submitButton.value = "Curso No Disponible";
+                            consultDisclaimer.classList.add("hidden")
                         } else if (courses_data[i].price == '0' || courses_data[i].price == 'GRATUITO' || courses_data[i].price == 'GRATIS') {
                             course_price.value = "GRATUITO"
-                            
+                            submitButton.disabled = false;
+                            consultDisclaimer.classList.add("hidden")
                         } else if (courses_data[i].price == 'CONSULTAR') {
                             course_price.value = "CONSULTAR CON UN ASESOR"
+                            submitButton.disabled = false;
+                            consultDisclaimer.classList.remove("hidden");
+
                         } else {
                             course_price.value = formatPrice(courses_data[i].price, 'PEN');
+                            submitButton.disabled = false;
+                            consultDisclaimer.classList.add("hidden")
                         }
                     }
                 }
@@ -439,6 +451,7 @@ function RegisterForm() {
                         name="proof_of_payment"
                         id="proof_of_payment"
                         value={files.length > 0 ? files[0].cdnUrl : ""}
+                        required
                     />
                     <FileUploaderMinimal
                         pubkey="dacf95a2145ad757e200"
@@ -469,7 +482,11 @@ function RegisterForm() {
                 Considerando la vigencia del Decreto Legislativo Nº 1390 (Restricciones a la difusión de publicidad masiva) y, siendo <strong>Bioeasy Galenos</strong> respetuoso del ordenamiento jurídico vigente, le solicitamos nos brinde su consentimiento para mantenerlo informado acerca de nuestros diferentes servicios a través del envío de nuestra publicidad. La información brindada se utilizará exclusivamente para el envío de publicidad, por lo que se encontrará protegida por la Ley Nº 29733 - Ley de Protección de datos personales.
             </p>
 
-            <input className="bg-teal-700 hover:bg-teal-800 text-white font-bold py-3 px-6 rounded focus:outline-none focus:shadow-outline disabled:bg-red-600 disabled:hover:bg-red-800 cursor-pointer" type="submit" value="Enviar Ficha de Inscripción" />
+            <input className="bg-teal-700 hover:bg-teal-800 text-white font-bold py-3 px-6 rounded focus:outline-none focus:shadow-outline disabled:bg-red-600 disabled:hover:bg-red-800 cursor-pointer" type="submit" id="submit-button" value="Enviar Ficha de Inscripción" />
+
+            <p className="mt-2 text-xs font-light text-justify text-gray-500 hidden" id="consult-disclaimer">
+                Al hacer clic en el botón &quot;Enviar Ficha de Inscripción&quot; usted acepta que Bioeasy Galenos se comunique con usted a través de los datos proporcionados en este formulario para brindarle información sobre el servicio solicitado. Nuestro equipo se pondrá en contacto con usted en un plazo máximo de 48 horas hábiles.
+            </p>
         </form>
     )
 }
