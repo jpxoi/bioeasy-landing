@@ -16,7 +16,6 @@ export default function FetchCSVData(props) {
             .then((response) => {
                 const parsedCsvData = parseCSV(response.data);        // Parse the CSV data into an array of objects
                 setCsvData(parsedCsvData);        // Set the fetched data in the component's state
-                console.log(parsedCsvData);        // Now you can work with 'csvData' in your component's state.
                 setLoading(false);        // Update loading state to 'false' now that data fetching is complete
             })
             .catch((error) => {

@@ -1,8 +1,8 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import RegisterForm from "../Components/RegisterForm";
 
 function Register() {
-    let order_identifier = "";
+    const [orderIdentifier, setOrderIdentifier] = useState("");
 
     // Function to generate a random identifier for the registration of length 6 with numbers and letters (uppercase) using Date.now() as seed
     function generateIdentifier() {
@@ -20,9 +20,8 @@ function Register() {
     
     // Function to set the identifier in the HTML
     function setIdentifier() {
-        const identifier = document.getElementById("order_identifier")
-        order_identifier = generateIdentifier();
-        identifier.innerHTML = order_identifier;
+        const newIdentifier = generateIdentifier();
+        setOrderIdentifier(newIdentifier);
     }
 
     // Function to set the identifier in the HTML when the component is mounted
@@ -55,13 +54,13 @@ function Register() {
                         </svg>
                         <span className="sr-only">Info</span>
                         <div>
-                            <span className="font-bold">Identificador de Inscripción: </span><span id="order_identifier"></span>
+                            <span className="font-bold">Identificador de Inscripción: </span><span id="order_identifier">{orderIdentifier}</span>
                         </div>
                     </div>
                 </div>
                 <p className="text-gray-600 text-xs italic mt-1 mb-2">Este identificador es único y personal. Por favor, guárdelo para futuras referencias.</p>
 
-                <RegisterForm />
+                <RegisterForm orderIdentifier={orderIdentifier} />
             </div>
         </div>
     );
