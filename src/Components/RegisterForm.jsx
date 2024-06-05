@@ -1,21 +1,21 @@
+/* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
 import { FileUploaderMinimal } from '@uploadcare/react-uploader';
 import '@uploadcare/react-uploader/core.css';
 import FetchCSVData from '../Handlers/FetchCSVData';
 import Skeleton from 'react-loading-skeleton';
 
-// eslint-disable-next-line react/prop-types
 function RegisterForm({ orderIdentifier }) {
     const [coursesMounted, setCoursesMounted] = useState(false);
     const [files, setFiles] = useState([]);
     const [paymentNeeded, setPaymentNeeded] = useState(true);
     const [paymentMethod, setPaymentMethod] = useState("");
     
-    const cycle_selected =  new URLSearchParams(window.location.search).get("ciclo");
-    const course_selected =  new URLSearchParams(window.location.search).get('course');
+    const cycleSelected =  new URLSearchParams(window.location.search).get("ciclo");
+    const courseSelected =  new URLSearchParams(window.location.search).get('course');
 
-    const courses_data_url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTcfAfqGVUgswCgCf-2fhQ0SevD4S7b6HBI0nDyUzdLjSDZxjcAv7aoBoer9FJANFYDuBj6Dr3CLN0-/pub?gid=1954633847&single=true&output=csv";
-    const courses_data = FetchCSVData(courses_data_url);
+    const coursesDataURL = import.meta.env.VITE_FORM_DATA_URL;
+    const coursesData = FetchCSVData(coursesDataURL);
 
     const submitButton = document.getElementById("submit-button");
     const evidenceErrorMessage = document.getElementById("evidence-error-message");
@@ -33,47 +33,45 @@ function RegisterForm({ orderIdentifier }) {
         } else if (orderIdentifier === "") {
             e.preventDefault();
             alert("Error: No se pudo generar el identificador de inscripción. Por favor, intente nuevamente.");
-        } else {
+        } else if (paymentMethod === "" && paymentNeeded) {
+            e.preventDefault();
+            alert("Por favor, seleccione un método de pago para continuar.");
+        }  else {
             submitButton.disabled = true;
             submitButton.value = "Enviando...";
             evidenceErrorMessage.classList.add("hidden");
         }
     };
+
+    const addInvalidClasses = () => {
+        const phoneNumberContainer = document.getElementById("phone-number-container");
+        const inputs = document.querySelectorAll("input, select, textarea");
+
+        inputs.forEach(input => {
+            if (input.required) {
+                input.classList.add("invalid:border-red-500");
+            }
+        });
+        phoneNumberContainer.classList.add("has-[:invalid]:border-red-500");
+    }
     
     // Function to calculate max date for date of birth input field (min 16 years old)
-    function calculateMaxDate() {
-        const minAge = 16; // Min age allowed to register
+    const calculateMaxDate = (minAge) => {
         const today = new Date();
-        const dd = String(today.getDate()).padStart(2, '0');
-        const mm = String(today.getMonth()+1).padStart(2, '0');
         const yyyy = today.getFullYear() - minAge;
-        const maxDate = yyyy + '-' + mm + '-' + dd;
-        return maxDate;
+        const mm = String(today.getMonth() + 1).padStart(2, '0');
+        const dd = String(today.getDate()).padStart(2, '0');
+        return `${yyyy}-${mm}-${dd}`;
     }
 
-    const maxDate = calculateMaxDate();
+    const maxDate = calculateMaxDate(15); // Min age of 15 years old
 
     // Check if the courses data has been loaded
     useEffect(() => {
-        if (courses_data) {
+        if (coursesData) {
             setCoursesMounted(true);
         }
-    }, [courses_data]);
-
-    // Add invalid class to input elements with invalid data when the form input is selected
-    useEffect(() => {
-        const phoneNumberContainer = document.getElementById("phone-number-container");
-        const inputs = document.querySelectorAll("input, select, textarea");
-        inputs.forEach(input => {
-            input.addEventListener("click", function() {
-                input.classList.add("invalid:border-red-500");
-            })
-        })
-
-        phoneNumberContainer.addEventListener("click", function() {
-            phoneNumberContainer.classList.add("has-[:invalid]:border-red-500");
-        })
-    }, []);
+    }, [coursesData]);
 
     // Price Calculation and Course Select useEffect
     useEffect(() => {
@@ -83,7 +81,7 @@ function RegisterForm({ orderIdentifier }) {
         const submitButton = document.getElementById("submit-button");
         const consultDisclaimer = document.getElementById("consult-disclaimer");
 
-        if (course_selected && coursesMounted) {
+        if (courseSelected && coursesMounted) {
             calculatePrice();
         }
 
@@ -92,9 +90,9 @@ function RegisterForm({ orderIdentifier }) {
         }
 
         if (cycle_select && course_select) {
-            if (cycle_selected) {
+            if (cycleSelected) {
                 filterCourses();
-                course_select.value = course_selected;
+                course_select.value = courseSelected;
                 calculatePrice();
             }
             cycle_select.addEventListener("change", filterCourses);
@@ -103,13 +101,13 @@ function RegisterForm({ orderIdentifier }) {
         function filterCourses() {
             const categoryId = cycle_select.value;
 
-            for (let i = 0; i < courses_data.length; i++) {
-                if (courses_data[i].cycle == categoryId && courses_data[i].available == 'TRUE') {
-                    course_select.querySelector(`option[value="${courses_data[i].id}"]`).disabled = false;
-                    course_select.querySelector(`option[value="${courses_data[i].id}"]`).classList.remove("hidden");
-                } else if (courses_data[i].cycle != categoryId && courses_data[i].available == 'TRUE') {
-                    course_select.querySelector(`option[value="${courses_data[i].id}"]`).disabled = true;
-                    course_select.querySelector(`option[value="${courses_data[i].id}"]`).classList.add("hidden");
+            for (let i = 0; i < coursesData.length; i++) {
+                if (coursesData[i].cycle == categoryId && coursesData[i].available == 'TRUE') {
+                    course_select.querySelector(`option[value="${coursesData[i].id}"]`).disabled = false;
+                    course_select.querySelector(`option[value="${coursesData[i].id}"]`).classList.remove("hidden");
+                } else if (coursesData[i].cycle != categoryId && coursesData[i].available == 'TRUE') {
+                    course_select.querySelector(`option[value="${coursesData[i].id}"]`).disabled = true;
+                    course_select.querySelector(`option[value="${coursesData[i].id}"]`).classList.add("hidden");
                 }
             }
 
@@ -121,20 +119,20 @@ function RegisterForm({ orderIdentifier }) {
             if (course_select.value === "") {
                 course_price.value = "";
             } else {
-                for (let i = 0; i < courses_data.length; i++) {
-                    if (courses_data[i].id == course_select.value) {
-                        if (courses_data[i].available == 'FALSE') {
+                for (let i = 0; i < coursesData.length; i++) {
+                    if (coursesData[i].id == course_select.value) {
+                        if (coursesData[i].available == 'FALSE') {
                             setPaymentNeeded(false);
                             course_price.value = "CURSO NO DISPONIBLE"
                             submitButton.disabled = false;
                             submitButton.value = "Curso No Disponible";
                             consultDisclaimer.classList.add("hidden")
-                        } else if (courses_data[i].price == '0' || courses_data[i].price == 'GRATUITO' || courses_data[i].price == 'GRATIS') {
+                        } else if (coursesData[i].price == '0' || coursesData[i].price == 'GRATUITO' || coursesData[i].price == 'GRATIS') {
                             setPaymentNeeded(false);
                             course_price.value = "GRATUITO"
                             submitButton.disabled = false;
                             consultDisclaimer.classList.add("hidden")
-                        } else if (courses_data[i].price == 'CONSULTAR') {
+                        } else if (coursesData[i].price == 'CONSULTAR') {
                             setPaymentNeeded(false);
                             course_price.value = "CONSULTAR CON UN ASESOR"
                             submitButton.disabled = false;
@@ -142,7 +140,7 @@ function RegisterForm({ orderIdentifier }) {
 
                         } else {
                             setPaymentNeeded(true);
-                            course_price.value = formatPrice(courses_data[i].price, 'PEN');
+                            course_price.value = formatPrice(coursesData[i].price, 'PEN');
                             submitButton.disabled = false;
                             consultDisclaimer.classList.add("hidden")
                         }
@@ -177,16 +175,16 @@ function RegisterForm({ orderIdentifier }) {
                 return USDollar.format(price);
             }
         }
-    }, [coursesMounted, courses_data, course_selected, cycle_selected]);
+    }, [coursesMounted, coursesData, courseSelected, cycleSelected]);
 
     return (
         <form className="w-full max-w-xl mt-8" action="https://submit-form.com/XdEPgIgpT" method="POST" onSubmit={handleSubmission}>
-            <input type="hidden" name="_redirect" value={`https://bgmedicina.com/success?type=register&id=${orderIdentifier}`} />
+            <input type="hidden" name="_redirect" defaultValue={`https://bgmedicina.com/success?type=register&id=${orderIdentifier}`} />
             <input type="hidden" name="_append" value="false" />
             <input type="hidden" name="_email.subject" value="Se ha inscrito un nuevo alumno" />
             <input type="hidden" name="_email.from" value="Sistema de Matrículas BG Medicina" />
 
-            <input type="hidden" name="order_identifier" id="grid-order-identifier" value={orderIdentifier} />
+            <input type="hidden" name="order_identifier" id="grid-order-identifier" defaultValue={orderIdentifier} />
 
             <div className="flex flex-wrap -mx-3 mb-6">
                 <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
@@ -263,7 +261,7 @@ function RegisterForm({ orderIdentifier }) {
                     <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-cycle-select">
                         Ciclo de Estudios
                     </label>
-                    <select className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-teal-700 focus-visible:invalid:bg-red-50 focus-visible:invalid:border-red-500 focus-visible:valid:bg-green-50 focus-visible:valid:border-green-500 valid:border-teal-700" required id="grid-cycle-select" name="cycle" defaultValue={cycle_selected ? cycle_selected : ""}>
+                    <select className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-teal-700 focus-visible:invalid:bg-red-50 focus-visible:invalid:border-red-500 focus-visible:valid:bg-green-50 focus-visible:valid:border-green-500 valid:border-teal-700" required id="grid-cycle-select" name="cycle" defaultValue={cycleSelected ? cycleSelected : ""}>
                         <option value="" disabled="disabled">Seleccione</option>
                         <option value="1">Ciclo I</option>
                         <option value="2">Ciclo II</option>
@@ -283,10 +281,10 @@ function RegisterForm({ orderIdentifier }) {
                     <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-course-select">
                         Curso Académico
                     </label>
-                    {courses_data ? "" : <Skeleton className="mb-2" height={46} />}
-                    {courses_data ? <select className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-teal-700 mb-2 focus-visible:invalid:bg-red-50 focus-visible:invalid:border-red-500 focus-visible:valid:bg-green-50 focus-visible:valid:border-green-500 valid:border-teal-700" required id="grid-course-select" name="course" defaultValue={course_selected ? course_selected : ""}>
+                    {coursesData ? "" : <Skeleton className="mb-2" height={46} />}
+                    {coursesData ? <select className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-teal-700 mb-2 focus-visible:invalid:bg-red-50 focus-visible:invalid:border-red-500 focus-visible:valid:bg-green-50 focus-visible:valid:border-green-500 valid:border-teal-700" required id="grid-course-select" name="course" defaultValue={courseSelected ? courseSelected : ""}>
                         <option value="" disabled="disabled">Seleccione</option>
-                        {courses_data ? courses_data.map((course, index) => {
+                        {coursesData ? coursesData.map((course, index) => {
                             if (course.available == "TRUE") {
                                 return <option key={index} category={course.cycle} value={course.id}>{course.name}</option>
                             }
@@ -417,7 +415,7 @@ function RegisterForm({ orderIdentifier }) {
                         type="text"
                         name="proof_of_payment"
                         id="proof_of_payment"
-                        value={files.length > 0 ? files[0].cdnUrl : null}
+                        defaultValue={files.length > 0 ? files[0].cdnUrl : ""}
                         className="hidden"
                     />
                     <FileUploaderMinimal
@@ -449,7 +447,7 @@ function RegisterForm({ orderIdentifier }) {
                 Considerando la vigencia del Decreto Legislativo Nº 1390 (Restricciones a la difusión de publicidad masiva) y, siendo <strong>Bioeasy Galenos</strong> respetuoso del ordenamiento jurídico vigente, le solicitamos nos brinde su consentimiento para mantenerlo informado acerca de nuestros diferentes servicios a través del envío de nuestra publicidad. La información brindada se utilizará exclusivamente para el envío de publicidad, por lo que se encontrará protegida por la Ley Nº 29733 - Ley de Protección de datos personales.
             </p>
 
-            <input className="bg-teal-700 hover:bg-teal-800 text-white font-bold py-3 px-6 rounded focus:outline-none focus:shadow-outline disabled:bg-gray-400 cursor-pointer disabled:cursor-not-allowed" type="submit" id="submit-button" value="Enviar Ficha de Inscripción" />
+            <input className="bg-teal-700 hover:bg-teal-800 text-white font-bold py-3 px-6 rounded focus:outline-none focus:shadow-outline disabled:bg-gray-400 cursor-pointer disabled:cursor-not-allowed" type="submit" id="submit-button" value="Enviar Ficha de Inscripción" onClick={addInvalidClasses} />
 
             <p className="mt-2 text-xs font-light text-justify text-gray-500 hidden" id="consult-disclaimer">
                 Al hacer clic en el botón &quot;Enviar Ficha de Inscripción&quot; usted acepta que Bioeasy Galenos se comunique con usted a través de los datos proporcionados en este formulario para brindarle información sobre el servicio solicitado. Nuestro equipo se pondrá en contacto con usted en un plazo máximo de 48 horas hábiles.
