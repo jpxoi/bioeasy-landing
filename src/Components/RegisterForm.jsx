@@ -320,7 +320,7 @@ function RegisterForm({ orderIdentifier }) {
                         <div id="bank-details" className={`w-full rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100 px-4 py-4 mb-2 ${paymentMethod === "bank_transfer" ? "flex" : "hidden"}`}>
                             <div className="flex flex-wrap">
                                 <div id="bank-data" className="flex flex-col align-center mb-2">
-                                    <p className="text-sm text-pretty text-gray-500">Realice su pago directamente a cualquiera de nuestras cuentas bancarias. Por favor use su identificador de inscripción como referencia de pago. Su matrícula no será confirmada hasta que los fondos hayan sido recibidos en nuestra cuenta.</p>
+                                    <p className="text-sm text-pretty text-gray-500">Realice su pago directamente a cualquiera de nuestras cuentas bancarias. Por favor <strong>use su identificador de inscripción como referencia de pago</strong>. Su matrícula no será confirmada hasta que los fondos hayan sido recibidos en nuestra cuenta.</p>
                                 </div>
                                 <div className="w-full my-1">
                                     <h3 className="text-sm font-semibold text-gray-700">Banco de Crédito del Perú</h3>
@@ -368,7 +368,7 @@ function RegisterForm({ orderIdentifier }) {
                                         </div>
                                         <div id="yape-data" className="flex flex-col align-center px-2 rounded-md mt-1">
                                             <p className="text-sm font-semibold text-gray-600 mb-1">¿Cómo pagar via Yape?</p>
-                                            <p className="text-sm text-gray-500 text-pretty">Escanee el código QR con su aplicación Yape y efectúe el pago correspondiente. Por favor use su identificador de inscripción como referencia de pago. Su matrícula no será confirmada hasta que los fondos hayan sido recibidos en nuestra cuenta.</p>
+                                            <p className="text-sm text-gray-500 text-pretty">Escanee el código QR con su aplicación Yape y efectúe el pago correspondiente. Por favor <strong>use su identificador de inscripción como referencia de pago</strong>. Su matrícula no será confirmada hasta que los fondos hayan sido recibidos en nuestra cuenta.</p>
                                             <p className="text-sm font-medium text-gray-500 mt-2"><strong>Titular: </strong>Miguel Augusto Rodriguez Anticona</p>
                                             <p className="text-sm font-medium text-gray-500"><strong>Número: </strong>+51 986 938 845</p>
                                         </div>
@@ -394,7 +394,7 @@ function RegisterForm({ orderIdentifier }) {
                                         </div>
                                         <div id="plin-data" className="flex flex-col align-center px-2 rounded-md mt-1">
                                             <p className="text-sm font-semibold text-gray-600 mb-1">¿Cómo pagar via Plin?</p>
-                                            <p className="text-sm text-gray-500 text-pretty">Escanee el código QR con su app Banca Móvil de alguno de los bancos participantes de Plin y efectúe el pago. Por favor use su identificador de inscripción como referencia de pago. Su matrícula no será confirmada hasta que los fondos hayan sido recibidos en nuestra cuenta.</p>
+                                            <p className="text-sm text-gray-500 text-pretty">Escanee el código QR con su app Banca Móvil de alguno de los bancos participantes de Plin y efectúe el pago. Por favor <strong>use su identificador de inscripción como referencia de pago</strong>. Su matrícula no será confirmada hasta que los fondos hayan sido recibidos en nuestra cuenta.</p>
                                             <p className="text-sm font-medium text-gray-500 mt-2"><strong>Titular: </strong>Miguel Augusto Rodriguez Anticona</p>
                                             <p className="text-sm font-medium text-gray-500"><strong>Número: </strong>+51 986 938 845</p>
                                         </div>
