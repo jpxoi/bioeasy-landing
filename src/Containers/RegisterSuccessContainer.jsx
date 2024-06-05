@@ -1,7 +1,6 @@
 function RegisterSuccessContainer() {
 
     const order_identifier =  new URLSearchParams(window.location.search).get('id');
-    console.log(order_identifier);
 
     return (
         <div className="flex flex-col h-screen justify-center items-center">

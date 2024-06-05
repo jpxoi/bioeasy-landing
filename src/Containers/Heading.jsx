@@ -21,7 +21,7 @@ function Heading() {
                 {/* Scroll To View More */}
                 <div className="mt-8 md:mt-16">
                     <p className="text-white text-sm font-medium mb-4">Desliza hacia abajo para ver más</p>
-                    <svg className="w-6 h-6 animate-bounce text-white mx-auto" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                    <svg className="w-6 h-6 animate-bounce text-white mx-auto cursor-pointer" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10" onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })}>
                         <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 1l6 6 6-6"/>
                     </svg>
                 </div>
