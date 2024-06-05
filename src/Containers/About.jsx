@@ -3,9 +3,9 @@ import WhyCard from "../Components/WhyCard"
 function About() {
   return (
     <section className="section section__about mt-8 bg-white mx-auto w-full max-w-screen-xl p-4 py-6 pt-24 lg:py-8 lg:pt-28" id="nosotros">
-        <h1 className="text-center mb-4 text-2xl font-bold tracking-tight leading-none text-gray-900 md:text-3xl lg:text-4xl">
+        <h2 className="text-center mb-4 text-2xl font-bold tracking-tight leading-none text-gray-900 md:text-3xl lg:text-4xl">
             Nosotros
-        </h1>
+        </h2>
         <div className="about__container grid lg:grid-cols-2 gap-0 md:gap-8">
             <div className="py-8 lg:pt-8 lg:pb-0 px-4 mx-auto max-w-screen-md">
                 <p className="mb-1 lg:mb-2 font-light text-justify text-gray-700">
