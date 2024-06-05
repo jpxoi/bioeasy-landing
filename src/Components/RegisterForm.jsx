@@ -8,18 +8,39 @@ import Skeleton from 'react-loading-skeleton';
 function RegisterForm({ orderIdentifier }) {
     const [coursesMounted, setCoursesMounted] = useState(false);
     const [files, setFiles] = useState([]);
+    const [paymentNeeded, setPaymentNeeded] = useState(true);
+    const [paymentMethod, setPaymentMethod] = useState("");
+    
     const cycle_selected =  new URLSearchParams(window.location.search).get("ciclo");
     const course_selected =  new URLSearchParams(window.location.search).get('course');
 
     const courses_data_url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTcfAfqGVUgswCgCf-2fhQ0SevD4S7b6HBI0nDyUzdLjSDZxjcAv7aoBoer9FJANFYDuBj6Dr3CLN0-/pub?gid=1954633847&single=true&output=csv";
     const courses_data = FetchCSVData(courses_data_url);
 
+    const submitButton = document.getElementById("submit-button");
+    const evidenceErrorMessage = document.getElementById("evidence-error-message");
+
     // Function to handle the file upload
     const handleEvidenceUpload = (items) => {
         setFiles([...items.allEntries.filter((file) => file.status === 'success')]);
     };
+
+    const handleSubmission = (e) => {
+        if (files.length === 0 && !paymentNeeded) {
+            e.preventDefault();
+            evidenceErrorMessage.classList.remove("hidden");
+            alert("Por favor, sube una imagen de tu comprobante de pago.");
+        } else if (orderIdentifier === "") {
+            e.preventDefault();
+            alert("Error: No se pudo generar el identificador de inscripción. Por favor, intente nuevamente.");
+        } else {
+            submitButton.disabled = true;
+            submitButton.value = "Enviando...";
+            evidenceErrorMessage.classList.add("hidden");
+        }
+    };
     
-    // Function to calculate max date for date of birth input field (16 years old)
+    // Function to calculate max date for date of birth input field (min 16 years old)
     function calculateMaxDate() {
         const minAge = 16; // Min age allowed to register
         const today = new Date();
@@ -59,6 +80,8 @@ function RegisterForm({ orderIdentifier }) {
         const course_select = document.getElementById('grid-course-select');
         const course_price = document.getElementById('grid-course-price');
         const cycle_select = document.getElementById('grid-cycle-select');
+        const submitButton = document.getElementById("submit-button");
+        const consultDisclaimer = document.getElementById("consult-disclaimer");
 
         if (course_selected && coursesMounted) {
             calculatePrice();
@@ -66,7 +89,6 @@ function RegisterForm({ orderIdentifier }) {
 
         if (course_select) {
             course_select.addEventListener("change", calculatePrice);
-            course_select.addEventListener("change", hideShowPayment);
         }
 
         if (cycle_select && course_select) {
@@ -95,9 +117,6 @@ function RegisterForm({ orderIdentifier }) {
             resetPrice();
         }
 
-        const submitButton = document.getElementById("submit-button");
-        const consultDisclaimer = document.getElementById("consult-disclaimer");
-
         function calculatePrice() {
             if (course_select.value === "") {
                 course_price.value = "";
@@ -105,20 +124,24 @@ function RegisterForm({ orderIdentifier }) {
                 for (let i = 0; i < courses_data.length; i++) {
                     if (courses_data[i].id == course_select.value) {
                         if (courses_data[i].available == 'FALSE') {
+                            setPaymentNeeded(false);
                             course_price.value = "CURSO NO DISPONIBLE"
-                            submitButton.disabled = true;
+                            submitButton.disabled = false;
                             submitButton.value = "Curso No Disponible";
                             consultDisclaimer.classList.add("hidden")
                         } else if (courses_data[i].price == '0' || courses_data[i].price == 'GRATUITO' || courses_data[i].price == 'GRATIS') {
+                            setPaymentNeeded(false);
                             course_price.value = "GRATUITO"
                             submitButton.disabled = false;
                             consultDisclaimer.classList.add("hidden")
                         } else if (courses_data[i].price == 'CONSULTAR') {
+                            setPaymentNeeded(false);
                             course_price.value = "CONSULTAR CON UN ASESOR"
                             submitButton.disabled = false;
                             consultDisclaimer.classList.remove("hidden");
 
                         } else {
+                            setPaymentNeeded(true);
                             course_price.value = formatPrice(courses_data[i].price, 'PEN');
                             submitButton.disabled = false;
                             consultDisclaimer.classList.add("hidden")
@@ -154,56 +177,10 @@ function RegisterForm({ orderIdentifier }) {
                 return USDollar.format(price);
             }
         }
-
-        function hideShowPayment() {
-            if (course_price.value === "GRATUITO" || course_price.value === "CURSO NO DISPONIBLE" || course_price.value === "CONSULTAR CON UN ASESOR") {
-                document.getElementById('payment-method-section').style.display = "none";
-                document.getElementById('payment-evidence-section').style.display = "none";
-            } else {
-                document.getElementById('payment-method-section').style.display = "block";
-                document.getElementById('payment-evidence-section').style.display = "block";
-            }
-        }
-
-
     }, [coursesMounted, courses_data, course_selected, cycle_selected]);
 
-    // Payment Method Select useEffect
-    useEffect(() => {
-        const bank_transfer = document.getElementById('bank_transfer');
-        const yape = document.getElementById('yape');
-        const plin = document.getElementById('plin');
-        const bank_details = document.getElementById('bank-details');
-        const yape_details = document.getElementById('yape-details');
-        const plin_details = document.getElementById('plin-details');
-
-        if (bank_transfer) {
-            bank_transfer.addEventListener("change", function() {
-                bank_details.style.display = "flex";
-                yape_details.style.display = "none";
-                plin_details.style.display = "none";
-            });
-        }
-
-        if (yape) {
-            yape.addEventListener("change", function() {
-                bank_details.style.display = "none";
-                yape_details.style.display = "flex";
-                plin_details.style.display = "none";
-            });
-        }
-
-        if (plin) {
-            plin.addEventListener("change", function() {
-                bank_details.style.display = "none";
-                yape_details.style.display = "none";
-                plin_details.style.display = "flex";
-            });
-        }
-    }, []);
-
     return (
-        <form className="w-full max-w-xl mt-8" action="https://submit-form.com/XdEPgIgpT" method="POST">
+        <form className="w-full max-w-xl mt-8" action="https://submit-form.com/XdEPgIgpT" method="POST" onSubmit={handleSubmission}>
             <input type="hidden" name="_redirect" value={`https://bgmedicina.com/success?type=register&id=${orderIdentifier}`} />
             <input type="hidden" name="_append" value="false" />
             <input type="hidden" name="_email.subject" value="Se ha inscrito un nuevo alumno" />
@@ -216,14 +193,14 @@ function RegisterForm({ orderIdentifier }) {
                     <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-first-name">
                         Nombres
                     </label>
-                    <input required className="appearance-auto block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-2 leading-tight focus:outline-none focus:bg-white focus:border-teal-700 focus-visible:invalid:bg-red-50 focus-visible:invalid:border-red-500 focus-visible:valid:bg-green-50 focus-visible:valid:border-green-500" id="grid-first-name" type="text" name="first_name" placeholder="Juan Jesus" autoComplete="given-name" />
+                    <input required className="appearance-auto block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-2 leading-tight focus:outline-none focus:bg-white focus:border-teal-700 focus-visible:invalid:bg-red-50 focus-visible:invalid:border-red-500 focus-visible:valid:bg-green-50 focus-visible:valid:border-green-500 valid:border-teal-700" id="grid-first-name" type="text" name="first_name" placeholder="Juan Jesus" autoComplete="given-name" />
                     <p className="text-gray-600 text-xs italic">Tal y como aparece en tu documento de identidad</p>
                 </div>
                 <div className="w-full md:w-1/2 px-3">
                     <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-last-name">
                         Apellidos
                     </label>
-                    <input required className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-teal-700 mb-2 focus-visible:invalid:bg-red-50 focus-visible:invalid:border-red-500 focus-visible:valid:bg-green-50 focus-visible:valid:border-green-500" id="grid-last-name" type="text" name="last_name" placeholder="Perez Rodriguez" autoComplete="family-name" />
+                    <input required className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-teal-700 mb-2 focus-visible:invalid:bg-red-50 focus-visible:invalid:border-red-500 focus-visible:valid:bg-green-50 focus-visible:valid:border-green-500 valid:border-teal-700" id="grid-last-name" type="text" name="last_name" placeholder="Perez Rodriguez" autoComplete="family-name" />
                     <p className="text-gray-600 text-xs italic">Apellido paterno y apellido materno</p>
                 </div>
             </div>
@@ -232,7 +209,7 @@ function RegisterForm({ orderIdentifier }) {
                     <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-document-type">
                         Tipo de Documento de Identidad
                     </label>
-                    <select className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-teal-700 focus-visible:invalid:bg-red-50 focus-visible:invalid:border-red-500 focus-visible:valid:bg-green-50 focus-visible:valid:border-green-500" required id="grid-document-type" name="document_type" defaultValue="">
+                    <select className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-teal-700 focus-visible:invalid:bg-red-50 focus-visible:invalid:border-red-500 focus-visible:valid:bg-green-50 focus-visible:valid:border-green-500 valid:border-teal-700" required id="grid-document-type" name="document_type" defaultValue="">
                         <option value="" disabled="disabled">Seleccione</option>
                         <option value="dni">DNI</option>
                         <option value="pasaporte">Pasaporte</option>
@@ -243,7 +220,7 @@ function RegisterForm({ orderIdentifier }) {
                     <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-document-number">
                         Número de Documento de Identidad
                     </label>
-                    <input required className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-teal-700 focus-visible:invalid:bg-red-50 focus-visible:invalid:border-red-500 focus-visible:valid:bg-green-50 focus-visible:valid:border-green-500" id="grid-document-number" name="document_number" type="tel" minLength="8" placeholder="Número de Documento" />
+                    <input required className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-teal-700 focus-visible:invalid:bg-red-50 focus-visible:invalid:border-red-500 focus-visible:valid:bg-green-50 focus-visible:valid:border-green-500 valid:border-teal-700" id="grid-document-number" name="document_number" type="tel" minLength="8" placeholder="Número de Documento" />
                 </div>
             </div>
             <div className="flex flex-wrap -mx-3 mb-6">
@@ -251,13 +228,13 @@ function RegisterForm({ orderIdentifier }) {
                     <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-date-of-birth">
                         Fecha de Nacimiento
                     </label>
-                    <input required className="appearance-none block w-full h-[46px] bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 pr-8 leading-tight focus:outline-none focus:bg-white focus:border-teal-700 focus-visible:invalid:bg-red-50 focus-visible:invalid:border-red-500 focus-visible:valid:bg-green-50 focus-visible:valid:border-green-500" max={maxDate} id="grid-date-of-birth" name="date_of_birth" type="date" placeholder="dd/mm/yyyy" autoComplete="bday" />
+                    <input required className="appearance-none block w-full h-[46px] bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 pr-8 leading-tight focus:outline-none focus:bg-white focus:border-teal-700 focus-visible:invalid:bg-red-50 focus-visible:invalid:border-red-500 focus-visible:valid:bg-green-50 focus-visible:valid:border-green-500 valid:border-teal-700" max={maxDate} id="grid-date-of-birth" name="date_of_birth" type="date" placeholder="dd/mm/yyyy" autoComplete="bday" />
                 </div>
                 <div className="w-full md:w-1/2 px-3">
                     <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-phone-number">
                         Número de Celular
                     </label>
-                    <div id="phone-number-container" className="appearance-none flex w-full bg-gray-200 text-gray-700 border border-gray-200 rounded px-4 leading-tight focus:outline-none focus-within:bg-white focus-within:border-teal-700 pointer-events-none mb-2 has-[:focus:invalid]:bg-red-50 has-[:focus:invalid]:border-red-500 has-[:focus:valid]:bg-green-50 has-[:focus:valid]:border-green-500">
+                    <div id="phone-number-container" className="appearance-none flex w-full bg-gray-200 text-gray-700 border border-gray-200 rounded px-4 leading-tight focus:outline-none focus-within:bg-white focus-within:border-teal-700 pointer-events-none mb-2 has-[:focus:invalid]:bg-red-50 has-[:focus:invalid]:border-red-500 has-[:focus:valid]:bg-green-50 has-[:focus:valid]:border-green-500 has-[:valid]:border-teal-700">
                         <div className="flex items-center">
                             <svg
                                 width="18"
@@ -279,14 +256,14 @@ function RegisterForm({ orderIdentifier }) {
                     <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-email">
                         Correo Electrónico
                     </label>
-                    <input required className="peer appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 pr-8 leading-tight focus:outline-none focus:bg-white focus:border-teal-700 mb-2 focus-visible:invalid:bg-red-50 focus-visible:invalid:border-red-500 focus-visible:valid:bg-green-50 focus-visible:valid:border-green-500" id="grid-email" type="email" name="email" placeholder="alumno@tuuniversidad.edu.pe" pattern=".+@.+edu\.pe" autoComplete="email" />
-                    <p className="text-gray-600 text-xs italic peer-focus:peer-invalid:text-red-500 peer-valid:text-green-600">Usa tu correo institucional .edu.pe</p>
+                    <input required className="peer appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 pr-8 leading-tight focus:outline-none focus:bg-white focus:border-teal-700 mb-2 focus-visible:invalid:bg-red-50 focus-visible:invalid:border-red-500 focus-visible:valid:bg-green-50 focus-visible:valid:border-green-500 valid:border-teal-700" id="grid-email" type="email" name="email" placeholder="alumno@tuuniversidad.edu.pe" pattern=".+@.+edu\.pe" autoComplete="email" />
+                    <p className="text-gray-600 text-xs italic peer-focus:peer-invalid:text-red-500 peer-valid:text-teal-700">Usa tu correo institucional .edu.pe</p>
                 </div>
                 <div className="w-full md:w-1/2 px-3">
                     <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-cycle-select">
                         Ciclo de Estudios
                     </label>
-                    <select className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-teal-700 focus-visible:invalid:bg-red-50 focus-visible:invalid:border-red-500 focus-visible:valid:bg-green-50 focus-visible:valid:border-green-500" required id="grid-cycle-select" name="cycle" defaultValue={cycle_selected ? cycle_selected : ""}>
+                    <select className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-teal-700 focus-visible:invalid:bg-red-50 focus-visible:invalid:border-red-500 focus-visible:valid:bg-green-50 focus-visible:valid:border-green-500 valid:border-teal-700" required id="grid-cycle-select" name="cycle" defaultValue={cycle_selected ? cycle_selected : ""}>
                         <option value="" disabled="disabled">Seleccione</option>
                         <option value="1">Ciclo I</option>
                         <option value="2">Ciclo II</option>
@@ -307,7 +284,7 @@ function RegisterForm({ orderIdentifier }) {
                         Curso Académico
                     </label>
                     {courses_data ? "" : <Skeleton className="mb-2" height={46} />}
-                    {courses_data ? <select className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-teal-700 mb-2 focus-visible:invalid:bg-red-50 focus-visible:invalid:border-red-500 focus-visible:valid:bg-green-50 focus-visible:valid:border-green-500" required id="grid-course-select" name="course" defaultValue={course_selected ? course_selected : ""}>
+                    {courses_data ? <select className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-teal-700 mb-2 focus-visible:invalid:bg-red-50 focus-visible:invalid:border-red-500 focus-visible:valid:bg-green-50 focus-visible:valid:border-green-500 valid:border-teal-700" required id="grid-course-select" name="course" defaultValue={course_selected ? course_selected : ""}>
                         <option value="" disabled="disabled">Seleccione</option>
                         {courses_data ? courses_data.map((course, index) => {
                             if (course.available == "TRUE") {
@@ -327,14 +304,14 @@ function RegisterForm({ orderIdentifier }) {
                     <p className="text-gray-600 text-xs italic">El precio del curso se calcula automáticamente según el curso seleccionado.</p>
                 </div>
             </div>
-            <div id="payment-method-section" className="flex flex-wrap -mx-3 mb-6">
+            <div id ="payment-method-section" className={`flex flex-wrap -mx-3 mb-6 ${paymentNeeded ? "" : "hidden"}`}>
                 <div className="w-full px-3">
                     <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="payment-method">
                         Método de Pago
                     </label>
                     <div className="flex flex-wrap">
                         <div className="w-full my-1">
-                            <input className="hidden peer" type="radio" id="bank_transfer" name="payment-method" value="bank_transfer" required/>
+                            <input className="hidden peer" type="radio" id="bank_transfer" name="payment-method" value="bank_transfer" required={paymentNeeded} onClick={() => setPaymentMethod("bank_transfer")} />
                             <label className="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer peer-checked:border-teal-700 peer-checked:text-teal-700 hover:text-gray-600 hover:bg-gray-100" htmlFor="bank_transfer">
                                 <span>
                                     Transferencia Bancaria
@@ -342,7 +319,7 @@ function RegisterForm({ orderIdentifier }) {
                                 <img src='/img/payment/transferencia-icon.svg' />
                             </label>
                         </div>
-                        <div id="bank-details" className="w-full rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100 px-4 py-4 mb-2 hidden">
+                        <div id="bank-details" className={`w-full rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100 px-4 py-4 mb-2 ${paymentMethod === "bank_transfer" ? "flex" : "hidden"}`}>
                             <div className="flex flex-wrap">
                                 <div id="bank-data" className="flex flex-col align-center mb-2">
                                     <p className="text-sm text-pretty text-gray-500">Realice su pago directamente a cualquiera de nuestras cuentas bancarias. Por favor use su identificador de inscripción como referencia de pago. Su matrícula no será confirmada hasta que los fondos hayan sido recibidos en nuestra cuenta.</p>
@@ -376,7 +353,7 @@ function RegisterForm({ orderIdentifier }) {
                             </div>
                         </div>
                         <div className="w-full my-1">
-                            <input className="hidden peer" type="radio" id="yape" name="payment-method" value="yape" required/>
+                            <input className="hidden peer" type="radio" id="yape" name="payment-method" value="yape" required={paymentNeeded} onClick={() => setPaymentMethod("yape")} />
                             <label className="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer peer-checked:border-teal-700 peer-checked:text-teal-700 hover:text-gray-600 hover:bg-gray-100" htmlFor="yape">
                                 <span>
                                     Yape
@@ -384,7 +361,7 @@ function RegisterForm({ orderIdentifier }) {
                                 <img src='/img/payment/yape-icon.svg' />
                             </label>
                         </div>
-                        <div id="yape-details" className="w-full rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100 px-4 py-4 mb-2 hidden">
+                        <div id="yape-details" className={`w-full rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100 px-4 py-4 mb-2 ${paymentMethod === "yape" ? "flex" : "hidden"}`}>
                             <div className="flex flex-wrap">
                                 <div className="w-full">
                                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-4">
@@ -402,7 +379,7 @@ function RegisterForm({ orderIdentifier }) {
                             </div>
                         </div>
                         <div className="w-full my-1">
-                            <input className="hidden peer" type="radio" id="plin" name="payment-method" value="plin" required/>
+                            <input className="hidden peer" type="radio" id="plin" name="payment-method" value="plin" required={paymentNeeded} onClick={() => setPaymentMethod("plin")} />
                             <label className="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer peer-checked:border-teal-700 peer-checked:text-teal-700 hover:text-gray-600 hover:bg-gray-100" htmlFor="plin">
                                 <span>
                                     Plin
@@ -410,7 +387,7 @@ function RegisterForm({ orderIdentifier }) {
                                 <img src='/img/payment/plin-icon.svg' />
                             </label>
                         </div>
-                        <div id="plin-details" className="w-full rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100 px-4 py-4 mb-2 hidden">
+                        <div id="plin-details" className={`w-full rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100 px-4 py-4 mb-2 ${paymentMethod === "plin" ? "flex" : "hidden"}`}>
                             <div className="flex flex-wrap">
                                 <div className="w-full">
                                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-4">
@@ -430,17 +407,18 @@ function RegisterForm({ orderIdentifier }) {
                     </div>
                 </div>
             </div>
-            <div id="payment-evidence-section" className="flex flex-wrap -mx-3 mb-6">
+            <div id="payment-evidence-section" className={`flex flex-wrap -mx-3 mb-6 ${paymentNeeded ? "" : "hidden"}`}>
                 <div className="w-full px-3">
                     <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="dropzone-file">
                         Evidencia de Pago
                     </label>
+                    <p id="evidence-error-message" className="text-red-500 text-sm italic hidden">Por favor, sube una imagen de tu comprobante de pago.</p>
                     <input
-                        type="hidden"
+                        type="text"
                         name="proof_of_payment"
                         id="proof_of_payment"
-                        value={files.length > 0 ? files[0].cdnUrl : ""}
-                        required
+                        value={files.length > 0 ? files[0].cdnUrl : null}
+                        className="hidden"
                     />
                     <FileUploaderMinimal
                         pubkey="dacf95a2145ad757e200"
@@ -471,7 +449,7 @@ function RegisterForm({ orderIdentifier }) {
                 Considerando la vigencia del Decreto Legislativo Nº 1390 (Restricciones a la difusión de publicidad masiva) y, siendo <strong>Bioeasy Galenos</strong> respetuoso del ordenamiento jurídico vigente, le solicitamos nos brinde su consentimiento para mantenerlo informado acerca de nuestros diferentes servicios a través del envío de nuestra publicidad. La información brindada se utilizará exclusivamente para el envío de publicidad, por lo que se encontrará protegida por la Ley Nº 29733 - Ley de Protección de datos personales.
             </p>
 
-            <input className="bg-teal-700 hover:bg-teal-800 text-white font-bold py-3 px-6 rounded focus:outline-none focus:shadow-outline disabled:bg-red-600 disabled:hover:bg-red-800 cursor-pointer" type="submit" id="submit-button" value="Enviar Ficha de Inscripción" />
+            <input className="bg-teal-700 hover:bg-teal-800 text-white font-bold py-3 px-6 rounded focus:outline-none focus:shadow-outline disabled:bg-gray-400 cursor-pointer disabled:cursor-not-allowed" type="submit" id="submit-button" value="Enviar Ficha de Inscripción" />
 
             <p className="mt-2 text-xs font-light text-justify text-gray-500 hidden" id="consult-disclaimer">
                 Al hacer clic en el botón &quot;Enviar Ficha de Inscripción&quot; usted acepta que Bioeasy Galenos se comunique con usted a través de los datos proporcionados en este formulario para brindarle información sobre el servicio solicitado. Nuestro equipo se pondrá en contacto con usted en un plazo máximo de 48 horas hábiles.
