@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { FileUploaderMinimal } from '@uploadcare/react-uploader';
 import '@uploadcare/react-uploader/core.css';
 import FetchCSVData from '../Handlers/FetchCSVData';
@@ -17,8 +17,23 @@ function RegisterForm({ orderIdentifier }) {
     const coursesDataURL = import.meta.env.VITE_FORM_DATA_URL;
     const coursesData = FetchCSVData(coursesDataURL);
 
-    const submitButton = document.getElementById("submit-button");
-    const evidenceErrorMessage = document.getElementById("evidence-error-message");
+    // Check if the courses data has been loaded
+    useEffect(() => {
+        if (coursesData) {
+            setCoursesMounted(true);
+        }
+    }, [coursesData]);
+
+    // Function to calculate max date for date of birth input field (min 16 years old)
+    const calculateMaxDate = (minAge) => {
+        const today = new Date();
+        const yyyy = today.getFullYear() - minAge;
+        const mm = String(today.getMonth() + 1).padStart(2, '0');
+        const dd = String(today.getDate()).padStart(2, '0');
+        return `${yyyy}-${mm}-${dd}`;
+    }
+
+    const maxDate = calculateMaxDate(15); // Min age of 15 years old
 
     // Function to handle the file upload
     const handleEvidenceUpload = (items) => {
@@ -26,6 +41,9 @@ function RegisterForm({ orderIdentifier }) {
     };
 
     const handleSubmission = (e) => {
+        const evidenceErrorMessage = document.getElementById("evidence-error-message");
+        const submitButton = document.getElementById("submit-button");
+
         if (files.length === 0 && paymentNeeded) {
             e.preventDefault();
             evidenceErrorMessage.classList.remove("hidden");
@@ -54,128 +72,93 @@ function RegisterForm({ orderIdentifier }) {
         });
         phoneNumberContainer.classList.add("has-[:invalid]:border-red-500");
     }
-    
-    // Function to calculate max date for date of birth input field (min 16 years old)
-    const calculateMaxDate = (minAge) => {
-        const today = new Date();
-        const yyyy = today.getFullYear() - minAge;
-        const mm = String(today.getMonth() + 1).padStart(2, '0');
-        const dd = String(today.getDate()).padStart(2, '0');
-        return `${yyyy}-${mm}-${dd}`;
-    }
 
-    const maxDate = calculateMaxDate(15); // Min age of 15 years old
+    const formatPrice = (price, currency) => {
+        const formatters = {
+            PEN: new Intl.NumberFormat('es-PE', { style: 'currency', currency }),
+            USD: new Intl.NumberFormat('en-US', { style: 'currency', currency }),
+        };
 
-    // Check if the courses data has been loaded
-    useEffect(() => {
-        if (coursesData) {
-            setCoursesMounted(true);
+        return formatters[currency]?.format(price) ?? price;
+    };
+
+    const filterCourses = useCallback(() => {
+        const course_select = document.getElementById('grid-course-select');
+        const cycle_select = document.getElementById('grid-cycle-select');
+        const selectedCycle = cycle_select?.value;
+
+        Array.from(course_select.options).forEach(option => {
+            const course = coursesData.find(course => course.id === option.value);
+            if (course?.cycle === selectedCycle && course.available === 'TRUE') {
+                option.disabled = false;
+                option.classList.remove("hidden");
+            } else {
+                option.disabled = true;
+                option.classList.add("hidden");
+            }
+        });
+
+        course_select.value = "";
+        resetPrice();
+    }, [coursesData]);
+
+    const calculatePrice = useCallback(() => {
+        const course_select = document.getElementById('grid-course-select');
+        const course_price = document.getElementById('grid-course-price');
+        const submitButton = document.getElementById("submit-button");
+        const consultDisclaimer = document.getElementById("consult-disclaimer");
+        const selectedCourse = course_select?.value;
+        const course = coursesData.find(course => course.id === selectedCourse);
+
+        if (course) {
+            switch (course.price) {
+                case '0':
+                case 'GRATUITO':
+                case 'GRATIS':
+                    setPaymentNeeded(false);
+                    course_price.value = "GRATUITO";
+                    break;
+                case 'CONSULTAR':
+                    setPaymentNeeded(false);
+                    course_price.value = "CONSULTAR CON UN ASESOR";
+                    consultDisclaimer.classList.remove("hidden");
+                    break;
+                default:
+                    setPaymentNeeded(true);
+                    course_price.value = formatPrice(course.price, 'PEN');
+                    consultDisclaimer.classList.add("hidden");
+            }
+
+            submitButton.disabled = false;
+        } else {
+            resetPrice();
         }
     }, [coursesData]);
 
-    // Price Calculation and Course Select useEffect
-    useEffect(() => {
-        const course_select = document.getElementById('grid-course-select');
+    const resetPrice = () => {
         const course_price = document.getElementById('grid-course-price');
-        const cycle_select = document.getElementById('grid-cycle-select');
-        const submitButton = document.getElementById("submit-button");
-        const consultDisclaimer = document.getElementById("consult-disclaimer");
+        course_price.value = "";
+    };
 
+    useEffect(() => {
         if (courseSelected && coursesMounted) {
             calculatePrice();
         }
 
-        if (course_select) {
-            course_select.addEventListener("change", calculatePrice);
-        }
+        const course_select = document.getElementById('grid-course-select');
+        const cycle_select = document.getElementById('grid-cycle-select');
+        
+        course_select?.addEventListener("change", calculatePrice);
+        cycle_select?.addEventListener("change", filterCourses);
+        
+        course_select?.addEventListener("change", calculatePrice);
+        cycle_select?.addEventListener("change", filterCourses);
 
-        if (cycle_select && course_select) {
-            if (cycleSelected) {
-                filterCourses();
-                course_select.value = courseSelected;
-                calculatePrice();
-            }
-            cycle_select.addEventListener("change", filterCourses);
-        }
-
-        function filterCourses() {
-            const categoryId = cycle_select.value;
-
-            for (let i = 0; i < coursesData.length; i++) {
-                if (coursesData[i].cycle == categoryId && coursesData[i].available == 'TRUE') {
-                    course_select.querySelector(`option[value="${coursesData[i].id}"]`).disabled = false;
-                    course_select.querySelector(`option[value="${coursesData[i].id}"]`).classList.remove("hidden");
-                } else if (coursesData[i].cycle != categoryId && coursesData[i].available == 'TRUE') {
-                    course_select.querySelector(`option[value="${coursesData[i].id}"]`).disabled = true;
-                    course_select.querySelector(`option[value="${coursesData[i].id}"]`).classList.add("hidden");
-                }
-            }
-
-            course_select.value = "";
-            resetPrice();
-        }
-
-        function calculatePrice() {
-            if (course_select.value === "") {
-                course_price.value = "";
-            } else {
-                for (let i = 0; i < coursesData.length; i++) {
-                    if (coursesData[i].id == course_select.value) {
-                        if (coursesData[i].available == 'FALSE') {
-                            setPaymentNeeded(false);
-                            course_price.value = "CURSO NO DISPONIBLE"
-                            submitButton.disabled = false;
-                            submitButton.value = "Curso No Disponible";
-                            consultDisclaimer.classList.add("hidden")
-                        } else if (coursesData[i].price == '0' || coursesData[i].price == 'GRATUITO' || coursesData[i].price == 'GRATIS') {
-                            setPaymentNeeded(false);
-                            course_price.value = "GRATUITO"
-                            submitButton.disabled = false;
-                            consultDisclaimer.classList.add("hidden")
-                        } else if (coursesData[i].price == 'CONSULTAR') {
-                            setPaymentNeeded(false);
-                            course_price.value = "CONSULTAR CON UN ASESOR"
-                            submitButton.disabled = false;
-                            consultDisclaimer.classList.remove("hidden");
-
-                        } else {
-                            setPaymentNeeded(true);
-                            course_price.value = formatPrice(coursesData[i].price, 'PEN');
-                            submitButton.disabled = false;
-                            consultDisclaimer.classList.add("hidden")
-                        }
-                    }
-                }
-            }
-        }
-
-        function resetPrice() {
-            course_price.value = "";
-        }
-
-        function formatPrice(price, currency) {
-            // Function to format the price of the course
-
-            let PeruvianSol = new Intl.NumberFormat('es-PE', {
-                style: 'currency',
-                currency: currency,
-            });
-
-            let USDollar = new Intl.NumberFormat('en-US', {
-                style: 'currency',
-                currency: 'USD',
-            });
-
-
-            if (currency === 'PEN') {
-                return PeruvianSol.format(price);
-            }
-
-            if (currency === 'USD') {
-                return USDollar.format(price);
-            }
-        }
-    }, [coursesMounted, coursesData, courseSelected, cycleSelected]);
+        return () => {
+            course_select?.removeEventListener("change", calculatePrice);
+            cycle_select?.removeEventListener("change", filterCourses);
+        };
+    }, [coursesMounted, courseSelected, calculatePrice, filterCourses]);
 
     return (
         <form className="w-full max-w-xl mt-8" action="https://submit-form.com/XdEPgIgpT" method="POST" onSubmit={handleSubmission}>
