@@ -17,11 +17,17 @@ function RegisterForm({ orderIdentifier }) {
     const coursesDataURL = import.meta.env.VITE_FORM_DATA_URL;
     const coursesData = FetchCSVData(coursesDataURL);
 
-    // Check if the courses data has been loaded
+    // On page load and when coursesData is fetched, set coursesMounted to true and render reCAPTCHA
     useEffect(() => {
         if (coursesData) {
             setCoursesMounted(true);
         }
+
+        const script = document.createElement("script");
+        script.src = "https://www.google.com/recaptcha/api.js?hl=es-419";
+        script.async = true;
+        script.defer = true;
+        document.head.appendChild(script);
     }, [coursesData]);
 
     // Function to calculate max date for date of birth input field (min 16 years old)
