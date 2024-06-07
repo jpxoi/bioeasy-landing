@@ -287,9 +287,9 @@ function RegisterForm({ orderIdentifier }) {
             </div>
             <div id ="payment-method-section" className={`flex flex-wrap -mx-3 mb-6 ${paymentNeeded ? "" : "hidden"}`}>
                 <div className="w-full px-3">
-                    <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="payment-method">
+                    <span className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 cursor-default">
                         Método de Pago
-                    </label>
+                    </span>
                     <div className="flex flex-wrap">
                         <div className="w-full my-1">
                             <input className="hidden peer" type="radio" id="bank_transfer" name="payment-method" value="bank_transfer" required={paymentNeeded} onClick={() => setPaymentMethod("bank_transfer")} />
@@ -390,7 +390,7 @@ function RegisterForm({ orderIdentifier }) {
             </div>
             <div id="payment-evidence-section" className={`flex flex-wrap -mx-3 mb-6 ${paymentNeeded ? "" : "hidden"}`}>
                 <div className="w-full px-3">
-                    <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="dropzone-file">
+                    <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="proof_of_payment">
                         Evidencia de Pago
                     </label>
                     <p id="evidence-error-message" className="text-red-500 text-sm italic hidden">Por favor, sube una imagen de tu comprobante de pago.</p>
@@ -426,7 +426,9 @@ function RegisterForm({ orderIdentifier }) {
                 </div>
             </div>
 
-            <p className="mb-8 text-xs font-light text-justify text-gray-500">
+            <div className="cf-turnstile" data-sitekey="0x4AAAAAAAcGBs9Tjhc7JWF_" data-theme="light" data-language="es"></div>
+
+            <p className="mt-4 mb-8 text-xs font-light text-justify text-gray-500">
                 Considerando la vigencia del Decreto Legislativo Nº 1390 (Restricciones a la difusión de publicidad masiva) y, siendo <strong>Bioeasy Galenos</strong> respetuoso del ordenamiento jurídico vigente, le solicitamos nos brinde su consentimiento para mantenerlo informado acerca de nuestros diferentes servicios a través del envío de nuestra publicidad. La información brindada se utilizará exclusivamente para el envío de publicidad, por lo que se encontrará protegida por la Ley Nº 29733 - Ley de Protección de datos personales.
             </p>
 
