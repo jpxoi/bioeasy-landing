@@ -48,23 +48,45 @@ function RegisterForm({ orderIdentifier }) {
 
     const handleSubmission = (e) => {
         const evidenceErrorMessage = document.getElementById("evidence-error-message");
+        const captchaErrorMessage = document.getElementById("captcha-error-message");
+        const paymentMethodErrorMessage = document.getElementById("payment-method-error-message");
         const submitButton = document.getElementById("submit-button");
 
+        let hasError = false;
+
+        if (typeof grecaptcha === "undefined" || !grecaptcha.getResponse()) {
+            captchaErrorMessage.classList.remove("hidden");
+            hasError = true;
+        } else {
+            captchaErrorMessage.classList.add("hidden");
+        }
+
         if (files.length === 0 && paymentNeeded) {
-            e.preventDefault();
             evidenceErrorMessage.classList.remove("hidden");
-            alert("Por favor, sube una imagen de tu comprobante de pago.");
-        } else if (orderIdentifier === "") {
-            e.preventDefault();
-            alert("Error: No se pudo generar el identificador de inscripción. Por favor, intente nuevamente.");
-        } else if (paymentMethod === "" && paymentNeeded) {
-            e.preventDefault();
-            alert("Por favor, seleccione un método de pago para continuar.");
-        }  else {
-            submitButton.disabled = true;
-            submitButton.value = "Enviando...";
+            hasError = true;
+        } else {
             evidenceErrorMessage.classList.add("hidden");
         }
+
+        if (paymentMethod === "" && paymentNeeded) {
+            paymentMethodErrorMessage.classList.remove("hidden");
+            hasError = true;
+        }  else {
+            paymentMethodErrorMessage.classList.add("hidden");
+        }
+
+        if (orderIdentifier === "") {
+            alert("Error: No se pudo generar el identificador de inscripción. Por favor, intente nuevamente.");
+            hasError = true;
+        }
+
+        if (hasError) {
+            e.preventDefault();
+            return;
+        }
+
+        submitButton.disabled = true;
+        submitButton.value = "Enviando...";
     };
 
     const addInvalidClasses = () => {
@@ -391,6 +413,7 @@ function RegisterForm({ orderIdentifier }) {
                                 </div>
                             </div>
                         </div>
+                        <p id="payment-method-error-message" className="text-red-500 text-sm italic hidden">Por favor, seleccione un método de pago para continuar.</p>
                     </div>
                 </div>
             </div>
@@ -433,6 +456,7 @@ function RegisterForm({ orderIdentifier }) {
             </div>
 
             <div className="g-recaptcha" data-sitekey="6LeiOvMpAAAAAACr7aN04Ao33V7mWBteQCDw8vCA"></div>
+            <p id="captcha-error-message" className="text-red-500 text-sm italic hidden">Por favor, completa la validación de reCAPTCHA para continuar.</p>
 
             <p className="mt-4 mb-8 text-xs font-light text-justify text-gray-500">
                 Considerando la vigencia del Decreto Legislativo Nº 1390 (Restricciones a la difusión de publicidad masiva) y, siendo <strong>Bioeasy Galenos</strong> respetuoso del ordenamiento jurídico vigente, le solicitamos nos brinde su consentimiento para mantenerlo informado acerca de nuestros diferentes servicios a través del envío de nuestra publicidad. La información brindada se utilizará exclusivamente para el envío de publicidad, por lo que se encontrará protegida por la Ley Nº 29733 - Ley de Protección de datos personales.
