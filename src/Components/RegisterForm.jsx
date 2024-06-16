@@ -455,7 +455,7 @@ function RegisterForm({ orderIdentifier }) {
                 </div>
             </div>
 
-            <div className="cf-turnstile" data-sitekey="0x4AAAAAAAcqLHvyo-zmKuJl" data-callback="javascriptCallback"></div>
+            <div className="cf-turnstile" data-sitekey="0x4AAAAAAAcqLHvyo-zmKuJl" data-callback="javascriptCallback" data-theme="light" data-language="es-PE"></div>
             <p id="captcha-error-message" className="text-red-500 text-sm italic hidden">Por favor, completa la validación de reCAPTCHA para continuar.</p>
 
             <p className="mt-4 mb-8 text-xs font-light text-justify text-gray-500">
