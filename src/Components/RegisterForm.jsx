@@ -54,7 +54,7 @@ function RegisterForm({ orderIdentifier }) {
 
         let hasError = false;
 
-        if (typeof grecaptcha === "undefined" || !grecaptcha.getResponse()) {
+        if (typeof turnstile === "undefined" || !turnstile.getResponse()) {
             captchaErrorMessage.classList.remove("hidden");
             hasError = true;
         } else {
@@ -456,7 +456,7 @@ function RegisterForm({ orderIdentifier }) {
             </div>
 
             <div className="cf-turnstile" data-sitekey="0x4AAAAAAAcqLHvyo-zmKuJl" data-callback="javascriptCallback" data-theme="light" data-language="es-PE"></div>
-            <p id="captcha-error-message" className="text-red-500 text-sm italic hidden">Por favor, completa la validación de reCAPTCHA para continuar.</p>
+            <p id="captcha-error-message" className="text-red-500 text-sm italic hidden">Por favor, completa la validación de Cloudflare Turnstile para continuar.</p>
 
             <p className="mt-4 mb-8 text-xs font-light text-justify text-gray-500">
                 Considerando la vigencia del Decreto Legislativo Nº 1390 (Restricciones a la difusión de publicidad masiva) y, siendo <strong>Bioeasy Galenos</strong> respetuoso del ordenamiento jurídico vigente, le solicitamos nos brinde su consentimiento para mantenerlo informado acerca de nuestros diferentes servicios a través del envío de nuestra publicidad. La información brindada se utilizará exclusivamente para el envío de publicidad, por lo que se encontrará protegida por la Ley Nº 29733 - Ley de Protección de datos personales.
