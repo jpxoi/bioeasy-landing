@@ -24,7 +24,7 @@ function RegisterForm({ orderIdentifier }) {
         }
 
         const script = document.createElement("script");
-        script.src = "https://www.google.com/recaptcha/api.js?hl=es-419";
+        script.src = "https://challenges.cloudflare.com/turnstile/v0/api.js";
         script.async = true;
         script.defer = true;
         document.head.appendChild(script);
@@ -455,7 +455,7 @@ function RegisterForm({ orderIdentifier }) {
                 </div>
             </div>
 
-            <div className="g-recaptcha" data-sitekey="6LeiOvMpAAAAAACr7aN04Ao33V7mWBteQCDw8vCA"></div>
+            <div className="cf-turnstile" data-sitekey="0x4AAAAAAAcqLHvyo-zmKuJl" data-callback="javascriptCallback"></div>
             <p id="captcha-error-message" className="text-red-500 text-sm italic hidden">Por favor, completa la validación de reCAPTCHA para continuar.</p>
 
             <p className="mt-4 mb-8 text-xs font-light text-justify text-gray-500">
