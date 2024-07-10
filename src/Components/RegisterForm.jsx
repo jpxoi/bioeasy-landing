@@ -444,7 +444,7 @@ function RegisterForm({ orderIdentifier }) {
                             en : es
                         }}
                     />
-                    <p className="text-gray-600 text-xs italic">Sube una foto o captura de pantalla de tu comprobante de pago. Solo se aceptan archivos de imagen (JPG, PNG, GIF) de máximo 2MB.</p>
+                    <p className="text-gray-600 text-xs italic mt-2">Sube una foto o captura de pantalla de tu comprobante de pago. Solo se aceptan archivos de imagen (JPG, PNG, GIF) de máximo 2MB.</p>
                 </div>
             </div>
 
