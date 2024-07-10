@@ -4,6 +4,7 @@ import { FileUploaderMinimal } from '@uploadcare/react-uploader';
 import '@uploadcare/react-uploader/core.css';
 import FetchCSVData from '../Handlers/FetchCSVData';
 import Skeleton from 'react-loading-skeleton';
+import es from "../locale/es";
 
 function RegisterForm({ orderIdentifier }) {
     const [coursesMounted, setCoursesMounted] = useState(false);
@@ -436,6 +437,10 @@ function RegisterForm({ orderIdentifier }) {
                         maxLocalFileSizeBytes={2000000}
                         multiple={false}
                         imgOnly={true}
+                        classNameUploader="my-config uc-light"
+                        localeDefinitionOverride={{
+                            en : es
+                        }}
                     />
                     <p className="text-gray-600 text-xs italic">Sube una foto o captura de pantalla de tu comprobante de pago. Solo se aceptan archivos de imagen (JPG, PNG, GIF) de máximo 2MB.</p>
                 </div>
