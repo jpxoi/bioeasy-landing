@@ -55,6 +55,7 @@ function RegisterForm({ orderIdentifier }) {
 
         let hasError = false;
 
+        // eslint-disable-next-line no-undef
         if (typeof turnstile === "undefined" || !turnstile.getResponse()) {
             captchaErrorMessage.classList.remove("hidden");
             hasError = true;
@@ -298,6 +299,7 @@ function RegisterForm({ orderIdentifier }) {
                         <option value="" disabled="disabled">Seleccione</option>
                         {coursesData ? coursesData.map((course, index) => {
                             if (course.available == "TRUE") {
+                                // eslint-disable-next-line react/no-unknown-property
                                 return <option key={index} category={course.cycle} value={course.id}>{course.name}</option>
                             }
                         }) : console.log("Loading Courses Data...")}
