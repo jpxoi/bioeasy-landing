@@ -1,25 +1,11 @@
 import { useEffect, useState } from "react";
 import RegisterForm from "../Components/RegisterForm";
+import { generateIdentifier } from "../Utils/RegistrationFormUtils";
 
 function Register() {
   const [orderIdentifier, setOrderIdentifier] = useState("");
 
-  // Function to set the identifier in the HTML when the component is mounted
   useEffect(() => {
-    // Function to generate a random identifier for the registration of length 6 with numbers and letters (uppercase) using Date.now() as seed
-    function generateIdentifier() {
-      const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-      const seed = Date.now();
-      let identifier = "";
-      for (let i = 0; i < 6; i++) {
-        // Use seed to generate a random number between 0 and 35
-        const random = Math.floor(Math.random() * seed);
-        // Use random to get a character from the characters string
-        identifier += characters.charAt(random % 36);
-      }
-      return identifier;
-    }
-
     // Function to set the identifier in the HTML
     function setIdentifier() {
       const newIdentifier = generateIdentifier();

@@ -34,3 +34,16 @@ export const addInvalidClasses = () => {
   });
   phoneNumberContainer.classList.add("has-[:invalid]:border-red-500");
 };
+
+export const generateIdentifier = () => {
+  const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+  const seed = Date.now();
+  let identifier = "";
+  for (let i = 0; i < 6; i++) {
+    // Use seed to generate a random number between 0 and 35
+    const random = Math.floor(Math.random() * seed);
+    // Use random to get a character from the characters string
+    identifier += characters.charAt(random % 36);
+  }
+  return identifier;
+}
