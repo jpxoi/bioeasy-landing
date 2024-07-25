@@ -18,6 +18,7 @@ function RegisterForm({ orderIdentifier }) {
   const [files, setFiles] = useState([]);
   const [paymentNeeded, setPaymentNeeded] = useState(true);
   const [paymentMethod, setPaymentMethod] = useState("");
+  const [orderPrice, setOrderPrice] = useState("");
 
   const cycleSelected = new URLSearchParams(window.location.search).get(
     "ciclo"
@@ -132,7 +133,6 @@ function RegisterForm({ orderIdentifier }) {
 
   const calculatePrice = useCallback(() => {
     const course_select = document.getElementById("grid-course-select");
-    const course_price = document.getElementById("grid-course-price");
     const submitButton = document.getElementById("submit-button");
     const consultDisclaimer = document.getElementById("consult-disclaimer");
     const selectedCourse = course_select?.value;
@@ -144,16 +144,16 @@ function RegisterForm({ orderIdentifier }) {
         case "GRATUITO":
         case "GRATIS":
           setPaymentNeeded(false);
-          course_price.value = "GRATUITO";
+          setOrderPrice("GRATUITO");
           break;
         case "CONSULTAR":
           setPaymentNeeded(false);
-          course_price.value = "CONSULTAR CON UN ASESOR";
+          setOrderPrice("CONSULTAR CON UN ASESOR");
           consultDisclaimer.classList.remove("hidden");
           break;
         default:
           setPaymentNeeded(true);
-          course_price.value = formatPrice(course.price, "PEN");
+          setOrderPrice(formatPrice(course.price, "PEN"));
           consultDisclaimer.classList.add("hidden");
       }
 
@@ -469,6 +469,7 @@ function RegisterForm({ orderIdentifier }) {
             type="text"
             readOnly
             placeholder="S/ 0.00"
+            value={orderPrice}
           />
           <p className="text-gray-600 text-xs italic">
             El precio del curso se calcula automáticamente según el curso
