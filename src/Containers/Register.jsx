@@ -17,7 +17,7 @@ function Register() {
 
   return (
     <div className="container mt-16 mb-16 mx-auto px-4">
-      <div className="flex flex-col items-center justify-center pt-8">
+      {/* <div className="flex flex-col items-center justify-center pt-8">
         <div
           className="flex items-center p-4 mb-4 text-sm text-red-800 border border-red-300 rounded-lg bg-red-50"
           role="alert"
@@ -39,7 +39,7 @@ function Register() {
             Bioeasy Galenos via WhatsApp.
           </div>
         </div>
-      </div>
+      </div> */}
 
       <div className="flex flex-col items-center justify-center py-8">
         <h2 className="text-4xl font-bold text-gray-900">

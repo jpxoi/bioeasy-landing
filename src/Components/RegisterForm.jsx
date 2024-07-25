@@ -11,6 +11,7 @@ import {
   formatPrice,
   addInvalidClasses,
 } from "../Utils/RegistrationFormUtils";
+import toast from "react-hot-toast";
 
 function RegisterForm({ orderIdentifier }) {
   const [coursesMounted, setCoursesMounted] = useState(false);
@@ -98,6 +99,15 @@ function RegisterForm({ orderIdentifier }) {
 
     submitButton.disabled = true;
     submitButton.value = "Enviando...";
+  };
+
+  const handleCopyToClipboard = (e, text) => {
+    e.preventDefault();
+    navigator.clipboard.writeText(text);
+    toast("¡Texto copiado al portapapeles!", {
+      position: "top-right",
+      icon: "📋",
+    });
   };
 
   const filterCourses = useCallback(() => {
@@ -490,7 +500,7 @@ function RegisterForm({ orderIdentifier }) {
                 htmlFor="bank_transfer"
               >
                 <span>Transferencia Bancaria</span>
-                <img src="/img/payment/transferencia-icon.svg" />
+                <img src="/img/payment/bcp-icon.svg" />
               </label>
             </div>
             <div
@@ -513,44 +523,119 @@ function RegisterForm({ orderIdentifier }) {
                   </p>
                 </div>
                 <div className="w-full my-1">
-                  <h3 className="text-sm font-semibold text-gray-700">
-                    Banco de Crédito del Perú
-                  </h3>
                   <div
                     id="bcp-data"
-                    className="flex align-center bg-white px-2 py-2 rounded-md my-1"
+                    className="flex flex-col gap-2 align-center bg-white px-4 py-4 rounded-md my-1"
                   >
-                    <div className="flex items-center justify-center max-w-8 mx-1">
+                    <div className="flex items-center">
                       <img src="/img/payment/bcp-icon.svg" />
+                      <h5 className="text-base font-bold text-gray-900 ml-2">
+                        Banco de Crédito del Perú
+                      </h5>
                     </div>
-                    <div id="separator" className="w-px bg-gray-300 mx-1"></div>
-                    <div className="flex flex-col justify-center mx-1">
-                      <p className="text-xs text-gray-500">
-                        Número de Cuenta: 570-07421883-0-05
-                      </p>
-                      <p className="text-xs text-gray-500">
-                        CCI: 002-5701074218830-0-501
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div className="w-full my-1">
-                  <h3 className="text-sm font-semibold text-gray-700">BBVA</h3>
-                  <div
-                    id="bbva-data"
-                    className="flex align-center bg-white px-2 py-2 rounded-md mt-1"
-                  >
-                    <div className="flex items-center justify-center max-w-8 mx-1">
-                      <img src="/img/payment/bbva-icon.svg" />
-                    </div>
-                    <div id="separator" className="w-px bg-gray-300 mx-1"></div>
-                    <div className="flex flex-col justify-center mx-1">
-                      <p className="text-xs text-gray-500">
-                        Número de Cuenta: 0011-0918-0200306237
-                      </p>
-                      <p className="text-xs text-gray-500">
-                        CCI: 011-918-00020030623705
-                      </p>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-2 w-full">
+                      <div className="flex flex-col items-start justify-center">
+                        <p
+                          id="label"
+                          className="text-xs text-gray-500 font-bold"
+                        >
+                          Número de Cuenta
+                        </p>
+                        <p
+                          id="account-number"
+                          className="text-sm text-gray-800 font-bold flex flex-row gap-2 items-center"
+                        >
+                          570-4199042-0-39{" "}
+                          <button
+                            className="flex flex-row gap-2 text-xs text-gray-500 hover:text-gray-600"
+                            onClick={(e) =>
+                              handleCopyToClipboard(e, "5704199042039")
+                            }
+                          >
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 16 16"
+                              fill="currentColor"
+                              className="size-4"
+                            >
+                              <path d="M5.5 3.5A1.5 1.5 0 0 1 7 2h2.879a1.5 1.5 0 0 1 1.06.44l2.122 2.12a1.5 1.5 0 0 1 .439 1.061V9.5A1.5 1.5 0 0 1 12 11V8.621a3 3 0 0 0-.879-2.121L9 4.379A3 3 0 0 0 6.879 3.5H5.5Z" />
+                              <path d="M4 5a1.5 1.5 0 0 0-1.5 1.5v6A1.5 1.5 0 0 0 4 14h5a1.5 1.5 0 0 0 1.5-1.5V8.621a1.5 1.5 0 0 0-.44-1.06L7.94 5.439A1.5 1.5 0 0 0 6.878 5H4Z" />
+                            </svg>
+                          </button>
+                        </p>
+                      </div>
+                      <div className="flex flex-col items-start justify-center">
+                        <p
+                          id="label"
+                          className="text-xs text-gray-500 font-bold"
+                        >
+                          CCI
+                        </p>
+                        <p
+                          id="iban"
+                          className="text-sm text-gray-800 font-bold flex flex-row gap-2 items-center"
+                        >
+                          002-5700041990420-3-904
+                          <button
+                            className="flex flex-row gap-2 text-xs text-gray-500 hover:text-gray-600"
+                            onClick={(e) =>
+                              handleCopyToClipboard(e, "00257000419904203904")
+                            }
+                          >
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 16 16"
+                              fill="currentColor"
+                              className="size-4"
+                            >
+                              <path d="M5.5 3.5A1.5 1.5 0 0 1 7 2h2.879a1.5 1.5 0 0 1 1.06.44l2.122 2.12a1.5 1.5 0 0 1 .439 1.061V9.5A1.5 1.5 0 0 1 12 11V8.621a3 3 0 0 0-.879-2.121L9 4.379A3 3 0 0 0 6.879 3.5H5.5Z" />
+                              <path d="M4 5a1.5 1.5 0 0 0-1.5 1.5v6A1.5 1.5 0 0 0 4 14h5a1.5 1.5 0 0 0 1.5-1.5V8.621a1.5 1.5 0 0 0-.44-1.06L7.94 5.439A1.5 1.5 0 0 0 6.878 5H4Z" />
+                            </svg>
+                          </button>
+                        </p>
+                      </div>
+                      <div className="flex flex-col items-start justify-center">
+                        <p
+                          id="label"
+                          className="text-xs text-gray-500 font-bold"
+                        >
+                          Referencia de Pago
+                        </p>
+                        <p className="text-sm text-gray-800 font-bold flex flex-row gap-2 items-center">
+                          {orderIdentifier}
+                          <button
+                            className="flex flex-row gap-2 text-xs text-gray-500 hover:text-gray-600"
+                            onClick={(e) =>
+                              handleCopyToClipboard(e, orderIdentifier)
+                            }
+                          >
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 16 16"
+                              fill="currentColor"
+                              className="size-4"
+                            >
+                              <path d="M5.5 3.5A1.5 1.5 0 0 1 7 2h2.879a1.5 1.5 0 0 1 1.06.44l2.122 2.12a1.5 1.5 0 0 1 .439 1.061V9.5A1.5 1.5 0 0 1 12 11V8.621a3 3 0 0 0-.879-2.121L9 4.379A3 3 0 0 0 6.879 3.5H5.5Z" />
+                              <path d="M4 5a1.5 1.5 0 0 0-1.5 1.5v6A1.5 1.5 0 0 0 4 14h5a1.5 1.5 0 0 0 1.5-1.5V8.621a1.5 1.5 0 0 0-.44-1.06L7.94 5.439A1.5 1.5 0 0 0 6.878 5H4Z" />
+                            </svg>
+                          </button>
+                        </p>
+                      </div>
+                      <div className="flex flex-col items-start justify-center">
+                        <p
+                          id="label"
+                          className="text-xs text-gray-500 font-bold"
+                        >
+                          Titular
+                        </p>
+                        <p
+                          id="account-holder"
+                          className="text-sm text-gray-800 font-bold"
+                        >
+                          Grupo Bioeasy Galenos SRL
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -581,101 +666,102 @@ function RegisterForm({ orderIdentifier }) {
               }`}
             >
               <div className="flex flex-wrap">
-                <div className="w-full">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-4">
-                    <div id="yape-qr" className="">
-                      <img
-                        className="mb-2 rounded-lg w-[300px] mt-1"
-                        src="https://quickchart.io/qr?text=0002010102113944tCbPTJlWuwEOr5wNf9IVBggu45tPaDbjLT50DtkjUSM=5204561153036045802PE5906YAPERO6004Lima63045B3F&size=300"
-                      />
-                    </div>
-                    <div
-                      id="yape-data"
-                      className="flex flex-col align-center px-2 rounded-md mt-1"
-                    >
-                      <p className="text-sm font-semibold text-gray-600 mb-1">
-                        ¿Cómo pagar via Yape?
-                      </p>
-                      <p className="text-sm text-gray-500 text-pretty">
-                        Escanee el código QR con su aplicación Yape y efectúe el
-                        pago correspondiente. Por favor{" "}
-                        <strong>
-                          use su identificador de inscripción como referencia de
-                          pago
-                        </strong>
-                        . Su matrícula no será confirmada hasta que los fondos
-                        hayan sido recibidos en nuestra cuenta.
-                      </p>
-                      <p className="text-sm font-medium text-gray-500 mt-2">
-                        <strong>Titular: </strong>Miguel Augusto Rodriguez
-                        Anticona
-                      </p>
-                      <p className="text-sm font-medium text-gray-500">
-                        <strong>Número: </strong>+51 986 938 845
-                      </p>
-                    </div>
-                  </div>
+                <div id="bank-data" className="flex flex-col align-center mb-2">
+                  <p className="text-sm text-pretty text-gray-500">
+                    Realice su pago directamente a nuestro Yape desde su
+                    billetera digital preferida. Por favor{" "}
+                    <strong>
+                      use su identificador de inscripción como referencia de
+                      pago
+                    </strong>
+                    . Su matrícula no será confirmada hasta que los fondos hayan
+                    sido recibidos en nuestra cuenta.
+                  </p>
                 </div>
-              </div>
-            </div>
-            <div className="w-full my-1">
-              <input
-                className="hidden peer"
-                type="radio"
-                id="plin"
-                name="payment-method"
-                value="plin"
-                required={paymentNeeded}
-                onClick={() => setPaymentMethod("plin")}
-              />
-              <label
-                className="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer peer-checked:border-teal-700 peer-checked:text-teal-700 hover:text-gray-600 hover:bg-gray-100"
-                htmlFor="plin"
-              >
-                <span>Plin</span>
-                <img src="/img/payment/plin-icon.svg" />
-              </label>
-            </div>
-            <div
-              id="plin-details"
-              className={`w-full rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100 px-4 py-4 mb-2 ${
-                paymentMethod === "plin" ? "flex" : "hidden"
-              }`}
-            >
-              <div className="flex flex-wrap">
-                <div className="w-full">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-4">
-                    <div id="plin-qr" className="">
-                      <img
-                        className="mb-2 rounded-lg w-[300px] mt-1"
-                        src="https://quickchart.io/qr?text=0002015802PE2656003253e98febe51047ffbb029d72237132cb0116Plin%20Network%20P2P0102115204482953036045912P2P%20Transfer6004Lima63048DB9&size=300"
-                      />
+                <div className="w-full my-1">
+                  <div
+                    id="bcp-data"
+                    className="flex flex-col gap-2 align-center bg-white px-4 py-4 rounded-md my-1"
+                  >
+                    <div className="flex items-center">
+                      <img src="/img/payment/yape-icon.svg" />
+                      <h5 className="text-base font-bold text-gray-900 ml-2">
+                        Yape
+                      </h5>
                     </div>
-                    <div
-                      id="plin-data"
-                      className="flex flex-col align-center px-2 rounded-md mt-1"
-                    >
-                      <p className="text-sm font-semibold text-gray-600 mb-1">
-                        ¿Cómo pagar via Plin?
-                      </p>
-                      <p className="text-sm text-gray-500 text-pretty">
-                        Escanee el código QR con su app Banca Móvil de alguno de
-                        los bancos participantes de Plin y efectúe el pago. Por
-                        favor{" "}
-                        <strong>
-                          use su identificador de inscripción como referencia de
-                          pago
-                        </strong>
-                        . Su matrícula no será confirmada hasta que los fondos
-                        hayan sido recibidos en nuestra cuenta.
-                      </p>
-                      <p className="text-sm font-medium text-gray-500 mt-2">
-                        <strong>Titular: </strong>Miguel Augusto Rodriguez
-                        Anticona
-                      </p>
-                      <p className="text-sm font-medium text-gray-500">
-                        <strong>Número: </strong>+51 986 938 845
-                      </p>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-2 w-full">
+                      <div className="flex flex-col items-start justify-center">
+                        <p
+                          id="label"
+                          className="text-xs text-gray-500 font-bold"
+                        >
+                          Número de Celular
+                        </p>
+                        <p
+                          id="account-number"
+                          className="text-sm text-gray-800 font-bold flex flex-row gap-2 items-center"
+                        >
+                          +51 967 795 016
+                          <button
+                            className="flex flex-row gap-2 text-xs text-gray-500 hover:text-gray-600"
+                            onClick={(e) =>
+                              handleCopyToClipboard(e, "967795016")
+                            }
+                          >
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 16 16"
+                              fill="currentColor"
+                              className="size-4"
+                            >
+                              <path d="M5.5 3.5A1.5 1.5 0 0 1 7 2h2.879a1.5 1.5 0 0 1 1.06.44l2.122 2.12a1.5 1.5 0 0 1 .439 1.061V9.5A1.5 1.5 0 0 1 12 11V8.621a3 3 0 0 0-.879-2.121L9 4.379A3 3 0 0 0 6.879 3.5H5.5Z" />
+                              <path d="M4 5a1.5 1.5 0 0 0-1.5 1.5v6A1.5 1.5 0 0 0 4 14h5a1.5 1.5 0 0 0 1.5-1.5V8.621a1.5 1.5 0 0 0-.44-1.06L7.94 5.439A1.5 1.5 0 0 0 6.878 5H4Z" />
+                            </svg>
+                          </button>
+                        </p>
+                      </div>
+                      <div className="flex flex-col items-start justify-center">
+                        <p
+                          id="label"
+                          className="text-xs text-gray-500 font-bold"
+                        >
+                          Titular
+                        </p>
+                        <p
+                          id="account-holder"
+                          className="text-sm text-gray-800 font-bold"
+                        >
+                          Grupo Bioeasy Galenos SRL
+                        </p>
+                      </div>
+                      <div className="flex flex-col items-start justify-center">
+                        <p
+                          id="label"
+                          className="text-xs text-gray-500 font-bold"
+                        >
+                          Referencia de Pago
+                        </p>
+                        <p className="text-sm text-gray-800 font-bold flex flex-row gap-2 items-center">
+                          {orderIdentifier}
+                          <button
+                            className="flex flex-row gap-2 text-xs text-gray-500 hover:text-gray-600"
+                            onClick={(e) =>
+                              handleCopyToClipboard(e, orderIdentifier)
+                            }
+                          >
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 16 16"
+                              fill="currentColor"
+                              className="size-4"
+                            >
+                              <path d="M5.5 3.5A1.5 1.5 0 0 1 7 2h2.879a1.5 1.5 0 0 1 1.06.44l2.122 2.12a1.5 1.5 0 0 1 .439 1.061V9.5A1.5 1.5 0 0 1 12 11V8.621a3 3 0 0 0-.879-2.121L9 4.379A3 3 0 0 0 6.879 3.5H5.5Z" />
+                              <path d="M4 5a1.5 1.5 0 0 0-1.5 1.5v6A1.5 1.5 0 0 0 4 14h5a1.5 1.5 0 0 0 1.5-1.5V8.621a1.5 1.5 0 0 0-.44-1.06L7.94 5.439A1.5 1.5 0 0 0 6.878 5H4Z" />
+                            </svg>
+                          </button>
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
