@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import fallback from '.././assets/img/fallback_card.webp'
 import 'react-loading-skeleton/dist/skeleton.css'
 
@@ -26,12 +27,12 @@ function CourseCard(course) {
                 <p className="mb-3 font-normal text-gray-700">
                     {description}
                 </p>
-                <a href={link} className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-teal-700 rounded-lg hover:bg-teal-800 focus:ring-4 focus:outline-none focus:ring-teal-300 transition-all">
+                <Link to={link} preventScrollReset={false} className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-teal-700 rounded-lg hover:bg-teal-800 focus:ring-4 focus:outline-none focus:ring-teal-300 transition-all">
                     Inscríbete
                     <svg className="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
                         <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
                     </svg>
-                </a>
+                </Link>
             </div>
             
         </div>

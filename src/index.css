@@ -93,3 +93,8 @@ input#grid-terms-and-conditions:checked::after {
   --h-accent: 182;
   --l-accent: 30%;
 }
+
+/* Hide Powered by Uploadcare element */
+.my-config > lr-start-from > .content > lr-copyright {
+  display: none;
+}
