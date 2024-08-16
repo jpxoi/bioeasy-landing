@@ -1,10 +1,10 @@
 function PrivacyText() {
-    const company_name = "Bioeasy Galenos";
-    const company_RUC = "sinruc";
-    const company_address = "Mz I Lte 13 Urb. Ingenieria II, Distrito de Trujillo, Provincia de Trujillo, Departamento de La Libertad";
+    const company_name = "Grupo Bioeasy Galenos S.R.L.";
+    const company_RUC = "20612319325";
+    const company_address = "Mza. I Lote 13 Dpto. 601 Urb. Ingenieria II, Distrito de Trujillo, Provincia de Trujillo, Departamento de La Libertad";
     const company_email = "privacy@bgmedicina.com";
     const company_email_ref = `mailto:${company_email}`;
-    const company_url = "https://bioeasygalenos.com";
+    const company_url = "https://bgmedicina.com";
     return (
         <div className="container mx-auto px-4 pt-16 flex flex-col items-center justify-center">
             <div className="flex flex-col items-center justify-center py-16">
