@@ -503,7 +503,7 @@ function RegisterForm({ orderIdentifier }) {
                 htmlFor="bank_transfer"
               >
                 <span>Transferencia Bancaria</span>
-                <img src={`${VITE_CDN_URL}/media/payment/bcp-icon.svg`} />
+                <img src={`${cdnURL}/media/payment/bcp-icon.svg`} />
               </label>
             </div>
             <div
@@ -531,7 +531,7 @@ function RegisterForm({ orderIdentifier }) {
                     className="flex flex-col gap-2 align-center bg-white px-4 py-4 rounded-md my-1"
                   >
                     <div className="flex items-center">
-                      <img src={`${VITE_CDN_URL}/media/payment/bcp-icon.svg`} />
+                      <img src={`${cdnURL}/media/payment/bcp-icon.svg`} />
                       <h5 className="text-base font-bold text-gray-900 ml-2">
                         Banco de Crédito del Perú
                       </h5>
@@ -635,7 +635,7 @@ function RegisterForm({ orderIdentifier }) {
                 htmlFor="yape"
               >
                 <span>Yape</span>
-                <img src={`${VITE_CDN_URL}/media/payment/yape-icon.svg`} />
+                <img src={`${cdnURL}/media/payment/yape-icon.svg`} />
               </label>
             </div>
             <div
@@ -663,7 +663,7 @@ function RegisterForm({ orderIdentifier }) {
                     className="flex flex-col gap-2 align-center bg-white px-4 py-4 rounded-md my-1"
                   >
                     <div className="flex items-center">
-                      <img src={`${VITE_CDN_URL}/media/payment/yape-icon.svg`} />
+                      <img src={`${cdnURL}/media/payment/yape-icon.svg`} />
                       <h5 className="text-base font-bold text-gray-900 ml-2">
                         Yape
                       </h5>

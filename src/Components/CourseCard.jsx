@@ -5,6 +5,7 @@ import 'react-loading-skeleton/dist/skeleton.css'
 function CourseCard(course) {
     const { id, title, description, image, tag, category, link } = course.course
     const imageavif = image ? image.replace("webp", "avif") : null
+    const cdnURL = import.meta.env.VITE_CDN_URL;
 
     const class_name = `course__card mix ${category} max-w-sm bg-white border border-gray-200 rounded-lg shadow`
     
@@ -12,8 +13,8 @@ function CourseCard(course) {
         <div className={class_name} id={id}>
             <div className="course__card__image">
                 <picture className="rounded-t-lg">
-                    <source srcSet={ imageavif ? imageavif : fallback } type="image/avif" />
-                    <source srcSet={ image ? image : fallback } type="image/webp" />
+                    <source srcSet={ imageavif ? `${cdnURL}${imageavif}` : fallback } type="image/avif" />
+                    <source srcSet={ image ? `${cdnURL}${image}` : fallback } type="image/webp" />
                     <img className="rounded-t-lg" loading="lazy" src={ image ? image : fallback } alt={ title } width="800" height="1000"/>
                 </picture>
             </div>
