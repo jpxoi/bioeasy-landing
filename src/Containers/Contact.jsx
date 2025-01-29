@@ -20,8 +20,8 @@ function Contact() {
             <ContactCard
               id="whatssap"
               contact_title="WhatsApp"
-              contact_info="+51 986 938 845"
-              contact_link="https://wa.me/51986938845"
+              contact_info="+51 940 256 869"
+              contact_link="https://wa.me/51940256869"
               contact_cta="Escríbenos"
             />
             <ContactCard
