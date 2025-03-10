@@ -28,7 +28,7 @@ export async function FetchUniversities() {
     }
 }
 
-export async function FetchCourseData({ university, academic_cycle } = {}) {
+export async function FetchCourseData(university, academic_cycle) {
   try {
     const params = new URLSearchParams();
     
