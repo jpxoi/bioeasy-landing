@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import RegisterForm from "../Components/RegisterForm";
-import { generateIdentifier } from "../Utils/RegistrationFormUtils";
+import { generateIdentifier } from "../utils/form-utils";
 import { InformationCircleIcon } from '@heroicons/react/16/solid';
 
 function Register() {

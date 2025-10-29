@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { FileUploaderMinimal } from "@uploadcare/react-uploader";
 import "@uploadcare/react-uploader/core.css";
 import FetchCSVData from "../Handlers/FetchCSVData";
@@ -10,7 +10,7 @@ import {
   resetPrice,
   formatPrice,
   addInvalidClasses,
-} from "../Utils/RegistrationFormUtils";
+} from "../utils/form-utils";
 import { DocumentDuplicateIcon } from "@heroicons/react/16/solid";
 import toast from "react-hot-toast";
 
@@ -432,7 +432,6 @@ function RegisterForm({ orderIdentifier }) {
               {coursesData
                 ? coursesData.map((course, index) => {
                     if (course.available == "TRUE") {
-                      // eslint-disable-next-line react/no-unknown-property
                       return (
                         <option
                           key={index}
