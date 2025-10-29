@@ -1,5 +1,5 @@
 import { ChevronDownIcon } from '@heroicons/react/24/solid'
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router'
 
 function Heading() {
     return (

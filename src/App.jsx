@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router";
 import Landing from "./pages/Landing";
 import Error404 from "./pages/Error404";
 import Privacy from "./pages/Privacy";

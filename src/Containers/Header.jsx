@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import logo from '.././assets/img/logo.webp'
 import logo_sm from '.././assets/img/logo_sm.webp'
 import NavMenu from '../components/NavMenu';

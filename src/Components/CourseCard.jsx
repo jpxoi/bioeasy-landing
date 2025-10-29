@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import fallback from ".././assets/img/fallback_card.webp";
 import "react-loading-skeleton/dist/skeleton.css";
 
@@ -62,7 +62,6 @@ function CourseCard(course) {
         <div className="flex justify-center items-end">
           <Link
             to={link}
-            preventScrollReset={false}
             className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-teal-700 rounded-lg hover:bg-teal-800 focus:ring-4 focus:outline-hidden focus:ring-teal-300 transition-all"
           >
             Inscríbete
