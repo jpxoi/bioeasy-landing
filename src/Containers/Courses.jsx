@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react'
 import mixitup from 'mixitup';
-import CourseCard from '../Components/CourseCard';
-import CourseFilter from '../Components/CourseFilter';
-import FetchCSVData from '../Handlers/FetchCSVData';
-import CourseCardSkeleton from '../Components/CourseCardSkeleton';
-import CourseFilterSkeleton from '../Components/CourseFilterSkeleton';
+import CourseCard from '../components/CourseCard';
+import CourseFilter from '../components/CourseFilter';
+import FetchCSVData from '../handlers/FetchCSVData';
+import CourseCardSkeleton from '../components/CourseCardSkeleton';
+import CourseFilterSkeleton from '../components/CourseFilterSkeleton';
 
 function Courses() {
     const [coursesMounted, setCoursesMounted] = useState(false);
@@ -48,7 +48,7 @@ function Courses() {
     }, [courses_categories]);
 
     return (
-        <section className="section section__courses bg-white mx-auto w-full max-w-screen-xl p-4 py-6 pt-24 lg:py-8 lg:pt-28" id="cursos">
+        <section className="section section__courses bg-white mx-auto w-full max-w-(--breakpoint-xl) p-4 py-6 pt-24 lg:py-8 lg:pt-28" id="cursos">
             <h2 className="text-center mb-4 text-2xl font-bold tracking-tight leading-none text-gray-900 md:text-3xl lg:text-4xl">
                 Cursos
             </h2>
@@ -60,7 +60,7 @@ function Courses() {
                       data={courses_categories}
                     /> : console.log("Loading Courses Categories...")}
                     
-                    <div className="courses__content__grid grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 px-4 md:px-8 lg:px-16 justify-items-center max-w-screen-xl">
+                    <div className="courses__content__grid grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 px-4 md:px-8 lg:px-16 justify-items-center max-w-(--breakpoint-xl)">
                         {coursesMounted ? "" : <CourseCardSkeleton cards={31} />}
                         {courses_data ? courses_data.map((course) => (
                             <CourseCard

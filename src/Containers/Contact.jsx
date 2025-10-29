@@ -1,11 +1,11 @@
-import ContactCard from "../Components/ContactCard"
-import ContactForm from "../Components/ContactForm"
+import ContactCard from "../components/ContactCard"
+import ContactForm from "../components/ContactForm"
 
 function Contact() {
   return (
-    <section className="section section__contact bg-white mt-8 mx-auto w-full max-w-screen-xl p-4 py-6 pt-24 lg:py-8 lg:pt-28" id="contacto">
+    <section className="section section__contact bg-white mt-8 mx-auto w-full max-w-(--breakpoint-xl) p-4 py-6 pt-24 lg:py-8 lg:pt-28" id="contacto">
       <div className="contact__container grid md:grid-cols-2 gap-8">
-        <div className="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
+        <div className="py-8 lg:py-16 px-4 mx-auto max-w-(--breakpoint-md)">
           <h2 className="text-center mb-4 text-2xl font-bold tracking-tight leading-none text-gray-900 md:text-3xl lg:text-4xl">
             Contáctanos
           </h2>
@@ -41,7 +41,7 @@ function Contact() {
           </div>
           
         </div>
-        <div className="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
+        <div className="py-8 lg:py-16 px-4 mx-auto max-w-(--breakpoint-md)">
           <h2 className="text-center mb-4 text-2xl font-bold tracking-tight leading-none text-gray-900 md:text-3xl lg:text-4xl">
             ¿Aún tienes dudas?
           </h2>

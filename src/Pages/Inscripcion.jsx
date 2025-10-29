@@ -1,6 +1,6 @@
-import Header from "../Containers/Header";
-import Footer from "../Containers/Footer";
-import Register from "../Containers/Register";
+import Header from "../containers/Header";
+import Footer from "../containers/Footer";
+import Register from "../containers/Register";
 import { Toaster } from "react-hot-toast";
 
 function Inscripcion() {

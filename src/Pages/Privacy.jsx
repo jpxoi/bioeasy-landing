@@ -1,6 +1,6 @@
-import Header from "../Containers/Header";
-import Footer from "../Containers/Footer";
-import PrivacyText from "../Containers/PrivacyText";
+import Header from "../containers/Header";
+import Footer from "../containers/Footer";
+import PrivacyText from "../containers/PrivacyText";
 
 function Privacy() {
   return (

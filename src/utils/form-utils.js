@@ -32,7 +32,7 @@ export const addInvalidClasses = () => {
       input.classList.add("invalid:border-red-500");
     }
   });
-  phoneNumberContainer.classList.add("has-[:invalid]:border-red-500");
+  phoneNumberContainer.classList.add("has-invalid:border-red-500");
 };
 
 export const generateIdentifier = () => {

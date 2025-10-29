@@ -11,7 +11,7 @@ function PrivacyText() {
                 <h1 className="text-4xl font-bold text-center text-gray-900">Política de privacidad</h1>
                 <p className="text-gray-500 text-center mt-4">Última actualización: 4 de enero de 2024</p>
             </div>
-            <div className="flex flex-col items-left justify-center py-2 px-0 lg:px-4 max-w-xl sm:max-w-screen-sm md:max-w-screen-md lg:max-w-screen-xl">
+            <div className="flex flex-col items-left justify-center py-2 px-0 lg:px-4 max-w-xl sm:max-w-(--breakpoint-sm) md:max-w-(--breakpoint-md) lg:max-w-(--breakpoint-xl)">
                 <h2 className="text-2xl font-bold text-gray-900">Introducción</h2>                    
                     <p className="text-gray-500 text-left mt-4">{company_name} (“nosotros”, “a nosotros” o “nuestro”) opera el sitio web <a href={company_url}>{company_url}</a> (en adelante, el “Servicio”). Esta página le informa de nuestras políticas en materia de recopilación, uso y divulgación de datos personales cuando utiliza nuestro Servicio y de las opciones de las que dispone en relación con esos datos.</p>
                     

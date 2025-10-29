@@ -1,11 +1,11 @@
-import Header from "../Containers/Header";
+import Header from "../containers/Header";
 
 function Check() {
   // This page will check browser compatibility
   return (
     <div className="flex flex-col items-center justify-center h-screen p-8">
         <Header />
-      <div className="flex flex-col max-w-screen-sm items-center justify-center h-screen mt-32 md:mt-0">
+      <div className="flex flex-col max-w-(--breakpoint-sm) items-center justify-center h-screen mt-32 md:mt-0">
         <img
           src="https://www.instructure.com/sites/default/files/image/2021-12/Canvas_Horizontal_ByInstructure_Color_RGB.png"
           alt="Canvas LMS"

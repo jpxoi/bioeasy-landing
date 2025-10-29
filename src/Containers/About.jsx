@@ -1,13 +1,13 @@
-import WhyCard from "../Components/WhyCard"
+import WhyCard from "../components/WhyCard"
 
 function About() {
   return (
-    <section className="section section__about mt-8 bg-white mx-auto w-full max-w-screen-xl p-4 py-6 pt-24 lg:py-8 lg:pt-28" id="nosotros">
+    <section className="section section__about mt-8 bg-white mx-auto w-full max-w-(--breakpoint-xl) p-4 py-6 pt-24 lg:py-8 lg:pt-28" id="nosotros">
         <h2 className="text-center mb-4 text-2xl font-bold tracking-tight leading-none text-gray-900 md:text-3xl lg:text-4xl">
             Nosotros
         </h2>
         <div className="about__container grid lg:grid-cols-2 gap-0 md:gap-8">
-            <div className="py-8 lg:pt-8 lg:pb-0 px-4 mx-auto max-w-screen-md">
+            <div className="py-8 lg:pt-8 lg:pb-0 px-4 mx-auto max-w-(--breakpoint-md)">
                 <p className="mb-1 lg:mb-2 font-light text-justify text-gray-700">
                   Fundada en el 2017 con el objetivo de innovar y ofrecer una preparación académica de calidad a estudiantes de medicina a nivel local.
                 </p>
@@ -21,7 +21,7 @@ function About() {
                 Más de 1000 estudiantes de 1º a 12º ciclo de UPAO forman parte de la comunidad BG.
                 </p>
             </div>
-            <div className="py-8 lg:pt-8 lg:pb-0 px-4 mx-auto max-w-screen-md">
+            <div className="py-8 lg:pt-8 lg:pb-0 px-4 mx-auto max-w-(--breakpoint-md)">
               <picture className="w-full rounded-md">
                 <source srcSet="img/web_bg_alt.avif" type="image/avif" />
                 <source srcSet="img/web_bg_alt.webp" type="image/webp" />
@@ -29,7 +29,7 @@ function About() {
               </picture>
             </div>
         </div>
-        <div className="about__container py-8 lg:pt-16 lg:pb-0 px-4 mx-auto max-w-screen-xl">
+        <div className="about__container py-8 lg:pt-16 lg:pb-0 px-4 mx-auto max-w-(--breakpoint-xl)">
           <h3 className="mb-4 lg:mb-8 font-bold text-center text-gray-900 text-2xl">
             ¿Por qué elegirnos?
           </h3>

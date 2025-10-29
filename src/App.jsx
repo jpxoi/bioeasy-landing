@@ -1,10 +1,10 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Landing from "./Pages/Landing";
-import Error404 from "./Pages/Error404";
-import Privacy from "./Pages/Privacy";
-import Inscripcion from "./Pages/Inscripcion";
-import Success from "./Pages/Success";
-import Check from "./Pages/Check";
+import Landing from "./pages/Landing";
+import Error404 from "./pages/Error404";
+import Privacy from "./pages/Privacy";
+import Inscripcion from "./pages/Inscripcion";
+import Success from "./pages/Success";
+import Check from "./pages/Check";
 
 function App() {
   return (

@@ -1,11 +1,11 @@
 import logo from '.././assets/img/logo.webp'
-import FooterMenu from '../Components/FooterMenu';
-import FooterSocial from '../Components/FooterSocial';
+import FooterMenu from '../components/FooterMenu';
+import FooterSocial from '../components/FooterSocial';
 
 function Footer() {
     return (
         <footer className="bg-white">
-            <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
+            <div className="mx-auto w-full max-w-(--breakpoint-xl) p-4 py-6 lg:py-8">
                 <div className="md:flex md:justify-between">
                     <div className="mb-6 md:mb-0">
                         <a href="/#" className="flex items-center mb-7" aria-label="Return to homepage.">

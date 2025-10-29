@@ -2,7 +2,7 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { FileUploaderMinimal } from "@uploadcare/react-uploader";
 import "@uploadcare/react-uploader/core.css";
-import FetchCSVData from "../Handlers/FetchCSVData";
+import FetchCSVData from "../handlers/FetchCSVData";
 import Skeleton from "react-loading-skeleton";
 import es from "../locale/es";
 import {
@@ -226,7 +226,7 @@ function RegisterForm({ orderIdentifier }) {
           </label>
           <input
             required
-            className="appearance-auto block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-2 leading-tight focus:outline-none focus:bg-white focus:border-teal-700 focus-visible:invalid:bg-red-50 focus-visible:invalid:border-red-500 focus-visible:valid:bg-green-50 focus-visible:valid:border-green-500 valid:border-teal-700"
+            className="appearance-auto block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded-sm py-3 px-4 mb-2 leading-tight focus:outline-hidden focus:bg-white focus:border-teal-700 focus-visible:invalid:bg-red-50 focus-visible:invalid:border-red-500 focus-visible:valid:bg-green-50 focus-visible:valid:border-green-500 valid:border-teal-700"
             id="grid-first-name"
             type="text"
             name="first_name"
@@ -246,7 +246,7 @@ function RegisterForm({ orderIdentifier }) {
           </label>
           <input
             required
-            className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-teal-700 mb-2 focus-visible:invalid:bg-red-50 focus-visible:invalid:border-red-500 focus-visible:valid:bg-green-50 focus-visible:valid:border-green-500 valid:border-teal-700"
+            className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded-sm py-3 px-4 leading-tight focus:outline-hidden focus:bg-white focus:border-teal-700 mb-2 focus-visible:invalid:bg-red-50 focus-visible:invalid:border-red-500 focus-visible:valid:bg-green-50 focus-visible:valid:border-green-500 valid:border-teal-700"
             id="grid-last-name"
             type="text"
             name="last_name"
@@ -267,7 +267,7 @@ function RegisterForm({ orderIdentifier }) {
             Tipo de Documento de Identidad
           </label>
           <select
-            className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-teal-700 focus-visible:invalid:bg-red-50 focus-visible:invalid:border-red-500 focus-visible:valid:bg-green-50 focus-visible:valid:border-green-500 valid:border-teal-700"
+            className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded-sm leading-tight focus:outline-hidden focus:bg-white focus:border-teal-700 focus-visible:invalid:bg-red-50 focus-visible:invalid:border-red-500 focus-visible:valid:bg-green-50 focus-visible:valid:border-green-500 valid:border-teal-700"
             required
             id="grid-document-type"
             name="document_type"
@@ -290,7 +290,7 @@ function RegisterForm({ orderIdentifier }) {
           </label>
           <input
             required
-            className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-teal-700 focus-visible:invalid:bg-red-50 focus-visible:invalid:border-red-500 focus-visible:valid:bg-green-50 focus-visible:valid:border-green-500 valid:border-teal-700"
+            className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded-sm py-3 px-4 leading-tight focus:outline-hidden focus:bg-white focus:border-teal-700 focus-visible:invalid:bg-red-50 focus-visible:invalid:border-red-500 focus-visible:valid:bg-green-50 focus-visible:valid:border-green-500 valid:border-teal-700"
             id="grid-document-number"
             name="document_number"
             type="tel"
@@ -309,7 +309,7 @@ function RegisterForm({ orderIdentifier }) {
           </label>
           <input
             required
-            className="appearance-none block w-full h-[46px] bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 pr-8 leading-tight focus:outline-none focus:bg-white focus:border-teal-700 focus-visible:invalid:bg-red-50 focus-visible:invalid:border-red-500 focus-visible:valid:bg-green-50 focus-visible:valid:border-green-500 valid:border-teal-700"
+            className="appearance-none block w-full h-[46px] bg-gray-200 text-gray-700 border border-gray-200 rounded-sm py-3 px-4 pr-8 leading-tight focus:outline-hidden focus:bg-white focus:border-teal-700 focus-visible:invalid:bg-red-50 focus-visible:invalid:border-red-500 focus-visible:valid:bg-green-50 focus-visible:valid:border-green-500 valid:border-teal-700"
             max={maxDate}
             id="grid-date-of-birth"
             name="date_of_birth"
@@ -327,7 +327,7 @@ function RegisterForm({ orderIdentifier }) {
           </label>
           <div
             id="phone-number-container"
-            className="appearance-none flex w-full bg-gray-200 text-gray-700 border border-gray-200 rounded px-4 leading-tight focus:outline-none focus-within:bg-white focus-within:border-teal-700 pointer-events-none mb-2 has-[:focus:invalid]:bg-red-50 has-[:focus:invalid]:border-red-500 has-[:focus:valid]:bg-green-50 has-[:focus:valid]:border-green-500 has-[:valid]:border-teal-700"
+            className="appearance-none flex w-full bg-gray-200 text-gray-700 border border-gray-200 rounded-sm px-4 leading-tight focus:outline-hidden focus-within:bg-white focus-within:border-teal-700 pointer-events-none mb-2 has-[:focus:invalid]:bg-red-50 has-[:focus:invalid]:border-red-500 has-[:focus:valid]:bg-green-50 has-[:focus:valid]:border-green-500 has-valid:border-teal-700"
           >
             <div className="flex items-center">
               <svg
@@ -343,7 +343,7 @@ function RegisterForm({ orderIdentifier }) {
             <div className="flex items-center ml-2">+51</div>
             <input
               required
-              className="peer appearance-none ml-2 bg-gray-200 text-gray-700 leading-tight py-3 focus:bg-white focus:outline-none focus:border-none pointer-events-auto w-full focus-visible:invalid:bg-red-50 focus-visible:valid:bg-green-50"
+              className="peer appearance-none ml-2 bg-gray-200 text-gray-700 leading-tight py-3 focus:bg-white focus:outline-hidden focus:border-none pointer-events-auto w-full focus-visible:invalid:bg-red-50 focus-visible:valid:bg-green-50"
               id="grid-phone-number"
               name="phone_number"
               type="tel"
@@ -367,7 +367,7 @@ function RegisterForm({ orderIdentifier }) {
           </label>
           <input
             required
-            className="peer appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 pr-8 leading-tight focus:outline-none focus:bg-white focus:border-teal-700 mb-2 focus-visible:invalid:bg-red-50 focus-visible:invalid:border-red-500 focus-visible:valid:bg-green-50 focus-visible:valid:border-green-500 valid:border-teal-700"
+            className="peer appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded-sm py-3 px-4 pr-8 leading-tight focus:outline-hidden focus:bg-white focus:border-teal-700 mb-2 focus-visible:invalid:bg-red-50 focus-visible:invalid:border-red-500 focus-visible:valid:bg-green-50 focus-visible:valid:border-green-500 valid:border-teal-700"
             id="grid-email"
             type="email"
             name="email"
@@ -375,7 +375,7 @@ function RegisterForm({ orderIdentifier }) {
             pattern=".+@.+edu\.pe"
             autoComplete="email"
           />
-          <p className="text-gray-600 text-xs italic peer-focus:peer-invalid:text-red-500 peer-valid:text-teal-700">
+          <p className="text-gray-600 text-xs italic peer-invalid:peer-focus:text-red-500 peer-valid:text-teal-700">
             Usa tu correo institucional .edu.pe
           </p>
         </div>
@@ -387,7 +387,7 @@ function RegisterForm({ orderIdentifier }) {
             Ciclo de Estudios
           </label>
           <select
-            className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-teal-700 focus-visible:invalid:bg-red-50 focus-visible:invalid:border-red-500 focus-visible:valid:bg-green-50 focus-visible:valid:border-green-500 valid:border-teal-700"
+            className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded-sm leading-tight focus:outline-hidden focus:bg-white focus:border-teal-700 focus-visible:invalid:bg-red-50 focus-visible:invalid:border-red-500 focus-visible:valid:bg-green-50 focus-visible:valid:border-green-500 valid:border-teal-700"
             required
             id="grid-cycle-select"
             name="cycle"
@@ -420,7 +420,7 @@ function RegisterForm({ orderIdentifier }) {
           {coursesData ? "" : <Skeleton className="mb-2" height={46} />}
           {coursesData ? (
             <select
-              className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-teal-700 mb-2 focus-visible:invalid:bg-red-50 focus-visible:invalid:border-red-500 focus-visible:valid:bg-green-50 focus-visible:valid:border-green-500 valid:border-teal-700"
+              className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded-sm leading-tight focus:outline-hidden focus:bg-white focus:border-teal-700 mb-2 focus-visible:invalid:bg-red-50 focus-visible:invalid:border-red-500 focus-visible:valid:bg-green-50 focus-visible:valid:border-green-500 valid:border-teal-700"
               required
               id="grid-course-select"
               name="course"
@@ -464,7 +464,7 @@ function RegisterForm({ orderIdentifier }) {
             Precio del Curso
           </label>
           <input
-            className="appearance-none block w-full bg-gray-200 placeholder:font-normal font-bold text-teal-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-gray-200 focus:border-gray-200 mb-2"
+            className="appearance-none block w-full bg-gray-200 placeholder:font-normal font-bold text-teal-700 border border-gray-200 rounded-sm py-3 px-4 leading-tight focus:outline-hidden focus:bg-gray-200 focus:border-gray-200 mb-2"
             id="grid-course-price"
             name="price"
             type="text"
@@ -799,7 +799,7 @@ function RegisterForm({ orderIdentifier }) {
           <div id="checkbox-container" className="flex items-center">
             <input
               required
-              className="peer appearance-none inline-block min-w-[1rem] w-4 h-4 bg-gray-200 border border-gray-200 rounded leading-tight focus:outline-none focus:bg-white focus:border-teal-700 mr-2 checked:bg-teal-700 checked:focus:bg-teal-600"
+              className="peer appearance-none inline-block min-w-4 w-4 h-4 bg-gray-200 border border-gray-200 rounded-sm leading-tight focus:outline-hidden focus:bg-white focus:border-teal-700 mr-2 checked:bg-teal-700 checked:focus:bg-teal-600"
               id="grid-terms-and-conditions"
               name="terms_and_conditions"
               type="checkbox"
@@ -849,7 +849,7 @@ function RegisterForm({ orderIdentifier }) {
       </p>
 
       <input
-        className="bg-teal-700 hover:bg-teal-800 text-white font-bold py-3 px-6 rounded focus:outline-none focus:shadow-outline disabled:bg-gray-400 cursor-pointer disabled:cursor-not-allowed"
+        className="bg-teal-700 hover:bg-teal-800 text-white font-bold py-3 px-6 rounded-sm focus:outline-hidden focus:shadow-outline disabled:bg-gray-400 cursor-pointer disabled:cursor-not-allowed"
         disabled
         type="submit"
         id="submit-button"

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 function Heading() {
     return (
         <section className="section section__heading flex items-end bg-white p-4 py-20 pb-4 h-dvh" id="inicio">
-            <div className="py-4 md:py-8 px-4 lg:px-8 mx-auto max-w-screen-xl text-center">
+            <div className="py-4 md:py-8 px-4 lg:px-8 mx-auto max-w-(--breakpoint-xl) text-center">
                 <h1 className="mb-8 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-6xl text-balance">
                     El camino hacia la excelencia médica comienza aquí.
                 </h1>

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import TeamCard from "../Components/TeamCard"
-import FetchCSVData from "../Handlers/FetchCSVData";
-import TeamCardSkeleton from "../Components/TeamCardSkeleton";
+import TeamCard from "../components/TeamCard"
+import FetchCSVData from "../handlers/FetchCSVData";
+import TeamCardSkeleton from "../components/TeamCardSkeleton";
 
 function Team() {
   const [teamMounted, setTeamMounted] = useState(false);
@@ -16,7 +16,7 @@ function Team() {
   }, [team_data]);
 
   return (
-    <section className="section section__team bg-white mt-8 mx-auto w-full max-w-screen-xl p-4 py-6 pt-24 lg:py-8 lg:pt-28" id="docentes">
+    <section className="section section__team bg-white mt-8 mx-auto w-full max-w-(--breakpoint-xl) p-4 py-6 pt-24 lg:py-8 lg:pt-28" id="docentes">
         <h2 className="text-center mb-4 text-2xl font-bold tracking-tight leading-none text-gray-900 md:text-3xl lg:text-4xl">
             Docentes
         </h2>

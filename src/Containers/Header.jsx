@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '.././assets/img/logo.webp'
 import logo_sm from '.././assets/img/logo_sm.webp'
-import NavMenu from '../Components/NavMenu';
+import NavMenu from '../components/NavMenu';
 
 function Header() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -33,7 +33,7 @@ function Header() {
         <header className="bg-transparent">
             <nav className="bg-white fixed w-full z-20 top-0 start-0 border-b border-gray-20 shadow-md">
                 <p className='bg-white'> {mobileMenuOpen}</p>
-                <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+                <div className="max-w-(--breakpoint-xl) flex flex-wrap items-center justify-between mx-auto p-4">
                     <div>
                         <Link to ="/" className="flex items-center space-x-3 rtl:space-x-reverse">
                             <span className="sr-only">Bioeasy Galenos</span>
@@ -42,11 +42,11 @@ function Header() {
                         </Link>
                     </div>
                     <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-                        <a href="https://bgmedicina.com/campusvirtual" target="_blank" rel="noreferrer" id="aulaVirtualButton" className="text-white bg-teal-700 hover:bg-teal-800 focus:ring-4 focus:outline-none focus:ring-teal-300 font-medium rounded-lg text-sm px-4 py-2 text-center cursor-pointer transition-all">
+                        <a href="https://bgmedicina.com/campusvirtual" target="_blank" rel="noreferrer" id="aulaVirtualButton" className="text-white bg-teal-700 hover:bg-teal-800 focus:ring-4 focus:outline-hidden focus:ring-teal-300 font-medium rounded-lg text-sm px-4 py-2 text-center cursor-pointer transition-all">
                             Campus Virtual
                         </a>
 
-                        <button data-collapse-toggle="navbar-sticky" type="button" className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 transition-all" aria-controls="navbar-sticky" aria-expanded="false" onClick={ () => setMobileMenuOpen(!mobileMenuOpen) }>
+                        <button data-collapse-toggle="navbar-sticky" type="button" className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-hidden focus:ring-2 focus:ring-gray-200 transition-all" aria-controls="navbar-sticky" aria-expanded="false" onClick={ () => setMobileMenuOpen(!mobileMenuOpen) }>
                             <span className="sr-only">Open main menu</span>
                             <svg className="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
                                 <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 1h15M1 7h15M1 13h15"/>

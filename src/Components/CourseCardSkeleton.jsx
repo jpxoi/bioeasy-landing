@@ -4,7 +4,7 @@ function CourseCardSkeleton({cards}) {
     return Array(cards)
     .fill(0)
     .map((item, i) => (
-        <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow" key={i}>
+        <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm" key={i}>
             <div className="block course__card__image leading-none">
                 <Skeleton width={800} height={1000} className="rounded-t-lg max-w-[256px] max-h-[317px] sm:max-w-[278px] sm:max-h-[347px] md:max-w-[326px] md:max-h-[407px] lg:max-w-[275px] lg:max-h-[344px] xl:max-w-[360px] xl:max-h-[450px]" />
             </div>

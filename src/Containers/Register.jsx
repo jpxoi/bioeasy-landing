@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import RegisterForm from "../Components/RegisterForm";
+import RegisterForm from "../components/RegisterForm";
 import { generateIdentifier } from "../utils/form-utils";
 import { InformationCircleIcon } from '@heroicons/react/16/solid';
 
@@ -24,7 +24,7 @@ function Register() {
           role="alert"
         >
           <svg
-            className="flex-shrink-0 inline w-4 h-4 me-3"
+            className="shrink-0 inline w-4 h-4 me-3"
             aria-hidden="true"
             xmlns="http://www.w3.org/2000/svg"
             fill="currentColor"

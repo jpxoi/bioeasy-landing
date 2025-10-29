@@ -11,7 +11,7 @@ function CourseCard(course) {
       ? description.substring(0, 250) + "..."
       : description;
 
-  const class_name = `course__card mix ${category} max-w-sm bg-white border border-gray-200 rounded-lg shadow`;
+  const class_name = `course__card mix ${category} max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm`;
 
   return (
     <div className={class_name} id={id}>
@@ -63,7 +63,7 @@ function CourseCard(course) {
           <Link
             to={link}
             preventScrollReset={false}
-            className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-teal-700 rounded-lg hover:bg-teal-800 focus:ring-4 focus:outline-none focus:ring-teal-300 transition-all"
+            className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-teal-700 rounded-lg hover:bg-teal-800 focus:ring-4 focus:outline-hidden focus:ring-teal-300 transition-all"
           >
             Inscríbete
             <svg
