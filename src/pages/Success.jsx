@@ -1,5 +1,5 @@
-import ContactSuccessContainer from "../new-containers/ContactSuccessContainer";
-import RegisterSuccessContainer from "../new-containers/RegisterSuccessContainer";
+import ContactSuccessContainer from "../containers/ContactSuccessContainer";
+import RegisterSuccessContainer from "../containers/RegisterSuccessContainer";
 
 function Success() {
   const success_type =  new URLSearchParams(window.location.search).get('type');

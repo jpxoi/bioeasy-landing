@@ -1,4 +1,4 @@
-import Header from "../new-containers/Header";
+import Header from "../containers/Header";
 
 function Check() {
   // This page will check browser compatibility
