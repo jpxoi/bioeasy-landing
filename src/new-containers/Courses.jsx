@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react'
 import mixitup from 'mixitup';
-import CourseCard from '../new-components/CourseCard';
-import CourseFilter from '../new-components/CourseFilter';
+import CourseCard from '../components/CourseCard';
+import CourseFilter from '../components/CourseFilter';
 import FetchCSVData from '../handlers/FetchCSVData';
-import CourseCardSkeleton from '../new-components/CourseCardSkeleton';
-import CourseFilterSkeleton from '../new-components/CourseFilterSkeleton';
+import CourseCardSkeleton from '../components/CourseCardSkeleton';
+import CourseFilterSkeleton from '../components/CourseFilterSkeleton';
 
 function Courses() {
     const [coursesMounted, setCoursesMounted] = useState(false);

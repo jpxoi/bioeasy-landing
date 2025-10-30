@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import RegisterForm from "../new-components/RegisterForm";
+import RegisterForm from "../components/RegisterForm";
 import { generateIdentifier } from "../utils/form-utils";
 import { InformationCircleIcon } from '@heroicons/react/16/solid';
 

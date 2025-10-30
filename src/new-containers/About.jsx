@@ -1,4 +1,4 @@
-import WhyCard from "../new-components/WhyCard"
+import WhyCard from "../components/WhyCard"
 
 function About() {
   return (
