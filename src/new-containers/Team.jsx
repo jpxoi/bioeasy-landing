@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import TeamCard from "../components/TeamCard"
+import TeamCard from "../new-components/TeamCard"
 import FetchCSVData from "../handlers/FetchCSVData";
-import TeamCardSkeleton from "../components/TeamCardSkeleton";
+import TeamCardSkeleton from "../new-components/TeamCardSkeleton";
 
 function Team() {
   const [teamMounted, setTeamMounted] = useState(false);

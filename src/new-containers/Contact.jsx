@@ -1,5 +1,5 @@
-import ContactCard from "../components/ContactCard"
-import ContactForm from "../components/ContactForm"
+import ContactCard from "../new-components/ContactCard"
+import ContactForm from "../new-components/ContactForm"
 
 function Contact() {
   return (

@@ -1,10 +1,10 @@
-import Header from "../containers/Header";
-import Heading from "../containers/Heading";
-import About from "../containers/About";
-import Courses from "../containers/Courses";
-import Team from "../containers/Team";
-import Contact from "../containers/Contact";
-import Footer from "../containers/Footer";
+import Header from "../new-containers/Header";
+import Heading from "../new-containers/Heading";
+import About from "../new-containers/About";
+import Courses from "../new-containers/Courses";
+import Team from "../new-containers/Team";
+import Contact from "../new-containers/Contact";
+import Footer from "../new-containers/Footer";
 
 function Start() {
   return (

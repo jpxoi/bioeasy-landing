@@ -1,6 +1,6 @@
 import logo from '.././assets/img/logo.webp'
-import FooterMenu from '../components/FooterMenu';
-import FooterSocial from '../components/FooterSocial';
+import FooterMenu from '../new-components/FooterMenu';
+import FooterSocial from '../new-components/FooterSocial';
 
 function Footer() {
     return (
