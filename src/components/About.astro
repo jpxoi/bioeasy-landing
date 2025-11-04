@@ -1,0 +1,49 @@
+---
+import { Image } from 'astro:assets'
+import WhyCard from './WhyCard.astro'
+
+const why_descriptions = [
+  'Garantizamos el éxito de los estudiantes en sus desafíos académicos durante la universidad.',
+  'Elevamos la satisfacción de nuestros estudiantes al máximo en todos nuestros cursos.',
+  'Perseguimos la innovación constante en nuestro enfoque académico para destacar en todos los cursos.',
+  'Revolucionamos la enseñanza de la Medicina mediante métodos didácticos e innovadores.',
+]
+---
+
+<section
+  class='section section__about mx-auto mt-8 w-full max-w-(--breakpoint-xl) bg-white p-4 py-6 pt-24 lg:py-8 lg:pt-28'
+  id='nosotros'
+>
+  <h2 class='mb-4 text-center text-2xl leading-none font-bold tracking-tight text-gray-900 md:text-3xl lg:text-4xl'>
+    Nosotros
+  </h2>
+  <div class='about__container grid gap-0 md:gap-8 lg:grid-cols-2'>
+    <div class='mx-auto max-w-(--breakpoint-md) px-4 py-8 lg:pt-8 lg:pb-0'>
+      <p class='mb-1 text-justify font-light text-gray-700 lg:mb-2'>
+        Fundada en el 2017 con el objetivo de innovar y ofrecer una preparación académica de calidad a estudiantes de
+        medicina a nivel local.
+      </p>
+      <p class='mb-3 text-justify font-light text-gray-700 lg:mb-4'>
+        Creemos en el potencial de nuestros estudiantes y hemos diseñado un método de estudio efectivos para que los
+        estudiantes puedan rendir con éxito los diferentes exámenes de la carrera de Medicina.
+      </p>
+      <h3 class='mb-1 text-left text-lg font-bold text-gray-900 lg:mb-2'>Nuestra experiencia nos respalda</h3>
+      <p class='mb-1 text-justify font-light text-gray-700 lg:mb-2'>
+        Más de 1000 estudiantes de 1º a 12º ciclo de UPAO forman parte de la comunidad BG.
+      </p>
+    </div>
+    <div class='mx-auto max-w-(--breakpoint-md) px-4 py-8 lg:pt-8 lg:pb-0'>
+      <picture class='w-full rounded-md'>
+        <source srcset='img/web_bg_alt.avif' type='image/avif' />
+        <source srcset='img/web_bg_alt.webp' type='image/webp' />
+        <Image class='w-full rounded-md' src='/img/web_bg_alt.webp' alt='about' width='1600' height='900' />
+      </picture>
+    </div>
+  </div>
+  <div class='about__container mx-auto max-w-(--breakpoint-xl) px-4 py-8 lg:pt-16 lg:pb-0'>
+    <h3 class='mb-4 text-center text-2xl font-bold text-gray-900 lg:mb-8'>¿Por qué elegirnos?</h3>
+    <div class='grid grid-cols-1 justify-items-center gap-4 sm:grid-cols-2 lg:grid-cols-4'>
+      {why_descriptions.map((why_description) => <WhyCard why_description={why_description} />)}
+    </div>
+  </div>
+</section>

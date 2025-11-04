@@ -1,0 +1,23 @@
+---
+import Skeleton from './Skeleton.astro'
+---
+
+<div
+  class='team__content__grid grid grid-cols-1 justify-items-center gap-4 pt-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'
+>
+  {
+    Array(12)
+      .fill(0)
+      .map(() => (
+        <div class='w-full max-w-xs rounded-lg border border-gray-200 bg-white shadow-sm transition-all hover:shadow-lg'>
+          <div class='flex flex-col items-center gap-3 px-4 pt-4 pb-4'>
+            <Skeleton className='h-48 w-48 rounded-full sm:h-44 sm:w-44 lg:h-48 lg:w-48' />
+            <div class='flex flex-col items-center gap-0.5'>
+              <Skeleton className='w-48 h-6 my-0.5' />
+              <Skeleton className='w-20 h-4 my-0.5' />
+            </div>
+          </div>
+        </div>
+      ))
+  }
+</div>
