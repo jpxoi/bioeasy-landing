@@ -9,7 +9,7 @@ const { isLanding = false }: { isLanding?: boolean } = Astro.props
 <header class='fixed start-0 top-0 z-20 w-full bg-white shadow-md'>
   <nav class='mx-auto flex max-w-(--breakpoint-xl) flex-wrap items-center justify-between p-4'>
     <div>
-      <a href={isLanding ? '/#' : '/'} class='flex items-center space-x-3 rtl:space-x-reverse'>
+      <a href={isLanding ? '/#' : '/'} class='flex items-center space-x-3 rtl:space-x-reverse' data-astro-prefetch>
         <span class='sr-only'>Bioeasy Galenos</span>
         <Image
           class='h-8 w-auto max-sm:hidden'
