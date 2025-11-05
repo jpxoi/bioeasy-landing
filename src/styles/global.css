@@ -185,7 +185,7 @@ html {
 }
 
 .mixitup-control-active {
-  @apply rounded-full border border-teal-600 bg-white px-5 py-2.5 text-center text-base font-medium text-teal-700 hover:bg-teal-700 hover:text-white focus:ring-4 focus:ring-transparent focus:outline-hidden;
+  @apply border-teal-700 bg-teal-700 text-white;
 }
 
 .active_link {

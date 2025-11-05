@@ -1,9 +1,9 @@
-<form action='https://api.web3forms.com/submit' method='POST' class='space-y-8'>
-  <div>
-    <input type='hidden' name='access_key' value='cfd4f031-74bc-4e52-a430-cc1040f5d906' />
-    <input type='hidden' name='from_name' value='Bioeasy Galenos - Formulario de Contacto' />
+<form action='https://api.web3forms.com/submit' method='POST' class='space-y-4'>
+  <input type='hidden' name='access_key' value='cfd4f031-74bc-4e52-a430-cc1040f5d906' />
+  <input type='hidden' name='from_name' value='Bioeasy Galenos - Formulario de Contacto' />
 
-    <label for='email' class='mb-2 block text-sm font-medium text-gray-900'> Correo electrónico </label>
+  <div class='flex flex-col gap-1'>
+    <label for='email' class='block text-sm font-medium text-gray-900'> Correo electrónico </label>
     <input
       type='email'
       id='email'
@@ -13,8 +13,8 @@
       required
     />
   </div>
-  <div>
-    <label for='subject' class='mb-2 block text-sm font-medium text-gray-900'> Asunto </label>
+  <div class='flex flex-col gap-1'>
+    <label for='subject' class='block text-sm font-medium text-gray-900'> Asunto </label>
     <input
       type='text'
       id='subject'
@@ -24,8 +24,8 @@
       required
     />
   </div>
-  <div class='sm:col-span-2'>
-    <label for='message' class='mb-2 block text-sm font-medium text-gray-900'> Mensaje </label>
+  <div class='flex flex-col gap-1'>
+    <label for='message' class='block text-sm font-medium text-gray-900'> Mensaje </label>
     <textarea
       id='message'
       rows='6'
@@ -38,7 +38,7 @@
 
   <input type='hidden' name='redirect' value='https://bgmedicina.com/success?type=contact' />
 
-  <p class='mt-4 text-justify text-xs font-light text-gray-500'>
+  <p class='text-justify text-xs font-light text-gray-500'>
     Considerando la vigencia del Decreto Legislativo Nº 1390 (Restricciones a la difusión de publicidad masiva) y,
     siendo <strong>Bioeasy Galenos</strong> respetuoso del ordenamiento jurídico vigente, le solicitamos nos brinde su consentimiento
     para mantenerlo informado acerca de nuestros diferentes servicios a través del envío de nuestra publicidad. La información

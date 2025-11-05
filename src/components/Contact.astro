@@ -35,25 +35,25 @@ const contact_cards = [
 ---
 
 <section
-  class='section section__contact mx-auto mt-8 w-full max-w-(--breakpoint-xl) bg-white p-4 py-6 pt-24 lg:py-8 lg:pt-28'
+  class='mx-auto flex w-full max-w-6xl flex-col gap-6 bg-white pt-24 pb-8 max-xl:px-8 md:gap-10 md:pt-28 md:pb-16'
   id='contacto'
 >
-  <div class='contact__container grid gap-8 md:grid-cols-2'>
-    <div class='mx-auto max-w-(--breakpoint-md) px-4 py-8 lg:py-16'>
-      <h2 class='mb-4 text-center text-2xl leading-none font-bold tracking-tight text-gray-900 md:text-3xl lg:text-4xl'>
-        Contáctanos
-      </h2>
-      <div class='grid justify-items-center gap-4 sm:grid-cols-2 md:grid-cols-1'>
+  <div class='grid gap-10 md:grid-cols-2'>
+    <div class='flex max-w-3xl flex-col items-center gap-4'>
+      <h2 class='text-center text-2xl font-bold tracking-tight text-gray-900 md:text-3xl lg:text-4xl'>Contáctanos</h2>
+      <div class='grid grid-cols-2 justify-items-center gap-2 max-md:w-full md:grid-cols-1 md:gap-4'>
         {contact_cards.map((contact_card) => <ContactCard {...contact_card} />)}
       </div>
     </div>
-    <div class='mx-auto max-w-(--breakpoint-md) px-4 py-8 lg:py-16'>
-      <h2 class='mb-4 text-center text-2xl leading-none font-bold tracking-tight text-gray-900 md:text-3xl lg:text-4xl'>
-        ¿Aún tienes dudas?
-      </h2>
-      <p class='mb-8 text-center font-light text-gray-500'>
-        Escríbenos y nosotros te contactaremos. Te asesoramos para que inicies con el pie derecho.
-      </p>
+    <div class='flex max-w-3xl flex-col items-center gap-6'>
+      <div class='flex flex-col items-center gap-4'>
+        <h2 class='text-center text-2xl font-bold tracking-tight text-gray-900 md:text-3xl lg:text-4xl'>
+          ¿Aún tienes dudas?
+        </h2>
+        <p class='text-center font-light text-gray-500'>
+          Escríbenos y nosotros te contactaremos. Te asesoramos para que inicies con el pie derecho.
+        </p>
+      </div>
       <ContactForm />
     </div>
   </div>

@@ -11,14 +11,12 @@ const why_descriptions = [
 ---
 
 <section
-  class='section section__about mx-auto mt-8 w-full max-w-(--breakpoint-xl) bg-white p-4 py-6 pt-24 lg:py-8 lg:pt-28'
+  class='mx-auto flex w-full max-w-6xl flex-col gap-6 bg-white pt-24 max-xl:px-8 md:gap-10 md:pt-28'
   id='nosotros'
 >
-  <h2 class='mb-4 text-center text-2xl leading-none font-bold tracking-tight text-gray-900 md:text-3xl lg:text-4xl'>
-    Nosotros
-  </h2>
-  <div class='about__container grid gap-0 md:gap-8 lg:grid-cols-2'>
-    <div class='mx-auto max-w-(--breakpoint-md) px-4 py-8 lg:pt-8 lg:pb-0'>
+  <h2 class='text-center text-2xl font-bold tracking-tight text-gray-900 md:text-3xl lg:text-4xl'>Nosotros</h2>
+  <div class='grid gap-4 md:gap-8 lg:grid-cols-2 lg:gap-12'>
+    <div>
       <p class='mb-1 text-justify font-light text-gray-700 lg:mb-2'>
         Fundada en el 2017 con el objetivo de innovar y ofrecer una preparación académica de calidad a estudiantes de
         medicina a nivel local.
@@ -32,7 +30,7 @@ const why_descriptions = [
         Más de 1000 estudiantes de 1º a 12º ciclo de UPAO forman parte de la comunidad BG.
       </p>
     </div>
-    <div class='mx-auto max-w-(--breakpoint-md) px-4 py-8 lg:pt-8 lg:pb-0'>
+    <div>
       <picture class='w-full rounded-md'>
         <source srcset='img/web_bg_alt.avif' type='image/avif' />
         <source srcset='img/web_bg_alt.webp' type='image/webp' />
@@ -40,8 +38,8 @@ const why_descriptions = [
       </picture>
     </div>
   </div>
-  <div class='about__container mx-auto max-w-(--breakpoint-xl) px-4 py-8 lg:pt-16 lg:pb-0'>
-    <h3 class='mb-4 text-center text-2xl font-bold text-gray-900 lg:mb-8'>¿Por qué elegirnos?</h3>
+  <div class='mx-auto flex max-w-6xl flex-col gap-4 md:gap-8'>
+    <h3 class='text-center text-2xl font-bold text-gray-900'>¿Por qué elegirnos?</h3>
     <div class='grid grid-cols-1 justify-items-center gap-4 sm:grid-cols-2 lg:grid-cols-4'>
       {why_descriptions.map((why_description) => <WhyCard why_description={why_description} />)}
     </div>
