@@ -16,7 +16,11 @@ export default defineConfig({
   },
 
   integrations: [react(), db()],
-  adapter: vercel(),
+  adapter: vercel({
+    isr: {
+      expiration: 60 * 60 * 24, // 1 day
+    },
+  }),
 
   image: {
     remotePatterns: [
