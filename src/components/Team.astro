@@ -1,0 +1,18 @@
+---
+import TeamMembersGrid from './TeamMembersGrid.astro'
+import TeamMembersGridSkeleton from './TeamMembersGridSkeleton.astro'
+---
+
+<section
+  class='section section__team mx-auto mt-8 w-full max-w-(--breakpoint-xl) bg-white p-4 py-6 pt-24 lg:py-8 lg:pt-28'
+  id='docentes'
+>
+  <h2 class='mb-4 text-center text-2xl leading-none font-bold tracking-tight text-gray-900 md:text-3xl lg:text-4xl'>
+    Docentes
+  </h2>
+  <div class='team__container'>
+    <TeamMembersGrid server:defer>
+      <TeamMembersGridSkeleton slot='fallback' />
+    </TeamMembersGrid>
+  </div>
+</section>

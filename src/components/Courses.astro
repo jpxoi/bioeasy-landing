@@ -1,0 +1,25 @@
+---
+import CoursesFilterButtons from './CoursesFilterButtons.astro'
+import CoursesContentGrid from './CoursesContentGrid.astro'
+import CoursesFilterButtonsSkeleton from './CoursesFilterButtonsSkeleton.astro'
+import CoursesContentGridSkeleton from './CoursesContentGridSkeleton.astro'
+---
+
+<section
+  class='section section__courses mx-auto w-full max-w-(--breakpoint-xl) bg-white p-4 py-6 pt-24 lg:py-8 lg:pt-28'
+  id='cursos'
+>
+  <h2 class='mb-4 text-center text-2xl leading-none font-bold tracking-tight text-gray-900 md:text-3xl lg:text-4xl'>
+    Cursos
+  </h2>
+  <div class='courses__container'>
+    <div class='courses__content'>
+      <CoursesFilterButtons server:defer>
+        <CoursesFilterButtonsSkeleton slot='fallback' />
+      </CoursesFilterButtons>
+      <CoursesContentGrid server:defer>
+        <CoursesContentGridSkeleton slot='fallback' />
+      </CoursesContentGrid>
+    </div>
+  </div>
+</section>
