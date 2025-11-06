@@ -1,5 +1,7 @@
 ---
 import '@fontsource-variable/nunito'
+import nunitoVariableWoff2 from '@fontsource-variable/nunito/files/nunito-latin-wght-normal.woff2?url'
+
 import '../styles/global.css'
 ---
 
@@ -21,6 +23,8 @@ import '../styles/global.css'
     <meta name='msapplication-config' content='/favicon/browserconfig.xml?v=2' />
 
     <link rel='canonical' href='https://bgmedicina.com' />
+
+    <link rel='preload' as='font' type='font/woff2' href={nunitoVariableWoff2} crossorigin='anonymous' />
 
     <!--=============== SAFARI BAR COLOR ===============-->
     <meta name='theme-color' content='#ffffff' media='(prefers-color-scheme: light)' />
