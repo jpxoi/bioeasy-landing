@@ -11,6 +11,7 @@
     "format": "prettier --write ."
   },
   "dependencies": {
+    "@astrojs/check": "^0.9.5",
     "@astrojs/db": "^0.18.2",
     "@astrojs/react": "^4.4.1",
     "@astrojs/vercel": "^9.0.0",
@@ -29,7 +30,8 @@
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "tailwind-merge": "^3.3.1",
-    "tailwindcss": "^4.1.16"
+    "tailwindcss": "^4.1.16",
+    "typescript": "^5.9.3"
   },
   "devDependencies": {
     "@typescript-eslint/parser": "^8.46.3",
