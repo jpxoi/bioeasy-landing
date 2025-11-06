@@ -31,5 +31,9 @@ export default defineConfig({
     ],
   },
 
+  redirects: {
+    '/campusvirtual': 'https://canvas.instructure.com',
+  },
+
   prefetch: true,
 })
