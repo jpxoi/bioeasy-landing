@@ -1,5 +1,13 @@
 ---
-import ArrowRight from '@lucide/astro/icons/arrow-right'
+interface Props {
+  id: string
+  contact_title: string
+  contact_info: string
+  contact_link: string
+  contact_cta: string
+}
+
+import { ArrowRight } from '@lucide/astro'
 
 const { id, contact_title, contact_info, contact_link, contact_cta } = Astro.props
 ---

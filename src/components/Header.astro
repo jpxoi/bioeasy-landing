@@ -3,7 +3,11 @@ import { Image } from 'astro:assets'
 import HeaderMobileMenuButton from '@/components/HeaderMobileMenuButton.tsx'
 import HeaderNavLinks from '@/components/HeaderNavLinks.tsx'
 
-const { isLanding = false }: { isLanding?: boolean } = Astro.props
+interface Props {
+  isLanding?: boolean
+}
+
+const { isLanding = false } = Astro.props
 ---
 
 <header class='fixed start-0 top-0 z-20 w-full bg-white shadow-md'>

@@ -1,12 +1,18 @@
 ---
 import { Image } from 'astro:assets'
-import FallbackImage from '../assets/fallback_card.webp'
 
-const { course } = Astro.props
+interface Props {
+  id: string
+  title: string
+  description: string
+  imageKey: string
+  tag: string
+  category: string
+}
 
-const { id, title, description, imageKey, tag, category } = course
+const { id, title, description, imageKey, tag, category } = Astro.props
 
-const imageAvif = imageKey ? imageKey.replace('webp', 'avif') : null
+const imageAvif = imageKey.replace('webp', 'avif')
 const cdnURL = import.meta.env.PUBLIC_CDN_URL
 
 const className = `course__card mix ${category} max-w-sm flex flex-col bg-white border border-gray-200 rounded-lg shadow-sm`
@@ -17,12 +23,12 @@ const whatsappLink = `https://wa.me/51940256869?text=${encodeURIComponent(whatsa
 
 <div class={className} id={id}>
   <picture class='rounded-t-lg'>
-    <source srcset={imageAvif ? `${cdnURL}${imageAvif}` : FallbackImage.src} type='image/avif' />
-    <source srcset={imageKey ? `${cdnURL}${imageKey}` : FallbackImage.src} type='image/webp' />
+    <source srcset={`${cdnURL}${imageAvif}`} type='image/avif' />
+    <source srcset={`${cdnURL}${imageKey}`} type='image/webp' />
     <Image
       class='aspect-square rounded-t-lg object-cover sm:aspect-8/10'
       loading='lazy'
-      src={imageKey ? `${cdnURL}${imageKey}` : FallbackImage.src}
+      src={`${cdnURL}${imageKey}`}
       alt={title}
       width='800'
       height='1000'

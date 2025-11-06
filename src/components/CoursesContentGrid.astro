@@ -9,7 +9,7 @@ const courses = await db.select().from(Courses)
 <div
   class='courses__content__grid grid max-w-6xl grid-cols-1 justify-items-center gap-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4'
 >
-  {courses.map((course) => <CourseCard key={course.id} course={course} />)}
+  {courses.map((course) => <CourseCard {...course} />)}
   <button
     class='load_more_button flex h-10 w-full max-w-sm flex-col items-center justify-center rounded-lg border border-gray-200 bg-gray-50 shadow-sm disabled:hidden max-sm:flex-row max-sm:gap-1 max-sm:bg-teal-700 max-sm:text-white max-sm:hover:bg-teal-800 sm:h-full'
   >
