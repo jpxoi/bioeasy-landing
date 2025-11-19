@@ -21,7 +21,7 @@
     "@tailwindcss/vite": "^4.1.16",
     "@types/react": "^19.2.2",
     "@types/react-dom": "^19.2.2",
-    "astro": "^5.15.3",
+    "astro": "^5.15.9",
     "clsx": "^2.1.1",
     "lucide-react": "^0.552.0",
     "mixitup": "^3.3.2",
