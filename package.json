@@ -1,7 +1,7 @@
 {
   "name": "bioeasy-landing",
   "type": "module",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build --remote",
@@ -11,35 +11,35 @@
     "format": "prettier --write ."
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.5",
-    "@astrojs/db": "^0.18.2",
-    "@astrojs/react": "^4.4.1",
-    "@astrojs/vercel": "^9.0.0",
+    "@astrojs/check": "^0.9.6",
+    "@astrojs/db": "^0.18.3",
+    "@astrojs/react": "^4.4.2",
+    "@astrojs/vercel": "^9.0.2",
     "@fontsource-variable/nunito": "^5.2.7",
-    "@lucide/astro": "^0.552.0",
+    "@lucide/astro": "^0.555.0",
     "@nanostores/react": "^1.0.0",
-    "@tailwindcss/vite": "^4.1.16",
-    "@types/react": "^19.2.2",
-    "@types/react-dom": "^19.2.2",
-    "astro": "^5.15.3",
+    "@tailwindcss/vite": "^4.1.17",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
+    "astro": "^5.16.4",
     "clsx": "^2.1.1",
-    "lucide-react": "^0.552.0",
+    "lucide-react": "^0.555.0",
     "mixitup": "^3.3.2",
     "mixitup-pagination": "^3.3.2",
-    "nanostores": "^1.0.1",
-    "react": "^19.2.0",
-    "react-dom": "^19.2.0",
-    "tailwind-merge": "^3.3.1",
-    "tailwindcss": "^4.1.16",
+    "nanostores": "^1.1.0",
+    "react": "^19.2.1",
+    "react-dom": "^19.2.1",
+    "tailwind-merge": "^3.4.0",
+    "tailwindcss": "^4.1.17",
     "typescript": "^5.9.3"
   },
   "devDependencies": {
-    "@typescript-eslint/parser": "^8.46.3",
+    "@typescript-eslint/parser": "^8.48.1",
     "eslint": "^9.39.1",
-    "eslint-plugin-astro": "^1.4.0",
-    "prettier": "3.6.2",
+    "eslint-plugin-astro": "^1.5.0",
+    "prettier": "3.7.4",
     "prettier-plugin-astro": "0.14.1",
-    "prettier-plugin-tailwindcss": "^0.7.1"
+    "prettier-plugin-tailwindcss": "^0.7.2"
   },
-  "packageManager": "pnpm@10.20.0"
+  "packageManager": "pnpm@10.24.0"
 }
