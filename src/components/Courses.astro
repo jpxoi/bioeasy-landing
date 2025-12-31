@@ -1,0 +1,18 @@
+---
+import CoursesFilterButtons from './CoursesFilterButtons.astro'
+import CoursesContentGrid from './CoursesContentGrid.astro'
+import CoursesFilterButtonsSkeleton from './CoursesFilterButtonsSkeleton.astro'
+import CoursesContentGridSkeleton from './CoursesContentGridSkeleton.astro'
+---
+
+<section class='mx-auto flex w-full max-w-6xl flex-col gap-6 bg-white pt-24 max-xl:px-8 md:gap-10 md:pt-28' id='cursos'>
+  <h2 class='text-center text-2xl font-bold tracking-tight text-gray-900 md:text-3xl lg:text-4xl'>Cursos</h2>
+  <div class='flex flex-col gap-4 md:gap-8'>
+    <CoursesFilterButtons server:defer>
+      <CoursesFilterButtonsSkeleton slot='fallback' />
+    </CoursesFilterButtons>
+    <CoursesContentGrid server:defer>
+      <CoursesContentGridSkeleton slot='fallback' />
+    </CoursesContentGrid>
+  </div>
+</section>

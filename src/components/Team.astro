@@ -1,0 +1,14 @@
+---
+import TeamMembersGrid from './TeamMembersGrid.astro'
+import TeamMembersGridSkeleton from './TeamMembersGridSkeleton.astro'
+---
+
+<section
+  class='mx-auto flex w-full max-w-6xl flex-col gap-6 bg-white pt-24 max-xl:px-8 md:gap-10 md:pt-28'
+  id='docentes'
+>
+  <h2 class='text-center text-2xl font-bold tracking-tight text-gray-900 md:text-3xl lg:text-4xl'>Docentes</h2>
+  <TeamMembersGrid server:defer>
+    <TeamMembersGridSkeleton slot='fallback' />
+  </TeamMembersGrid>
+</section>

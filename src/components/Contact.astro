@@ -1,0 +1,60 @@
+---
+import ContactCard from './ContactCard.astro'
+import ContactForm from './ContactForm.astro'
+
+const contact_cards = [
+  {
+    id: 'email_contact',
+    contact_title: 'Correo electrónico',
+    contact_info: 'informes@bgmedicina.com',
+    contact_link: 'mailto:informes@bgmedicina.com',
+    contact_cta: 'Escríbenos',
+  },
+  {
+    id: 'whatssap',
+    contact_title: 'WhatsApp',
+    contact_info: '+51 940 256 869',
+    contact_link: 'https://wa.me/51940256869',
+    contact_cta: 'Escríbenos',
+  },
+  {
+    id: 'instagram',
+    contact_title: 'Instagram',
+    contact_info: '@bioeasygalenos',
+    contact_link: 'https://www.instagram.com/bioeasygalenos',
+    contact_cta: 'Síguenos',
+  },
+  {
+    id: 'tiktok',
+    contact_title: 'TikTok',
+    contact_info: '@bioeasygalenos',
+    contact_link: 'https://www.tiktok.com/@bioeasygalenos',
+    contact_cta: 'Síguenos',
+  },
+]
+---
+
+<section
+  class='mx-auto flex w-full max-w-6xl flex-col gap-6 bg-white pt-24 pb-8 max-xl:px-8 md:gap-10 md:pt-28 md:pb-16'
+  id='contacto'
+>
+  <div class='grid gap-10 md:grid-cols-2'>
+    <div class='flex max-w-3xl flex-col items-center gap-4'>
+      <h2 class='text-center text-2xl font-bold tracking-tight text-gray-900 md:text-3xl lg:text-4xl'>Contáctanos</h2>
+      <div class='grid grid-cols-2 justify-items-center gap-2 max-md:w-full md:grid-cols-1 md:gap-4'>
+        {contact_cards.map((contact_card) => <ContactCard {...contact_card} />)}
+      </div>
+    </div>
+    <div class='flex max-w-3xl flex-col items-center gap-6'>
+      <div class='flex flex-col items-center gap-4'>
+        <h2 class='text-center text-2xl font-bold tracking-tight text-gray-900 md:text-3xl lg:text-4xl'>
+          ¿Aún tienes dudas?
+        </h2>
+        <p class='text-center font-light text-gray-500'>
+          Escríbenos y nosotros te contactaremos. Te asesoramos para que inicies con el pie derecho.
+        </p>
+      </div>
+      <ContactForm />
+    </div>
+  </div>
+</section>

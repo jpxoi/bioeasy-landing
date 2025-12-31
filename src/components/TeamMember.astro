@@ -1,0 +1,36 @@
+---
+import { Image } from 'astro:assets'
+
+interface Props {
+  id: number
+  name: string
+  title: string
+  avatarKey: string
+}
+
+const { name, title, avatarKey } = Astro.props
+
+const avatarAvif = avatarKey.replace('webp', 'avif')
+const cdnURL = import.meta.env.PUBLIC_CDN_URL
+---
+
+<div
+  class='flex w-full flex-col items-center gap-3 rounded-lg border border-gray-200 bg-white px-4 pt-4 pb-4 shadow-sm transition-all duration-300 hover:shadow-lg'
+>
+  <picture class='aspect-square h-auto w-auto max-w-44 rounded-full'>
+    <source srcset={`${cdnURL}${avatarAvif}`} type='image/avif' />
+    <source srcset={`${cdnURL}${avatarKey}`} type='image/webp' />
+    <Image
+      class='aspect-square rounded-full shadow-lg transition-all hover:shadow-xl'
+      loading='lazy'
+      src={`${cdnURL}${avatarKey}`}
+      alt={name}
+      width='200'
+      height='200'
+    />
+  </picture>
+  <div class='flex flex-col items-center gap-0.5'>
+    <h5 class='line-clamp-1 text-center font-medium text-gray-900 sm:text-lg'>{name}</h5>
+    <span class='line-clamp-1 text-sm text-gray-500'>{title}</span>
+  </div>
+</div>

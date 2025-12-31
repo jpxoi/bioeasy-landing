@@ -1,0 +1,75 @@
+---
+import { Plus } from '@lucide/astro'
+import CourseCard from './CourseCard.astro'
+
+import { db, Courses } from 'astro:db'
+const courses = await db.select().from(Courses)
+---
+
+<div
+  class='courses__content__grid grid max-w-6xl grid-cols-1 justify-items-center gap-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4'
+>
+  {courses.map((course) => <CourseCard {...course} />)}
+  <button
+    class='load_more_button flex h-10 w-full max-w-sm flex-col items-center justify-center rounded-lg border border-gray-200 bg-gray-50 shadow-sm disabled:hidden max-sm:flex-row max-sm:gap-1 max-sm:bg-teal-700 max-sm:text-white max-sm:hover:bg-teal-800 sm:h-full'
+  >
+    <Plus class='size-4 sm:size-12' />
+    <span class='text-sm font-medium sm:text-lg'>Cargar más</span></button
+  >
+</div>
+
+<script>
+  import mixitup from 'mixitup'
+  import mixitupPagination from 'mixitup-pagination'
+
+  mixitup.use(mixitupPagination)
+
+  const containerEl = document.querySelector('.courses__content__grid')
+  const loadMoreButtonEl = document.querySelector('.load_more_button') as HTMLButtonElement
+
+  const viewPort = window.innerWidth
+  const viewPortSize = viewPort >= 1280 ? 'xl' : viewPort >= 768 ? 'md' : 'sm'
+
+  const limits = {
+    sm: 3,
+    md: 5,
+    xl: 7,
+  }
+
+  const incrementAmount = {
+    sm: limits.sm + 1,
+    md: limits.md + 1,
+    xl: limits.xl + 1,
+  }
+
+  let currentLimit = limits[viewPortSize]
+  const currentIncrementAmount = incrementAmount[viewPortSize]
+
+  const mixer = mixitup(containerEl, {
+    selectors: {
+      target: '.course__card',
+    },
+    pagination: {
+      limit: currentLimit,
+    },
+    animation: {
+      duration: 300,
+    },
+    callbacks: {
+      onMixEnd: handleMixEnd,
+    },
+  })
+
+  function handleMixEnd(state: any) {
+    const reachedEnd = state.activePagination.limit >= state.totalMatching
+    loadMoreButtonEl.disabled = reachedEnd
+  }
+
+  function handleLoadMoreClick() {
+    const { totalMatching } = mixer.getState()
+    currentLimit = Math.min(currentLimit + currentIncrementAmount, totalMatching)
+    mixer.paginate({ limit: currentLimit })
+  }
+
+  loadMoreButtonEl?.addEventListener('click', handleLoadMoreClick)
+</script>

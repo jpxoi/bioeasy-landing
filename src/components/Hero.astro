@@ -1,0 +1,43 @@
+---
+import ChevronDown from '@lucide/astro/icons/chevron-down'
+const whatsAppLink = `https://wa.link/giw6ej`
+---
+
+<section
+  class='section__heading flex h-screen items-end bg-white bg-cover bg-fixed bg-center bg-no-repeat px-4 pt-22 pb-12 bg-blend-multiply max-xl:bg-scroll md:pb-8'
+  id='inicio'
+>
+  <div class='mx-auto flex max-w-7xl flex-col items-center gap-8 text-center md:gap-16'>
+    <div class='flex flex-col items-center gap-8'>
+      <h1
+        class='text-center text-4xl leading-none font-extrabold tracking-tight text-balance text-white md:text-5xl lg:text-6xl'
+      >
+        El camino hacia la excelencia médica comienza aquí.
+      </h1>
+      <div class='flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0'>
+        <a
+          href={whatsAppLink}
+          target='_blank'
+          rel='noreferrer noopener'
+          class='inline-flex items-center justify-center rounded-lg bg-teal-700 px-5 py-3 text-center text-base font-medium text-white transition-all hover:bg-teal-800 focus:ring-4 focus:ring-teal-300'
+        >
+          ¡Inicia tu preparación!
+        </a>
+        <a
+          href='/#contacto'
+          class='inline-flex items-center justify-center rounded-lg border border-gray-300 px-5 py-3 text-center text-base font-medium text-gray-100 transition-all hover:bg-gray-100 hover:text-gray-900 focus:ring-4 focus:ring-gray-100 sm:ms-4'
+        >
+          Solicitar Información
+        </a>
+      </div>
+    </div>
+    {/* Scroll To View More */}
+    <div class='flex flex-col items-center gap-4'>
+      <p class='text-sm font-medium text-white'>Desliza hacia abajo para ver más</p>
+      <ChevronDown
+        class='mx-auto h-6 w-6 animate-bounce cursor-pointer text-white'
+        onclick="window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })"
+      />
+    </div>
+  </div>
+</section>

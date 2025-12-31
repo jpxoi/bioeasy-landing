@@ -1,36 +1,45 @@
 {
-  "name": "bioeasy-landing-page",
-  "private": true,
-  "version": "0.0.0",
+  "name": "bioeasy-landing",
   "type": "module",
+  "version": "1.0.2",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "dev": "astro dev",
+    "build": "astro build --remote",
+    "preview": "astro preview",
+    "astro": "astro",
+    "lint": "eslint .",
+    "format": "prettier --write ."
   },
   "dependencies": {
-    "@heroicons/react": "^2.1.5",
-    "@uploadcare/react-uploader": "^0.5.3",
-    "axios": "^1.6.4",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-hot-toast": "^2.4.1",
-    "react-loading-skeleton": "^3.3.1",
-    "react-router-dom": "^6.21.1"
+    "@astrojs/check": "^0.9.6",
+    "@astrojs/db": "^0.18.3",
+    "@astrojs/react": "^4.4.2",
+    "@astrojs/vercel": "^9.0.2",
+    "@fontsource-variable/nunito": "^5.2.7",
+    "@lucide/astro": "^0.562.0",
+    "@nanostores/react": "^1.0.0",
+    "@tailwindcss/vite": "^4.1.18",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
+    "astro": "^5.16.6",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.562.0",
+    "mixitup": "^3.3.2",
+    "mixitup-pagination": "^3.3.2",
+    "nanostores": "^1.1.0",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
+    "tailwind-merge": "^3.4.0",
+    "tailwindcss": "^4.1.18",
+    "typescript": "^5.9.3"
   },
   "devDependencies": {
-    "@types/react": "^18.2.37",
-    "@types/react-dom": "^18.2.15",
-    "@vitejs/plugin-react": "^4.2.0",
-    "autoprefixer": "^10.4.17",
-    "eslint": "^8.53.0",
-    "eslint-plugin-react": "^7.33.2",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-react-refresh": "^0.4.4",
-    "mixitup": "^3.3.1",
-    "postcss": "^8.4.33",
-    "tailwindcss": "^3.4.1",
-    "vite": "^5.1.7"
-  }
+    "@typescript-eslint/parser": "^8.51.0",
+    "eslint": "^9.39.2",
+    "eslint-plugin-astro": "^1.5.0",
+    "prettier": "3.7.4",
+    "prettier-plugin-astro": "0.14.1",
+    "prettier-plugin-tailwindcss": "^0.7.2"
+  },
+  "packageManager": "pnpm@10.27.0"
 }
