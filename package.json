@@ -14,14 +14,14 @@
     "@astrojs/check": "^0.9.6",
     "@astrojs/db": "^0.18.3",
     "@astrojs/react": "^4.4.2",
-    "@astrojs/vercel": "^9.0.2",
+    "@astrojs/vercel": "^9.0.3",
     "@fontsource-variable/nunito": "^5.2.7",
     "@lucide/astro": "^0.562.0",
     "@nanostores/react": "^1.0.0",
     "@tailwindcss/vite": "^4.1.18",
-    "@types/react": "^19.2.7",
+    "@types/react": "^19.2.8",
     "@types/react-dom": "^19.2.3",
-    "astro": "^5.16.6",
+    "astro": "^5.16.9",
     "clsx": "^2.1.1",
     "lucide-react": "^0.562.0",
     "mixitup": "^3.3.2",
@@ -34,12 +34,12 @@
     "typescript": "^5.9.3"
   },
   "devDependencies": {
-    "@typescript-eslint/parser": "^8.51.0",
+    "@typescript-eslint/parser": "^8.53.0",
     "eslint": "^9.39.2",
     "eslint-plugin-astro": "^1.5.0",
     "prettier": "3.7.4",
     "prettier-plugin-astro": "0.14.1",
     "prettier-plugin-tailwindcss": "^0.7.2"
   },
-  "packageManager": "pnpm@10.27.0"
+  "packageManager": "pnpm@10.28.0"
 }
