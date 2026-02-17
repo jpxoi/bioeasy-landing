@@ -38,6 +38,9 @@ importers:
       '@types/react-dom':
         specifier: ^19.2.3
         version: 19.2.3(@types/react@19.2.14)
+      '@vercel/firewall':
+        specifier: ^1.1.2
+        version: 1.1.2
       astro:
         specifier: ^5.17.2
         version: 5.17.2(@types/node@24.10.0)(@vercel/functions@2.2.13)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.52.5)(typescript@5.9.3)(yaml@2.8.1)
@@ -1270,6 +1273,10 @@ packages:
         optional: true
       vue-router:
         optional: true
+
+  '@vercel/firewall@1.1.2':
+    resolution: {integrity: sha512-h0sdBVrloWx8TitvWla/rGj3AnJ5JEYfL5LaGHNNOWkyMuzNqfCcGTvJgnjL2A5eSpAAzoN7Xt609YQ0L7xZdw==}
+    engines: {node: '>= 20'}
 
   '@vercel/functions@2.2.13':
     resolution: {integrity: sha512-14ArBSIIcOBx9nrEgaJb4Bw+en1gl6eSoJWh8qjifLl5G3E4dRXCFOT8HP+w66vb9Wqyd1lAQBrmRhRwOj9X9A==}
@@ -4437,6 +4444,8 @@ snapshots:
   '@vercel/analytics@1.6.1(react@19.2.4)':
     optionalDependencies:
       react: 19.2.4
+
+  '@vercel/firewall@1.1.2': {}
 
   '@vercel/functions@2.2.13':
     dependencies:
