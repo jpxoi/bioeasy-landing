@@ -3,7 +3,6 @@ import type { APIRoute } from 'astro'
 import { z } from 'astro/zod'
 import { db, ContactFormSubmissions } from 'astro:db'
 import { nanoid } from 'nanoid'
-import { checkRateLimit } from '@vercel/firewall'
 
 const ContactFormSchema = z.object({
   email: z
@@ -19,21 +18,6 @@ const ContactFormSchema = z.object({
 
 export const POST: APIRoute = async ({ request }) => {
   try {
-    const { rateLimited } = await checkRateLimit('contact-form', { request })
-
-    if (rateLimited) {
-      return new Response(
-        JSON.stringify({
-          message: 'Demasiadas solicitudes. Por favor, inténtalo de nuevo más tarde.',
-          success: false,
-        }),
-        {
-          status: 429,
-          headers: { 'Content-Type': 'application/json' },
-        },
-      )
-    }
-
     const data = await request.formData()
     const email = data.get('email')
     const subject = data.get('subject')
