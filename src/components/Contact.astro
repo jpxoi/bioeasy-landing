@@ -1,6 +1,6 @@
 ---
 import ContactCard from './ContactCard.astro'
-import ContactForm from './ContactForm.astro'
+import ContactForm from './ContactForm.tsx'
 
 const contact_cards = [
   {
@@ -54,7 +54,7 @@ const contact_cards = [
           Escríbenos y nosotros te contactaremos. Te asesoramos para que inicies con el pie derecho.
         </p>
       </div>
-      <ContactForm />
+      <ContactForm client:load />
     </div>
   </div>
 </section>

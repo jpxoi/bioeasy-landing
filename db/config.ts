@@ -28,6 +28,15 @@ const Team = defineTable({
   },
 })
 
+const ContactFormSubmissions = defineTable({
+  columns: {
+    id: column.text({ primaryKey: true }),
+    email: column.text(),
+    subject: column.text(),
+    message: column.text(),
+  },
+})
+
 export default defineDb({
-  tables: { Team, Courses, CourseCategories },
+  tables: { Team, Courses, CourseCategories, ContactFormSubmissions },
 })
