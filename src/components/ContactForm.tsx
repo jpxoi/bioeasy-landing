@@ -30,6 +30,12 @@ export default function ContactForm() {
         body: formData,
       })
 
+      if (response.status === 429) {
+        setSuccess(false)
+        setResponseMessage('Demasiadas peticiones. Por favor, intenta de nuevo en unos minutos.')
+        return
+      }
+
       const data = await response.json()
 
       if (response.ok && data.success) {
