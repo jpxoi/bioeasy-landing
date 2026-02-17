@@ -17,6 +17,7 @@ export default defineConfig({
 
   integrations: [react(), db()],
   adapter: vercel({
+    edgeMiddleware: true,
     isr: {
       expiration: 60 * 60 * 24, // 1 day
       exclude: [/^\/api\/.+/],
