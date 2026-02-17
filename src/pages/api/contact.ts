@@ -1,4 +1,3 @@
-export const prerender = false
 import type { APIRoute } from 'astro'
 import { z } from 'astro/zod'
 import { db, ContactFormSubmissions } from 'astro:db'
