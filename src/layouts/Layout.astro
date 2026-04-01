@@ -1,7 +1,5 @@
 ---
-import '@fontsource-variable/nunito'
-import nunitoVariableWoff2 from '@fontsource-variable/nunito/files/nunito-latin-wght-normal.woff2?url'
-
+import { Font } from 'astro:assets'
 import '../styles/global.css'
 ---
 
@@ -23,8 +21,7 @@ import '../styles/global.css'
     <meta name='msapplication-config' content='/favicon/browserconfig.xml?v=2' />
 
     <link rel='canonical' href='https://bgmedicina.com' />
-
-    <link rel='preload' as='font' type='font/woff2' href={nunitoVariableWoff2} crossorigin='anonymous' />
+    <Font cssVariable='--font-nunito' preload />
 
     <link rel='preconnect' href='https://cdn.bgmedicina.com' />
     <link rel='dns-prefetch' href='https://cdn.bgmedicina.com' />

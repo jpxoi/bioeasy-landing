@@ -15,7 +15,6 @@
     "@astrojs/db": "^0.20.1",
     "@astrojs/react": "^5.0.2",
     "@astrojs/vercel": "^10.0.3",
-    "@fontsource-variable/nunito": "^5.2.7",
     "@lucide/astro": "^1.7.0",
     "@nanostores/react": "^1.1.0",
     "@tailwindcss/vite": "^4.2.2",

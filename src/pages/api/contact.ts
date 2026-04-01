@@ -6,15 +6,9 @@ import { db, ContactFormSubmissions } from 'astro:db'
 import { nanoid } from 'nanoid'
 
 const ContactFormSchema = z.object({
-  email: z
-    .string({ required_error: 'El correo electrónico es obligatorio.' })
-    .email('Ingrese un correo electrónico válido.'),
-  subject: z
-    .string({ required_error: 'El asunto es obligatorio.' })
-    .min(5, 'El asunto debe tener al menos 5 caracteres.'),
-  message: z
-    .string({ required_error: 'El mensaje es obligatorio.' })
-    .min(20, 'El mensaje debe tener al menos 20 caracteres.'),
+  email: z.email({ message: 'Ingrese un correo electrónico válido.' }),
+  subject: z.string({ message: 'El asunto es obligatorio.' }).min(5, 'El asunto debe tener al menos 5 caracteres.'),
+  message: z.string({ message: 'El mensaje es obligatorio.' }).min(20, 'El mensaje debe tener al menos 20 caracteres.'),
 })
 
 export const POST: APIRoute = async ({ request }) => {
@@ -27,7 +21,7 @@ export const POST: APIRoute = async ({ request }) => {
     const validatedData = ContactFormSchema.safeParse({ email, subject, message })
 
     if (!validatedData.success) {
-      const errors = validatedData.error.flatten().fieldErrors
+      const errors = z.flattenError(validatedData.error).fieldErrors
       return new Response(
         JSON.stringify({
           errors,

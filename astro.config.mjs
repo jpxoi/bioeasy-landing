@@ -1,5 +1,5 @@
 // @ts-check
-import { defineConfig } from 'astro/config'
+import { defineConfig, fontProviders } from 'astro/config'
 
 import tailwindcss from '@tailwindcss/vite'
 
@@ -23,6 +23,17 @@ export default defineConfig({
       exclude: [/^\/api\/.+/],
     },
   }),
+
+  fonts: [
+    {
+      name: 'Nunito',
+      cssVariable: '--font-nunito',
+      provider: fontProviders.fontsource(),
+      weights: ['variable'],
+      styles: ['normal'],
+      subsets: ['latin'],
+    },
+  ],
 
   image: {
     remotePatterns: [

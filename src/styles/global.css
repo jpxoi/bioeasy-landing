@@ -1,6 +1,6 @@
 @import 'tailwindcss';
 
-@theme {
+@theme inline {
   --color-*: initial;
   --color-transparent: transparent;
   --color-current: currentColor;
@@ -151,8 +151,7 @@
   --color-teal-900: #0a5457;
   --color-teal-950: #003035;
 
-  /* --font-*: initial; */
-  --font-sans: 'Nunito Variable', sans-serif;
+  --font-sans: var(--font-nunito);
   --font-serif: Merriweather, serif;
 }
 
