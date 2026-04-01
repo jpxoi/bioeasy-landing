@@ -29,7 +29,7 @@ export default defineConfig({
       name: 'Nunito',
       cssVariable: '--font-nunito',
       provider: fontProviders.fontsource(),
-      weights: ['variable'],
+      weights: ['200 1000'],
       styles: ['normal'],
       subsets: ['latin'],
     },
