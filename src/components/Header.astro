@@ -21,6 +21,8 @@ const { isLanding = false } = Astro.props
           width={1299}
           height={262}
           alt='Bioeasy Galenos Logo'
+          loading='eager'
+          fetchpriority='high'
         />
         <Image
           class='h-8 w-auto sm:hidden'
@@ -28,6 +30,8 @@ const { isLanding = false } = Astro.props
           width={262}
           height={262}
           alt='Bioeasy Galenos Logo'
+          loading='eager'
+          fetchpriority='high'
         />
       </a>
     </div>
