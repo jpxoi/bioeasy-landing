@@ -10,7 +10,7 @@ interface Props {
 const { isLanding = false } = Astro.props
 ---
 
-<header class='fixed start-0 top-0 z-20 w-full bg-white shadow-md'>
+<header class='fixed inset-s-0 top-0 z-20 w-full bg-white shadow-md'>
   <nav class='mx-auto flex max-w-7xl flex-wrap items-center justify-between p-4'>
     <div>
       <a href={isLanding ? '/#' : '/'} class='flex items-center space-x-3 rtl:space-x-reverse' data-astro-prefetch>
