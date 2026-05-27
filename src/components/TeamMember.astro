@@ -13,7 +13,7 @@ const { name, title, avatarKey } = Astro.props
 const cdnURL = import.meta.env.PUBLIC_CDN_URL
 const avifSrc = getCdnImageUrl(cdnURL, avatarKey, 'avif')
 const webpSrc = getCdnImageUrl(cdnURL, avatarKey, 'webp')
-const fallbackSrc = getCdnImageUrl(cdnURL, avatarKey, 'png')
+const fallbackSrc = webpSrc
 ---
 
 <div
