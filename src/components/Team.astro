@@ -1,6 +1,5 @@
 ---
 import TeamMembersGrid from './TeamMembersGrid.astro'
-import TeamMembersGridSkeleton from './TeamMembersGridSkeleton.astro'
 ---
 
 <section
@@ -8,7 +7,5 @@ import TeamMembersGridSkeleton from './TeamMembersGridSkeleton.astro'
   id='docentes'
 >
   <h2 class='text-center text-2xl font-bold tracking-tight text-gray-900 md:text-3xl lg:text-4xl'>Docentes</h2>
-  <TeamMembersGrid server:defer>
-    <TeamMembersGridSkeleton slot='fallback' />
-  </TeamMembersGrid>
+  <TeamMembersGrid />
 </section>
