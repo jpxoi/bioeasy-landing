@@ -65,17 +65,21 @@ export default function HeaderNavLinks() {
           aria-hidden={!$isMobileMenuOpen}
           onClick={closeMenu}
         />
-        <nav
+        <div
           id='mobile-nav-panel'
-          aria-modal={$isMobileMenuOpen}
+          role='dialog'
           aria-label='Menú principal'
+          aria-hidden={!$isMobileMenuOpen}
+          {...($isMobileMenuOpen ? { 'aria-modal': true } : {})}
           className={cn(
             'fixed inset-0 z-50 flex flex-col bg-white transition-transform duration-300 ease-out lg:hidden',
             $isMobileMenuOpen ? 'translate-y-0' : 'pointer-events-none translate-y-full',
           )}
         >
           <div className='flex h-16 shrink-0 items-center justify-between border-b border-gray-100 px-5'>
-            <span className='text-base font-semibold text-teal-800'>Menú</span>
+            <p id='mobile-nav-title' className='text-base font-semibold text-teal-800'>
+              Menú
+            </p>
             <button
               type='button'
               className='inline-flex size-10 items-center justify-center rounded-xl text-teal-700 transition-colors hover:bg-teal-50 focus:ring-2 focus:ring-teal-300/50 focus:outline-hidden'
@@ -86,15 +90,17 @@ export default function HeaderNavLinks() {
             </button>
           </div>
 
-          <ul className='flex flex-1 flex-col justify-center gap-1 overflow-y-auto px-5 py-6'>
-            {navItems.map((item) => (
-              <li key={item.sectionId}>
-                <a href={item.href} className={mobileNavLink} data-nav-section={item.sectionId} onClick={handleClick}>
-                  {item.label}
-                </a>
-              </li>
-            ))}
-          </ul>
+          <nav aria-labelledby='mobile-nav-title' className='flex flex-1 flex-col overflow-y-auto'>
+            <ul className='flex flex-1 flex-col justify-center gap-1 px-5 py-6'>
+              {navItems.map((item) => (
+                <li key={item.sectionId}>
+                  <a href={item.href} className={mobileNavLink} data-nav-section={item.sectionId} onClick={handleClick}>
+                    {item.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
 
           <div className='shrink-0 border-t border-gray-100 p-5 pb-[max(1.25rem,env(safe-area-inset-bottom))]'>
             <a
@@ -108,7 +114,7 @@ export default function HeaderNavLinks() {
               <ExternalLink className='size-4 opacity-80' aria-hidden />
             </a>
           </div>
-        </nav>
+        </div>
       </>,
       document.body,
     )
