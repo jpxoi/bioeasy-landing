@@ -7,6 +7,7 @@ import { WHATSAPP_URL } from '@/lib/whatsapp'
 const contact_cards = [
   {
     id: 'email_contact',
+    icon: 'envelope',
     contact_title: 'Correo electrónico',
     contact_info: 'informes@bgmedicina.com',
     contact_link: 'mailto:informes@bgmedicina.com',
@@ -14,43 +15,21 @@ const contact_cards = [
   },
   {
     id: 'whatsapp',
+    icon: 'phone',
     contact_title: 'WhatsApp',
     contact_info: '+51 940 256 869',
     contact_link: WHATSAPP_URL,
     contact_cta: 'Escríbenos',
   },
-  {
-    id: 'instagram',
-    contact_title: 'Instagram',
-    contact_info: '@bioeasygalenos',
-    contact_link: 'https://www.instagram.com/bioeasygalenos',
-    contact_cta: 'Síguenos',
-  },
-  {
-    id: 'tiktok',
-    contact_title: 'TikTok',
-    contact_info: '@bioeasygalenos',
-    contact_link: 'https://www.tiktok.com/@bioeasygalenos',
-    contact_cta: 'Síguenos',
-  },
 ]
 ---
 
-<section class='border-t border-gray-100' id='contacto'>
-  <div
-    class='mx-auto flex w-full max-w-6xl flex-col gap-6 pt-24 pb-8 max-xl:px-8 md:gap-10 md:pt-28 md:pb-16'
-  >
-    <div class='grid gap-10 md:grid-cols-2 md:items-start'>
-      <div class='flex max-w-3xl flex-col items-center gap-4'>
-        <SectionHeading title='Contáctanos' />
-        <div class='grid grid-cols-1 justify-items-center gap-2 max-md:w-full sm:grid-cols-2 md:grid-cols-1 md:gap-4'>
-          {contact_cards.map((contact_card) => <ContactCard {...contact_card} />)}
-        </div>
-      </div>
-      <div class='flex max-w-3xl flex-col items-center gap-6'>
-        <SectionHeading level='h3' title='¿Aún tienes dudas?' />
-        <ContactForm client:load />
-      </div>
+<section id='contacto' class='mx-auto flex w-full max-w-7xl flex-col gap-8 p-8 pt-24'>
+  <SectionHeading title='Contáctanos' />
+  <div class='grid gap-10 md:grid-cols-[3fr_4fr] md:items-start'>
+    <div class='grid grid-cols-1 justify-items-center gap-2 max-md:w-full sm:grid-cols-2 md:grid-cols-1 md:gap-4'>
+      {contact_cards.map((contact_card) => <ContactCard {...contact_card} />)}
     </div>
+    <ContactForm client:load />
   </div>
 </section>
