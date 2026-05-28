@@ -15,24 +15,32 @@ const { isLanding = false } = Astro.props
     <div>
       <a href={isLanding ? '/#' : '/'} class='flex items-center space-x-3 rtl:space-x-reverse' data-astro-prefetch>
         <span class='sr-only'>Bioeasy Galenos</span>
-        <Image
-          class='h-8 w-auto max-sm:hidden'
-          src='/img/logo.webp'
-          width={1299}
-          height={262}
-          alt='Bioeasy Galenos Logo'
-          loading='eager'
-          fetchpriority='high'
-        />
-        <Image
-          class='h-8 w-auto sm:hidden'
-          src='/img/logo_sm.webp'
-          width={262}
-          height={262}
-          alt='Bioeasy Galenos Logo'
-          loading='eager'
-          fetchpriority='high'
-        />
+        <picture class='max-sm:hidden'>
+          <source srcset='/brand/logo-teal.avif' type='image/avif' />
+          <source srcset='/brand/logo-teal.webp' type='image/webp' />
+          <img
+            class='h-8 w-auto'
+            src='/brand/logo-teal.webp'
+            width='476'
+            height='96'
+            alt='Bioeasy Galenos Logo'
+            loading='eager'
+            fetchpriority='high'
+          />
+        </picture>
+        <picture class='sm:hidden'>
+          <source srcset='/brand/icon-teal.avif' type='image/avif' />
+          <source srcset='/brand/icon-teal.webp' type='image/webp' />
+          <img
+            class='h-8 w-auto'
+            src='/brand/icon-teal.webp'
+            width='96'
+            height='96'
+            alt='Bioeasy Galenos Logo'
+            loading='eager'
+            fetchpriority='high'
+          />
+        </picture>
       </a>
     </div>
     <div class='flex gap-3 lg:order-2 lg:space-x-0 rtl:space-x-reverse'>
