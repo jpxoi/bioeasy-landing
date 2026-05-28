@@ -1,5 +1,6 @@
 ---
 import { getCdnImageUrl } from '../lib/cdn-image'
+import { WHATSAPP_URL } from '@/lib/whatsapp'
 import { ArrowRight } from '@lucide/astro'
 
 interface Props {
@@ -21,7 +22,7 @@ const fallbackSrc = webpSrc
 const className = `course__card mix ${category} max-w-sm flex flex-col bg-white border border-gray-200 rounded-lg shadow-sm`
 
 const whatsappMessage = `Hola, estoy interesado en obtener más información sobre el curso "${title}" que aparece en su página web. ¿Podrían brindarme detalles sobre inscripción, duración y requisitos? Gracias.`
-const whatsappLink = `https://wa.me/51940256869?text=${encodeURIComponent(whatsappMessage)}`
+const whatsappLink = `${WHATSAPP_URL}?text=${encodeURIComponent(whatsappMessage)}`
 ---
 
 <div class={className} id={id}>
@@ -32,7 +33,7 @@ const whatsappLink = `https://wa.me/51940256869?text=${encodeURIComponent(whatsa
       class='aspect-square rounded-t-lg object-cover sm:aspect-8/10'
       loading='lazy'
       src={fallbackSrc}
-      alt={title}
+      alt={`Imagen del curso ${title} de Bioeasy Galenos`}
       width='800'
       height='1000'
     />
