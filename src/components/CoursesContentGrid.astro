@@ -6,7 +6,7 @@ import { db, Courses } from 'astro:db'
 const courses = await db.select().from(Courses)
 ---
 
-<div class='courses__content mx-auto flex w-full max-w-6xl flex-col items-center gap-4'>
+<div class='courses__content mx-auto flex w-full max-w-6xl flex-col items-center gap-6'>
   <div
     class='courses__content__grid grid w-full grid-cols-1 justify-items-center gap-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4'
   >
@@ -14,7 +14,7 @@ const courses = await db.select().from(Courses)
   </div>
   <button
     type='button'
-    class='load_more_button flex h-10 w-full max-w-sm flex-row items-center justify-center gap-1.5 rounded-lg bg-teal-700 px-4 text-sm font-medium text-white shadow-sm transition-all hover:bg-teal-800 disabled:hidden sm:text-base'
+    class='load_more_button flex h-10 w-full max-w-sm flex-row items-center justify-center gap-1.5 rounded-lg bg-teal-700 px-6 text-sm font-medium text-white shadow-sm transition-all hover:bg-teal-800 disabled:hidden sm:w-fit sm:text-base'
   >
     <Plus class='size-4' />
     <span>Cargar más</span>
@@ -30,7 +30,9 @@ const courses = await db.select().from(Courses)
   const containerEl = document.querySelector('.courses__content__grid')
   const loadMoreButtonEl = document.querySelector('.load_more_button') as HTMLButtonElement
 
-  /** Matches grid-cols: 1 → sm:2 → md:3 → xl:4 */
+  const MIN_PAGE_SIZE = 4
+
+  /** Mirrors Tailwind: grid-cols-1 → sm:2 → md:3 → xl:4 */
   function getGridColumns() {
     if (window.matchMedia('(min-width: 1280px)').matches) return 4
     if (window.matchMedia('(min-width: 768px)').matches) return 3
@@ -38,9 +40,9 @@ const courses = await db.select().from(Courses)
     return 1
   }
 
-  /** Two full rows per viewport, without reserving a grid cell for the button */
+  /** Two full rows; never fewer than MIN_PAGE_SIZE items */
   function getPageSize() {
-    return getGridColumns() * 2
+    return Math.max(getGridColumns() * 2, MIN_PAGE_SIZE)
   }
 
   let currentLimit = getPageSize()
