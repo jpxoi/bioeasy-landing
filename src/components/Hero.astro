@@ -1,6 +1,6 @@
 ---
 import ChevronDown from '@lucide/astro/icons/chevron-down'
-const whatsAppLink = `https://wa.link/giw6ej`
+import { WHATSAPP_URL } from '@/lib/whatsapp'
 ---
 
 <section
@@ -16,7 +16,7 @@ const whatsAppLink = `https://wa.link/giw6ej`
       </h1>
       <div class='flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0'>
         <a
-          href={whatsAppLink}
+          href={WHATSAPP_URL}
           target='_blank'
           rel='noreferrer noopener'
           class='inline-flex items-center justify-center rounded-lg bg-teal-700 px-5 py-3 text-center text-base font-medium text-white transition-all hover:bg-teal-800 focus:ring-4 focus:ring-teal-300'

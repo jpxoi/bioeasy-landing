@@ -1,3 +1,7 @@
+---
+import { WHATSAPP_URL } from '@/lib/whatsapp'
+---
+
 <div class='flex sm:mt-0 sm:justify-center'>
   <a
     href='https://www.facebook.com/profile.php?id=61564352151753'
@@ -40,12 +44,7 @@
     </svg>
     <span class='sr-only'>TikTok Profile</span>
   </a>
-  <a
-    href='https://wa.me/51986938845'
-    target='_blank'
-    rel='noreferrer'
-    class='ms-5 text-gray-500 transition-all hover:text-teal-900'
-  >
+  <a href={WHATSAPP_URL} target='_blank' rel='noreferrer' class='ms-5 text-gray-500 transition-all hover:text-teal-900'>
     <svg class='h-4 w-4' aria-hidden='true' xmlns='http://www.w3.org/2000/svg' fill='currentColor' viewBox='2 2 20 20'>
       <path
         fill-rule='evenodd'
