@@ -58,8 +58,6 @@ const { isLanding = false } = Astro.props
   </nav>
 </header>
 
-{
-  isLanding && (
-    <script>import {initLandingHeaderScroll} from '@/lib/landing-header-scroll' initLandingHeaderScroll()</script>
-  )
-}
+<script>
+  import '@/lib/landing-header-scroll'
+</script>

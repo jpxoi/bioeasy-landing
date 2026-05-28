@@ -1,8 +1,8 @@
 const SCROLL_THRESHOLD = 24
 
-export function initLandingHeaderScroll() {
+function initLandingHeaderScroll() {
   const header = document.getElementById('site-header')
-  if (!header) return
+  if (!header?.classList.contains('header--landing')) return
 
   const update = () => {
     const atHero = window.scrollY <= SCROLL_THRESHOLD
@@ -14,3 +14,5 @@ export function initLandingHeaderScroll() {
   update()
   window.addEventListener('scroll', update, { passive: true })
 }
+
+initLandingHeaderScroll()
