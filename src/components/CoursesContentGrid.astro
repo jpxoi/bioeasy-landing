@@ -7,14 +7,12 @@ const courses = await db.select().from(Courses)
 ---
 
 <div class='courses__content mx-auto flex w-full max-w-7xl flex-col items-center gap-6'>
-  <div
-    class='courses__content__grid grid w-full grid-cols-1 justify-items-center gap-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4'
-  >
+  <div class='courses__content__grid grid w-full grid-cols-2 justify-items-center gap-4 md:grid-cols-3 xl:grid-cols-4'>
     {courses.map((course) => <CourseCard {...course} />)}
   </div>
   <button
     type='button'
-    class='load_more_button flex h-10 w-full max-w-sm flex-row items-center justify-center gap-1 rounded-lg bg-teal-700 px-6 text-sm font-medium text-white shadow-sm transition-all hover:bg-teal-800 disabled:hidden sm:w-fit sm:text-base'
+    class='load_more_button flex h-10 w-full flex-row items-center justify-center gap-1 rounded-lg bg-teal-700 px-6 text-sm font-medium text-white shadow-sm transition-all hover:bg-teal-800 disabled:hidden sm:w-fit sm:text-base'
   >
     <Plus class='size-4' />
     <span>Cargar más</span>

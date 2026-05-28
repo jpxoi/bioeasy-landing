@@ -38,9 +38,9 @@ const whatsappLink = `${WHATSAPP_URL}?text=${encodeURIComponent(whatsappMessage)
       height='1000'
     />
   </picture>
-  <div class='flex flex-1 flex-col gap-4 p-5 text-center'>
-    <div class='flex flex-col gap-2'>
-      <div class='flex items-center justify-center gap-2'>
+  <div class='flex flex-1 flex-col gap-4 p-5'>
+    <div class='flex flex-1 flex-col gap-2'>
+      <div class='flex items-center justify-start gap-2'>
         <span
           class='items-center rounded-md bg-[#005FAE] px-2 py-1 text-xs font-medium text-white ring-1 ring-[#005FAE]/20 ring-inset'
         >
@@ -48,12 +48,12 @@ const whatsappLink = `${WHATSAPP_URL}?text=${encodeURIComponent(whatsappMessage)
         </span>
         {
           /*
-        <span class="items-center rounded-md bg-[#E30512] px-2 py-1 text-xs font-medium text-white ring-1 ring-inset ring-[#E30512]/20">
-          UCV
-        </span>
-        <span class="items-center rounded-md bg-[#fdba30] px-2 py-1 text-xs font-medium text-black ring-1 ring-inset ring-[#fdba30]/20">
-          UPN
-        </span> */
+      <span class="items-center rounded-md bg-[#E30512] px-2 py-1 text-xs font-medium text-white ring-1 ring-inset ring-[#E30512]/20">
+        UCV
+      </span>
+      <span class="items-center rounded-md bg-[#fdba30] px-2 py-1 text-xs font-medium text-black ring-1 ring-inset ring-[#fdba30]/20">
+        UPN
+      </span> */
         }
         <span
           class='items-center rounded-md bg-teal-50 px-2 py-1 text-xs font-medium text-teal-800 ring-1 ring-teal-600/20 ring-inset'
@@ -61,16 +61,14 @@ const whatsappLink = `${WHATSAPP_URL}?text=${encodeURIComponent(whatsappMessage)
           {tag}
         </span>
       </div>
-      <h3 class='text-xl font-bold tracking-tight text-gray-900'>
+      <h3 class='text-lg font-bold tracking-tight text-gray-900 sm:text-xl'>
         {title}
       </h3>
-    </div>
-    <div class='flex-1'>
-      <p class='line-clamp-3 text-sm font-normal text-pretty text-gray-700 sm:line-clamp-4'>
+      <p class='line-clamp-5 text-left text-xs font-normal text-gray-700 sm:text-sm'>
         {description}
       </p>
     </div>
-    <div class='flex items-end justify-center'>
+    <div class='flex items-end justify-start'>
       <a
         href={whatsappLink}
         target='_blank'
