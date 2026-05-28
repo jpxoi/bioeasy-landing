@@ -1,11 +1,12 @@
 ---
+import SectionHeading from './SectionHeading.astro'
 import CoursesFilterButtons from './CoursesFilterButtons.astro'
 import CoursesContentGrid from './CoursesContentGrid.astro'
 ---
 
-<section class='mx-auto flex w-full max-w-6xl flex-col gap-6 bg-white pt-24 max-xl:px-8 md:gap-10 md:pt-28' id='cursos'>
-  <h2 class='text-center text-2xl font-bold tracking-tight text-gray-900 md:text-3xl lg:text-4xl'>Cursos</h2>
-  <div class='flex flex-col gap-4 md:gap-8'>
+<section id='cursos' class='mx-auto flex w-full max-w-7xl flex-col gap-8 p-8 pt-24'>
+  <SectionHeading title='Cursos' />
+  <div class='flex flex-col gap-6'>
     <CoursesFilterButtons />
     <CoursesContentGrid />
   </div>
