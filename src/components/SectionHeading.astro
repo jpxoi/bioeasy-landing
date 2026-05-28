@@ -1,0 +1,15 @@
+---
+interface Props {
+  title: string
+  level?: 'h2' | 'h3'
+}
+
+const { title, level = 'h2' } = Astro.props
+
+const titleClass =
+  level === 'h2'
+    ? 'text-center text-2xl font-bold tracking-tight text-gray-900 md:text-3xl lg:text-4xl'
+    : 'text-center text-xl font-bold tracking-tight text-gray-900 md:text-2xl'
+---
+
+{level === 'h2' ? <h2 class={titleClass}>{title}</h2> : <h3 class={titleClass}>{title}</h3>}
