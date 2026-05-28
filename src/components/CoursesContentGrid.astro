@@ -24,28 +24,14 @@ const courses = await db.select().from(Courses)
 <script>
   import mixitup from 'mixitup'
   import mixitupPagination from 'mixitup-pagination'
+  import { getGridColumnsFromViewport, getPageSize } from '../lib/courses-grid'
 
   mixitup.use(mixitupPagination)
 
   const containerEl = document.querySelector('.courses__content__grid')
   const loadMoreButtonEl = document.querySelector('.load_more_button') as HTMLButtonElement
 
-  const MIN_PAGE_SIZE = 4
-
-  /** Mirrors Tailwind: grid-cols-1 → sm:2 → md:3 → xl:4 */
-  function getGridColumns() {
-    if (window.matchMedia('(min-width: 1280px)').matches) return 4
-    if (window.matchMedia('(min-width: 768px)').matches) return 3
-    if (window.matchMedia('(min-width: 640px)').matches) return 2
-    return 1
-  }
-
-  /** Two full rows; never fewer than MIN_PAGE_SIZE items */
-  function getPageSize() {
-    return Math.max(getGridColumns() * 2, MIN_PAGE_SIZE)
-  }
-
-  let currentLimit = getPageSize()
+  let currentLimit = getPageSize(getGridColumnsFromViewport())
 
   const mixer = mixitup(containerEl, {
     selectors: {
@@ -69,7 +55,7 @@ const courses = await db.select().from(Courses)
 
   function handleLoadMoreClick() {
     const { totalMatching } = mixer.getState()
-    currentLimit = Math.min(currentLimit + getPageSize(), totalMatching)
+    currentLimit = Math.min(currentLimit + getPageSize(getGridColumnsFromViewport()), totalMatching)
     mixer.paginate({ limit: currentLimit })
   }
 
