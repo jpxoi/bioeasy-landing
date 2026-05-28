@@ -28,24 +28,28 @@ const why_items = [
 ]
 ---
 
-<section id='nosotros' class='mx-auto flex w-full max-w-6xl flex-col gap-6 pt-24 max-xl:px-8 md:gap-10 md:pt-28'>
-  <SectionHeading title='Nosotros' />
-  <div class='grid gap-4 md:gap-8 lg:grid-cols-2 lg:gap-12'>
-    <div>
-      <p class='mb-1 text-left font-normal text-gray-800 lg:mb-2'>
-        Fundada en el 2017 con el objetivo de innovar y ofrecer una preparación académica de calidad a estudiantes de
-        medicina a nivel local.
-      </p>
-      <p class='mb-3 text-left font-normal text-gray-800 lg:mb-4'>
-        Creemos en el potencial de nuestros estudiantes y hemos diseñado un método de estudio efectivo para que los
-        estudiantes puedan rendir con éxito los diferentes exámenes de la carrera de Medicina.
-      </p>
-      <h3 class='mb-1 text-left text-lg font-bold text-gray-900 lg:mb-2'>Nuestra experiencia nos respalda</h3>
-      <p class='mb-1 text-left font-normal text-gray-800 lg:mb-2'>
-        Más de 1000 estudiantes de 1º a 12º ciclo de UPAO forman parte de la comunidad BG.
-      </p>
-    </div>
-    <div>
+<section id='nosotros' class='mx-auto flex w-full max-w-7xl flex-col gap-14 p-8 pt-28'>
+  <div class='flex flex-col gap-8'>
+    <SectionHeading title='Nosotros' />
+    <div class='grid gap-6 lg:grid-cols-2'>
+      <div class='flex flex-col gap-4'>
+        <div class='flex flex-col gap-2'>
+          <p class='text-left font-normal text-gray-800'>
+            Fundada en el 2017 con el objetivo de innovar y ofrecer una preparación académica de calidad a estudiantes
+            de medicina a nivel local.
+          </p>
+          <p class='text-left font-normal text-gray-800'>
+            Creemos en el potencial de nuestros estudiantes y hemos diseñado un método de estudio efectivo para que los
+            estudiantes puedan rendir con éxito los diferentes exámenes de la carrera de Medicina.
+          </p>
+        </div>
+        <div class='flex flex-col gap-2'>
+          <h3 class='text-left text-lg font-bold text-gray-900'>Nuestra experiencia nos respalda</h3>
+          <p class='text-left font-normal text-gray-800'>
+            Más de 1000 estudiantes de 1º a 12º ciclo de UPAO forman parte de la comunidad BG.
+          </p>
+        </div>
+      </div>
       <picture>
         <source srcset={avifSrc} type='image/avif' />
         <source srcset={webpSrc} type='image/webp' />
@@ -61,7 +65,7 @@ const why_items = [
       </picture>
     </div>
   </div>
-  <div class='flex flex-col gap-6 pt-12 md:gap-8 md:pt-16'>
+  <div class='flex flex-col gap-6'>
     <SectionHeading level='h3' title='¿Por qué elegirnos?' />
     <div class='grid grid-cols-1 justify-items-center gap-4 sm:grid-cols-2 lg:grid-cols-4'>
       {why_items.map((item) => <WhyCard why_description={item.description} icon={item.icon} />)}
