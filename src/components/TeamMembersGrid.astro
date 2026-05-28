@@ -5,6 +5,6 @@ import TeamMember from './TeamMember.astro'
 const teamMembers = await db.select().from(TeamTable)
 ---
 
-<div class='grid max-w-6xl grid-cols-2 justify-items-center gap-2 md:grid-cols-3 md:gap-4 lg:grid-cols-4'>
+<div class='grid max-w-7xl grid-cols-2 justify-items-center gap-2 md:grid-cols-3 md:gap-4 lg:grid-cols-4'>
   {teamMembers.map((teamMember) => <TeamMember {...teamMember} />)}
 </div>
