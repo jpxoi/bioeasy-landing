@@ -1,20 +1,23 @@
-import { navLink } from '@/lib/header-classes'
+import { mobileNavLink, navLink } from '@/lib/header-classes'
+import { setActiveNavSection } from '@/lib/scroll-spy'
 import { cn } from '@/lib/utils'
 import { isMobileMenuOpen } from '@/stores'
 import { useStore } from '@nanostores/react'
-import { ExternalLink } from 'lucide-react'
-import { useEffect } from 'react'
+import { ExternalLink, XIcon } from 'lucide-react'
+import { useEffect, useState } from 'react'
+import { createPortal } from 'react-dom'
 
 const navItems = [
-  { href: '/#inicio', label: 'Inicio', id: 'selector_inicio' },
-  { href: '/#nosotros', label: 'Nosotros', id: 'selector_nosotros' },
-  { href: '/#cursos', label: 'Cursos', id: 'selector_cursos' },
-  { href: '/#docentes', label: 'Docentes', id: 'selector_docentes' },
-  { href: '/#contacto', label: 'Contáctanos', id: 'selector_contacto' },
+  { href: '/#inicio', label: 'Inicio', sectionId: 'inicio' },
+  { href: '/#nosotros', label: 'Nosotros', sectionId: 'nosotros' },
+  { href: '/#cursos', label: 'Cursos', sectionId: 'cursos' },
+  { href: '/#docentes', label: 'Docentes', sectionId: 'docentes' },
+  { href: '/#contacto', label: 'Contáctanos', sectionId: 'contacto' },
 ] as const
 
 export default function HeaderNavLinks() {
   const $isMobileMenuOpen = useStore(isMobileMenuOpen)
+  const [mounted, setMounted] = useState(false)
 
   const handleClick = () => {
     setTimeout(() => isMobileMenuOpen.set(false), 150)
@@ -23,29 +26,16 @@ export default function HeaderNavLinks() {
   const closeMenu = () => isMobileMenuOpen.set(false)
 
   useEffect(() => {
-    const sections = document.querySelectorAll('section[id]')
+    setMounted(true)
+  }, [])
 
-    function scrollActive() {
-      const scrollY = window.scrollY
+  useEffect(() => {
+    const onScroll = () => setActiveNavSection(80)
 
-      sections.forEach((current) => {
-        const sectionElement = current as HTMLElement
-        const sectionHeight = sectionElement.offsetHeight
-        const sectionTop = sectionElement.offsetTop - 72
-        const sectionId = sectionElement.getAttribute('id')
+    window.addEventListener('scroll', onScroll, { passive: true })
+    onScroll()
 
-        if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-          document.getElementById(`selector_${sectionId}`)?.classList.add('active_link')
-        } else {
-          document.getElementById(`selector_${sectionId}`)?.classList.remove('active_link')
-        }
-      })
-    }
-
-    window.addEventListener('scroll', scrollActive, { passive: true })
-    scrollActive()
-
-    return () => window.removeEventListener('scroll', scrollActive)
+    return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
   useEffect(() => {
@@ -63,56 +53,80 @@ export default function HeaderNavLinks() {
     }
   }, [$isMobileMenuOpen])
 
+  const mobileMenu =
+    mounted &&
+    createPortal(
+      <>
+        <div
+          className={cn(
+            'fixed inset-0 z-50 bg-teal-950/50 backdrop-blur-sm transition-opacity duration-300 lg:hidden',
+            $isMobileMenuOpen ? 'opacity-100' : 'pointer-events-none opacity-0',
+          )}
+          aria-hidden={!$isMobileMenuOpen}
+          onClick={closeMenu}
+        />
+        <nav
+          id='mobile-nav-panel'
+          aria-modal={$isMobileMenuOpen}
+          aria-label='Menú principal'
+          className={cn(
+            'fixed inset-0 z-50 flex flex-col bg-white transition-transform duration-300 ease-out lg:hidden',
+            $isMobileMenuOpen ? 'translate-y-0' : 'pointer-events-none translate-y-full',
+          )}
+        >
+          <div className='flex h-16 shrink-0 items-center justify-between border-b border-gray-100 px-5'>
+            <span className='text-base font-semibold text-teal-800'>Menú</span>
+            <button
+              type='button'
+              className='inline-flex size-10 items-center justify-center rounded-xl text-teal-700 transition-colors hover:bg-teal-50 focus:ring-2 focus:ring-teal-300/50 focus:outline-hidden'
+              aria-label='Cerrar menú'
+              onClick={closeMenu}
+            >
+              <XIcon className='size-5' aria-hidden />
+            </button>
+          </div>
+
+          <ul className='flex flex-1 flex-col justify-center gap-1 overflow-y-auto px-5 py-6'>
+            {navItems.map((item) => (
+              <li key={item.sectionId}>
+                <a href={item.href} className={mobileNavLink} data-nav-section={item.sectionId} onClick={handleClick}>
+                  {item.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+
+          <div className='shrink-0 border-t border-gray-100 p-5 pb-[max(1.25rem,env(safe-area-inset-bottom))]'>
+            <a
+              href='/campusvirtual'
+              target='_blank'
+              rel='noreferrer noopener'
+              className='inline-flex w-full items-center justify-center gap-2 rounded-xl bg-teal-700 px-4 py-4 text-base font-semibold text-white shadow-sm shadow-teal-900/15 transition-colors hover:bg-teal-800 focus:ring-4 focus:ring-teal-300/50 focus:outline-hidden'
+              onClick={handleClick}
+            >
+              Campus Virtual
+              <ExternalLink className='size-4 opacity-80' aria-hidden />
+            </a>
+          </div>
+        </nav>
+      </>,
+      document.body,
+    )
+
   return (
     <>
-      <div
-        className={cn(
-          'fixed inset-0 z-10 bg-teal-950/40 backdrop-blur-sm transition-opacity duration-300 lg:hidden',
-          $isMobileMenuOpen ? 'opacity-100' : 'pointer-events-none opacity-0',
-        )}
-        aria-hidden={!$isMobileMenuOpen}
-        onClick={closeMenu}
-      />
-      <div
-        className={cn(
-          'w-full lg:flex lg:justify-center lg:justify-self-center',
-          'max-lg:absolute max-lg:inset-x-0 max-lg:top-full max-lg:z-10',
-          'max-lg:overflow-hidden max-lg:rounded-b-2xl max-lg:border-b max-lg:border-teal-700/10',
-          'max-lg:bg-white/98 max-lg:shadow-xl max-lg:shadow-teal-950/10 max-lg:backdrop-blur-md',
-          'max-lg:transition-[opacity,transform] max-lg:duration-300 max-lg:ease-out',
-          !$isMobileMenuOpen
-            ? 'max-lg:pointer-events-none max-lg:-translate-y-2 max-lg:opacity-0'
-            : 'max-lg:translate-y-0 max-lg:opacity-100',
-        )}
-        id='navbar-sticky'
-      >
-        <ul className='flex flex-col p-2 font-medium lg:flex-row lg:items-center lg:gap-0.5 lg:p-0'>
-          {navItems.map((item, index) => (
-            <li key={item.id} className='max-lg:border-b max-lg:border-gray-100 max-lg:last:border-b-0'>
-              <a
-                href={item.href}
-                className={cn(navLink, index === 0 && 'active_link')}
-                id={item.id}
-                onClick={handleClick}
-              >
+      <div id='navbar-sticky' className='hidden w-full lg:flex lg:justify-center lg:justify-self-center'>
+        <ul className='flex flex-row items-center gap-0.5'>
+          {navItems.map((item) => (
+            <li key={item.sectionId}>
+              <a href={item.href} className={navLink} data-nav-section={item.sectionId} onClick={handleClick}>
                 {item.label}
               </a>
             </li>
           ))}
         </ul>
-        <div className='border-t border-gray-100 p-3 lg:hidden'>
-          <a
-            href='/campusvirtual'
-            target='_blank'
-            rel='noreferrer noopener'
-            className='inline-flex w-full items-center justify-center gap-2 rounded-xl bg-teal-700 px-4 py-3.5 text-sm font-semibold text-white shadow-sm shadow-teal-900/15 transition-colors hover:bg-teal-800 focus:ring-4 focus:ring-teal-300/50 focus:outline-hidden'
-            onClick={handleClick}
-          >
-            Campus Virtual
-            <ExternalLink className='size-4 opacity-80' aria-hidden />
-          </a>
-        </div>
       </div>
+      {mobileMenu}
     </>
   )
 }
