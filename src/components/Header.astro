@@ -1,33 +1,39 @@
 ---
 import HeaderMobileMenuButton from '@/components/HeaderMobileMenuButton.tsx'
 import HeaderNavLinks from '@/components/HeaderNavLinks.tsx'
+import { brandImg, headerCta, headerHeroScrim, headerShell } from '@/lib/header-classes'
 
 interface Props {
   isLanding?: boolean
 }
 
 const { isLanding = false } = Astro.props
-
-const headerClass = isLanding
-  ? 'site-header header--landing'
-  : 'site-header header--solid'
 ---
 
-<header id='site-header' class={headerClass}>
+<header
+  id='site-header'
+  class:list={[headerShell, isLanding ? 'header--landing' : 'is-scrolled']}
+  data-at-hero={isLanding ? '' : undefined}
+>
+  {
+    isLanding && (
+      <div class={headerHeroScrim} aria-hidden='true' />
+    )
+  }
   <nav
-    class='relative mx-auto grid h-16 max-w-7xl grid-cols-[auto_1fr_auto] items-center gap-3 px-4 sm:gap-4 sm:px-6 lg:px-8'
+    class='relative z-1 mx-auto grid h-16 max-w-7xl grid-cols-[auto_1fr_auto] items-center gap-3 px-4 sm:gap-4 sm:px-6 lg:px-8'
   >
     <a
       href={isLanding ? '/#' : '/'}
-      class='header__brand-link relative z-1 shrink-0'
+      class='relative z-1 shrink-0'
       data-astro-prefetch
     >
       <span class='sr-only'>Bioeasy Galenos</span>
-      <picture class='header__brand max-sm:hidden'>
+      <picture class='max-sm:hidden'>
         <source srcset='/brand/logo-teal.avif' type='image/avif' />
         <source srcset='/brand/logo-teal.webp' type='image/webp' />
         <img
-          class='header__brand-img header__brand-img--logo h-8 w-auto sm:h-9'
+          class:list={[brandImg, 'h-8 sm:h-9']}
           src='/brand/logo-teal.webp'
           width='476'
           height='96'
@@ -36,11 +42,11 @@ const headerClass = isLanding
           fetchpriority='high'
         />
       </picture>
-      <picture class='header__brand sm:hidden'>
+      <picture class='sm:hidden'>
         <source srcset='/brand/icon-teal.avif' type='image/avif' />
         <source srcset='/brand/icon-teal.webp' type='image/webp' />
         <img
-          class='header__brand-img header__brand-img--icon h-9 w-auto'
+          class:list={[brandImg, 'h-9']}
           src='/brand/icon-teal.webp'
           width='96'
           height='96'
@@ -58,7 +64,7 @@ const headerClass = isLanding
         href='/campusvirtual'
         target='_blank'
         rel='noreferrer noopener'
-        class='header__cta max-lg:hidden inline-flex items-center justify-center rounded-xl bg-teal-700 px-5 py-2.5 text-sm font-semibold text-white shadow-sm shadow-teal-900/15 transition-all hover:bg-teal-800 hover:shadow-md hover:shadow-teal-900/20 focus:ring-4 focus:ring-teal-300/50 focus:outline-hidden'
+        class={headerCta}
       >
         Campus Virtual
       </a>
@@ -75,7 +81,10 @@ const headerClass = isLanding
 
       const threshold = 24
       const update = () => {
-        header.classList.toggle('is-scrolled', window.scrollY > threshold)
+        const atHero = window.scrollY <= threshold
+        header.classList.toggle('is-scrolled', !atHero)
+        if (atHero) header.setAttribute('data-at-hero', '')
+        else header.removeAttribute('data-at-hero')
       }
 
       update()

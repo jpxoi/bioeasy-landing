@@ -187,8 +187,14 @@ html {
   @apply border-teal-700 bg-teal-700 text-white;
 }
 
-.active_link {
-  @apply rounded-sm bg-teal-700 text-white lg:bg-transparent lg:p-0 lg:text-teal-700;
+/* Scroll-spy: active section (class toggled by JS) */
+#navbar-sticky .nav__link.active_link {
+  @apply max-lg:border-s-4 max-lg:border-teal-700 max-lg:bg-teal-50 max-lg:ps-3 max-lg:font-semibold max-lg:text-teal-800;
+  @apply lg:bg-teal-50/90 lg:font-semibold lg:text-teal-800 lg:after:scale-x-100;
+}
+
+#site-header[data-at-hero] #navbar-sticky .nav__link.active_link {
+  @apply lg:bg-white/10 lg:text-white;
 }
 
 .section__heading {

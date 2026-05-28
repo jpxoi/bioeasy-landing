@@ -1,6 +1,8 @@
-import { XIcon, MenuIcon } from 'lucide-react'
-import { useStore } from '@nanostores/react'
+import { menuToggle } from '@/lib/header-classes'
+import { cn } from '@/lib/utils'
 import { isMobileMenuOpen } from '@/stores'
+import { useStore } from '@nanostores/react'
+import { MenuIcon, XIcon } from 'lucide-react'
 
 export default function HeaderMobileMenuButton() {
   const $isMobileMenuOpen = useStore(isMobileMenuOpen)
@@ -9,15 +11,27 @@ export default function HeaderMobileMenuButton() {
     <button
       data-collapse-toggle='navbar-sticky'
       type='button'
-      className='inline-flex size-9 items-center justify-center rounded-lg p-2 text-sm text-gray-500 transition-all hover:bg-gray-100 focus:ring-2 focus:ring-gray-200 focus:outline-hidden lg:hidden'
+      className={cn(menuToggle, $isMobileMenuOpen && 'border-teal-700/20 bg-teal-50')}
       aria-controls='navbar-sticky'
-      aria-expanded='false'
+      aria-expanded={$isMobileMenuOpen}
+      aria-label={$isMobileMenuOpen ? 'Cerrar menú' : 'Abrir menú'}
       onClick={() => isMobileMenuOpen.set(!$isMobileMenuOpen)}
     >
-      <span className='sr-only'>Open main menu</span>
-      <div className='group' data-state={$isMobileMenuOpen ? 'open' : 'closed'}>
-        <XIcon className='absolute size-5 scale-0 -rotate-90 transition-transform duration-300 group-data-[state=open]:scale-100 group-data-[state=open]:rotate-0' />
-        <MenuIcon className='size-5 scale-100 rotate-0 transition-transform duration-300 group-data-[state=open]:scale-0 group-data-[state=open]:rotate-90' />
+      <div className='relative size-5'>
+        <XIcon
+          className={cn(
+            'absolute inset-0 size-5 transition-all duration-300',
+            $isMobileMenuOpen ? 'scale-100 rotate-0 opacity-100' : 'scale-75 -rotate-90 opacity-0',
+          )}
+          aria-hidden
+        />
+        <MenuIcon
+          className={cn(
+            'absolute inset-0 size-5 transition-all duration-300',
+            $isMobileMenuOpen ? 'scale-75 rotate-90 opacity-0' : 'scale-100 rotate-0 opacity-100',
+          )}
+          aria-hidden
+        />
       </div>
     </button>
   )
