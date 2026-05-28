@@ -5,7 +5,5 @@ Disallow: /db/
 Disallow: /private/
 Allow: /
 
-Sitemap: https://bgmedicina.com/sitemap.xml
-
 # Allow all robots complete access except private, admin, db, and API paths.
 # Specifying sitemap helps with page discovery.
