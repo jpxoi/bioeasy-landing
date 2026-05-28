@@ -1,5 +1,4 @@
 ---
-import { Image } from 'astro:assets'
 import HeaderMobileMenuButton from '@/components/HeaderMobileMenuButton.tsx'
 import HeaderNavLinks from '@/components/HeaderNavLinks.tsx'
 
@@ -8,53 +7,79 @@ interface Props {
 }
 
 const { isLanding = false } = Astro.props
+
+const headerClass = isLanding
+  ? 'site-header header--landing'
+  : 'site-header header--solid'
 ---
 
-<header class='fixed inset-s-0 top-0 z-20 w-full bg-white shadow-md'>
-  <nav class='mx-auto flex max-w-7xl flex-wrap items-center justify-between p-4'>
-    <div>
-      <a href={isLanding ? '/#' : '/'} class='flex items-center space-x-3 rtl:space-x-reverse' data-astro-prefetch>
-        <span class='sr-only'>Bioeasy Galenos</span>
-        <picture class='max-sm:hidden'>
-          <source srcset='/brand/logo-teal.avif' type='image/avif' />
-          <source srcset='/brand/logo-teal.webp' type='image/webp' />
-          <img
-            class='h-8 w-auto'
-            src='/brand/logo-teal.webp'
-            width='476'
-            height='96'
-            alt='Bioeasy Galenos Logo'
-            loading='eager'
-            fetchpriority='high'
-          />
-        </picture>
-        <picture class='sm:hidden'>
-          <source srcset='/brand/icon-teal.avif' type='image/avif' />
-          <source srcset='/brand/icon-teal.webp' type='image/webp' />
-          <img
-            class='h-8 w-auto'
-            src='/brand/icon-teal.webp'
-            width='96'
-            height='96'
-            alt='Bioeasy Galenos Logo'
-            loading='eager'
-            fetchpriority='high'
-          />
-        </picture>
-      </a>
-    </div>
-    <div class='flex gap-3 lg:order-2 lg:space-x-0 rtl:space-x-reverse'>
+<header id='site-header' class={headerClass}>
+  <nav
+    class='relative mx-auto grid h-16 max-w-7xl grid-cols-[auto_1fr_auto] items-center gap-3 px-4 sm:gap-4 sm:px-6 lg:px-8'
+  >
+    <a
+      href={isLanding ? '/#' : '/'}
+      class='header__brand-link relative z-1 shrink-0'
+      data-astro-prefetch
+    >
+      <span class='sr-only'>Bioeasy Galenos</span>
+      <picture class='header__brand max-sm:hidden'>
+        <source srcset='/brand/logo-teal.avif' type='image/avif' />
+        <source srcset='/brand/logo-teal.webp' type='image/webp' />
+        <img
+          class='header__brand-img header__brand-img--logo h-8 w-auto sm:h-9'
+          src='/brand/logo-teal.webp'
+          width='476'
+          height='96'
+          alt='Bioeasy Galenos'
+          loading='eager'
+          fetchpriority='high'
+        />
+      </picture>
+      <picture class='header__brand sm:hidden'>
+        <source srcset='/brand/icon-teal.avif' type='image/avif' />
+        <source srcset='/brand/icon-teal.webp' type='image/webp' />
+        <img
+          class='header__brand-img header__brand-img--icon h-9 w-auto'
+          src='/brand/icon-teal.webp'
+          width='96'
+          height='96'
+          alt='Bioeasy Galenos'
+          loading='eager'
+          fetchpriority='high'
+        />
+      </picture>
+    </a>
+
+    <HeaderNavLinks client:load />
+
+    <div class='relative z-1 flex shrink-0 items-center justify-end gap-2'>
       <a
         href='/campusvirtual'
         target='_blank'
         rel='noreferrer noopener'
-        class='cursor-pointer rounded-lg bg-teal-700 px-4 py-2 text-center text-sm font-medium text-white transition-all hover:bg-teal-800 focus:ring-4 focus:ring-teal-300 focus:outline-hidden'
+        class='header__cta max-lg:hidden inline-flex items-center justify-center rounded-xl bg-teal-700 px-5 py-2.5 text-sm font-semibold text-white shadow-sm shadow-teal-900/15 transition-all hover:bg-teal-800 hover:shadow-md hover:shadow-teal-900/20 focus:ring-4 focus:ring-teal-300/50 focus:outline-hidden'
       >
         Campus Virtual
       </a>
-
       <HeaderMobileMenuButton client:load />
     </div>
-    <HeaderNavLinks client:load />
   </nav>
 </header>
+
+{
+  isLanding && (
+    <script>
+      const header = document.getElementById('site-header')
+      if (!header) throw new Error('site-header not found')
+
+      const threshold = 24
+      const update = () => {
+        header.classList.toggle('is-scrolled', window.scrollY > threshold)
+      }
+
+      update()
+      window.addEventListener('scroll', update, { passive: true })
+    </script>
+  )
+}
