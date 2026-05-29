@@ -11,7 +11,7 @@ export default function HeaderMobileMenuButton() {
       data-collapse-toggle='navbar-sticky'
       type='button'
       className={menuToggle}
-      aria-controls='navbar-sticky'
+      aria-controls='mobile-nav-panel'
       aria-expanded={$isMobileMenuOpen}
       aria-label={$isMobileMenuOpen ? 'Cerrar menú' : 'Abrir menú'}
       onClick={() => isMobileMenuOpen.set(!$isMobileMenuOpen)}
