@@ -6,6 +6,8 @@ export const headerShell = cn(
   'transition-[background-color,box-shadow,border-color] duration-300 ease-out',
   '[&.is-scrolled]:border-teal-700/10 [&.is-scrolled]:bg-white/95',
   '[&.is-scrolled]:shadow-sm [&.is-scrolled]:shadow-teal-950/5 [&.is-scrolled]:backdrop-blur-md',
+  'data-menu-open:z-50 data-menu-open:border-teal-700/10 data-menu-open:bg-white/95',
+  'data-menu-open:shadow-sm data-menu-open:shadow-teal-950/5 data-menu-open:backdrop-blur-md',
 )
 
 export const headerHeroScrim = cn(
