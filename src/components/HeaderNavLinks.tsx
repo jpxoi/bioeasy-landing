@@ -33,11 +33,9 @@ export default function HeaderNavLinks() {
   const $isMobileMenuOpen = useStore(isMobileMenuOpen)
   const [mounted, setMounted] = useState(false)
 
-  const handleClick = () => {
-    setTimeout(() => isMobileMenuOpen.set(false), 150)
-  }
-
   const closeMenu = () => isMobileMenuOpen.set(false)
+
+  const handleClick = () => setTimeout(() => closeMenu(), 150)
 
   useEffect(() => {
     setMounted(true)
@@ -116,7 +114,6 @@ export default function HeaderNavLinks() {
               target='_blank'
               rel='noreferrer noopener'
               className='inline-flex w-full items-center justify-center gap-2 rounded-xl bg-teal-700 px-4 py-4 text-base font-semibold text-white shadow-sm shadow-teal-900/15 transition-colors hover:bg-teal-800 focus:ring-4 focus:ring-teal-300/50 focus:outline-hidden'
-              onClick={handleClick}
             >
               Campus Virtual
               <ExternalLink className='size-4 opacity-80' aria-hidden />
