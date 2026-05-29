@@ -71,10 +71,6 @@
     @apply bg-white/10 text-white;
   }
 
-  #mobile-nav-panel .nav__link.active_link {
-    @apply border-s-4 border-teal-700 bg-teal-50 ps-4;
-  }
-
   .section__heading {
     @apply bg-[linear-gradient(180deg,rgba(0,207,208,0.79)_0%,rgba(0,76,92,0.8)_100%),image-set(url(https://cdn.bgmedicina.com/site/web_bg.avif)_type('image/avif'),url(https://cdn.bgmedicina.com/site/web_bg.webp)_type('image/webp'))];
   }
