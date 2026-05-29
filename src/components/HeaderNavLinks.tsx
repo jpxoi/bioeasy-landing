@@ -1,4 +1,4 @@
-import { mobileNavLink, navLink } from '@/lib/header-classes'
+import { menuIconButton, mobileNavLink, navLink } from '@/lib/header-classes'
 import { setActiveNavSection } from '@/lib/scroll-spy'
 import { cn } from '@/lib/utils'
 import { isMobileMenuOpen } from '@/stores'
@@ -80,18 +80,13 @@ export default function HeaderNavLinks() {
             <p id='mobile-nav-title' className='text-base font-semibold text-teal-800'>
               Menú
             </p>
-            <button
-              type='button'
-              className='inline-flex size-10 items-center justify-center rounded-xl text-teal-700 transition-colors hover:bg-teal-50 focus:ring-2 focus:ring-teal-300/50 focus:outline-hidden'
-              aria-label='Cerrar menú'
-              onClick={closeMenu}
-            >
+            <button type='button' className={menuIconButton} aria-label='Cerrar menú' onClick={closeMenu}>
               <XIcon className='size-5' aria-hidden />
             </button>
           </div>
 
-          <nav aria-labelledby='mobile-nav-title' className='flex flex-1 flex-col overflow-y-auto'>
-            <ul className='flex flex-1 flex-col justify-center gap-1 px-5 py-6'>
+          <nav aria-labelledby='mobile-nav-title' className='min-h-0 flex-1 overflow-y-auto'>
+            <ul className='flex flex-col gap-1 px-5 pt-4 pb-6'>
               {navItems.map((item) => (
                 <li key={item.sectionId}>
                   <a href={item.href} className={mobileNavLink} data-nav-section={item.sectionId} onClick={handleClick}>
