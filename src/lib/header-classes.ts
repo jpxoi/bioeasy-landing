@@ -31,15 +31,15 @@ export const headerCta = cn(
   'group-data-[at-hero]/site-header:hover:text-teal-800 group-data-[at-hero]/site-header:focus:ring-white/40',
 )
 
-export const menuToggle = cn(
-  'relative inline-flex size-10 shrink-0 items-center justify-center rounded-xl border transition-all lg:hidden',
-  'border-transparent text-teal-700 hover:border-teal-700/15 hover:bg-teal-50',
-  'focus:ring-2 focus:ring-teal-300/50 focus:outline-hidden',
-  'group-data-[at-hero]/site-header:border-white/25 group-data-[at-hero]/site-header:bg-white/10',
-  'group-data-[at-hero]/site-header:text-white group-data-[at-hero]/site-header:backdrop-blur-sm',
-  'group-data-[at-hero]/site-header:hover:border-white/40 group-data-[at-hero]/site-header:hover:bg-white/20',
+export const menuIconButton = cn(
+  'inline-flex shrink-0 items-center justify-center p-1 transition-colors',
+  'text-teal-700 hover:text-teal-800',
+  'focus-visible:ring-2 focus:ring-teal-300/50 focus:outline-hidden',
+  'group-data-[at-hero]/site-header:text-white group-data-[at-hero]/site-header:hover:text-white/85',
   'group-data-[at-hero]/site-header:focus-visible:ring-white/30',
 )
+
+export const menuToggle = cn(menuIconButton, 'relative lg:hidden')
 
 export const mobileNavLink = cn(
   'nav__link block rounded-xl px-5 py-4 text-lg font-medium text-gray-800 transition-colors',
