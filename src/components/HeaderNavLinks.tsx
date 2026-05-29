@@ -1,9 +1,9 @@
-import { menuIconButton, mobileNavLink, navLink } from '@/lib/header-classes'
+import { mobileNavLink, navLink } from '@/lib/header-classes'
 import { setActiveNavSection } from '@/lib/scroll-spy'
 import { cn } from '@/lib/utils'
 import { isMobileMenuOpen } from '@/stores'
 import { useStore } from '@nanostores/react'
-import { ExternalLink, XIcon } from 'lucide-react'
+import { ExternalLink } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
 
@@ -14,6 +14,20 @@ const navItems = [
   { href: '/#docentes', label: 'Docentes', sectionId: 'docentes' },
   { href: '/#contacto', label: 'Contáctanos', sectionId: 'contacto' },
 ] as const
+
+function syncHeaderForMobileMenu(open: boolean) {
+  const header = document.getElementById('site-header')
+  if (!header) return
+
+  if (open) {
+    header.setAttribute('data-menu-open', '')
+    header.classList.add('is-scrolled')
+    header.removeAttribute('data-at-hero')
+  } else {
+    header.removeAttribute('data-menu-open')
+    window.dispatchEvent(new CustomEvent('landing-header:sync'))
+  }
+}
 
 export default function HeaderNavLinks() {
   const $isMobileMenuOpen = useStore(isMobileMenuOpen)
@@ -39,6 +53,14 @@ export default function HeaderNavLinks() {
   }, [])
 
   useEffect(() => {
+    syncHeaderForMobileMenu($isMobileMenuOpen)
+
+    return () => {
+      if ($isMobileMenuOpen) syncHeaderForMobileMenu(false)
+    }
+  }, [$isMobileMenuOpen])
+
+  useEffect(() => {
     document.body.style.overflow = $isMobileMenuOpen ? 'hidden' : ''
 
     const onKeyDown = (event: KeyboardEvent) => {
@@ -59,7 +81,7 @@ export default function HeaderNavLinks() {
       <>
         <div
           className={cn(
-            'fixed inset-0 z-50 bg-teal-950/50 backdrop-blur-sm transition-opacity duration-300 lg:hidden',
+            'fixed inset-0 z-40 bg-teal-950/50 backdrop-blur-sm transition-opacity duration-300 lg:hidden',
             $isMobileMenuOpen ? 'opacity-100' : 'pointer-events-none opacity-0',
           )}
           aria-hidden={!$isMobileMenuOpen}
@@ -72,20 +94,11 @@ export default function HeaderNavLinks() {
           aria-hidden={!$isMobileMenuOpen}
           {...($isMobileMenuOpen ? { 'aria-modal': true } : {})}
           className={cn(
-            'fixed inset-0 z-50 flex flex-col bg-white transition-transform duration-300 ease-out lg:hidden',
+            'fixed inset-x-0 top-16 bottom-0 z-40 flex flex-col bg-white transition-transform duration-300 ease-out lg:hidden',
             $isMobileMenuOpen ? 'translate-y-0' : 'pointer-events-none translate-y-full',
           )}
         >
-          <div className='flex h-16 shrink-0 items-center justify-between border-b border-gray-100 px-5'>
-            <p id='mobile-nav-title' className='text-base font-semibold text-teal-800'>
-              Menú
-            </p>
-            <button type='button' className={menuIconButton} aria-label='Cerrar menú' onClick={closeMenu}>
-              <XIcon className='size-5' aria-hidden />
-            </button>
-          </div>
-
-          <nav aria-labelledby='mobile-nav-title' className='min-h-0 flex-1 overflow-y-auto'>
+          <nav className='min-h-0 flex-1 overflow-y-auto'>
             <ul className='flex flex-col gap-1 px-5 pt-4 pb-6'>
               {navItems.map((item) => (
                 <li key={item.sectionId}>
