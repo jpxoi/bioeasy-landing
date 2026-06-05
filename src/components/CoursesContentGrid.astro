@@ -6,15 +6,14 @@ import { db, Courses } from 'astro:db'
 const courses = await db.select().from(Courses)
 ---
 
-<div class='courses__content mx-auto flex w-full max-w-7xl flex-col items-center gap-6'>
-  <div
-    class='courses__content__grid grid w-full justify-items-center gap-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4'
-  >
+<div class='mx-auto flex w-full max-w-7xl flex-col items-center gap-6'>
+  <div class='courses-grid grid w-full justify-items-center gap-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4'>
     {courses.map((course) => <CourseCard {...course} />)}
   </div>
   <button
+    data-load-more
     type='button'
-    class='load_more_button inline-flex h-10 w-full items-center justify-center gap-1 rounded-lg bg-transparent px-6 text-sm font-medium text-teal-700 transition-colors hover:bg-teal-700/10 disabled:hidden sm:w-fit sm:text-base'
+    class='inline-flex h-10 w-full items-center justify-center gap-1 rounded-lg bg-transparent px-6 text-sm font-medium text-teal-700 transition-colors hover:bg-teal-700/10 disabled:hidden sm:w-fit sm:text-base'
   >
     <Plus class='size-4' />
     <span>Cargar más</span>
@@ -22,8 +21,8 @@ const courses = await db.select().from(Courses)
 </div>
 
 <script>
-  const containerEl = document.querySelector<HTMLElement>('.courses__content__grid')
-  const loadMoreButtonEl = document.querySelector('.load_more_button') as HTMLButtonElement
+  const containerEl = document.querySelector<HTMLElement>('.courses-grid')
+  const loadMoreButtonEl = document.querySelector('[data-load-more]') as HTMLButtonElement
   const coursesSectionEl = document.getElementById('cursos')
 
   let initialized = false
