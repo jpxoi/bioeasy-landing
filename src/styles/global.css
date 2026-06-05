@@ -60,7 +60,7 @@
 /* Scroll-spy (class toggled by JS) */
 @layer components {
   .nav__link.active_link {
-    @apply bg-teal-50/90 font-semibold text-teal-800;
+    @apply bg-teal-400/20 font-semibold text-teal-800;
   }
 
   #navbar-sticky .nav__link.active_link {

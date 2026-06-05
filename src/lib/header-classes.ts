@@ -50,7 +50,7 @@ export const mobileNavLink = cn(
 
 export const navLink = cn(
   'nav__link relative hidden font-medium transition-colors lg:block',
-  'lg:rounded-lg lg:px-3.5 lg:py-2 lg:text-sm lg:text-gray-600 lg:hover:bg-teal-50/90 lg:hover:text-teal-800',
+  'lg:rounded-lg lg:px-3.5 lg:py-2 lg:text-sm lg:text-gray-600 lg:hover:bg-teal-400/10 lg:hover:text-teal-800',
   'after:absolute after:inset-x-3.5 after:-bottom-0.5 after:hidden after:h-0.5 after:origin-left after:scale-x-0',
   'after:rounded-full after:bg-teal-700 after:transition-transform after:duration-200 hover:after:scale-x-100 lg:after:block',
   'group-data-[at-hero]/site-header:lg:text-white/95',
