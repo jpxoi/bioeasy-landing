@@ -30,6 +30,6 @@ const contact_cards = [
     <div class='grid grid-cols-1 justify-items-center gap-2 max-md:w-full sm:grid-cols-2 md:grid-cols-1 md:gap-4'>
       {contact_cards.map((contact_card) => <ContactCard {...contact_card} />)}
     </div>
-    <ContactForm client:load />
+    <ContactForm client:visible />
   </div>
 </section>
