@@ -1,12 +1,8 @@
 // @ts-check
 import { defineConfig, fontProviders } from 'astro/config'
-
 import tailwindcss from '@tailwindcss/vite'
-
 import react from '@astrojs/react'
-
 import db from '@astrojs/db'
-
 import vercel from '@astrojs/vercel'
 
 // https://astro.build/config
