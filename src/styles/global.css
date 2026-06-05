@@ -59,15 +59,15 @@
 
 /* Scroll-spy (class toggled by JS) */
 @layer components {
-  .nav__link.active_link {
+  .nav__link.is-active {
     @apply bg-teal-400/20 font-semibold text-teal-800;
   }
 
-  #navbar-sticky .nav__link.active_link {
+  #navbar-sticky .nav__link.is-active {
     @apply after:scale-x-100;
   }
 
-  #site-header[data-at-hero] #navbar-sticky .nav__link.active_link {
+  #site-header[data-at-hero] #navbar-sticky .nav__link.is-active {
     @apply bg-white/10 text-white;
   }
 

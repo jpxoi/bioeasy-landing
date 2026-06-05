@@ -13,6 +13,6 @@ export function setActiveNavSection(headerOffset = 80) {
   }
 
   document.querySelectorAll<HTMLElement>('[data-nav-section]').forEach((link) => {
-    link.classList.toggle('active_link', link.dataset.navSection === activeId)
+    link.classList.toggle('is-active', link.dataset.navSection === activeId)
   })
 }

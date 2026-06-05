@@ -19,7 +19,7 @@ const avifSrc = getCdnImageUrl(cdnURL, imageKey, 'avif')
 const webpSrc = getCdnImageUrl(cdnURL, imageKey, 'webp')
 const fallbackSrc = webpSrc
 
-const className = `course__card mix group ${category} max-w-sm flex flex-col bg-white border border-gray-200 rounded-lg shadow-sm`
+const className = `course__card mix group ${category} max-w-sm flex flex-col rounded-lg border border-gray-200 bg-white shadow-sm`
 
 const whatsappMessage = `Hola, estoy interesado en obtener más información sobre el curso "${title}" que aparece en su página web. ¿Podrían brindarme detalles sobre inscripción, duración y requisitos? Gracias.`
 const whatsappLink = `${WHATSAPP_URL}?text=${encodeURIComponent(whatsappMessage)}`
