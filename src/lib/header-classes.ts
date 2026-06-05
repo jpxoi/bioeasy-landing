@@ -4,8 +4,8 @@ import { cn } from '@/lib/utils'
 export const headerShell = cn(
   'group/site-header fixed inset-x-0 top-0 z-20 border-b border-transparent',
   'transition-[background-color,box-shadow,border-color] duration-300 ease-out',
-  '[&.is-scrolled]:border-teal-700/10 [&.is-scrolled]:bg-white/95',
-  '[&.is-scrolled]:shadow-sm [&.is-scrolled]:shadow-teal-950/5 [&.is-scrolled]:backdrop-blur-md',
+  'data-scrolled:border-teal-700/10 data-scrolled:bg-white/95',
+  'data-scrolled:shadow-sm data-scrolled:shadow-teal-950/5 data-scrolled:backdrop-blur-md',
   'data-menu-open:z-50 data-menu-open:border-teal-700/10 data-menu-open:bg-white/95',
   'data-menu-open:shadow-sm data-menu-open:shadow-teal-950/5 data-menu-open:backdrop-blur-md',
 )
@@ -44,12 +44,12 @@ export const menuIconButton = cn(
 export const menuToggle = cn(menuIconButton, 'relative lg:hidden')
 
 export const mobileNavLink = cn(
-  'nav__link block rounded-xl px-5 py-4 text-lg font-medium text-gray-800 transition-colors',
+  'block rounded-xl px-5 py-4 text-lg font-medium text-gray-800 transition-colors',
   'hover:bg-teal-50 hover:text-teal-800 active:bg-teal-50',
 )
 
 export const navLink = cn(
-  'nav__link relative hidden font-medium transition-colors lg:block',
+  'relative hidden font-medium transition-colors lg:block',
   'lg:rounded-lg lg:px-3.5 lg:py-2 lg:text-sm lg:text-gray-600 lg:hover:bg-teal-400/10 lg:hover:text-teal-800',
   'after:absolute after:inset-x-3.5 after:-bottom-0.5 after:hidden after:h-0.5 after:origin-left after:scale-x-0',
   'after:rounded-full after:bg-teal-700 after:transition-transform after:duration-200 hover:after:scale-x-100 lg:after:block',

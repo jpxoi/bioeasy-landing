@@ -28,8 +28,9 @@ const navItems = [
 
 <header
   id='site-header'
-  class:list={[headerShell, isLanding ? 'header--landing' : 'is-scrolled']}
+  class={headerShell}
   data-at-hero={isLanding ? '' : undefined}
+  data-scrolled={!isLanding ? '' : undefined}
 >
   {isLanding && <div class={headerHeroScrim} aria-hidden='true' />}
   <nav

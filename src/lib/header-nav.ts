@@ -6,7 +6,7 @@ const MENU_CLOSE_LABEL = 'Cerrar menú'
 function syncHeaderForMobileMenu(header: HTMLElement, open: boolean) {
   if (open) {
     header.setAttribute('data-menu-open', '')
-    header.classList.add('is-scrolled')
+    header.setAttribute('data-scrolled', '')
     header.removeAttribute('data-at-hero')
     return
   }

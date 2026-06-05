@@ -59,15 +59,15 @@
 
 /* Scroll-spy (class toggled by JS) */
 @layer components {
-  .nav__link.is-active {
+  [data-nav-section][aria-current='location'] {
     @apply bg-teal-400/20 font-semibold text-teal-800;
   }
 
-  #navbar-sticky .nav__link.is-active {
+  #navbar-sticky [data-nav-section][aria-current='location'] {
     @apply after:scale-x-100;
   }
 
-  #site-header[data-at-hero] #navbar-sticky .nav__link.is-active {
+  #site-header[data-at-hero] #navbar-sticky [data-nav-section][aria-current='location'] {
     @apply bg-white/10 text-white;
   }
 
