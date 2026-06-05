@@ -20,42 +20,66 @@ const courses = await db.select().from(Courses)
 </div>
 
 <script>
-  import mixitup from 'mixitup'
-  import mixitupPagination from 'mixitup-pagination'
-  import { getGridColumnsFromViewport, getPageSize } from '../lib/courses-grid'
-
-  mixitup.use(mixitupPagination)
-
-  const containerEl = document.querySelector('.courses__content__grid')
+  const containerEl = document.querySelector<HTMLElement>('.courses__content__grid')
   const loadMoreButtonEl = document.querySelector('.load_more_button') as HTMLButtonElement
+  const coursesSectionEl = document.getElementById('cursos')
 
-  let currentLimit = getPageSize(getGridColumnsFromViewport())
+  let initialized = false
 
-  const mixer = mixitup(containerEl, {
-    selectors: {
-      target: '.course__card',
-    },
-    pagination: {
-      limit: currentLimit,
-    },
-    animation: {
-      duration: 300,
-    },
-    callbacks: {
-      onMixEnd: handleMixEnd,
-    },
-  })
+  async function initCoursesMixer() {
+    if (initialized || !containerEl || !loadMoreButtonEl) return
+    initialized = true
+    const gridEl = containerEl
 
-  function handleMixEnd(state: any) {
-    const reachedEnd = state.activePagination.limit >= state.totalMatching
-    loadMoreButtonEl.disabled = reachedEnd
+    const [{ default: mixitup }, { default: mixitupPagination }, { getGridColumnsFromViewport, getPageSize }] =
+      await Promise.all([import('mixitup'), import('mixitup-pagination'), import('../lib/courses-grid')])
+
+    mixitup.use(mixitupPagination)
+
+    let currentLimit = getPageSize(getGridColumnsFromViewport())
+
+    const mixer = mixitup(gridEl, {
+      selectors: {
+        target: '.course__card',
+      },
+      pagination: {
+        limit: currentLimit,
+      },
+      animation: {
+        duration: 300,
+      },
+      callbacks: {
+        onMixEnd: handleMixEnd,
+      },
+    })
+
+    function handleMixEnd(state: any) {
+      const reachedEnd = state.activePagination.limit >= state.totalMatching
+      loadMoreButtonEl.disabled = reachedEnd
+    }
+
+    function handleLoadMoreClick() {
+      const { totalMatching } = mixer.getState()
+      currentLimit = Math.min(currentLimit + getPageSize(getGridColumnsFromViewport()), totalMatching)
+      mixer.paginate({ limit: currentLimit })
+    }
+
+    loadMoreButtonEl.addEventListener('click', handleLoadMoreClick, { once: false })
   }
 
-  function handleLoadMoreClick() {
-    const { totalMatching } = mixer.getState()
-    currentLimit = Math.min(currentLimit + getPageSize(getGridColumnsFromViewport()), totalMatching)
-    mixer.paginate({ limit: currentLimit })
-  }
+  if (coursesSectionEl && 'IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (!entries.some((entry) => entry.isIntersecting)) return
 
-  loadMoreButtonEl?.addEventListener('click', handleLoadMoreClick)
+        observer.disconnect()
+        void initCoursesMixer()
+      },
+      { rootMargin: '900px 0px' },
+    )
+
+    observer.observe(coursesSectionEl)
+  } else {
+    void initCoursesMixer()
+  }
 </script>
