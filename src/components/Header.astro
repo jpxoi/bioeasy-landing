@@ -1,7 +1,15 @@
 ---
 import Menu from '@lucide/astro/icons/menu'
 import X from '@lucide/astro/icons/x'
-import { brandImg, headerCta, headerHeroScrim, headerShell, menuToggle, mobileNavLink, navLink } from '@/lib/header-classes'
+import {
+  brandImg,
+  headerCta,
+  headerHeroScrim,
+  headerShell,
+  menuToggle,
+  mobileNavLink,
+  navLink,
+} from '@/lib/header-classes'
 
 interface Props {
   isLanding?: boolean
@@ -46,13 +54,15 @@ const navItems = [
 
     <div id='navbar-sticky' class='hidden w-full lg:flex lg:justify-center lg:justify-self-center'>
       <ul class='flex flex-row items-center gap-0.5'>
-        {navItems.map((item) => (
-          <li>
-            <a href={item.href} class={navLink} data-nav-section={item.sectionId}>
-              {item.label}
-            </a>
-          </li>
-        ))}
+        {
+          navItems.map((item) => (
+            <li>
+              <a href={item.href} class={navLink} data-nav-section={item.sectionId}>
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
       </ul>
     </div>
 
@@ -87,7 +97,8 @@ const navItems = [
   data-menu-backdrop
   class='pointer-events-none fixed inset-0 z-40 bg-teal-950/50 opacity-0 backdrop-blur-sm transition-opacity duration-300 lg:hidden'
   aria-hidden='true'
-/>
+>
+</div>
 <div
   id='mobile-nav-panel'
   role='dialog'
@@ -97,13 +108,15 @@ const navItems = [
 >
   <nav class='min-h-0 flex-1 overflow-y-auto'>
     <ul class='flex flex-col gap-1 px-5 pt-4 pb-6'>
-      {navItems.map((item) => (
-        <li>
-          <a href={item.href} class={mobileNavLink} data-nav-section={item.sectionId} data-mobile-nav-link>
-            {item.label}
-          </a>
-        </li>
-      ))}
+      {
+        navItems.map((item) => (
+          <li>
+            <a href={item.href} class={mobileNavLink} data-nav-section={item.sectionId} data-mobile-nav-link>
+              {item.label}
+            </a>
+          </li>
+        ))
+      }
     </ul>
   </nav>
 
@@ -120,5 +133,7 @@ const navItems = [
   </div>
 </div>
 
-<script>import '@/lib/header-nav'</script>
+<script>
+  import '@/lib/header-nav'
+</script>
 {isLanding && <script>import '@/lib/landing-header-scroll'</script>}
