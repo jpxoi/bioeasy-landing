@@ -7,7 +7,9 @@ const courses = await db.select().from(Courses)
 ---
 
 <div class='courses__content mx-auto flex w-full max-w-7xl flex-col items-center gap-6'>
-  <div class='courses__content__grid grid w-full grid-cols-2 justify-items-center gap-4 md:grid-cols-3 xl:grid-cols-4'>
+  <div
+    class='courses__content__grid grid w-full justify-items-center gap-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4'
+  >
     {courses.map((course) => <CourseCard {...course} />)}
   </div>
   <button
