@@ -1,13 +1,38 @@
 ---
 import ChevronDown from '@lucide/astro/icons/chevron-down'
+import { getCdnImageUrl } from '@/lib/cdn-image'
 import { WHATSAPP_URL } from '@/lib/whatsapp'
+
+const cdnURL = import.meta.env.PUBLIC_CDN_URL
+const avifSrc = getCdnImageUrl(cdnURL, 'site/web_bg', 'avif')
+const webpSrc = getCdnImageUrl(cdnURL, 'site/web_bg', 'webp')
 ---
 
 <section
-  class='section__heading flex h-screen items-end bg-cover bg-fixed bg-center bg-no-repeat px-4 pt-22 pb-12 bg-blend-multiply max-xl:bg-scroll md:pb-8'
+  class='relative isolate flex h-screen items-end overflow-hidden px-4 pt-22 pb-12 md:pb-8'
   id='inicio'
 >
-  <div class='mx-auto flex max-w-7xl flex-col items-center gap-8 text-center md:gap-16'>
+  <picture class='absolute inset-0 z-0 block'>
+    <source srcset={avifSrc} type='image/avif' />
+    <source srcset={webpSrc} type='image/webp' />
+    <img
+      src={webpSrc}
+      alt=''
+      aria-hidden='true'
+      width='1600'
+      height='900'
+      loading='eager'
+      fetchpriority='high'
+      class='size-full object-cover object-center'
+    />
+  </picture>
+  <div
+    class='absolute inset-0 z-0 bg-[linear-gradient(180deg,rgba(0,207,208,0.79)_0%,rgba(0,76,92,0.8)_100%)] mix-blend-multiply'
+    aria-hidden='true'
+  >
+  </div>
+
+  <div class='relative z-10 mx-auto flex max-w-7xl flex-col items-center gap-8 text-center md:gap-16'>
     <div class='flex flex-col items-center gap-8'>
       <h1
         class='text-center text-4xl leading-none font-extrabold tracking-tight text-balance text-white md:text-5xl lg:text-6xl'
