@@ -42,6 +42,7 @@ function initHeaderNav() {
     menuPanel.setAttribute('aria-hidden', String(!open))
     if (open) menuPanel.setAttribute('aria-modal', 'true')
     else menuPanel.removeAttribute('aria-modal')
+    menuPanel.toggleAttribute('inert', !open)
     menuPanel.classList.toggle('pointer-events-none', !open)
     menuPanel.classList.toggle('translate-y-full', !open)
     menuPanel.classList.toggle('translate-y-0', open)
