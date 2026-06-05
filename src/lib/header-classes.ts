@@ -33,7 +33,7 @@ export const headerCta = cn(
   'group-data-[at-hero]/site-header:hover:text-teal-800 group-data-[at-hero]/site-header:focus:ring-white/40',
 )
 
-export const menuIconButton = cn(
+const menuIconButton = cn(
   'inline-flex shrink-0 items-center justify-center p-1 transition-colors',
   'text-teal-700 hover:text-teal-800',
   'focus-visible:ring-2 focus:ring-teal-300/50 focus:outline-hidden',

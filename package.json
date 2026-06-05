@@ -12,7 +12,6 @@
     "typecheck": "astro check"
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.9",
     "@astrojs/db": "^0.21.2",
     "@astrojs/react": "^5.0.7",
     "@astrojs/vercel": "^10.0.8",
@@ -34,6 +33,7 @@
     "typescript": "^5.9.3"
   },
   "devDependencies": {
+    "@astrojs/check": "^0.9.9",
     "@typescript-eslint/parser": "^8.60.1",
     "eslint": "^10.4.1",
     "eslint-plugin-astro": "^1.7.0",
