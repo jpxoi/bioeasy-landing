@@ -8,10 +8,7 @@ const avifSrc = getCdnImageUrl(cdnURL, 'site/web_bg', 'avif')
 const webpSrc = getCdnImageUrl(cdnURL, 'site/web_bg', 'webp')
 ---
 
-<section
-  class='relative isolate flex h-screen items-end overflow-hidden px-4 pt-22 pb-12 md:pb-8'
-  id='inicio'
->
+<section class='relative isolate flex h-screen items-end overflow-hidden px-4 pt-22 pb-12 md:pb-8' id='inicio'>
   <picture class='absolute inset-0 z-0 block'>
     <source srcset={avifSrc} type='image/avif' />
     <source srcset={webpSrc} type='image/webp' />
