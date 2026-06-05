@@ -7,7 +7,7 @@ const courses = await db.select().from(Courses)
 ---
 
 <div class='mx-auto flex w-full max-w-7xl flex-col items-center gap-6'>
-  <div class='courses-grid grid w-full justify-items-center gap-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4'>
+  <div data-courses-grid class='grid w-full justify-items-center gap-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4'>
     {courses.map((course) => <CourseCard {...course} />)}
   </div>
   <button
@@ -21,7 +21,7 @@ const courses = await db.select().from(Courses)
 </div>
 
 <script>
-  const containerEl = document.querySelector<HTMLElement>('.courses-grid')
+  const containerEl = document.querySelector<HTMLElement>('[data-courses-grid]')
   const loadMoreButtonEl = document.querySelector('[data-load-more]') as HTMLButtonElement
   const coursesSectionEl = document.getElementById('cursos')
 
