@@ -1,7 +1,7 @@
 {
   "name": "bioeasy-landing",
   "type": "module",
-  "version": "1.5.3",
+  "version": "1.5.4",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build --remote",
@@ -13,16 +13,16 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.9",
-    "@astrojs/db": "^0.21.2",
+    "@astrojs/db": "^0.21.3",
     "@astrojs/react": "^5.0.7",
     "@astrojs/vercel": "^10.0.8",
-    "@lucide/astro": "^1.17.0",
-    "@tailwindcss/vite": "^4.3.0",
-    "@types/react": "^19.2.16",
+    "@lucide/astro": "^1.18.0",
+    "@tailwindcss/vite": "^4.3.1",
+    "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
-    "astro": "^6.4.4",
+    "astro": "^6.4.6",
     "clsx": "^2.1.1",
-    "lucide-react": "^1.17.0",
+    "lucide-react": "^1.18.0",
     "mixitup": "^3.3.2",
     "mixitup-pagination": "^3.3.2",
     "nanoid": "^5.1.11",
@@ -30,16 +30,16 @@
     "react-dom": "^19.2.7",
     "sharp": "^0.34.5",
     "tailwind-merge": "^3.6.0",
-    "tailwindcss": "^4.3.0",
+    "tailwindcss": "^4.3.1",
     "typescript": "^5.9.3"
   },
   "devDependencies": {
-    "@typescript-eslint/parser": "^8.60.1",
-    "eslint": "^10.4.1",
+    "@typescript-eslint/parser": "^8.61.0",
+    "eslint": "^10.5.0",
     "eslint-plugin-astro": "^1.7.0",
-    "prettier": "3.8.3",
+    "prettier": "^3.8.4",
     "prettier-plugin-astro": "0.14.1",
     "prettier-plugin-tailwindcss": "^0.8.0"
   },
-  "packageManager": "pnpm@11.5.1"
+  "packageManager": "pnpm@11.6.0"
 }
