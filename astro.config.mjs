@@ -41,6 +41,7 @@ export default defineConfig({
 
   redirects: {
     '/campusvirtual': 'https://canvas.instructure.com',
+    '/privacy': '/privacidad',
   },
 
   prefetch: true,
