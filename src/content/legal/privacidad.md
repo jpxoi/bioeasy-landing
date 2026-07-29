@@ -1,7 +1,7 @@
 ---
-title: "Política de Privacidad"
-description: "Política de privacidad de Bioeasy Galenos: cómo recopilamos, usamos y protegemos tus datos personales."
-updated: "29 de julio de 2026"
+title: 'Política de Privacidad'
+description: 'Política de privacidad de Bioeasy Galenos: cómo recopilamos, usamos y protegemos tus datos personales.'
+updated: '29 de julio de 2026'
 ---
 
 ## 1. Responsable y alcance

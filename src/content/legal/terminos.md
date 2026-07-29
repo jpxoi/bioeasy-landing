@@ -1,7 +1,7 @@
 ---
-title: "Términos y Condiciones"
-description: "Términos y condiciones de uso del sitio web y Campus de Bioeasy Galenos."
-updated: "29 de julio de 2026"
+title: 'Términos y Condiciones'
+description: 'Términos y condiciones de uso del sitio web y Campus de Bioeasy Galenos.'
+updated: '29 de julio de 2026'
 ---
 
 ## 1. Empresa titular, definiciones y alcance
