@@ -24,7 +24,7 @@ Estos Términos y Condiciones constituyen un acuerdo entre Bioeasy Galenos y el 
 
 Al acceder o navegar por el Sitio web, el Usuario se obliga a utilizarlo de manera lícita y conforme a estos Términos y Condiciones.
 
-Para registrarse y utilizar el Campus, el Usuario debe leer y aceptar estos Términos y Condiciones y tomar conocimiento de la [Política de Privacidad](https://www.bgmedicina.com/privacidad). Las autorizaciones para tratamientos opcionales de datos personales, incluidas las comunicaciones promocionales, se solicitan de forma separada cuando corresponda.
+Para registrarse y utilizar el Campus, el Usuario debe leer y aceptar estos Términos y Condiciones y tomar conocimiento de la [Política de Privacidad](/privacidad). Las autorizaciones para tratamientos opcionales de datos personales, incluidas las comunicaciones promocionales, se solicitan de forma separada cuando corresponda.
 
 Si el Usuario no está de acuerdo con estos Términos y Condiciones, debe abstenerse de registrarse o utilizar el Campus.
 
@@ -211,11 +211,11 @@ El Usuario puede solicitar la eliminación de su cuenta escribiendo a [privacida
 
 Antes de procesar la solicitud, Bioeasy Galenos puede requerir información razonable para verificar la identidad del solicitante. La eliminación puede ocasionar la pérdida irreversible de configuraciones, asignaciones e historial de progreso.
 
-Determinados registros podrán conservarse cuando sean necesarios para cumplir obligaciones legales, atender controversias, proteger la seguridad o preservar evidencia de incumplimientos, conforme a la [Política de Privacidad](https://www.bgmedicina.com/privacidad).
+Determinados registros podrán conservarse cuando sean necesarios para cumplir obligaciones legales, atender controversias, proteger la seguridad o preservar evidencia de incumplimientos, conforme a la [Política de Privacidad](/privacidad).
 
 ### 11.2. Política de Privacidad
 
-El tratamiento de datos personales relacionado con los Servicios se rige de manera independiente por la [Política de Privacidad de Bioeasy Galenos](https://www.bgmedicina.com/privacidad).
+El tratamiento de datos personales relacionado con los Servicios se rige de manera independiente por la [Política de Privacidad de Bioeasy Galenos](/privacidad).
 
 ## 12. Modificaciones de estos Términos y Condiciones
 
