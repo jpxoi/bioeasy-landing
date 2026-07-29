@@ -2,8 +2,8 @@
 import { Plus } from '@lucide/astro'
 import CourseCard from './CourseCard.astro'
 
-import { db, Courses } from 'astro:db'
-const courses = await db.select().from(Courses)
+import { db, courses as coursesTable } from '@/db'
+const courses = await db.select().from(coursesTable)
 ---
 
 <div class='mx-auto flex w-full max-w-7xl flex-col items-center gap-6'>

@@ -2,7 +2,7 @@ export const prerender = false
 
 import type { APIRoute } from 'astro'
 import { z } from 'astro/zod'
-import { db, ContactFormSubmissions } from 'astro:db'
+import { contactFormSubmissions, db } from '@/db'
 import { nanoid } from 'nanoid'
 
 const ContactFormSchema = z.object({
@@ -38,7 +38,7 @@ export const POST: APIRoute = async ({ request }) => {
     const { email: validEmail, subject: validSubject, message: validMessage } = validatedData.data
     const submissionId = nanoid(8)
 
-    await db.insert(ContactFormSubmissions).values({
+    await db.insert(contactFormSubmissions).values({
       id: submissionId,
       email: validEmail,
       subject: validSubject,
