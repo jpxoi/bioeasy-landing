@@ -1,0 +1,13 @@
+---
+import LegalLayout from '@/layouts/LegalLayout.astro'
+import { Content, frontmatter } from '@/content/legal/terminos.md'
+---
+
+<LegalLayout
+  title={frontmatter.title}
+  description={frontmatter.description}
+  canonicalPath='/terminos'
+  updated={frontmatter.updated}
+>
+  <Content />
+</LegalLayout>

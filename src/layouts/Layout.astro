@@ -3,7 +3,20 @@ import { Font } from 'astro:assets'
 import '../styles/global.css'
 import { getCdnImageUrl } from '@/lib/cdn-image'
 
+interface Props {
+  title?: string
+  description?: string
+  canonicalPath?: string
+}
+
+const {
+  title = 'Bioeasy Galenos — Academia de Medicina',
+  description = 'En Bioeasy Galenos creemos en el potencial de nuestros estudiantes y ofrecemos un método de estudio eficaz para que puedan rendir con éxito los exámenes de Medicina.',
+  canonicalPath = '/',
+} = Astro.props
+
 const cdnURL = import.meta.env.PUBLIC_CDN_URL
+const canonicalUrl = new URL(canonicalPath, 'https://bgmedicina.com').href
 ---
 
 <html lang='es'>
@@ -18,7 +31,7 @@ const cdnURL = import.meta.env.PUBLIC_CDN_URL
     <meta name='apple-mobile-web-app-title' content='Bioeasy Galenos' />
     <link rel='manifest' href='/site.webmanifest?v=20260528' />
 
-    <link rel='canonical' href='https://bgmedicina.com' />
+    <link rel='canonical' href={canonicalUrl} />
     <Font cssVariable='--font-nunito' preload />
 
     <link rel='preconnect' href='https://cdn.bgmedicina.com' crossorigin />
@@ -26,31 +39,22 @@ const cdnURL = import.meta.env.PUBLIC_CDN_URL
     <meta name='theme-color' content='#ffffff' media='(prefers-color-scheme: light)' />
     <meta name='theme-color' content='#0a5457' media='(prefers-color-scheme: dark)' />
 
-    <title>Bioeasy Galenos — Academia de Medicina</title>
-    <meta name='title' content='Bioeasy Galenos — Academia de Medicina' />
-    <meta
-      name='description'
-      content='En Bioeasy Galenos creemos en el potencial de nuestros estudiantes y ofrecemos un método de estudio eficaz para que puedan rendir con éxito los exámenes de Medicina.'
-    />
+    <title>{title}</title>
+    <meta name='title' content={title} />
+    <meta name='description' content={description} />
 
     <meta property='og:type' content='website' />
-    <meta property='og:url' content='https://bgmedicina.com/' />
-    <meta property='og:title' content='Bioeasy Galenos — Academia de Medicina' />
-    <meta
-      property='og:description'
-      content='En Bioeasy Galenos creemos en el potencial de nuestros estudiantes y ofrecemos un método de estudio eficaz para que puedan rendir con éxito los exámenes de Medicina.'
-    />
+    <meta property='og:url' content={canonicalUrl} />
+    <meta property='og:title' content={title} />
+    <meta property='og:description' content={description} />
     <meta property='og:image' content={getCdnImageUrl(cdnURL, 'site/web_bg.webp', 'webp')} />
     <meta property='og:image:alt' content='Doctor vestido de superhéroe, con un antifaz rojo y una capa.' />
 
-    <meta property='twitter:card' content='summary_large_image' />
-    <meta property='twitter:url' content='https://bgmedicina.com/' />
-    <meta property='twitter:title' content='Bioeasy Galenos — Academia de Medicina' />
-    <meta
-      property='twitter:description'
-      content='En Bioeasy Galenos creemos en el potencial de nuestros estudiantes y ofrecemos un método de estudio eficaz para que puedan rendir con éxito los exámenes de Medicina.'
-    />
-    <meta property='twitter:image' content={getCdnImageUrl(cdnURL, 'site/web_bg.webp', 'webp')} />
+    <meta name='twitter:card' content='summary_large_image' />
+    <meta name='twitter:url' content={canonicalUrl} />
+    <meta name='twitter:title' content={title} />
+    <meta name='twitter:description' content={description} />
+    <meta name='twitter:image' content={getCdnImageUrl(cdnURL, 'site/web_bg.webp', 'webp')} />
   </head>
   <body>
     <slot />

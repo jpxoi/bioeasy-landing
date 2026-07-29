@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@plugin '@tailwindcss/typography';
 
 /* Drop unused palettes; gray/red/emerald stay on Tailwind defaults */
 @theme inline {

@@ -1,8 +1,8 @@
 ---
-import { db, Team as TeamTable } from 'astro:db'
+import { db, team } from '@/db'
 import TeamMember from './TeamMember.astro'
 
-const teamMembers = await db.select().from(TeamTable)
+const teamMembers = await db.select().from(team)
 ---
 
 <div class='grid max-w-7xl grid-cols-2 justify-items-center gap-2 md:grid-cols-3 md:gap-4 lg:grid-cols-4'>
