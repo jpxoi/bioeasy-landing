@@ -1,12 +1,12 @@
 ---
 title: 'Política de Privacidad'
 description: 'Política de privacidad de Bioeasy Galenos: cómo recopilamos, usamos y protegemos tus datos personales.'
-updated: '29 de julio de 2026'
+updated: '30 de julio de 2026'
 ---
 
 ## 1. Responsable y alcance
 
-El responsable del tratamiento de los datos personales es **Grupo Bioeasy Galenos S.R.L.**, RUC 20612319325, con domicilio en Mza. I Lote 13 Dpto. 601 Urb. Ingenieria II, Distrito de Trujillo, Provincia de Trujillo, Departamento de La Libertad; en adelante, **Bioeasy Galenos**.
+El responsable del tratamiento de los datos personales es **Bioeasy Galenos**, con domicilio en Mza. I Lote 13 Dpto. 601 Urb. Ingenieria II, Distrito de Trujillo, Provincia de Trujillo, Departamento de La Libertad.
 
 La presente Política de Privacidad informa qué datos personales trata Bioeasy Galenos, cómo los obtiene, para qué los utiliza, con quiénes los comparte, durante cuánto tiempo los conserva y cómo pueden ejercerse los derechos reconocidos por la legislación peruana.
 
