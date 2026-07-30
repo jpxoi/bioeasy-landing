@@ -1,7 +1,7 @@
 ---
 title: 'Términos y Condiciones'
 description: 'Términos y condiciones de uso del sitio web y Campus de Bioeasy Galenos.'
-updated: '29 de julio de 2026'
+updated: '30 de julio de 2026'
 ---
 
 ## 1. Empresa titular, definiciones y alcance
@@ -11,7 +11,7 @@ Los presentes Términos y Condiciones regulan el acceso, registro y uso de los s
 - [bgmedicina.com](https://bgmedicina.com), en adelante, el **Sitio web**; y
 - [campus.bgmedicina.com](https://campus.bgmedicina.com), en adelante, el **Campus**.
 
-Ambos canales son administrados por **Grupo Bioeasy Galenos S.R.L.**, RUC 20612319325, con domicilio en Mza. I Lote 13 Dpto. 601 Urb. Ingenieria II, Distrito de Trujillo, Provincia de Trujillo, Departamento de La Libertad; en adelante, **Bioeasy Galenos**.
+Ambos canales son administrados por **Bioeasy Galenos**, con domicilio en Mza. I Lote 13 Dpto. 601 Urb. Ingenieria II, Distrito de Trujillo, Provincia de Trujillo, Departamento de La Libertad.
 
 Para efectos de este documento:
 
