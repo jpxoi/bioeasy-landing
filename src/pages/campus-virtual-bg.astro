@@ -1,0 +1,66 @@
+---
+import Layout from '@/layouts/Layout.astro'
+import Header from '@/components/Header.astro'
+import Footer from '@/components/Footer.astro'
+
+export const prerender = true
+---
+
+<Layout
+  title='Campus Virtual BG — Bioeasy Galenos'
+  description='Campus Virtual BG es la aplicación de Bioeasy Galenos para que alumnos matriculados accedan a cursos, materiales y progreso académico.'
+  canonicalPath='/campus-virtual-bg'
+>
+  <Header />
+  <main class='bg-white'>
+    <article class='mx-auto max-w-3xl px-4 pt-28 pb-20 sm:px-6 lg:pb-28'>
+      <header class='mb-8 border-b border-gray-200 pb-5'>
+        <p class='text-sm font-medium text-teal-800'>Bioeasy Galenos</p>
+        <h1 class='mt-2 text-3xl font-bold tracking-tight text-balance text-gray-900 sm:text-4xl'>Campus Virtual BG</h1>
+        <p class='mt-3 text-lg text-gray-700'>Aplicación web para alumnos matriculados de Bioeasy Galenos.</p>
+      </header>
+
+      <div class='flex flex-col gap-8 text-gray-800'>
+        <section class='flex flex-col gap-3'>
+          <h2 class='text-xl font-bold text-gray-900'>Propósito de la aplicación</h2>
+          <p>
+            Campus Virtual BG permite a los estudiantes matriculados acceder a sus cursos, materiales de estudio,
+            recursos de preparación y el seguimiento de su progreso académico. Está orientada a acompañar la preparación
+            de los exámenes de la carrera de Medicina en un solo lugar.
+          </p>
+          <p>
+            La aplicación está disponible en{' '}
+            <a
+              href='https://campus.bgmedicina.com'
+              target='_blank'
+              rel='noreferrer noopener'
+              class='font-medium text-teal-800 underline underline-offset-2 hover:text-teal-900'
+              >campus.bgmedicina.com</a
+            >.
+          </p>
+        </section>
+
+        <section class='flex flex-col gap-3'>
+          <h2 class='text-xl font-bold text-gray-900'>Inicio de sesión con Google</h2>
+          <p>
+            Campus Virtual BG ofrece Sign in with Google para que el alumno autentique su cuenta de forma segura. Al
+            conectar una cuenta de Google, la aplicación solicita el nombre y el correo electrónico únicamente para
+            crear, identificar y gestionar la sesión del alumno en el Campus. No usamos esos datos para fines ajenos a
+            la autenticación y la prestación del servicio educativo.
+          </p>
+        </section>
+
+        <section class='flex flex-col gap-3'>
+          <h2 class='text-xl font-bold text-gray-900'>Privacidad</h2>
+          <p>
+            El tratamiento de datos personales se describe en nuestra{' '}
+            <a href='/privacidad' class='font-medium text-teal-800 underline underline-offset-2 hover:text-teal-900'
+              >Política de Privacidad</a
+            >.
+          </p>
+        </section>
+      </div>
+    </article>
+  </main>
+  <Footer />
+</Layout>
