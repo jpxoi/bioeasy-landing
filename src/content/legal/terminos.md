@@ -1,7 +1,7 @@
 ---
 title: 'Términos y Condiciones'
 description: 'Términos y condiciones de uso del sitio web y Campus de Bioeasy Galenos.'
-updated: '30 de julio de 2026'
+updated: '2 de agosto de 2026'
 ---
 
 ## 1. Empresa titular, definiciones y alcance
@@ -126,7 +126,7 @@ Está prohibido:
 - vender, distribuir o facilitar copias; y
 - eludir controles de acceso, tokens, restricciones técnicas o mecanismos de protección.
 
-La infracción de estas reglas podrá ocasionar la suspensión, el bloqueo o la eliminación de la cuenta, sin perjuicio de las acciones legales que Bioeasy Galenos o los titulares de los derechos puedan ejercer.
+La infracción de estas reglas podrá ocasionar la suspensión, el bloqueo o la eliminación de la cuenta, sin derecho a devolución de los montos pagados, y sin perjuicio de las acciones legales que Bioeasy Galenos o los titulares de los derechos puedan ejercer.
 
 ## 6. Conductas prohibidas
 
@@ -145,11 +145,13 @@ El Usuario no podrá:
 
 ## 7. Suspensión, bloqueo y eliminación
 
-Ante un incumplimiento, un riesgo de seguridad o un indicio razonable de uso no autorizado, Bioeasy Galenos podrá emitir una advertencia, cerrar sesiones activas, solicitar una verificación de identidad, restringir temporalmente funcionalidades, retirar accesos o contenidos, suspender, bloquear o eliminar la cuenta e iniciar las acciones legales que correspondan.
+Ante un incumplimiento, un riesgo de seguridad o un indicio razonable de uso no autorizado, incluida la grabación de pantalla o audio, el uso compartido o transferencia de cuentas, la redistribución de contenidos u otras conductas prohibidas en estos Términos y Condiciones, Bioeasy Galenos podrá emitir una advertencia, cerrar sesiones activas, solicitar una verificación de identidad, restringir temporalmente funcionalidades, retirar accesos o contenidos, suspender, bloquear o eliminar la cuenta e iniciar las acciones legales que correspondan.
 
 La medida se determinará considerando la naturaleza, gravedad, reiteración y efectos del incumplimiento. Cuando resulte razonable, Bioeasy Galenos informará al Usuario y le permitirá presentar las aclaraciones correspondientes, salvo que sea necesario actuar inmediatamente para proteger la seguridad, los contenidos, otros Usuarios o sus derechos.
 
 La condición de exalumno no impide la aplicación de estas medidas cuando exista un incumplimiento de los presentes Términos y Condiciones.
+
+Cuando la suspensión, el bloqueo o la eliminación de la cuenta se produzca por incumplimiento de estos Términos y Condiciones, el Usuario no tendrá derecho a la devolución total ni parcial de los montos pagados por la matrícula, cursos, accesos u otros servicios asociados. Esta consecuencia se aplica sin perjuicio de las demás acciones legales que Bioeasy Galenos pueda ejercer y de los derechos irrenunciables que la legislación peruana reconozca al Usuario.
 
 ## 8. Propiedad intelectual
 
