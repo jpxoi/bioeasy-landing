@@ -7,16 +7,11 @@ export function setActiveNavSection(headerOffset = 80) {
 
   for (const id of NAV_SECTIONS) {
     const section = document.getElementById(id)
-    if (section && section.offsetTop <= scrollPosition) {
-      activeId = id
-    }
+    if (section && section.offsetTop <= scrollPosition) activeId = id
   }
 
   document.querySelectorAll<HTMLElement>('[data-nav-section]').forEach((link) => {
-    if (activeId && link.dataset.navSection === activeId) {
-      link.setAttribute('aria-current', 'location')
-    } else {
-      link.removeAttribute('aria-current')
-    }
+    if (activeId && link.dataset.navSection === activeId) link.setAttribute('aria-current', 'location')
+    else link.removeAttribute('aria-current')
   })
 }
