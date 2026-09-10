@@ -44,9 +44,7 @@ export default function ContactForm() {
         formRef.current?.reset()
       } else {
         setSuccess(false)
-        if (data.errors) {
-          setErrors(data.errors)
-        }
+        if (data.errors) setErrors(data.errors)
         setResponseMessage(data.message || 'Ha ocurrido un error inesperado.')
       }
     } catch (error) {

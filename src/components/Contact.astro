@@ -28,7 +28,9 @@ const contact_cards = [
   <SectionHeading title='Contáctanos' />
   <div class='grid gap-10 md:grid-cols-[3fr_4fr] md:items-start'>
     <div class='grid grid-cols-1 justify-items-center gap-2 max-md:w-full sm:grid-cols-2 md:grid-cols-1 md:gap-4'>
-      {contact_cards.map((contact_card) => <ContactCard {...contact_card} />)}
+      {contact_cards.map((contact_card) => (
+        <ContactCard {...contact_card} />
+      ))}
     </div>
     <ContactForm client:visible />
   </div>

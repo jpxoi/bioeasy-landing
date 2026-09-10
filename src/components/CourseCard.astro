@@ -43,32 +43,22 @@ const whatsappLink = `${WHATSAPP_URL}?text=${encodeURIComponent(whatsappMessage)
   <div class='flex flex-1 flex-col gap-4 p-5'>
     <div class='flex flex-1 flex-col gap-2'>
       <div class='flex items-center justify-start gap-2'>
-        <span
-          class='items-center rounded-md bg-[#005FAE] px-2 py-1 text-xs font-medium text-white ring-1 ring-[#005FAE]/20 ring-inset'
-        >
+        <span class='items-center rounded-md bg-[#005FAE] px-2 py-1 text-xs font-medium text-white ring-1 ring-[#005FAE]/20 ring-inset'>
           UPAO
         </span>
-        {
-          /*
+        {/*
       <span class="items-center rounded-md bg-[#E30512] px-2 py-1 text-xs font-medium text-white ring-1 ring-inset ring-[#E30512]/20">
         UCV
       </span>
       <span class="items-center rounded-md bg-[#fdba30] px-2 py-1 text-xs font-medium text-black ring-1 ring-inset ring-[#fdba30]/20">
         UPN
-      </span> */
-        }
-        <span
-          class='items-center rounded-md bg-teal-50 px-2 py-1 text-xs font-medium text-teal-800 ring-1 ring-teal-600/20 ring-inset'
-        >
+      </span> */}
+        <span class='items-center rounded-md bg-teal-50 px-2 py-1 text-xs font-medium text-teal-800 ring-1 ring-teal-600/20 ring-inset'>
           {tag}
         </span>
       </div>
-      <h3 class='text-lg font-semibold tracking-tight text-gray-900'>
-        {title}
-      </h3>
-      <p class='line-clamp-5 text-left text-sm font-normal text-gray-700'>
-        {description}
-      </p>
+      <h3 class='text-lg font-semibold tracking-tight text-gray-900'>{title}</h3>
+      <p class='line-clamp-5 text-left text-sm font-normal text-gray-700'>{description}</p>
     </div>
     <a
       href={whatsappLink}
