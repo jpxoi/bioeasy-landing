@@ -8,7 +8,9 @@ const courses = await db.select().from(coursesTable)
 
 <div class='mx-auto flex w-full max-w-7xl flex-col items-center gap-6'>
   <div data-courses-grid class='grid w-full justify-items-center gap-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4'>
-    {courses.map((course) => <CourseCard {...course} />)}
+    {courses.map((course) => (
+      <CourseCard {...course} />
+    ))}
   </div>
   <button
     data-load-more

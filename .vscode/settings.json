@@ -1,4 +1,16 @@
 {
+  "editor.tabSize": 2,
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  "files.associations": {
+    "*.css": "tailwindcss"
+  },
+  "editor.quickSuggestions": {
+    "strings": "on"
+  },
   "eslint.validate": [
     "javascript",
     "javascriptreact",
@@ -6,6 +18,9 @@
     "typescript", // Enable .ts
     "typescriptreact" // Enable .tsx
   ],
-  "editor.formatOnSave": true,
-  "typescript.tsdk": "node_modules/typescript/lib"
+  "js/ts.tsdk.path": "node_modules/typescript/lib",
+  "search.exclude": {
+    "pnpm-lock.yaml": true,
+    "pnpm-workspace.yaml": true
+  }
 }

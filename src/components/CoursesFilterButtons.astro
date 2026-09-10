@@ -8,12 +8,12 @@ const buttonClassName =
 ---
 
 <div class='flex flex-wrap items-center justify-center gap-3'>
-  <button class={buttonClassName} data-filter='all'> Todos </button>
-  {
-    categories.map((category) => (
-      <button class={buttonClassName} data-filter={category.tag}>
-        {category.name}
-      </button>
-    ))
-  }
+  <button class={buttonClassName} data-filter='all'>
+    Todos
+  </button>
+  {categories.map((category) => (
+    <button class={buttonClassName} data-filter={category.tag}>
+      {category.name}
+    </button>
+  ))}
 </div>

@@ -5,9 +5,7 @@ import * as schema from './schema'
 const url = import.meta.env.ASTRO_DB_REMOTE_URL ?? process.env.ASTRO_DB_REMOTE_URL
 const authToken = import.meta.env.ASTRO_DB_APP_TOKEN ?? process.env.ASTRO_DB_APP_TOKEN
 
-if (!url) {
-  throw new Error('Missing ASTRO_DB_REMOTE_URL environment variable.')
-}
+if (!url) throw new Error('Missing ASTRO_DB_REMOTE_URL environment variable.')
 
 const client = createClient({
   url,
