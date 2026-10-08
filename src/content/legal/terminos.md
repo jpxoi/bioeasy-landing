@@ -1,7 +1,7 @@
 ---
 title: 'Términos y Condiciones'
-description: 'Términos y condiciones de uso del sitio web y Campus de Bioeasy Galenos.'
-updated: '2 de agosto de 2026'
+description: 'Términos y condiciones de uso del sitio web y Campus de Grupo Bioeasy S.A.C.'
+updated: '8 de octubre de 2026'
 ---
 
 ## 1. Empresa titular, definiciones y alcance
@@ -11,14 +11,14 @@ Los presentes Términos y Condiciones regulan el acceso, registro y uso de los s
 - [bgmedicina.com](https://bgmedicina.com), en adelante, el **Sitio web**; y
 - [campus.bgmedicina.com](https://campus.bgmedicina.com), en adelante, el **Campus**.
 
-Ambos canales son administrados por **Bioeasy Galenos**, con domicilio en Mza. I Lote 13 Dpto. 601 Urb. Ingenieria II, Distrito de Trujillo, Provincia de Trujillo, Departamento de La Libertad.
+Ambos canales son administrados por **GRUPO BIOEASY S.A.C.**, identificada con RUC N.° 20616583345, con nombre comercial **BIOEASY**, con domicilio fiscal en Av. Fátima Mz. Q, Lote 1, Int. 301, urb. La Merced, 3.ª etapa, distrito de Trujillo, provincia de Trujillo, departamento de La Libertad (en adelante, **Bioeasy**).
 
 Para efectos de este documento:
 
 - el Sitio web y el Campus se denominan conjuntamente los **Servicios**; y
 - toda persona que acceda, se registre o utilice los Servicios se denomina el **Usuario**.
 
-Estos Términos y Condiciones constituyen un acuerdo entre Bioeasy Galenos y el Usuario respecto del uso de los Servicios, las cuentas y los contenidos disponibles en el Campus. No establecen condiciones particulares sobre paquetes, pagos, horarios, clases o certificaciones, las cuales se informan por los canales correspondientes.
+Estos Términos y Condiciones constituyen un acuerdo entre Bioeasy y el Usuario respecto del uso de los Servicios, las cuentas y los contenidos disponibles en el Campus. No establecen condiciones particulares sobre paquetes, pagos, horarios, clases o certificaciones, las cuales se informan por los canales correspondientes.
 
 ## 2. Aceptación y requisitos de edad
 
@@ -28,23 +28,23 @@ Para registrarse y utilizar el Campus, el Usuario debe leer y aceptar estos Tér
 
 Si el Usuario no está de acuerdo con estos Términos y Condiciones, debe abstenerse de registrarse o utilizar el Campus.
 
-Bioeasy Galenos conserva evidencia de la aceptación, incluida la versión aceptada, la fecha, la hora, la cuenta, la dirección IP y otros datos técnicos razonablemente necesarios.
+Bioeasy conserva evidencia de la aceptación, incluida la versión aceptada, la fecha, la hora, la cuenta, la dirección IP y otros datos técnicos razonablemente necesarios.
 
 El Campus está dirigido exclusivamente a personas mayores de catorce (14) años.
 
-Los Usuarios menores de dieciocho (18) años deben contar con autorización previa de su padre o apoderado. Esta autorización puede obtenerse mediante WhatsApp u otro medio dispuesto por Bioeasy Galenos al momento de la matrícula.
+Los Usuarios menores de dieciocho (18) años deben contar con autorización previa de su padre o apoderado. Esta autorización puede obtenerse mediante WhatsApp u otro medio dispuesto por Bioeasy al momento de la matrícula.
 
 El padre o apoderado debe revisar estos Términos y Condiciones y supervisar el uso del Campus por parte del menor.
 
-Bioeasy Galenos puede solicitar información razonable para verificar la edad, identidad o autorización y puede impedir o suspender el acceso cuando no sea posible realizar dicha verificación.
+Bioeasy puede solicitar información razonable para verificar la edad, identidad o autorización y puede impedir o suspender el acceso cuando no sea posible realizar dicha verificación.
 
 ## 3. Registro y autorización de acceso
 
-El registro inicial en el Campus está reservado a personas que cuenten con una matrícula activa en Bioeasy Galenos.
+El registro inicial en el Campus está reservado a personas que cuenten con una matrícula activa en Bioeasy.
 
 La existencia de una página o mecanismo de registro no constituye una invitación abierta al público ni concede automáticamente el derecho de acceso.
 
-Bioeasy Galenos verifica la matrícula antes o después de la creación de la cuenta. Cuando compruebe que una cuenta fue creada sin una matrícula activa, podrá suspenderla o eliminarla.
+Bioeasy verifica la matrícula antes o después de la creación de la cuenta. Cuando compruebe que una cuenta fue creada sin una matrícula activa, podrá suspenderla o eliminarla.
 
 La falta de una matrícula activa no será, por sí sola, motivo de eliminación cuando la cuenta haya sido creada durante una matrícula válida y posteriormente el Usuario se haya convertido en exalumno. Sin embargo, la conservación de la cuenta no garantiza acceso indefinido a todos los cursos, videos o materiales previamente asignados.
 
@@ -71,7 +71,7 @@ Está completamente prohibido:
 - vender, alquilar, prestar, transferir o intercambiar accesos; o
 - utilizar credenciales obtenidas de otra persona.
 
-El Usuario debe comunicar inmediatamente cualquier acceso no reconocido. Bioeasy Galenos evaluará los registros disponibles para determinar si existió un acceso no autorizado y adoptar las medidas de seguridad correspondientes.
+El Usuario debe comunicar inmediatamente cualquier acceso no reconocido. Bioeasy evaluará los registros disponibles para determinar si existió un acceso no autorizado y adoptar las medidas de seguridad correspondientes.
 
 ### 4.2. Límite de dispositivos
 
@@ -79,9 +79,9 @@ Cada Usuario puede mantener su sesión activa hasta en dos (2) dispositivos simu
 
 Se considera dispositivo simultáneo aquel que mantiene una sesión autenticada activa. Un dispositivo deja de computarse cuando la sesión se cierra correctamente.
 
-Bioeasy Galenos podrá utilizar registros de sesión, dirección IP, dispositivo, navegador, ubicación aproximada y patrones de acceso para verificar el cumplimiento de este límite y proteger el Campus.
+Bioeasy podrá utilizar registros de sesión, dirección IP, dispositivo, navegador, ubicación aproximada y patrones de acceso para verificar el cumplimiento de este límite y proteger el Campus.
 
-Cuando se supere el límite, Bioeasy Galenos podrá:
+Cuando se supere el límite, Bioeasy podrá:
 
 - impedir una nueva sesión;
 - cerrar una o más sesiones activas;
@@ -95,7 +95,7 @@ El uso ocasional de un nuevo dispositivo no constituye por sí mismo una infracc
 
 ### 5.1. Licencia de uso
 
-Mientras el Usuario se encuentre autorizado, Bioeasy Galenos le concede una licencia limitada, personal, no exclusiva, no sublicenciable, no transferible y revocable para acceder al Campus y utilizar los contenidos asignados conforme a estos Términos y Condiciones.
+Mientras el Usuario se encuentre autorizado, Bioeasy le concede una licencia limitada, personal, no exclusiva, no sublicenciable, no transferible y revocable para acceder al Campus y utilizar los contenidos asignados conforme a estos Términos y Condiciones.
 
 Esta licencia no transfiere al Usuario ningún derecho de propiedad intelectual sobre el Campus, sus videos, documentos, diseños, marcas, textos, imágenes, bases de datos o demás materiales.
 
@@ -126,7 +126,7 @@ Está prohibido:
 - vender, distribuir o facilitar copias; y
 - eludir controles de acceso, tokens, restricciones técnicas o mecanismos de protección.
 
-La infracción de estas reglas podrá ocasionar la suspensión, el bloqueo o la eliminación de la cuenta, sin derecho a devolución de los montos pagados, y sin perjuicio de las acciones legales que Bioeasy Galenos o los titulares de los derechos puedan ejercer.
+La infracción de estas reglas podrá ocasionar la suspensión, el bloqueo o la eliminación de la cuenta, sin derecho a devolución de los montos pagados, y sin perjuicio de las acciones legales que Bioeasy o los titulares de los derechos puedan ejercer.
 
 ## 6. Conductas prohibidas
 
@@ -145,17 +145,17 @@ El Usuario no podrá:
 
 ## 7. Suspensión, bloqueo y eliminación
 
-Ante un incumplimiento, un riesgo de seguridad o un indicio razonable de uso no autorizado, incluida la grabación de pantalla o audio, el uso compartido o transferencia de cuentas, la redistribución de contenidos u otras conductas prohibidas en estos Términos y Condiciones, Bioeasy Galenos podrá emitir una advertencia, cerrar sesiones activas, solicitar una verificación de identidad, restringir temporalmente funcionalidades, retirar accesos o contenidos, suspender, bloquear o eliminar la cuenta e iniciar las acciones legales que correspondan.
+Ante un incumplimiento, un riesgo de seguridad o un indicio razonable de uso no autorizado, incluida la grabación de pantalla o audio, el uso compartido o transferencia de cuentas, la redistribución de contenidos u otras conductas prohibidas en estos Términos y Condiciones, Bioeasy podrá emitir una advertencia, cerrar sesiones activas, solicitar una verificación de identidad, restringir temporalmente funcionalidades, retirar accesos o contenidos, suspender, bloquear o eliminar la cuenta e iniciar las acciones legales que correspondan.
 
-La medida se determinará considerando la naturaleza, gravedad, reiteración y efectos del incumplimiento. Cuando resulte razonable, Bioeasy Galenos informará al Usuario y le permitirá presentar las aclaraciones correspondientes, salvo que sea necesario actuar inmediatamente para proteger la seguridad, los contenidos, otros Usuarios o sus derechos.
+La medida se determinará considerando la naturaleza, gravedad, reiteración y efectos del incumplimiento. Cuando resulte razonable, Bioeasy informará al Usuario y le permitirá presentar las aclaraciones correspondientes, salvo que sea necesario actuar inmediatamente para proteger la seguridad, los contenidos, otros Usuarios o sus derechos.
 
 La condición de exalumno no impide la aplicación de estas medidas cuando exista un incumplimiento de los presentes Términos y Condiciones.
 
-Cuando la suspensión, el bloqueo o la eliminación de la cuenta se produzca por incumplimiento de estos Términos y Condiciones, el Usuario no tendrá derecho a la devolución total ni parcial de los montos pagados por la matrícula, cursos, accesos u otros servicios asociados. Esta consecuencia se aplica sin perjuicio de las demás acciones legales que Bioeasy Galenos pueda ejercer y de los derechos irrenunciables que la legislación peruana reconozca al Usuario.
+Cuando la suspensión, el bloqueo o la eliminación de la cuenta se produzca por incumplimiento de estos Términos y Condiciones, el Usuario no tendrá derecho a la devolución total ni parcial de los montos pagados por la matrícula, cursos, accesos u otros servicios asociados. Esta consecuencia se aplica sin perjuicio de las demás acciones legales que Bioeasy pueda ejercer y de los derechos irrenunciables que la legislación peruana reconozca al Usuario.
 
 ## 8. Propiedad intelectual
 
-El software, diseño, estructura, marcas, logotipos, videos, documentos, textos, imágenes y demás elementos disponibles en los Servicios pertenecen a Bioeasy Galenos o se utilizan con autorización de sus respectivos titulares.
+El software, diseño, estructura, marcas, logotipos, videos, documentos, textos, imágenes y demás elementos disponibles en los Servicios pertenecen a Bioeasy o se utilizan con autorización de sus respectivos titulares.
 
 Ninguna disposición de estos Términos y Condiciones concede autorización para utilizar las marcas, identidad visual o contenidos fuera del uso expresamente permitido.
 
@@ -165,7 +165,7 @@ El uso no autorizado puede vulnerar derechos de autor, marcas, medidas tecnológ
 
 ### 9.1. Disponibilidad y mantenimiento
 
-Bioeasy Galenos procura mantener los Servicios disponibles y seguros, pero no garantiza un funcionamiento ininterrumpido o libre de errores.
+Bioeasy procura mantener los Servicios disponibles y seguros, pero no garantiza un funcionamiento ininterrumpido o libre de errores.
 
 El acceso puede interrumpirse temporalmente por:
 
@@ -177,17 +177,17 @@ El acceso puede interrumpirse temporalmente por:
 - ataques, incidentes de seguridad o situaciones de fuerza mayor; o
 - medidas necesarias para proteger los Servicios y sus Usuarios.
 
-Cuando resulte razonablemente posible, Bioeasy Galenos procurará reducir la duración y el impacto de estas interrupciones.
+Cuando resulte razonablemente posible, Bioeasy procurará reducir la duración y el impacto de estas interrupciones.
 
 ### 9.2. Cambios en los Servicios
 
-Bioeasy Galenos podrá modificar, actualizar, reemplazar o retirar funcionalidades del Sitio web o del Campus para mejorar su funcionamiento, seguridad o compatibilidad, cumplir obligaciones legales o adaptarse a cambios tecnológicos.
+Bioeasy podrá modificar, actualizar, reemplazar o retirar funcionalidades del Sitio web o del Campus para mejorar su funcionamiento, seguridad o compatibilidad, cumplir obligaciones legales o adaptarse a cambios tecnológicos.
 
-Estas modificaciones no autorizan a Bioeasy Galenos a desconocer los derechos que la legislación peruana reconozca a los Usuarios.
+Estas modificaciones no autorizan a Bioeasy a desconocer los derechos que la legislación peruana reconozca a los Usuarios.
 
 ### 9.3. Servicios y enlaces de terceros
 
-Los Servicios pueden depender de proveedores externos o contener enlaces e integraciones de terceros. Bioeasy Galenos no controla la disponibilidad, seguridad, contenido ni las políticas propias de sitios o servicios externos.
+Los Servicios pueden depender de proveedores externos o contener enlaces e integraciones de terceros. Bioeasy no controla la disponibilidad, seguridad, contenido ni las políticas propias de sitios o servicios externos.
 
 El uso directo de servicios de terceros puede estar sujeto a sus términos y políticas.
 
@@ -195,7 +195,7 @@ El uso directo de servicios de terceros puede estar sujeto a sus términos y pol
 
 El Usuario es responsable de contar con un dispositivo compatible, una conexión a internet y medidas básicas de seguridad para acceder a los Servicios.
 
-Bioeasy Galenos no será responsable por interrupciones, pérdidas o daños causados exclusivamente por:
+Bioeasy no será responsable por interrupciones, pérdidas o daños causados exclusivamente por:
 
 - el dispositivo, conexión o configuración del Usuario;
 - el uso compartido o negligente de credenciales;
@@ -211,21 +211,21 @@ Nada de lo dispuesto en estos Términos y Condiciones excluye o limita responsab
 
 El Usuario puede solicitar la eliminación de su cuenta escribiendo a [privacidad@bgmedicina.com](mailto:privacidad@bgmedicina.com).
 
-Antes de procesar la solicitud, Bioeasy Galenos puede requerir información razonable para verificar la identidad del solicitante. La eliminación puede ocasionar la pérdida irreversible de configuraciones, asignaciones e historial de progreso.
+Antes de procesar la solicitud, Bioeasy puede requerir información razonable para verificar la identidad del solicitante. La eliminación puede ocasionar la pérdida irreversible de configuraciones, asignaciones e historial de progreso.
 
 Determinados registros podrán conservarse cuando sean necesarios para cumplir obligaciones legales, atender controversias, proteger la seguridad o preservar evidencia de incumplimientos, conforme a la [Política de Privacidad](/privacidad).
 
 ### 11.2. Política de Privacidad
 
-El tratamiento de datos personales relacionado con los Servicios se rige de manera independiente por la [Política de Privacidad de Bioeasy Galenos](/privacidad).
+El tratamiento de datos personales relacionado con los Servicios se rige de manera independiente por la [Política de Privacidad de Bioeasy](/privacidad).
 
 ## 12. Modificaciones de estos Términos y Condiciones
 
-Bioeasy Galenos podrá actualizar estos Términos y Condiciones para reflejar cambios legales, técnicos u operativos.
+Bioeasy podrá actualizar estos Términos y Condiciones para reflejar cambios legales, técnicos u operativos.
 
-La versión vigente indicará su fecha de actualización. Cuando los cambios sean materiales, Bioeasy Galenos podrá comunicarlos mediante el Sitio web, el Campus, correo electrónico u otro medio adecuado y solicitar una nueva aceptación cuando corresponda.
+La versión vigente indicará su fecha de actualización. Cuando los cambios sean materiales, Bioeasy podrá comunicarlos mediante el Sitio web, el Campus, correo electrónico u otro medio adecuado y solicitar una nueva aceptación cuando corresponda.
 
-Cuando una modificación requiera una nueva aceptación, Bioeasy Galenos la solicitará antes de que el Usuario continúe utilizando el Campus. El uso continuado no sustituye los consentimientos específicos que deban obtenerse conforme a la legislación aplicable.
+Cuando una modificación requiera una nueva aceptación, Bioeasy la solicitará antes de que el Usuario continúe utilizando el Campus. El uso continuado no sustituye los consentimientos específicos que deban obtenerse conforme a la legislación aplicable.
 
 ## 13. Legislación aplicable y contacto
 
@@ -237,4 +237,4 @@ Cualquier controversia se someterá a las autoridades administrativas, de protec
 
 - **Soporte del Campus:** [soporte@bgmedicina.com](mailto:soporte@bgmedicina.com)
 - **Privacidad y datos personales:** [privacidad@bgmedicina.com](mailto:privacidad@bgmedicina.com)
-- **Domicilio:** Mza. I Lote 13 Dpto. 601 Urb. Ingenieria II, Distrito de Trujillo, Provincia de Trujillo, Departamento de La Libertad.
+- **Domicilio fiscal:** Av. Fátima Mz. Q, Lote 1, Int. 301, urb. La Merced, 3.ª etapa, distrito de Trujillo, provincia de Trujillo, departamento de La Libertad.
